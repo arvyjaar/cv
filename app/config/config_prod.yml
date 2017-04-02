@@ -9,6 +9,7 @@ imports:
 doctrine:
     dbal:
         url: "%env(DATABASE_URL)%"
+        driver: pdo_pgsql
 
 monolog:
     handlers:
