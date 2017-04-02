@@ -6,6 +6,8 @@ imports:
 #        metadata_cache_driver: apc
 #        result_cache_driver: apc
 #        query_cache_driver: apc
+
+# TODO: remove, this is for Heroku
 doctrine:
     dbal:
         url: "%env(DATABASE_URL)%"
@@ -23,3 +25,10 @@ monolog:
             level: debug
         console:
             type: console
+
+# TODO: remove, this is for Heroku
+# FOSUser configuration
+fos_user:
+    from_email:
+        address: mail@example.com
+        sender_name: Heroku
