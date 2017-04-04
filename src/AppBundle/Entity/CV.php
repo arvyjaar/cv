@@ -22,52 +22,6 @@ class CV
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string")
-     *
-     * @Assert\NotBlank(message="Kuo tu vardu? Užpildyk šį lauką")
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="surname", type="string")
-     *
-     * @Assert\NotBlank(message="Kokia tavo pavardė? Užpildyk šį lauką")
-     */
-    private $surname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string")
-     *
-     * @Assert\NotBlank(message="Koks tavo el. pašto adresas? Užpildyk šį lauką")
-     * @Assert\Email(message="Klaidingas el. pašto adresas")
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="phone", type="string", length=50)
-     *
-     * @Assert\NotBlank(message="Koks tavo telefono numeris? Užpildyk šį lauką")
-     */
-    private $phone;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateOfBirth", type="date")
-     *
-     * @Assert\NotBlank(message="Kokia tavo gimimo data? Užpildyk šį lauką")
-     * @Assert\Date(message="Klaidingas datos formatas")
-     */
-    private $dateOfBirth;
 
     /**
      * @var string
@@ -77,14 +31,6 @@ class CV
      * @Assert\NotBlank(message="Kokia šiuo metu Tavo profesija? Užpildyk šį lauką")
      */
     private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     *
-     */
-    private $photo;
 
     /**
      * @var array
