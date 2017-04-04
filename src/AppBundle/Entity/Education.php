@@ -3,15 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Experience
+ * Education
  *
- * @ORM\Table(name="experience")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ExperienceRepository")
+ * @ORM\Table(name="education")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EducationRepository")
  */
-class Experience
+class Education
 {
     /**
      * @var int
@@ -27,25 +26,25 @@ class Experience
      *
      * @ORM\Column(name="title", type="string", length=255)
      *
-     * @Assert\NotBlank(message="Kokios buvo tavo pareigos? Užpildyk šį lauką")
+     * @Assert\NotBlank(message="Kokį išsilavinimą įgijai? Užpildyk šį lauką")
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="company", type="string", length=255)
+     * @ORM\Column(name="school", type="string", length=255)
      *
-     * @Assert\NotBlank(message="Kokioje įmonėje dirbai? Užpildyk šį lauką")
+     * @Assert\NotBlank(message="Kokioje mokymo įstaigoje mokeisi? Užpildyk šį lauką")
      */
-    private $company;
+    private $school;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="startDate", type="date")
      *
-     * @Assert\NotBlank(message="Kada pradėjai dirbti šioje darbovietėje? Užpildyk šį lauką")
+     * @Assert\NotBlank(message="Kada pradėjai mokytis šioje įstaigoje? Užpildyk šį lauką")
      * @Assert\Date()
      */
     private $startDate;
@@ -55,7 +54,7 @@ class Experience
      *
      * @ORM\Column(name="endDate", type="date")
      *
-     * @Assert\NotBlank(message="Kada baigei dirbti šioje įmonėje? Užpildyk šį lauką")
+     * @Assert\NotBlank(message="Kada baigei mokytis šioje įstaigoje? Užpildyk šį lauką")
      * @Assert\Date()
      */
     private $endDate;
@@ -85,7 +84,7 @@ class Experience
      *
      * @param string $title
      *
-     * @return Experience
+     * @return Education
      */
     public function setTitle($title)
     {
@@ -105,27 +104,27 @@ class Experience
     }
 
     /**
-     * Set company
+     * Set school
      *
-     * @param string $company
+     * @param string $school
      *
-     * @return Experience
+     * @return Education
      */
-    public function setCompany($company)
+    public function setSchool($school)
     {
-        $this->company = $company;
+        $this->school = $school;
 
         return $this;
     }
 
     /**
-     * Get company
+     * Get school
      *
      * @return string
      */
-    public function getCompany()
+    public function getSchool()
     {
-        return $this->company;
+        return $this->school;
     }
 
     /**
@@ -133,7 +132,7 @@ class Experience
      *
      * @param \DateTime $startDate
      *
-     * @return Experience
+     * @return Education
      */
     public function setStartDate($startDate)
     {
@@ -157,7 +156,7 @@ class Experience
      *
      * @param \DateTime $endDate
      *
-     * @return Experience
+     * @return Education
      */
     public function setEndDate($endDate)
     {
@@ -181,7 +180,7 @@ class Experience
      *
      * @param string $description
      *
-     * @return Experience
+     * @return Education
      */
     public function setDescription($description)
     {
