@@ -27,7 +27,7 @@ class CV
      *
      * @ORM\Column(name="name", type="string")
      *
-     * @Assert\NotBlank(message="Įveskite savo vardą")
+     * @Assert\NotBlank(message="Kuo tu vardu? Užpildyk šį lauką")
      */
     private $name;
 
@@ -36,7 +36,7 @@ class CV
      *
      * @ORM\Column(name="surname", type="string")
      *
-     * @Assert\NotBlank(message="Įveskite savo pavardę")
+     * @Assert\NotBlank(message="Kokia tavo pavardė? Užpildyk šį lauką")
      */
     private $surname;
 
@@ -45,8 +45,8 @@ class CV
      *
      * @ORM\Column(name="email", type="string")
      *
-     * @Assert\NotBlank(message="Įveskite savo el. pašto adresą")
-     * @Assert\Email(message="Nevalidus el. pašto adresas")
+     * @Assert\NotBlank(message="Koks tavo el. pašto adresas? Užpildyk šį lauką")
+     * @Assert\Email(message="Klaidingas el. pašto adresas")
      */
     private $email;
 
@@ -55,7 +55,7 @@ class CV
      *
      * @ORM\Column(name="phone", type="string", length=50)
      *
-     * @Assert\NotBlank(message="Įveskite savo telefono numerį")
+     * @Assert\NotBlank(message="Koks tavo telefono numeris? Užpildyk šį lauką")
      */
     private $phone;
 
@@ -64,8 +64,8 @@ class CV
      *
      * @ORM\Column(name="dateOfBirth", type="date")
      *
-     * @Assert\NotBlank(message="Įveskite savo gimimo datą")
-     * @Assert\Date(message="Nevalidus datos formatas")
+     * @Assert\NotBlank(message="Kokia tavo gimimo data? Užpildyk šį lauką")
+     * @Assert\Date(message="Klaidingas datos formatas")
      */
     private $dateOfBirth;
 
@@ -74,7 +74,7 @@ class CV
      *
      * @ORM\Column(name="title", type="string")
      *
-     * @Assert\NotBlank(message="Prašom įvesti, kokia šiuo metu Tavo profesija?")
+     * @Assert\NotBlank(message="Kokia šiuo metu Tavo profesija? Užpildyk šį lauką")
      */
     private $title;
 
@@ -91,7 +91,7 @@ class CV
      *
      * @ORM\Column(name="skills", type="array")
      *
-     * @Assert\NotBlank(message="Kokie jūsų gebėjimai? Užpildykite šį lauką")
+     * @Assert\NotBlank(message="Kokie tavo gebėjimai? Užpildyk šį lauką")
      */
     private $skills;
 

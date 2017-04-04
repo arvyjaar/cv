@@ -27,7 +27,7 @@ class Evaluation
      *
      * @ORM\Column(name="mark", type="integer")
      *
-     * @Assert\NotBlank(message = "Įrašykite pažymį kandidatui")
+     * @Assert\NotBlank(message = "Kokiu pažymiu(1-10) įvertinsi šį kandidatą? Užpildyk šį lauką")
      * @Assert\Range(
      *      min = 1,
      *      max = 10,

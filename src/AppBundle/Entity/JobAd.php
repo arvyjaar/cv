@@ -27,7 +27,7 @@ class JobAd
      *
      * @ORM\Column(name="title", type="string", length=255)
      *
-     * @Assert\NotBlank(message = "Antraštė negali būti tuščia")
+     * @Assert\NotBlank(message = "Kokias pareigas siūlai kandidatams? Užpildyk šį lauką")
      * @Assert\Length(max=255)
      */
     private $title;
@@ -37,7 +37,7 @@ class JobAd
      *
      * @ORM\Column(name="description", type="string", length=255)
      *
-     * @Assert\NotBlank(message = "Aprašymas negali būti tuščias")
+     * @Assert\NotBlank(message = "Trumpai papasakok apie siūlomą poziciją. Užpildyk šį lauką")
      * @Assert\Length(max=255)
      */
     private $description;
@@ -47,7 +47,7 @@ class JobAd
      *
      * @ORM\Column(name="assignment", type="string")
      *
-     * @Assert\NotBlank(message="Privalote pateikti užduotį")
+     * @Assert\NotBlank(message="Pateik užduotį kandidatui - užpildyk šį lauką!")
      */
     private $assignment;
 
@@ -56,7 +56,7 @@ class JobAd
      *
      * @ORM\Column(name="requirements", type="array")
      *
-     * @Assert\NotBlank(message="Turite apibrėžti aiškius reikalavimus kandidatams")
+     * @Assert\NotBlank(message="Būtu šaunu, jei apibrėžtum aiškius reikalavimus kandidatams. Užpildyk šį lauką")
      */
     private $requirements;
 
