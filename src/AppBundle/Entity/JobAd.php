@@ -27,8 +27,8 @@ class JobAd
      *
      * @ORM\Column(name="title", type="string", length=255)
      *
-     * @Assert\NotBlank()
-     * @Assert\Length(max = 255)
+     * @Assert\NotBlank(message = "Antraštė negali būti tuščia")
+     * @Assert\Length(max=255, message="Komentaro ilgis negali viršyti 255 ženklų)
      */
     private $title;
 
@@ -37,8 +37,8 @@ class JobAd
      *
      * @ORM\Column(name="description", type="text", length=255)
      *
-     * @Assert\NotBlank()
-     * @Assert\Length(max = 255)
+     * @Assert\NotBlank(message = "Aprašymas negali būti tuščias")
+     * @Assert\Length(max=255, message="Komentaro ilgis negali viršyti 255 ženklų)
      */
     private $description;
 
@@ -47,7 +47,7 @@ class JobAd
      *
      * @ORM\Column(name="assignment", type="string")
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "Privalote pateikti užduotį")
      */
     private $assignment;
 
@@ -56,7 +56,7 @@ class JobAd
      *
      * @ORM\Column(name="requirements", type="array")
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "Turite apibrėžti aiškius reikalavimus kandidatams")
      */
     private $requirements;
 
