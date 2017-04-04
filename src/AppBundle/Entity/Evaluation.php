@@ -42,7 +42,7 @@ class Evaluation
      *
      * @ORM\Column(name="comment", type="string", length=255, nullable=true)
      *
-     * @Assert\Length(max=255, message="Komentaro ilgis negali viršyti 255 ženklų")
+     * @Assert\Length(max=255)
      */
     private $comment;
 
