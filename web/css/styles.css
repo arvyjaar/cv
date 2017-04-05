@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin:400,500|Raleway:300,400,500');
+
+/*GLOBAL*/
+body {
+    font-family: 'Raleway', Helvetica, Arial;
+}
+
+p {
+    font-family: 'Cabin', Arial;
+}
+
+.btn {
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius: 10px;
+}
+
+.btn:active:focus, .btn:focus {
+    outline: none;
+}
+
+/*NAVIGATION*/
+
+.navbar-brand {
+    padding-right: 50px;
+    padding-left: 50px;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.navbar-left .form-control {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius:10px;
+}
+
+.navbar-form .form-control {
+    width: 250px;
+}
+
+.navbar-form {
+    position: relative;
+}
+.navbar-form .btn {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 15px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (max-width : 768px) {
+    /*Hides search on mobile view*/
+    .navbar-form {
+        display: none;
+    }
+
+    .navbar-brand {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+}
+
