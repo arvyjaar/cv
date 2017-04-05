@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>{% block title %}GetHired{% endblock %}</title>
         {% block stylesheets %}
-            {# Latest compiled and minified Bootstrap CSS #}
             <link rel="stylesheet" href="{{ asset('css/bootstrap-3.3.7.min.css') }}">
             <script src="https://use.fontawesome.com/1542fb3828.js"></script>
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
@@ -25,9 +24,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#">
-                                GetHired
-                            </a>
+                            <a class="navbar-brand" href="#">GetHired</a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,9 +55,7 @@
         {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}
-            {# Jquery 3.2.1 #}
             <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
-            {# Latest compiled and minified JavaScript #}
             <script src="{{ asset('js/bootstrap-3.3.7.min.js') }}"></script>
             <script src="{{ asset('js/main.js') }}"></script>
         {% endblock %}
