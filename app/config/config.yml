@@ -75,6 +75,38 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: AppBundle\Entity\User
+    service:
+        user_manager: pugx_user_manager
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+
+# PGUX Multi User Bundle configuration
+pugx_multi_user:
+  users:
+
+    user_employer:
+        entity:
+          class: AppBundle\Entity\UserEmployer
+#          factory:
+        registration:
+          form:
+            type: AppBundle\Form\Type\RegistrationUserEmployerFormType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: AcmeUserBundle:Registration:user_employer.form.html.twig
+        profile:
+          form:
+            type: AppBundle\Form\Type\ProfileUserEmployerFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+    user_seeker:
+        entity:
+          class: AppBundle\Entity\UserSeeker
+        registration:
+          form:
+            type: AppBundle\Form\Type\RegistrationUserSeekerFormType
+          template: AcmeUserBundle:Registration:user_seeker.form.html.twig
+        profile:
+          form:
+            type: AppBundle\Form\Type\ProfileUserSeekerFormType

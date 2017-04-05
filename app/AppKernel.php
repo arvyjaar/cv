@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             // NFQ project
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
         ];
 
