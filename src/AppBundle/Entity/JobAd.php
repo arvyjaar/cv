@@ -35,10 +35,10 @@ class JobAd
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="text")
      *
      * @Assert\NotBlank(message = "Trumpai papasakok apie siūlomą poziciją. Užpildyk šį lauką")
-     * @Assert\Length(max=255)
+     * @Assert\Length(max=300)
      */
     private $description;
 
