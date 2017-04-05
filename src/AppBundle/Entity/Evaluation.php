@@ -40,9 +40,9 @@ class Evaluation
     /**
      * @var string
      *
-     * @ORM\Column(name="comment", type="string", length=255, nullable=true)
+     * @ORM\Column(name="comment", type="text", nullable=true)
      *
-     * @Assert\Length(max=255)
+     * @Assert\Length(max=300)
      */
     private $comment;
 
