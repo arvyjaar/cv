@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+
 class RegistrationUserSeekerController extends Controller
 {
     public function registerAction()

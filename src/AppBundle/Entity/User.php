@@ -21,4 +21,9 @@ abstract class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    public function setEmail($email){
+        parent::setEmail($email);
+        parent::setUsername($email);
+    }
 }

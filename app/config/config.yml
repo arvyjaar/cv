@@ -84,7 +84,6 @@ fos_user:
 # PGUX Multi User Bundle configuration
 pugx_multi_user:
   users:
-
     user_employer:
         entity:
           class: AppBundle\Entity\UserEmployer
@@ -94,7 +93,7 @@ pugx_multi_user:
             type: AppBundle\Form\Type\RegistrationUserEmployerFormType
             name: fos_user_registration_form
             validation_groups:  [Registration, Default]
-          template: AcmeUserBundle:Registration:user_employer.form.html.twig
+          template: :Registration:user_employer.form.html.twig
         profile:
           form:
             type: AppBundle\Form\Type\ProfileUserEmployerFormType
@@ -102,11 +101,11 @@ pugx_multi_user:
             validation_groups:  [Profile, Default]
     user_seeker:
         entity:
-          class: AppBundle\Entity\UserSeeker
+            class: AppBundle\Entity\UserSeeker
         registration:
-          form:
-            type: AppBundle\Form\Type\RegistrationUserSeekerFormType
-          template: AcmeUserBundle:Registration:user_seeker.form.html.twig
+            form:
+                type: AppBundle\Form\Type\RegistrationUserSeekerFormType
+            template: :Registration:user_seeker.form.html.twig
         profile:
-          form:
-            type: AppBundle\Form\Type\ProfileUserSeekerFormType
+            form:
+                type: AppBundle\Form\Type\ProfileUserSeekerFormType

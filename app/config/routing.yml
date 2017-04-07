@@ -6,7 +6,6 @@ fos_user:
 user_employer_registration:
     path:  /register/employer
     defaults: { _controller: AppBundle:RegistrationUserEmployer:register }
-
-user_two_registration:
-    path:  /register/jobseeker
-    defaults: { _controller: AcmeUserBundle:RegistrationUserSeeker:register }
+user_seeker_registration:
+    path:  /register/seeker
+    defaults: { _controller: AppBundle:RegistrationUserSeeker:register }
