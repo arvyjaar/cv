@@ -104,17 +104,17 @@ class UserSeeker extends User
     /**
      * @return mixed
      */
-    public function getBirthDate()
+    public function getBirthday()
     {
-        return $this->birth_date;
+        return $this->birthday;
     }
 
     /**
-     * @param mixed $birth_date
+     * @param mixed $birthday
      */
-    public function setBirthDate($birth_date)
+    public function setBirthday($birthday)
     {
-        $this->birth_date = $birth_date;
+        $this->birth_date = $birthday;
     }
 
     /**
@@ -174,10 +174,10 @@ class UserSeeker extends User
     }
 
     /**
-     * @param mixed $role
+     * @return string
      */
-    public function setRole($role)
+    public function getType()
     {
-        $this->role = $role;
+        return 'user_seeker';
     }
 }

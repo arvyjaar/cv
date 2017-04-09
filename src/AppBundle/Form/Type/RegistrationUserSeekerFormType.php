@@ -24,7 +24,6 @@ class RegistrationUserSeekerFormType extends AbstractType
             ->add('name', null, ['label' => false])
             ->add('surname', null, ['label' => false])
             ->add('email', EmailType::class, array('label' => false))
-            //->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => array('label' => false),

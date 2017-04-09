@@ -1,0 +1,27 @@
+<div class="container">
+
+    <h2>Redaguoti profilį</h2>
+    <p>Grįžti atgal</p>
+
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+    <label for="form_name">VARDAS *</label>
+    {{ form_row(form.name) }}
+    <label for="form_surname">PAVARDĖ *</label>
+    {{ form_row(form.surname) }}
+    <label for="form_email">TELEFONO NUMERIS</label>
+    {{ form_row(form.phone) }}
+    <label for="form_photo">PROFILIO NUOTRAUKA</label>
+    <img src="{{ asset('apple-touch-icon.png') }}" alt="Profilio nuotrauka">
+    {{ form_row(form.photo) }}
+    <label for="form_birthday">GIMIMO DATA</label>
+    {{ form_row(form.birthday) }}
+    <label for="form_city">GYVENAMOJI VIETA</label>
+    {{ form_row(form.city) }}
+    <input type="submit" value="Redaguoti"/>
+
+    {{ form_end(form) }}
+
+    <p>* Laukai turi būti užpildyti</p>
+
+</div>

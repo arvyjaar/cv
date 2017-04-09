@@ -1,0 +1,13 @@
+<div class="container">
+
+    <h2>Redaguoti profilį</h2>
+    <p>Grįžti atgal</p>
+
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Redaguoti"/>
+    {{ form_end(form) }}
+
+    <p>* Laukai turi būti užpildyti</p>
+
+</div>

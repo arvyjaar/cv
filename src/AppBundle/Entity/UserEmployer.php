@@ -88,10 +88,10 @@ class UserEmployer extends User
     }
 
     /**
-     * @param mixed $role
+     * @return string
      */
-    public function setRole($role)
+    public function getType()
     {
-        $this->role = $role;
+        return 'user_employer';
     }
 }
