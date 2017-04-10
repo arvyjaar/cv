@@ -58,6 +58,12 @@ class Evaluation
     }
 
     /**
+     * One Evaluation has One JobApply.
+     * @OneToOne(targetEntity="JobApply", mappedBy="evaluation")
+     */
+    private $jobApply;
+
+    /**
      * Set mark
      *
      * @param integer $mark

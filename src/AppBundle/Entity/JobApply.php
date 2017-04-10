@@ -28,6 +28,19 @@ class JobApply
      */
     private $cv;
 
+    /**
+     * One JobApply has One Evaluation.
+     * @OneToOne(targetEntity="Evaluation", inversedBy="jobApply")
+     * @JoinColumn(name="evaluation_id", referencedColumnName="id")
+     */
+    private $evaluation;
+
+    /**
+     * Many JobApply have One JobAd.
+     * @ManyToOne(targetEntity="JobAd", inversedBy="jobApply")
+     * @JoinColumn(name="jobAd_id", referencedColumnName="id")
+     */
+    private $jobAd;
 
     /**
      * Get id
