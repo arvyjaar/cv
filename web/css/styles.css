@@ -50,6 +50,19 @@ p {
     border-top-left-radius: 0;
 }
 
+.navbar {
+    margin-bottom: 0;
+}
+
+/* HOMEPAGE */
+
+/*.slogan-block {*/
+    /*padding: 300px 0;*/
+    /*background-size: cover;*/
+    /*background-image: url("../img/cover-1.jpg");*/
+    /*background-repeat: no-repeat;*/
+/*}*/
+
 
 /* Small Devices, Tablets */
 
