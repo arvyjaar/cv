@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\JobApply;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * JobAd
@@ -60,6 +62,15 @@ class JobAd
      */
     private $requirements;
 
+    /**
+     * One JobAd has Many JobApply.
+     * @ORM\OneToMany(targetEntity="JobApply", mappedBy="jobAd")
+     */
+    private $jobApply;
+
+    public function __construct() {
+        $this->jobApply = new ArrayCollection();
+    }
 
     /**
      * Get id
