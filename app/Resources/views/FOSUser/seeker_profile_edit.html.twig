@@ -18,8 +18,14 @@
     {{ form_row(form.birthday) }}
     <label for="form_city">GYVENAMOJI VIETA</label>
     {{ form_row(form.city) }}
-    <input type="submit" value="Redaguoti"/>
+    <label for="form_profession">PROFESIJA *</label>
+    {{ form_row(form.profession) }}
+    <label for="form_introduction">TRUMPAS PRISISTATYMAS</label>
+    {{ form_row(form.introduction) }}
+    <label for="form_skills">GEBĖJIMAI</label>
+    {{ form_row(form.skills) }}
 
+    <input type="submit" value="Redaguoti"/>
     {{ form_end(form) }}
 
     <p>* Laukai turi būti užpildyti</p>

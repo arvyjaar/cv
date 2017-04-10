@@ -3,10 +3,14 @@
 namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Entity\UserSeeker;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Image;
 
 class ProfileUserSeekerFormType extends AbstractType
 {
@@ -15,11 +19,32 @@ class ProfileUserSeekerFormType extends AbstractType
         $builder
             ->add('name', null, ['label' => false])
             ->add('surname', null, ['label' => false])
-            ->add('birthday', null, ['label' => false])
+            ->add('birthday', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                //'html5' => false,
+                //'attr' => ['class' => 'js-datepicker'],
+                'label' => false
+            ])
             ->add('surname', null, ['label' => false])
-            ->add('photo', FileType::class, ['label' => false, 'data_class' => null, 'required' => false, ])
+            ->add('photo', FileType::class, [
+                'constraints' => [
+                    new Image()
+                ],
+                'label' => false,
+                'data_class' => null,
+                'required' => false
+            ])
             ->add('phone', null, ['label' => false])
             ->add('city', null, ['label' => false])
+            ->add('profession', null, [
+                'constraints' => [
+                    new NotBlank()
+                ],
+                'label' => false
+            ])
+            ->add('introduction', TextareaType::class, ['label' => false, 'required' => false])
+            ->add('skills', TextareaType::class, ['label' => false, 'required' => false])
         ;
     }
 
