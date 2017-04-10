@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\JobApply;
 
 /**
  * Evaluation
@@ -59,7 +60,7 @@ class Evaluation
 
     /**
      * One Evaluation has One JobApply.
-     * @OneToOne(targetEntity="JobApply", mappedBy="evaluation")
+     * @ORM\OneToOne(targetEntity="JobApply", mappedBy="evaluation")
      */
     private $jobApply;
 

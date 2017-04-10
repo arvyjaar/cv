@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Evaluation;
+use AppBundle\Entity\JobAd;
 
 /**
  * JobApply
@@ -30,15 +32,15 @@ class JobApply
 
     /**
      * One JobApply has One Evaluation.
-     * @OneToOne(targetEntity="Evaluation", inversedBy="jobApply")
-     * @JoinColumn(name="evaluation_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Evaluation", inversedBy="jobApply")
+     * @ORM\JoinColumn(name="evaluation_id", referencedColumnName="id")
      */
     private $evaluation;
 
     /**
      * Many JobApply have One JobAd.
-     * @ManyToOne(targetEntity="JobAd", inversedBy="jobApply")
-     * @JoinColumn(name="jobAd_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="JobAd", inversedBy="jobApply")
+     * @ORM\JoinColumn(name="jobAd_id", referencedColumnName="id")
      */
     private $jobAd;
 
