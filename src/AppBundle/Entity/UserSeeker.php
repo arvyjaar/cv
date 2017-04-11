@@ -47,7 +47,7 @@ class UserSeeker extends User
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="photo", fileNameProperty="photo", size="imageSize")
+     * @Vich\UploadableField(mapping="seekerPhoto", fileNameProperty="photo")
      *
      * @var File
      */
@@ -57,13 +57,6 @@ class UserSeeker extends User
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $photo;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     *
-     * @var integer
-     */
-    protected $imageSize;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -303,22 +296,6 @@ class UserSeeker extends User
     public function getImageFile()
     {
         return $this->imageFile;
-    }
-
-    /**
-     * @return int
-     */
-    public function getImageSize()
-    {
-        return $this->imageSize;
-    }
-
-    /**
-     * @param int $imageSize
-     */
-    public function setImageSize($imageSize)
-    {
-        $this->imageSize = $imageSize;
     }
 
     /**

@@ -30,6 +30,7 @@ class ProfileUserSeekerFormType extends AbstractType
             ->add('surname', null, ['label' => false])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
+                'label' => false,
             ])
             ->add('phone', null, ['label' => false])
             ->add('city', null, ['label' => false])
@@ -40,15 +41,14 @@ class ProfileUserSeekerFormType extends AbstractType
                 'label' => false
             ])
             ->add('introduction', TextareaType::class, ['label' => false, 'required' => false])
-            ->add('skills', TextareaType::class, ['label' => false, 'required' => false])
-        ;
+            ->add('skills', TextareaType::class, ['label' => false, 'required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => UserSeeker::class,
-            'attr' => array('novalidate'=>'novalidate')
+            'attr' => array('novalidate' => 'novalidate')
         ));
     }
 }

@@ -7,12 +7,15 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use AppBundle\Entity\JobAd;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="user_employer")
  * @UniqueEntity(fields = "username", targetClass = "AppBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "AppBundle\Entity\User", message="Vartotojas su tokiu su adresu jau yra")
+ * @Vich\Uploadable
  */
 class UserEmployer extends User
 {
@@ -45,6 +48,15 @@ class UserEmployer extends User
     protected $phone;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="employerLogo", fileNameProperty="photo")
+     *
+     * @var File
+     */
+    protected $imageFile;
+
+    /**
      * @ORM\Column(type="string", nullable=true)
      */
     protected $photo;
@@ -53,6 +65,13 @@ class UserEmployer extends User
      * @ORM\Column(type="string", nullable=true)
      */
     protected $city;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var \DateTime
+     */
+    protected $updatedAt;
 
     /**
      * One UserEmployer has Many JobAd.
@@ -184,5 +203,49 @@ class UserEmployer extends User
     public function setCity($city)
     {
         $this->city = $city;
+    }
+
+    // File upload
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return UserEmployer
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

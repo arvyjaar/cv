@@ -12,6 +12,7 @@
     <label for="form_email">TELEFONO NUMERIS</label>
     {{ form_row(form.phone) }}
     <label for="form_imageFile">PROFILIO NUOTRAUKA</label>
+    <img src="{{ asset('img/profiles/')~app.user.photo}}" alt="Nuotrauka">
     {{ form_row(form.imageFile) }}
     <label for="form_birthday">GIMIMO DATA</label>
     {{ form_row(form.birthday) }}
