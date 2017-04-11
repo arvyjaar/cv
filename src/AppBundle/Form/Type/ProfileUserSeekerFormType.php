@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Entity\UserSeeker;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Image;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProfileUserSeekerFormType extends AbstractType
 {
@@ -22,18 +23,13 @@ class ProfileUserSeekerFormType extends AbstractType
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
-                //'html5' => false,
-                //'attr' => ['class' => 'js-datepicker'],
+                'html5' => false,
+                'attr' => ['class' => 'js-datepicker'],
                 'label' => false
             ])
             ->add('surname', null, ['label' => false])
-            ->add('photo', FileType::class, [
-                'constraints' => [
-                    new Image()
-                ],
-                'label' => false,
-                'data_class' => null,
-                'required' => false
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
             ])
             ->add('phone', null, ['label' => false])
             ->add('city', null, ['label' => false])
@@ -52,6 +48,7 @@ class ProfileUserSeekerFormType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => UserSeeker::class,
+            'attr' => array('novalidate'=>'novalidate')
         ));
     }
 }

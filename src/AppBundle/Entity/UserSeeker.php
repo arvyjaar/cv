@@ -47,11 +47,11 @@ class UserSeeker extends User
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="profile_image", fileNameProperty="photo", size="imageSize")
+     * @Vich\UploadableField(mapping="photo", fileNameProperty="photo", size="imageSize")
      *
      * @var File
      */
-    private $imageFile;
+    protected $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -63,7 +63,7 @@ class UserSeeker extends User
      *
      * @var integer
      */
-    private $imageSize;
+    protected $imageSize;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -81,7 +81,7 @@ class UserSeeker extends User
     protected $profession;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $skills;
 
@@ -95,13 +95,13 @@ class UserSeeker extends User
      *
      * @var \DateTime
      */
-    private $updatedAt;
+    protected $updatedAt;
 
     /**
      * One UserSeeker has Many JobApply.
      * @ORM\OneToMany(targetEntity="JobApply", mappedBy="user")
      */
-    private $jobApply;
+    protected $jobApply;
 
     public function __construct() {
         parent::__construct();
@@ -113,7 +113,7 @@ class UserSeeker extends User
      * @ORM\OneToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $user;
+    protected $user;
 
     // *** Getters and setters ***
 
@@ -170,7 +170,7 @@ class UserSeeker extends User
      */
     public function setBirthday($birthday)
     {
-        $this->birth_date = $birthday;
+        $this->birthday = $birthday;
     }
 
     /**

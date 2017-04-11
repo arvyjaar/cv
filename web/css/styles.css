@@ -63,6 +63,13 @@ p {
     /*background-repeat: no-repeat;*/
 /*}*/
 
+/* User Profile Edit*/
+
+.ui-datepicker {
+    background: white;
+    border: 1px solid #555;
+}
+
 
 /* Small Devices, Tablets */
 
