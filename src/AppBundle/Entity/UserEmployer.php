@@ -35,12 +35,27 @@ class UserEmployer extends User
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $role;
+    protected $sector;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $phone;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $photo;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $city;
 
     // *** Getters and setters ***
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -48,7 +63,7 @@ class UserEmployer extends User
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -56,7 +71,7 @@ class UserEmployer extends User
     }
 
     /**
-     * @param mixed $title
+     * @param string $title
      */
     public function setTitle($title)
     {
@@ -64,7 +79,7 @@ class UserEmployer extends User
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDescription()
     {
@@ -72,19 +87,11 @@ class UserEmployer extends User
     }
 
     /**
-     * @param mixed $description
+     * @param string $description
      */
     public function setDescription($description)
     {
         $this->description = $description;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRole()
-    {
-        return $this->role;
     }
 
     /**
@@ -93,5 +100,69 @@ class UserEmployer extends User
     public function getType()
     {
         return 'user_employer';
+    }
+
+    /**
+     * @return string
+     */
+    public function getSector()
+    {
+        return $this->sector;
+    }
+
+    /**
+     * @param string $sector
+     */
+    public function setSector($sector)
+    {
+        $this->sector = $sector;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param string $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
     }
 }
