@@ -7,6 +7,8 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use AppBundle\Entity\JobApply;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -79,7 +81,7 @@ class UserSeeker extends User
     protected $profession;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="array", nullable=true)
      */
     protected $skills;
 
@@ -95,6 +97,23 @@ class UserSeeker extends User
      */
     private $updatedAt;
 
+    /**
+     * One UserSeeker has Many JobApply.
+     * @ORM\OneToMany(targetEntity="JobApply", mappedBy="user")
+     */
+    private $jobApply;
+
+    public function __construct() {
+        parent::__construct();
+        $this->jobApply = new ArrayCollection();
+    }
+
+    /**
+     * One UserSeeker has One User.
+     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     // *** Getters and setters ***
 

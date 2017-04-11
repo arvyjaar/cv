@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\JobAd;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -51,6 +53,24 @@ class UserEmployer extends User
      * @ORM\Column(type="string", nullable=true)
      */
     protected $city;
+
+    /**
+     * One UserEmployer has Many JobAd.
+     * @ORM\OneToMany(targetEntity="JobAd", mappedBy="employer")
+     */
+    private $jobAd;
+
+    public function __construct() {
+        parent::__construct();
+        $this->jobAd = new ArrayCollection();
+    }
+
+    /**
+     * One UserEmployer has One User.
+     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     // *** Getters and setters ***
 

@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Evaluation;
 use AppBundle\Entity\JobAd;
+use AppBundle\Entity\UserSeeker;
 
 /**
  * JobApply
@@ -43,6 +44,13 @@ class JobApply
      * @ORM\JoinColumn(name="jobAd_id", referencedColumnName="id")
      */
     private $jobAd;
+
+    /**
+     * Many JobApply have One UserSeeker.
+     * @ORM\ManyToOne(targetEntity="UserSeeker", inversedBy="jobApply")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     /**
      * Get id
