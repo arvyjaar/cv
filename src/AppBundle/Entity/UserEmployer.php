@@ -136,14 +136,6 @@ class UserEmployer extends User
     /**
      * @return string
      */
-    public function getType()
-    {
-        return 'user_employer';
-    }
-
-    /**
-     * @return string
-     */
     public function getSector()
     {
         return $this->sector;

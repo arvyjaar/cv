@@ -217,14 +217,6 @@ class UserSeeker extends User
     /**
      * @return string
      */
-    public function getType()
-    {
-        return 'user_seeker';
-    }
-
-    /**
-     * @return string
-     */
     public function getProfession()
     {
         return $this->profession;

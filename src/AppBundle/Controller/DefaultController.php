@@ -18,4 +18,19 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
+
+    // TODO: move actions to appropriate controller
+    /**
+     * @Route("/skelbimai", name="index_ads")
+     */
+    public function indexAdsAction() {
+        return $this->render('ads/index.html.twig');
+    }
+
+    /**
+     * @Route("/imones", name="index_employers")
+     */
+    public function indexEmployersAction() {
+        return $this->render('employers/index.html.twig');
+    }
 }

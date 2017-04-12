@@ -26,4 +26,16 @@ abstract class User extends BaseUser
         parent::setEmail($email);
         parent::setUsername($email);
     }
+
+    public function getRoles()
+    {
+        parent::getRoles();
+
+        if ($this instanceof UserSeeker) {
+            return ['ROLE_USER_SEEKER'];
+        } elseif ($this instanceof UserEmployer) {
+            return ['ROLE_USER_EMPLOYER'];
+        } else
+            return ['ROLE_DEFAULT'];
+    }
 }
