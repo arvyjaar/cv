@@ -10,25 +10,24 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SkillsControllerController extends Controller
 {
-    /**
-     *@Route("/skill/create", name="add_skill")
-     *
-     */
-    public function create(Request $request) {
 
-        var_dump($request);
-        die;
+    public function createAction(Request $request) {
+
+        $skillTitle = $request->request->get('skill');
+        $userID = (integer)$request->request->get('user-id');
+
+        $repository = $this->getDoctrine()->getRepository('AppBundle:UserSeeker');
+        $user = $repository->find($userID);
 
         $skill = new Skill();
-        $skill->setTitle('php');
+        $skill->setTitle($skillTitle);
+        $skill->setUser($user);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($skill);
         $em->flush();
 
         return new JsonResponse('success');
-
     }
-
 
 }

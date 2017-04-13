@@ -24,9 +24,10 @@ $(document).ready(function() {
     //Add skill
     $(".add-skill").click(function(){
         var skills_input = $('.skills-input');
+        var user_id = $('.user-id').val();
         var skill = '#' + skills_input.val();
 
-        $('.added-skills').append('<span>' + skill + '</span> ');
+        $('.added-skills').append('<span class="skill">' + skill + '</span>');
         skills_input.val('');
 
         var create_skill_url = Routing.generate('add_skill');
@@ -34,8 +35,10 @@ $(document).ready(function() {
         $.ajax({
              url: create_skill_url,
              method: "post",
-             data: skill,
-             datatype: 'json',
+             data: {
+                 'skill': skill,
+                 'user-id': user_id
+             },
              success: function(response) {
                  console.log('success');
              },

@@ -28,6 +28,14 @@ p {
     font-weight: 500;
 }
 
+.navbar-default .navbar-brand span{
+    color: #00b8e7;
+}
+
+.navbar-default .navbar-brand {
+    color: #7030a0;
+}
+
 .navbar-left .form-control {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -36,6 +44,10 @@ p {
 
 .navbar-form .form-control {
     width: 250px;
+}
+
+.navbar-default {
+    background-color: transparent;
 }
 
 .navbar-form {
@@ -56,12 +68,40 @@ p {
 
 /* HOMEPAGE */
 
-/*.slogan-block {*/
-    /*padding: 300px 0;*/
-    /*background-size: cover;*/
-    /*background-image: url("../img/cover-1.jpg");*/
-    /*background-repeat: no-repeat;*/
-/*}*/
+.slogan-block {
+    position: relative;
+}
+
+.slogan-background {
+    padding: 300px 0;
+    background-size: cover;
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+}
+
+.slogan {
+    position: absolute;
+    z-index: 1;
+    right: 50%;
+    margin-right: -450px;
+    width: 900px;
+    top: 50%;
+    background:rgba(255,255,255,0.5);
+    height: 400px;
+    border-radius: 30px;
+    margin-top: -200px;
+    padding-top: 150px;
+}
+
+.slogan h2 {
+    font-size: 50px;
+}
+
+.slogan p {
+    font-size: 30px;
+}
+
+
 
 /* User Profile Edit*/
 
@@ -71,7 +111,6 @@ p {
 
 .form-title {
     padding-bottom: 10px;
-    border-bottom: 1px solid lightgrey;
 }
 
 .profile-img {
@@ -79,10 +118,11 @@ p {
 }
 
 .form-container {
-    margin-top: 10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 40px 60px 20px;
     border: 1px solid lightgray;
     border-radius: 45px;
-    padding: 40px;
 }
 
 
@@ -146,6 +186,19 @@ p {
     top: 0;
 }
 
+.added-skills {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.skill {
+    margin-right: 5px;
+    padding: 10px 10px;
+    color: whitesmoke;
+    background-color: grey;
+    border-radius: 5px;
+}
+
 /* Close Button */
 .popup-close {
     width:30px;
@@ -160,7 +213,6 @@ p {
     transform:translate(50%, -50%);
     border-radius:1000px;
     background:rgba(0,0,0,0.8);
-    font-family:Arial, Sans-Serif;
     font-size:20px;
     text-align:center;
     line-height:100%;

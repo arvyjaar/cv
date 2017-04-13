@@ -67,5 +67,21 @@ class Skill
     {
         return $this->title;
     }
+
+    /**
+     * Set user
+     *
+     * @param object $user
+     *
+     * @return Skill
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+
 }
 

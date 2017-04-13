@@ -46,6 +46,7 @@
             <h4>Gebėjimai</h4>
             <div class="skill-input-container">
                 <input class="form-control skills-input" type="text" placeholder="Koks tavo gebėjimas?"/>
+                <input class="user-id" type="hidden" value="{{ app.user.id }}"/>
                 <button class="btn btn-primary add-skill">Pridėk</button>
             </div>
             <div class="added-skills"></div>
