@@ -6,7 +6,7 @@
  * Time: 8:39 PM
  */
 
-namespace AppBundle\EventSubscriber;
+namespace AppBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 
-class RegistrationConfirmedSubscriber implements EventSubscriberInterface
+class RegistrationConfirmSubscriber implements EventSubscriberInterface
 {
     private $router;
 
