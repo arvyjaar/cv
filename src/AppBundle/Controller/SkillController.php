@@ -44,6 +44,7 @@ class SkillController extends Controller
      */
     public function deleteAction(Request $request, Skill $skill)
     {
+        // TODO: security! check user!
         $em = $this->getDoctrine()->getManager();
         $em->remove($skill);
         $em->flush();
