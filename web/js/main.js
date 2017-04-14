@@ -34,9 +34,6 @@ $(document).ready(function() {
         var targeted_popup_class = jQuery(this).attr('data-popup-open');
         $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
 
-        // Delete skill when pop-up is open
-        $('.skill-delete').click(deleteSkill);
-
         e.preventDefault();
     });
 
@@ -52,6 +49,9 @@ $(document).ready(function() {
 
         //Remove added skills from pop-up
         added_skills.html('');
+
+        //Delete skill after pop-up was closed
+        $('.skill-delete').unbind().click(deleteSkill);
 
         e.preventDefault();
     });
@@ -78,14 +78,15 @@ $(document).ready(function() {
                     $('.added-skills').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + skill +
                         '</span>' + '<i class="fa fa-times skill-delete" aria-hidden="true" data-id="'+ inserted_id +'"></i></div>');
 
-                    //Delete skill after skill was added
-                    $('.skill-delete').click(deleteSkill);
+                    // Delete skill after skill was added
+                    $('.skill-delete').unbind().click(deleteSkill);
                 },
                 fail: function (error) {
                     console.log('Failed to add skill');
                     console.log(error);
                 }
             });
+
         }
     });
 
@@ -97,6 +98,6 @@ $(document).ready(function() {
     });
 
     //Delete skill
-    $('.skill-delete').click(deleteSkill);
+    $('.skill-delete').unbind().click(deleteSkill);
 
 });

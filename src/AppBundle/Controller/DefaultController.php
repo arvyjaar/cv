@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\Type\ProfileUserSeekerFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,10 +28,5 @@ class DefaultController extends Controller
         return $this->render('ads/index.html.twig');
     }
 
-    /**
-     * @Route("/imones", name="index_employers")
-     */
-    public function indexEmployersAction() {
-        return $this->render('employers/index.html.twig');
-    }
+
 }
