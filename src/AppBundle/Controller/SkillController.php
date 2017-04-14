@@ -27,9 +27,10 @@ class SkillController extends Controller
         $em->persist($skill);
         $em->flush();
 
-        //Get last insert ID
+        // Gets last insert ID
         $id = $skill->getId();
 
+        // Sends last insert id to main.js class
         $response = new JsonResponse();
         $response->setData(array(
             'id' => $id
@@ -46,7 +47,6 @@ class SkillController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($skill);
         $em->flush();
-
 
         return new JsonResponse();
     }
