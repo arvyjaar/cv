@@ -27,7 +27,15 @@ function deleteSkill() {
 
 $(document).ready(function() {
     //Datepicker for user profile edit form;
-    $('.js-datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
+    $('.js-datepicker').datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
+    });
+
+    $('#fos_user_profile_form_birthday').click(function () {
+        jQuery(this).val('');
+    });
 
     //Open pop-up
     $('[data-popup-open]').on('click', function(e)  {
@@ -99,5 +107,6 @@ $(document).ready(function() {
 
     //Delete skill
     $('.skill-delete').unbind().click(deleteSkill);
+
 
 });
