@@ -1,33 +1,67 @@
 <div class="container">
 
-    <h2>Redaguoti profilį</h2>
-    <p>Grįžti atgal</p>
+    <div class="col-md-8 col-md-offset-2 form-container">
+        <a href="#" class="pull-right">Gįžti atgal</a>
+        <h3 class="form-title">Redaguoti profilį</h3>
 
-    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
-    <label for="form_name">VARDAS *</label>
-    {{ form_row(form.name) }}
-    <label for="form_surname">PAVARDĖ *</label>
-    {{ form_row(form.surname) }}
-    <label for="form_email">TELEFONO NUMERIS</label>
-    {{ form_row(form.phone) }}
-    <label for="form_imageFile">PROFILIO NUOTRAUKA</label>
-    <img src="{{ asset('img/profiles/')~app.user.photo}}" alt="Nuotrauka">
-    {{ form_row(form.imageFile) }}
-    <label for="form_birthday">GIMIMO DATA</label>
-    {{ form_row(form.birthday) }}
-    <label for="form_city">GYVENAMOJI VIETA</label>
-    {{ form_row(form.city) }}
-    <label for="form_profession">PROFESIJA *</label>
-    {{ form_row(form.profession) }}
-    <label for="form_introduction">TRUMPAS PRISISTATYMAS</label>
-    {{ form_row(form.introduction) }}
-    <label for="form_skills">GEBĖJIMAI</label>
-    {{ form_row(form.skills) }}
+            {{ form_row(form.name) }}
 
-    <input type="submit" value="Redaguoti"/>
-    {{ form_end(form) }}
+            {{ form_row(form.surname) }}
 
-    <p>* Laukai turi būti užpildyti</p>
+            {{ form_row(form.phone) }}
+
+            {{ form_row(form.email) }}
+
+            <label for="form.imageFile">{{ app.user.photo ? 'Pakeisti nuotrauką' : 'Įkelti nuotrauką' }}</label>
+            {% if app.user.photo %}
+                <img class="img-responsive profile-img" src="{{ asset('img/profiles/')~app.user.photo}}" alt="Nuotrauka">
+            {% endif %}
+            {{ form_row(form.imageFile) }}
+
+            {{ form_row(form.birthday) }}
+
+            {{ form_row(form.city) }}
+
+            {{ form_row(form.profession) }}
+
+            <div class="form-group">
+                <label>Gebėjimai</label>
+                <div class="all-skills">
+                    {% if app.user.skills %}
+                        {% for skill in app.user.skills %}
+                            <div id="{{ skill.id }}" class="skill-block">
+                                <span class="skill">{{ skill.title }}</span>
+                                <i class="fa fa-times skill-delete" data-id="{{ skill.id }}" aria-hidden="true"></i>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <a class="add-skills-btn" data-popup-open="popup-1" href="#">Pridėti gebėjimus</a>
+            </div>
+
+            {{ form_row(form.introduction) }}
+
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Redaguoti"/>
+            </div>
+
+        {{ form_end(form) }}
+
+        <p class="pull-right">* Laukai turi būti užpildyti</p>
+    </div>
+
+    <div class="popup" data-popup="popup-1">
+        <div class="popup-inner">
+            <h4>Gebėjimai</h4>
+            <div class="skill-input-container">
+                <input class="form-control skills-input" type="text" placeholder="Koks tavo gebėjimas?" required/>
+                <button class="btn btn-primary add-skill" data-id="{{ app.user.id }}">Pridėk</button>
+            </div>
+            <div class="added-skills"></div>
+            <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+        </div>
+    </div>
 
 </div>

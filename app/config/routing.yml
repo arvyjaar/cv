@@ -3,9 +3,21 @@ app:
     type: annotation
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 user_employer_registration:
     path:  /register/employer
     defaults: { _controller: AppBundle:RegistrationUserEmployer:register }
 user_seeker_registration:
     path:  /register/seeker
     defaults: { _controller: AppBundle:RegistrationUserSeeker:register }
+add_skill:
+    path:  /skill/create
+    defaults: { _controller: AppBundle:Skill:create }
+    options:
+        expose: true
+delete_skill:
+    path: /{{id}}
+    defaults: { _controller: AppBundle:Skill:delete }
+    options:
+      expose: true

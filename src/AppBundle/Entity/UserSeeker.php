@@ -47,8 +47,7 @@ class UserSeeker extends User
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="seekerPhoto", fileNameProperty="photo")
-     *
+     * @Vich\UploadableField(mapping="profile_image", fileNameProperty="photo")
      * @var File
      */
     protected $imageFile;
@@ -74,7 +73,7 @@ class UserSeeker extends User
     protected $profession;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\OneToMany(targetEntity="Skill", mappedBy="user")
      */
     protected $skills;
 
@@ -99,6 +98,7 @@ class UserSeeker extends User
     public function __construct() {
         parent::__construct();
         $this->jobApply = new ArrayCollection();
+        $this->skills = new ArrayCollection();
     }
 
     /**

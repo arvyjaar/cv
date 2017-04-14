@@ -28,6 +28,14 @@ p {
     font-weight: 500;
 }
 
+.navbar-default .navbar-brand span{
+    color: #00b8e7;
+}
+
+.navbar-default .navbar-brand {
+    color: #7030a0;
+}
+
 .navbar-left .form-control {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -36,6 +44,10 @@ p {
 
 .navbar-form .form-control {
     width: 250px;
+}
+
+.navbar-default {
+    background-color: transparent;
 }
 
 .navbar-form {
@@ -56,18 +68,61 @@ p {
 
 /* HOMEPAGE */
 
-/*.slogan-block {*/
-    /*padding: 300px 0;*/
-    /*background-size: cover;*/
-    /*background-image: url("../img/cover-1.jpg");*/
-    /*background-repeat: no-repeat;*/
-/*}*/
+.slogan-block {
+    position: relative;
+}
+
+.slogan-background {
+    padding: 300px 0;
+    background-size: cover;
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+}
+
+.slogan {
+    position: absolute;
+    z-index: 1;
+    right: 50%;
+    margin-right: -450px;
+    width: 900px;
+    top: 50%;
+    background:rgba(255,255,255,0.5);
+    height: 400px;
+    border-radius: 30px;
+    margin-top: -200px;
+    padding-top: 150px;
+}
+
+.slogan h2 {
+    font-size: 50px;
+}
+
+.slogan p {
+    font-size: 30px;
+}
+
+
 
 /* User Profile Edit*/
 
 .ui-datepicker {
     background: white;
-    border: 1px solid #555;
+}
+
+.form-title {
+    padding-bottom: 10px;
+}
+
+.profile-img {
+    max-height: 350px;
+}
+
+.form-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 40px 60px 20px;
+    border: 1px solid lightgray;
+    border-radius: 45px;
 }
 
 
@@ -86,3 +141,119 @@ p {
 
 }
 
+/*Skills pop-up*/
+
+/* Outer */
+.popup {
+    width:100%;
+    height:100%;
+    display:none;
+    position:fixed;
+    top:0px;
+    left:0px;
+    background:rgba(0,0,0,0.75);
+}
+
+/* Inner */
+.popup-inner {
+    max-width:700px;
+    min-height: 250px;
+    width:90%;
+    padding:40px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%, -50%);
+    transform:translate(-50%, -50%);
+    box-shadow:0px 2px 6px rgba(0,0,0,1);
+    border-radius:3px;
+    background:#fff;
+}
+
+.popup h4 {
+    margin-top: 0;
+}
+
+.skill-input-container {
+    position: relative;
+}
+
+.add-skill {
+    position: absolute;
+    z-index: 1;
+    right: -4px;
+    top: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.added-skills {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.skill-block {
+    position: relative;
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 6px 8px;
+    min-width: 30px;
+    background-color: darkgrey;
+    border-radius: 5px;
+    text-align: justify;
+    color: whitesmoke;
+}
+
+.skill {
+    font-weight: 500;
+}
+
+.skill:before {
+    content: '#';
+    color: grey;
+    font-weight: 500;
+}
+
+.skill-block .skill-delete {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 15px;
+    color: grey;
+}
+
+.skill-block:hover .skill-delete {
+    color: #3379b5;
+    cursor: pointer;
+}
+
+/* Close Button */
+.popup-close {
+    width:30px;
+    height:30px;
+    padding-top:4px;
+    display:inline-block;
+    position:absolute;
+    top:0px;
+    right:0px;
+    transition:ease 0.25s all;
+    -webkit-transform:translate(50%, -50%);
+    transform:translate(50%, -50%);
+    border-radius:1000px;
+    background:rgba(0,0,0,0.8);
+    font-size:20px;
+    text-align:center;
+    line-height:100%;
+    color:#fff;
+}
+
+.popup-close:hover {
+    -webkit-transform:translate(50%, -50%) rotate(180deg);
+    transform:translate(50%, -50%) rotate(180deg);
+    background:rgba(0,0,0,1);
+    text-decoration:none;
+}
+
+.sf-toolbar-clearer {
+    display: none;
+}
