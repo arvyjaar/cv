@@ -13,6 +13,11 @@ user_seeker_registration:
     defaults: { _controller: AppBundle:RegistrationUserSeeker:register }
 add_skill:
     path:  /skill/create
-    defaults: { _controller: AppBundle:SkillsController:create }
+    defaults: { _controller: AppBundle:Skill:create }
     options:
         expose: true
+delete_skill:
+    path: /{{id}}
+    defaults: { _controller: AppBundle:Skill:delete }
+    options:
+      expose: true

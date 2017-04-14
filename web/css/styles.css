@@ -141,7 +141,6 @@ p {
 
 }
 
-
 /*Skills pop-up*/
 
 /* Outer */
@@ -182,21 +181,50 @@ p {
 .add-skill {
     position: absolute;
     z-index: 1;
-    right: -3px;
+    right: -4px;
     top: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
 }
 
 .added-skills {
-    margin-top: 20px;
+    margin-top: 5px;
     margin-bottom: 20px;
 }
 
-.skill {
+.skill-block {
+    position: relative;
+    display: inline-block;
     margin-right: 5px;
-    padding: 10px 10px;
-    color: whitesmoke;
-    background-color: grey;
+    margin-top: 5px;
+    padding: 6px 8px;
+    min-width: 30px;
+    background-color: darkgrey;
     border-radius: 5px;
+    text-align: justify;
+    color: whitesmoke;
+}
+
+.skill {
+    font-weight: 500;
+}
+
+.skill:before {
+    content: '#';
+    color: grey;
+    font-weight: 500;
+}
+
+.skill-block .skill-delete {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 15px;
+    color: grey;
+}
+
+.skill-block:hover .skill-delete {
+    color: #3379b5;
+    cursor: pointer;
 }
 
 /* Close Button */

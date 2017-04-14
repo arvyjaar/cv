@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Skill;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class SkillsControllerController extends Controller
+class SkillController extends Controller
 {
 
     public function createAction(Request $request) {
@@ -27,7 +27,29 @@ class SkillsControllerController extends Controller
         $em->persist($skill);
         $em->flush();
 
-        return new JsonResponse('success');
+        //Get last insert ID
+        $id = $skill->getId();
+
+        $response = new JsonResponse();
+        $response->setData(array(
+            'id' => $id
+        ));
+
+        return $response;
     }
+
+    /**
+     * Deletes a skill entity.
+     */
+    public function deleteAction(Request $request, Skill $skill)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($skill);
+        $em->flush();
+
+
+        return new JsonResponse();
+    }
+
 
 }

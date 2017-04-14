@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Entity\UserSeeker;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class ProfileUserSeekerFormType extends AbstractType
 {
@@ -19,6 +19,7 @@ class ProfileUserSeekerFormType extends AbstractType
         $builder
             ->add('name', null, ['label' => 'Vardas'])
             ->add('surname', null, ['label' => 'Pavardė'])
+            ->add('email', EmailType::class, ['label' => 'El. paštas'])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
