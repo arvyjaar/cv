@@ -10,3 +10,9 @@ services:
     authentication.handler.login_success_handler:
         class: AppBundle\Security\LoginSuccessHandler
         arguments:  ['@router', '@security.authorization_checker']
+
+    app.registration_confirmed_subscriber:
+        class: AppBundle\EventSubscriber\RegistrationConfirmedSubscriber
+        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }
