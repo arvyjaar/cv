@@ -28,5 +28,10 @@ class DefaultController extends Controller
         return $this->render('ads/index.html.twig');
     }
 
-
+    /**
+     * @Route("/iesko-darbo", name="index_seekers")
+     */
+    public function indexSeekersAction() {
+        return $this->render('seekers/index.html.twig');
+    }
 }

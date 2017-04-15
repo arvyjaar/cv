@@ -2,28 +2,26 @@
 
 {% block body %}
     <div class="container">
-        <div class="col-md-8 col-md-offset-2 form-container">
 
-            <h2>Užsiregistruok!</h2>
-            <p>Užpildyk žemiau esančius laukus:</p>
+        <h2>Užsiregistruok!</h2>
+        <p>Užpildyk žemiau esančius laukus:</p>
 
-            {{ form_start(form, {'action': path('user_employer_registration'), 'method': 'POST'}) }}
+        {{ form_start(form, {'action': path('user_employer_registration'), 'method': 'POST'}) }}
 
-            {{ form_label(form.title, 'Įmonė') }}
-            {{ form_row(form.title) }}
+        <label for="form_name">ĮMONĖ *</label>
+        {{ form_row(form.title) }}
+        <label for="form_email">ELPAŠTAS *</label>
+        {{ form_row(form.email) }}
+        <label for="form_plainPassword">SLAPTAŽODIS *</label>
+        {{ form_row(form.plainPassword.first) }}
+        <label for="form_plainPassword_second">PATVIRTINK SLAPTAŽODĮ *</label>
+        {{ form_row(form.plainPassword.second) }}
+        <input type="hidden" name="role" value="ROLE_USER_EMPLOYER">
+        <input type="submit" value="Registruokis"/>
 
-            {{ form_label(form.email, 'El. Paštas') }}
-            {{ form_row(form.email) }}
-            <label for="form_plainPassword">SLAPTAŽODIS *</label>
-            {{ form_row(form.plainPassword.first) }}
-            <label for="form_plainPassword_second">PATVIRTINK SLAPTAŽODĮ *</label>
-            {{ form_row(form.plainPassword.second) }}
-            <input type="submit" value="Registruokis"/>
+        {{ form_end(form) }}
 
-            {{ form_end(form) }}
-
-            <p>* Visi laukai turi būti užpildyti</p>
-        </div>
+        <p>* Visi laukai turi būti užpildyti</p>
 
     </div>
 {% endblock body %}

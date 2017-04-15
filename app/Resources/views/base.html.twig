@@ -24,7 +24,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#"><span>Get</span>Hired</a>
+                            <a class="navbar-brand" href="{{ path('homepage') }}"><span>Get</span>Hired</a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -33,12 +33,12 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registracija <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Ieškantiems darbo</a></li>
+                                        <li><a href="{{ path('user_seeker_registration') }}">Ieškantiems darbo</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="#">Siūlantiems darbą</a></li>
+                                        <li><a href="{{ path('user_employer_registration') }}">Siūlantiems darbą</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Prisijunk!</a></li>
+                                <li><a href="{{ path('fos_user_security_login') }}">Prisijunk!</a></li>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->

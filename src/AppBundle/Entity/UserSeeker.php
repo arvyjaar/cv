@@ -101,12 +101,6 @@ class UserSeeker extends User
         $this->skills = new ArrayCollection();
     }
 
-    /**
-     * One UserSeeker has One User.
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    protected $user;
 
     // *** Getters and setters ***
 

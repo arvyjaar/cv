@@ -84,12 +84,6 @@ class UserEmployer extends User
         $this->jobAd = new ArrayCollection();
     }
 
-    /**
-     * One UserEmployer has One User.
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
 
     // *** Getters and setters ***
 
