@@ -18,6 +18,7 @@
         {{ form_row(form.plainPassword.first) }}
         <label for="form_plainPassword_second">PATVIRTINK SLAPTAŽODĮ *</label>
         {{ form_row(form.plainPassword.second) }}
+        <input type="hidden" name="role" value="ROLE_USER_SEEKER">
         <input type="submit" value="Registruokis"/>
 
         {{ form_end(form) }}

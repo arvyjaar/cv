@@ -12,7 +12,8 @@ use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\Event\FormEvent;
 
 class RegistrationConfirmSubscriber implements EventSubscriberInterface
 {
@@ -29,16 +30,15 @@ class RegistrationConfirmSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::REGISTRATION_CONFIRM => 'onRegistrationConfirm'
+            FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationConfirm'
         );
     }
 
-    public function onRegistrationConfirm(GetResponseUserEvent $event)
+    public function onRegistrationConfirm(FormEvent $event)
     {
         // TODO: here generate different url's for different ROLE
-
-        $url = $this->router->generate('index_ads');
-
+        $role = $title = $event->getRequest()->get('role');
+        $url = (isset($role) && $role === 'ROLE_USER_EMPLOYER') ? $this->router->generate('index_seekers') : $this->router->generate('index_ads');
         $event->setResponse(new RedirectResponse($url));
     }
 }
