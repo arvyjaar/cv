@@ -84,6 +84,15 @@ class Skill
         return $this;
     }
 
+    /**
+     * Get user
+     *
+     * @return string
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 
 }
 
