@@ -2,30 +2,39 @@
 
 <div class="container">
 
-    <h2>Malonu Tave vėl matyti!</h2>
-    <p>Įvesk savo prisijungimo duomenis:</p>
+    <div class="col-md-8 col-md-offset-2 form-container">
+        <h2>Malonu Tave vėl matyti!</h2>
+        <p>Įvesk savo prisijungimo duomenis:</p>
 
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    <form class="form-group" action="{{ path("fos_user_security_check") }}" method="post">
-        {% if csrf_token %}
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
-        <label for="username">EL. PAŠTAS</label>
-        <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}"
-               required="required"/>
+        <form class="form-group" action="{{ path("fos_user_security_check") }}" method="post">
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+            {% endif %}
 
-        <label for="password">SLAPTAŽODIS</label>
-        <input class="form-control" type="password" id="password" name="_password" required="required"/>
+            <div class="form-group">
+                <label for="username">El. paštas</label>
+                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}"
+                   required="required"/>
+            </div>
 
-        <input class="checkbox" type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-        <label for="remember_me">Prisiminti</label>
-        <br>
-        <input type="submit" class="btn btn-info" id="_submit" name="_submit"
-               value="Prisijunk"/>
-    </form>
+            <div class="form-group">
+                <label for="password">Slaptažodis</label>
+                <input class="form-control" type="password" id="password" name="_password" required="required"/>
+            </div>
+
+            <div class="form-group form-inline">
+                <input class="checkbox" type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                <label for="remember_me">Prisiminti</label>
+            </div>
+
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="Prisijunk"/>
+            </div>
+        </form>
+    </div>
 
 </div>

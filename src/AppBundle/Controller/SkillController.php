@@ -11,6 +11,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class SkillController extends Controller
 {
 
+    /**
+     * @Route("/skill/create",
+     *     defaults = { "page" = 1 },
+     *     options = { "expose" = true },
+     *     name = "add_skill",
+     * )
+     */
     public function createAction(Request $request) {
 
         $skillTitle = $request->request->get('skill');
@@ -40,7 +47,11 @@ class SkillController extends Controller
     }
 
     /**
-     * Deletes a skill entity.
+     * @Route("/{{id}}",
+     *     defaults = { "page" = 1 },
+     *     options = { "expose" = true },
+     *     name = "delete_skill",
+     * )
      */
     public function deleteAction(Request $request, Skill $skill)
     {
