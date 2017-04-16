@@ -24,6 +24,12 @@ class JobAd
     private $id;
 
     /**
+     * One JobAd has Many JobApply.
+     * @ORM\OneToMany(targetEntity="JobApply", mappedBy="jobAd")
+     */
+    private $jobApply;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
