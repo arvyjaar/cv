@@ -16,3 +16,11 @@ services:
         arguments: ['@router']
         tags:
             - { name: kernel.event_subscriber }
+
+    # Manage access for JobAds
+    app.jobad_voter:
+        class:  AppBundle\Security\JobAdVoter
+        tags:
+            - { name: security.voter }
+        # small performance boost
+        public: false

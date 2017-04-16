@@ -21,15 +21,9 @@ class DefaultController extends Controller
     }
 
     // TODO: move actions to appropriate controller
-    /**
-     * @Route("/skelbimai", name="index_ads")
-     */
-    public function indexAdsAction() {
-        return $this->render('ads/index.html.twig');
-    }
 
     /**
-     * @Route("/iesko-darbo", name="index_seekers")
+     * @Route("/iesko-darbo", name="seeker_index")
      */
     public function indexSeekersAction() {
         return $this->render('seekers/index.html.twig');

@@ -61,7 +61,7 @@ class JobAd
     /**
      * @var array
      *
-     * @ORM\Column(name="requirements", type="array")
+     * @ORM\Column(name="requirements", type="text")
      *
      * @Assert\NotBlank(message="Būtu šaunu, jei apibrėžtum aiškius reikalavimus kandidatams. Užpildyk šį lauką")
      */
@@ -178,6 +178,38 @@ class JobAd
     public function getRequirements()
     {
         return $this->requirements;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJobApply()
+    {
+        return $this->jobApply;
+    }
+
+    /**
+     * @param mixed $jobApply
+     */
+    public function setJobApply($jobApply)
+    {
+        $this->jobApply = $jobApply;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmployer()
+    {
+        return $this->employer;
+    }
+
+    /**
+     * @param mixed $employer
+     */
+    public function setEmployer($employer)
+    {
+        $this->employer = $employer;
     }
 }
 
