@@ -52,8 +52,6 @@ class JobAdVoter extends Voter
                 return $this->canView($jobad, $user);
             case self::EDIT:
                 return $this->canEdit($jobad, $user);
-            case self::DELETE:
-                return $this->canDelete($jobad, $user);
         }
 
         throw new \LogicException('This code should not be reached!');

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Jobapplies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cv</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jobApply in jobApplies %}
+            <tr>
+                <td><a href="{{ path('jobapply_show', { 'id': jobApply.id }) }}">{{ jobApply.id }}</a></td>
+                <td>{{ jobApply.cv }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('jobapply_show', { 'id': jobApply.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('jobapply_edit', { 'id': jobApply.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
