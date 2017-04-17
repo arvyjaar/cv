@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Visi ieško darbo:</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Birthday</th>
+                <th>Photo</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Profession</th>
+                <th>Introduction</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for userSeeker in userSeekers %}
+            <tr>
+                <td><a href="{{ path('user_seeker_show', { 'id': userSeeker.id }) }}">{{ userSeeker.id }}</a></td>
+                <td>{{ userSeeker.name }}</td>
+                <td>{{ userSeeker.surname }}</td>
+                <td>{% if userSeeker.birthday %}{{ userSeeker.birthday|date('Y-m-d') }}{% endif %}</td>
+                <td><img src="{{ asset('img/profiles/')~userSeeker.photo }}" alt="Nuotrauka"></td>
+                <td>{{ userSeeker.phone }}</td>
+                <td>{{ userSeeker.city }}</td>
+                <td>{{ userSeeker.profession }}</td>
+                <td>{{ userSeeker.introduction }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_seeker_show', { 'id': userSeeker.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

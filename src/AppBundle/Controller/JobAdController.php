@@ -71,7 +71,7 @@ class JobAdController extends Controller
 
         // Add employer_id
         $employer = $this->getUser();
-        $jobAd->setEmployer($employer);
+        $jobAd->setOwner($employer);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();

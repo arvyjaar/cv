@@ -35,7 +35,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
             $response = new RedirectResponse($this->router->generate('jobad_index'));
         } else {
             if ($this->authorizationChecker->isGranted('ROLE_USER_EMPLOYER')) {
-                $response = new RedirectResponse($this->router->generate('seeker_index'));
+                $response = new RedirectResponse($this->router->generate('user_seeker_index'));
             }
         }
 

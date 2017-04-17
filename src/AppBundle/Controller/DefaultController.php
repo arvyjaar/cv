@@ -19,13 +19,4 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
-
-    // TODO: move actions to appropriate controller
-
-    /**
-     * @Route("/iesko-darbo", name="seeker_index")
-     */
-    public function indexSeekersAction() {
-        return $this->render('seekers/index.html.twig');
-    }
 }

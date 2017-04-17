@@ -5,8 +5,17 @@
     <p>Užpildyk žemiau esančius laukus:</p>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Sukurti" />
+
+    <label for="form_title">siūloma pozicija *</label>
+    {{ form_row(form.title) }}
+    <label for="form_description">trumpas aprašymas *</label>
+    {{ form_row(form.description) }}
+    <label for="form_assignment">užduotis</label>
+    {{ form_row(form.assignment) }}
+    <label for="form_requirements">reikalavimai</label>
+    {{ form_row(form.requirements) }}
+    <input type="submit" value="Sukurti"/>
+
     {{ form_end(form) }}
 
     <ul>

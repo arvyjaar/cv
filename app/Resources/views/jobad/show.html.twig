@@ -23,19 +23,22 @@
             </tr>
             <tr>
                 <th>Requirements</th>
-                <td>{% if jobAd.requirements %}{{ jobAd.requirements|join(', ') }}{% endif %}</td>
+                <td>{{ jobAd.requirements }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
+            Matoma role_employer
             <a href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
         </li>
         <li>
+            Matoma owneriui
             <a href="{{ path('jobad_edit', { 'id': jobAd.id }) }}">Redaguoti</a>
         </li>
         <li>
+            Nereikia
             {{ form_start(delete_form) }}
                 <input type="submit" value="Trinti">
             {{ form_end(delete_form) }}
