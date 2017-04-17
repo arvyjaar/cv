@@ -18,7 +18,6 @@ class JobAdVoter extends Voter
     // these strings are just invented: you can use anything
     const VIEW = 'view';
     const EDIT = 'edit';
-    const DELETE = 'delete';
 
     protected function supports($attribute, $subject)
     {
@@ -76,13 +75,6 @@ class JobAdVoter extends Voter
     {
         // this assumes that the data object has a getOwner() method
         // to get the entity of the user who owns this data object
-        return $user === $jobad->getEmployer();
-    }
-
-    private function canDelete(JobAd $jobad, User $user)
-    {
-        // this assumes that the data object has a getOwner() method
-        // to get the entity of the user who owns this data object
-        return $user === $jobad->getEmployer();
+        return $user === $jobad->getOwner();
     }
 }

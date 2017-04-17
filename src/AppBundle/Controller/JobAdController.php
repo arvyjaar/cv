@@ -131,14 +131,14 @@ class JobAdController extends Controller
     }
 
     /**
-     * Deletes a jobAd entity.
+     * Deletes a jobAd entity. TODO: I think, we shouldn't delete jobAds. We should write 'Valid To' instead.
      *
      * @Route("/{id}", name="jobad_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, JobAd $jobAd)
     {
-        $this->denyAccessUnlessGranted('delete', $jobAd);
+        $this->denyAccessUnlessGranted('edit', $jobAd);
 
         $form = $this->createDeleteForm($jobAd);
         $form->handleRequest($request);

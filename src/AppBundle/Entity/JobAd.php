@@ -159,7 +159,7 @@ class JobAd
     /**
      * Set requirements
      *
-     * @param array $requirements
+     * @param string $requirements
      *
      * @return JobAd
      */
@@ -173,7 +173,7 @@ class JobAd
     /**
      * Get requirements
      *
-     * @return array
+     * @return string
      */
     public function getRequirements()
     {
@@ -181,7 +181,7 @@ class JobAd
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getJobApply()
     {
@@ -189,7 +189,7 @@ class JobAd
     }
 
     /**
-     * @param mixed $jobApply
+     * @param int $jobApply
      */
     public function setJobApply($jobApply)
     {
@@ -197,17 +197,17 @@ class JobAd
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getEmployer()
+    public function getOwner()
     {
         return $this->employer;
     }
 
     /**
-     * @param mixed $employer
+     * @param int $employer
      */
-    public function setEmployer($employer)
+    public function setOwner($employer)
     {
         $this->employer = $employer;
     }
