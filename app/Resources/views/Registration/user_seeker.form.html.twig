@@ -3,27 +3,35 @@
 {% block body %}
     <div class="container">
 
-        <h2>Užsiregistruok!</h2>
-        <p>Užpildyk žemiau esančius laukus:</p>
+        <div class="col-md-8 col-md-offset-2 form-container">
 
-        {{ form_start(form, {'action': path('user_seeker_registration'), 'method': 'POST'}) }}
+            <h2>Užsiregistruok!</h2>
+            <p>Užpildyk žemiau esančius laukus:</p>
 
-        <label for="form_name">VARDAS *</label>
-        {{ form_row(form.name) }}
-        <label for="form_surname">PAVARDĖ *</label>
-        {{ form_row(form.surname) }}
-        <label for="form_email">ELPAŠTAS *</label>
-        {{ form_row(form.email) }}
-        <label for="form_plainPassword">SLAPTAŽODIS *</label>
-        {{ form_row(form.plainPassword.first) }}
-        <label for="form_plainPassword_second">PATVIRTINK SLAPTAŽODĮ *</label>
-        {{ form_row(form.plainPassword.second) }}
-        <input type="hidden" name="role" value="ROLE_USER_SEEKER">
-        <input type="submit" value="Registruokis"/>
+            {{ form_start(form, {'action': path('user_seeker_registration'), 'method': 'POST'}) }}
+                {{ form_label(form.name, null, {'label': 'Vardas*'}) }}
+                {{ form_row(form.name) }}
 
-        {{ form_end(form) }}
+                {{ form_label(form.surname, null, {'label': 'Pavardė*'}) }}
+                {{ form_row(form.surname) }}
 
-        <p>* Visi laukai turi būti užpildyti</p>
+                {{ form_label(form.email, null, {'label': 'El. Paštas*'}) }}
+                {{ form_row(form.email) }}
+
+                {{ form_label(form.plainPassword.first, null, {'label': 'Slaptažodis*'}) }}
+                {{ form_row(form.plainPassword.first) }}
+
+                {{ form_label(form.plainPassword.second, null, {'label': 'Patvirtink slaptažodį*'}) }}
+                {{ form_row(form.plainPassword.second) }}
+
+                <div class="text-center">
+                    <input type="hidden" name="role" value="ROLE_USER_SEEKER">
+                    <input type="submit" class="btn btn-primary" value="Registruokis"/>
+                </div>
+            {{ form_end(form) }}
+
+            <p class="pull-right">* Visi laukai turi būti užpildyti</p>
+        </div>
 
     </div>
 {% endblock body %}

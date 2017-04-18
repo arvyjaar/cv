@@ -19,6 +19,17 @@ p {
     outline: none;
 }
 
+.page-heading {
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.section-heading {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
 /*NAVIGATION*/
 
 .navbar-brand {
@@ -105,10 +116,6 @@ p {
 
 /* User Profile Edit*/
 
-.ui-datepicker {
-    background: white;
-}
-
 .form-title {
     padding-bottom: 10px;
 }
@@ -125,20 +132,33 @@ p {
     border-radius: 45px;
 }
 
+/*Users Seekers list*/
+.seeker-box {
+    min-height: 450px;
+    padding: 30px;
+    border-radius: 30px;
+    background-color: lightgrey;
+    font-size: 16px;
+    position: relative;
 
-/* Small Devices, Tablets */
+}
 
-@media only screen and (max-width : 768px) {
-    /*Hides search on mobile view*/
-    .navbar-form {
-        display: none;
-    }
+.seeker-box-img {
+    border-radius: 20px;
+}
 
-    .navbar-brand {
-        padding-right: 15px;
-        padding-left: 15px;
-    }
+.show-more-btn {
+    position: absolute;
+    z-index: 0;
+    bottom: 30px;
+    right: 50%;
+    max-width: 124px;
+    margin-right: -62px;
+}
 
+.box-upper-row {
+    min-height: 150px;
+    border-bottom: 0.5px solid darkgrey;
 }
 
 /*Skills pop-up*/
@@ -257,4 +277,19 @@ p {
 
 .sf-toolbar-clearer {
     display: none;
+}
+
+/* Small Devices, Tablets */
+
+@media only screen and (max-width : 768px) {
+    /*Hides search on mobile view*/
+    .navbar-form {
+        display: none;
+    }
+
+    .navbar-brand {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
 }

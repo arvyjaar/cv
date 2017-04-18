@@ -1,46 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Visi ieško darbo:</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Birthday</th>
-                <th>Photo</th>
-                <th>Phone</th>
-                <th>City</th>
-                <th>Profession</th>
-                <th>Introduction</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container form-container">
+        <div class="row">
+            <p class="page-heading">Šiuo metu darbo ieško:</p>
+        </div>
         {% for userSeeker in userSeekers %}
-            <tr>
-                <td><a href="{{ path('user_seeker_show', { 'id': userSeeker.id }) }}">{{ userSeeker.id }}</a></td>
-                <td>{{ userSeeker.name }}</td>
-                <td>{{ userSeeker.surname }}</td>
-                <td>{% if userSeeker.birthday %}{{ userSeeker.birthday|date('Y-m-d') }}{% endif %}</td>
-                <td><img src="{{ asset('img/profiles/')~userSeeker.photo }}" alt="Nuotrauka"></td>
-                <td>{{ userSeeker.phone }}</td>
-                <td>{{ userSeeker.city }}</td>
-                <td>{{ userSeeker.profession }}</td>
-                <td>{{ userSeeker.introduction }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('user_seeker_show', { 'id': userSeeker.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    
+            <div class="row">
+                <div class="col-md-4 seeker-box">
+                    <div class="row box-upper-row">
+                        <div class="col-md-6">
+                            <img class="img-responsive seeker-box-img" src="{{ asset('img/profiles/')~userSeeker.photo }}" alt="Nuotrauka">
+                        </div>
+                        <div class="col-md-6">
+                            <strong>{{ userSeeker.name }}{{ userSeeker.surname }}</strong>
+                            <p>{{ userSeeker.profession }}</p>
+                            <p>{% if userSeeker.birthday %}{{ userSeeker.birthday|date('Y-m-d') }}{% endif %}</p>
+                            <p>{{ userSeeker.city }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="section-heading">Gebėjimai:</p>
+                        {% for skill in userSeeker.skills %}
+                            <span class="skill">{{ skill.title }}</span>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <p class="section-heading">Trumpai apie mane:</p>
+                        <p>{{ userSeeker.introduction }}</p>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="#" class="btn btn-primary show-more-btn">Rodyti daugiau</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
 {% endblock %}

@@ -1,27 +1,36 @@
 {% extends "base.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 
 {% block body %}
     <div class="container">
+        <div class="col-md-8 col-md-offset-2 form-container">
 
-        <h2>Užsiregistruok!</h2>
-        <p>Užpildyk žemiau esančius laukus:</p>
+            <h2>Užsiregistruok!</h2>
+            <p>Užpildyk žemiau esančius laukus:</p>
 
-        {{ form_start(form, {'action': path('user_employer_registration'), 'method': 'POST'}) }}
+            {{ form_start(form, {'action': path('user_employer_registration'), 'method': 'POST'}) }}
 
-        <label for="form_name">ĮMONĖ *</label>
-        {{ form_row(form.title) }}
-        <label for="form_email">ELPAŠTAS *</label>
-        {{ form_row(form.email) }}
-        <label for="form_plainPassword">SLAPTAŽODIS *</label>
-        {{ form_row(form.plainPassword.first) }}
-        <label for="form_plainPassword_second">PATVIRTINK SLAPTAŽODĮ *</label>
-        {{ form_row(form.plainPassword.second) }}
-        <input type="hidden" name="role" value="ROLE_USER_EMPLOYER">
-        <input type="submit" value="Registruokis"/>
+                {{ form_label(form.title, null, {'label': 'Įmonė*'}) }}
+                {{ form_row(form.title) }}
 
-        {{ form_end(form) }}
+                {{ form_label(form.email, null, {'label': 'El. Paštas*'}) }}
+                {{ form_row(form.email) }}
 
-        <p>* Visi laukai turi būti užpildyti</p>
+                {{ form_label(form.plainPassword.first, null, {'label': 'Slaptažodis*'}) }}
+                {{ form_row(form.plainPassword.first) }}
+
+                {{ form_label(form.plainPassword.second, null, {'label': 'Patvirtink slaptažodį*'}) }}
+                {{ form_row(form.plainPassword.second) }}
+
+                <div class="text-center">
+                    <input type="hidden" name="role" value="ROLE_USER_EMPLOYER">
+                    <input type="submit" class="btn btn-primary" value="Registruokis"/>
+                </div>
+
+            {{ form_end(form) }}
+
+            <p class="pull-right">* Visi laukai turi būti užpildyti</p>
+        </div>
 
     </div>
 {% endblock body %}
