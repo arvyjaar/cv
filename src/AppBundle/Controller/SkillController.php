@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Skill;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class SkillController extends Controller
 {
@@ -21,10 +22,11 @@ class SkillController extends Controller
     public function createAction(Request $request) {
 
         $skillTitle = $request->request->get('skill');
-        $userID = (integer)$request->request->get('user-id');
+        //$userID = (integer)$request->request->get('user-id');
 
-        $repository = $this->getDoctrine()->getRepository('AppBundle:UserSeeker');
-        $user = $repository->find($userID);
+        //$repository = $this->getDoctrine()->getRepository('AppBundle:UserSeeker');
+        //$user = $repository->find($userID);
+        $user = $this->getUser();
 
         $skill = new Skill();
         $skill->setTitle($skillTitle);
@@ -55,6 +57,10 @@ class SkillController extends Controller
      */
     public function deleteAction(Request $request, Skill $skill)
     {
+        // Security! Check user.
+        if ($skill->getUser() !== $this->getUser())
+            throw new AccessDeniedException();
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($skill);
         $em->flush();

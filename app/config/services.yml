@@ -10,3 +10,17 @@ services:
     authentication.handler.login_success_handler:
         class: AppBundle\Security\LoginSuccessHandler
         arguments:  ['@router', '@security.authorization_checker']
+
+    app.registration_confirm_subscriber:
+        class: AppBundle\EventListener\RegistrationConfirmSubscriber
+        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    # Manage access for JobAds
+    app.jobad_voter:
+        class:  AppBundle\Security\JobAdVoter
+        tags:
+            - { name: security.voter }
+        # small performance boost
+        public: false

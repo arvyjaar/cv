@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Evaluation;
 use AppBundle\Entity\JobAd;
 use AppBundle\Entity\UserSeeker;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * JobApply
@@ -37,6 +39,14 @@ class JobApply
      * @ORM\JoinColumn(name="evaluation_id", referencedColumnName="id")
      */
     private $evaluation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Url()
+     */
+    private $assignment_solution;
 
     /**
      * Many JobApply have One JobAd.
@@ -85,5 +95,54 @@ class JobApply
     {
         return $this->cv;
     }
+
+    /**
+     * @return string
+     */
+    public function getAssignmentSolution()
+    {
+        return $this->assignment_solution;
+    }
+
+    /**
+     * @param string $assignment_solution
+     */
+    public function setAssignmentSolution($assignment_solution)
+    {
+        $this->assignment_solution = $assignment_solution;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOwner()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setOwner($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJobAd()
+    {
+        return $this->jobAd;
+    }
+
+    /**
+     * @param mixed $jobAd
+     */
+    public function setJobAd($jobAd)
+    {
+        $this->jobAd = $jobAd;
+    }
+
 }
 

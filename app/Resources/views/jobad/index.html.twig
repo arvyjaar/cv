@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Darbo skelbimai</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Siūlomos pareigos</th>
+                <th>Aprašymas</th>
+                <th>Assignment</th>
+                <th>Reikalavimai</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jobAd in jobAds %}
+            <tr>
+                <td><a href="{{ path('jobad_show', { 'id': jobAd.id }) }}">{{ jobAd.id }}</a></td>
+                <td>{{ jobAd.title }}</td>
+                <td>{{ jobAd.description }}</td>
+                <td>{{ jobAd.assignment }}</td>
+                <td>{% if jobAd.requirements %}{{ jobAd.requirements|join(', ') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('jobad_show', { 'id': jobAd.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('jobad_edit', { 'id': jobAd.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('jobad_new') }}">Sukurti naują skelbimą</a>
+        </li>
+    </ul>
+{% endblock %}

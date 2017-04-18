@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Skelbimas</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ jobAd.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ jobAd.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ jobAd.description }}</td>
+            </tr>
+            <tr>
+                <th>Assignment</th>
+                <td>{{ jobAd.assignment }}</td>
+            </tr>
+            <tr>
+                <th>Requirements</th>
+                <td>{{ jobAd.requirements }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            Matoma role_employer
+            <a href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
+        </li>
+        <li>
+            Matoma owneriui
+            <a href="{{ path('jobad_edit', { 'id': jobAd.id }) }}">Redaguoti</a>
+        </li>
+        <li>
+            Nereikia
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Trinti">
+            {{ form_end(delete_form) }}
+        </li>
+        <li>
+            <a href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
+        </li>
+    </ul>
+{% endblock %}

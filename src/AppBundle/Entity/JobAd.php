@@ -24,6 +24,12 @@ class JobAd
     private $id;
 
     /**
+     * One JobAd has Many JobApply.
+     * @ORM\OneToMany(targetEntity="JobApply", mappedBy="jobAd")
+     */
+    private $jobApply;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -55,7 +61,7 @@ class JobAd
     /**
      * @var array
      *
-     * @ORM\Column(name="requirements", type="array")
+     * @ORM\Column(name="requirements", type="text")
      *
      * @Assert\NotBlank(message="Būtu šaunu, jei apibrėžtum aiškius reikalavimus kandidatams. Užpildyk šį lauką")
      */
@@ -153,7 +159,7 @@ class JobAd
     /**
      * Set requirements
      *
-     * @param array $requirements
+     * @param string $requirements
      *
      * @return JobAd
      */
@@ -167,11 +173,43 @@ class JobAd
     /**
      * Get requirements
      *
-     * @return array
+     * @return string
      */
     public function getRequirements()
     {
         return $this->requirements;
+    }
+
+    /**
+     * @return int
+     */
+    public function getJobApply()
+    {
+        return $this->jobApply;
+    }
+
+    /**
+     * @param int $jobApply
+     */
+    public function setJobApply($jobApply)
+    {
+        $this->jobApply = $jobApply;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOwner()
+    {
+        return $this->employer;
+    }
+
+    /**
+     * @param int $employer
+     */
+    public function setOwner($employer)
+    {
+        $this->employer = $employer;
     }
 }
 

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Redaguok skelbimą!</h2>
+
+    {{ form_start(edit_form) }}
+
+    <label for="form_title">siūloma pozicija *</label>
+    {{ form_row(edit_form.title) }}
+    <label for="form_description">trumpas aprašymas *</label>
+    {{ form_row(edit_form.description) }}
+    <label for="form_assignment">užduotis</label>
+    {{ form_row(edit_form.assignment) }}
+    <label for="form_requirements">reikalavimai</label>
+    {{ form_row(edit_form.requirements) }}
+    <input type="submit" value="Sukurti"/>
+
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
+        </li>
+        <li>
+            Manau, šitos komplikacijos mums nereikia
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Trinti">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

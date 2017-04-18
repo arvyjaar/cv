@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Sukurk darbo skelbimą!</h2>
+    <p>Užpildyk žemiau esančius laukus:</p>
+
+    {{ form_start(form) }}
+
+    <label for="form_title">siūloma pozicija *</label>
+    {{ form_row(form.title) }}
+    <label for="form_description">trumpas aprašymas *</label>
+    {{ form_row(form.description) }}
+    <label for="form_assignment">užduotis</label>
+    {{ form_row(form.assignment) }}
+    <label for="form_requirements">reikalavimai</label>
+    {{ form_row(form.requirements) }}
+    <input type="submit" value="Sukurti"/>
+
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
+        </li>
+    </ul>
+{% endblock %}
