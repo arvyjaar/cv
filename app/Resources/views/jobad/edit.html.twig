@@ -36,16 +36,16 @@
                         <input class="btn btn-primary" type="submit" value="Sukurti"/>
                     </div>
 
-                    {# Delete form. Visable only in edit route#}
-                    {% if( form.vars.value.id != null) %}
-                        {{ form_start(delete_form) }}
-                            <div class="text-center">
-                                <input  class="btn btn-default" type="submit" value="Ištrinti">
-                            </div>
-                        {{ form_end(delete_form) }}
-                    {% endif %}
-
             {{ form_end(form) }}
+
+            {# Delete form. Visable only in edit route#}
+            {% if( form.vars.value.id != null) %}
+                {{ form_start(delete_form) }}
+                <div class="text-center">
+                    <input  class="btn btn-default" type="submit" value="Ištrinti">
+                </div>
+                {{ form_end(delete_form) }}
+            {% endif %}
 
             <a class="pull-right" href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
         </div>

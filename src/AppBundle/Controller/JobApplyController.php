@@ -18,22 +18,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
  */
 class JobApplyController extends Controller
 {
-    /**
-     * Lists all jobApply entities.
-     *
-     * @Route("/", name="jobapply_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $jobApplies = $em->getRepository('AppBundle:JobApply')->findAll();
-
-        return $this->render('jobapply/index.html.twig', array(
-            'jobApplies' => $jobApplies,
-        ));
-    }
+//    /**
+//     * Lists all jobApply entities.
+//     *
+//     * @Route("/", name="jobapply_index")
+//     * @Method("GET")
+//     */
+//    public function indexAction()
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $jobApplies = $em->getRepository('AppBundle:JobApply')->findAll();
+//
+//        return $this->render('jobapply/index.html.twig', array(
+//            'jobApplies' => $jobApplies,
+//        ));
+//    }
 
     /**
      * Creates a new jobApply entity.
@@ -70,21 +70,21 @@ class JobApplyController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a jobApply entity.
-     *
-     * @Route("/{id}", name="jobapply_show")
-     * @Method("GET")
-     */
-    public function showAction(JobApply $jobApply)
-    {
-        $deleteForm = $this->createDeleteForm($jobApply);
-
-        return $this->render('jobapply/show.html.twig', array(
-            'jobApply' => $jobApply,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+//    /**
+//     * Finds and displays a jobApply entity.
+//     *
+//     * @Route("/{id}", name="jobapply_show")
+//     * @Method("GET")
+//     */
+//    public function showAction(JobApply $jobApply)
+//    {
+//        $deleteForm = $this->createDeleteForm($jobApply);
+//
+//        return $this->render('jobapply/show.html.twig', array(
+//            'jobApply' => $jobApply,
+//            'delete_form' => $deleteForm->createView(),
+//        ));
+//    }
 
     /**
      * Displays a form to edit an existing jobApply entity.
@@ -99,10 +99,10 @@ class JobApplyController extends Controller
             throw new AccessDeniedException();
 
         $deleteForm = $this->createDeleteForm($jobApply);
-        $editForm = $this->createForm('AppBundle\Form\Type\JobApplyType', $jobApply);
-        $editForm->handleRequest($request);
+        $form = $this->createForm('AppBundle\Form\Type\JobApplyType', $jobApply);
+        $form->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('jobapply_edit', array('id' => $jobApply->getId()));
@@ -110,7 +110,7 @@ class JobApplyController extends Controller
 
         return $this->render('jobapply/edit.html.twig', array(
             'jobApply' => $jobApply,
-            'edit_form' => $editForm->createView(),
+            'edit_form' => $form->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -1,21 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Jobapply edit</h1>
+    <div class="container">
+        <div class="form-container">
+            <p class="page-heading">{{ form.vars.value.id ? "Redaguok skelbimą!" : "Sukurk skelbimą!" }}</p>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+            {{ form_start(form) }}
+                {% set action = form.vars.value.id is null? path('jobapply_new'): path('jobapply_edit', {'id': form.vars.value.id }) %}
 
-    <ul>
-        <li>
-            <a href="{{ path('jobapply_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+                <div class="text-center">
+                    <input class="btn btn-primary" type="submit" value="Redaguoti" />
+                </div>
+
+            {{ form_end(form) }}
+
+            <a class="pull-right" href="{{ path('jobapply_index') }}">Back to the list</a>
+
+            {# Delete form. Visable only in edit route#}
+            {% if( form.vars.value.id != null) %}
+                {{ form_start(delete_form) }}
+                <div class="text-center">
+                    <input  class="btn btn-default" type="submit" value="Ištrinti">
+                </div>
+                {{ form_end(delete_form) }}
+            {% endif %}
+
+        </div>
+    </div>
 {% endblock %}
