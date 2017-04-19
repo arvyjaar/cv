@@ -64,7 +64,7 @@ class JobApplyController extends Controller
             return $this->redirectToRoute('jobapply_show', array('id' => $jobApply->getId()));
         }
 
-        return $this->render('jobapply/new.html.twig', array(
+        return $this->render('jobapply/edit.html.twig', array(
             'jobApply' => $jobApply,
             'form' => $form->createView(),
         ));
