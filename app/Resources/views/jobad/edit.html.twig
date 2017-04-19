@@ -3,44 +3,49 @@
 {% block body %}
     <div class="container">
         <div class="form-container">
-            <h2>Redaguok skelbimą!</h2>
+            <p class="page-heading">{{ form.vars.value.id ? "Redaguok skelbimą!" : "Sukurk skelbimą!" }}</p>
 
-            {{ form_start(edit_form) }}
+            {{ form_start(form) }}
+                {% set action = form.vars.value.id is null? path('jobad_new'): path('jobad_edit', {'id': form.vars.value.id }) %}
 
-                {{ form_label(edit_form.title, null, {'label': 'Siūloma pozicija*'}) }}
-                {{ form_row(edit_form.title) }}
+                    {{ form_label(form.title, null, {'label': 'Siūloma pozicija*'}) }}
+                    {{ form_row(form.title) }}
 
-                <div class="form-group">
-                    <label>Reikalavimai</label>
-                    <div class="all-requirements">
-                        {% if jobAd.requirements %}
-                            {% for requirement in jobAd.requirements %}
-                                <div id="{{ requirement.id }}" class="skill-block">
-                                    <span class="skill">{{ requirement.title }}</span>
-                                    <i class="fa fa-times skill-delete" data-id="{{ requirement.id }}" aria-hidden="true"></i>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
+                    <div class="form-group">
+                        <label>Reikalavimai</label>
+                        <div class="all-requirements">
+                            {% if jobAd.requirements %}
+                                {% for requirement in jobAd.requirements %}
+                                    <div id="{{ requirement.id }}" class="skill-block">
+                                        <span class="skill">{{ requirement.title }}</span>
+                                        <i class="fa fa-times skill-delete" data-id="{{ requirement.id }}" aria-hidden="true"></i>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <a class="add-requirements-btn" data-popup-open="popup-2" href="#">Pridėti reikalavimus</a>
                     </div>
-                    <a class="add-requirements-btn" data-popup-open="popup-2" href="#">Pridėti reikalavimus</a>
-                </div>
 
-                {{ form_label(edit_form.description, null, {'label': 'Apie siūlomą poziciją*'}) }}
-                {{ form_row(edit_form.description) }}
+                    {{ form_label(form.description, null, {'label': 'Apie siūlomą poziciją*'}) }}
+                    {{ form_row(form.description) }}
 
-                {{ form_label(edit_form.assignment, null, {'label': 'Nuoroda į užduotį*'}) }}
-                {{ form_row(edit_form.assignment) }}
+                    {{ form_label(form.assignment, null, {'label': 'Nuoroda į užduotį*'}) }}
+                    {{ form_row(form.assignment) }}
 
-                <div class="text-center">
-                    <input class="btn btn-primary" type="submit" value="Sukurti"/>
-                </div>
-                {{ form_start(delete_form) }}
                     <div class="text-center">
-                        <input  class="btn btn-default" type="submit" value="Ištrinti">
+                        <input class="btn btn-primary" type="submit" value="Sukurti"/>
                     </div>
-                {{ form_end(delete_form) }}
 
-            {{ form_end(edit_form) }}
+                    {# Delete form. Visable only in edit route#}
+                    {% if( form.vars.value.id != null) %}
+                        {{ form_start(delete_form) }}
+                            <div class="text-center">
+                                <input  class="btn btn-default" type="submit" value="Ištrinti">
+                            </div>
+                        {{ form_end(delete_form) }}
+                    {% endif %}
+
+            {{ form_end(form) }}
 
             <a class="pull-right" href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
         </div>

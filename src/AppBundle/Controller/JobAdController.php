@@ -81,7 +81,7 @@ class JobAdController extends Controller
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
 
-        return $this->render('jobad/new.html.twig', array(
+        return $this->render('jobad/edit.html.twig', array(
             'jobAd' => $jobAd,
             'form' => $form->createView(),
         ));
@@ -114,10 +114,10 @@ class JobAdController extends Controller
         $this->denyAccessUnlessGranted('edit', $jobAd);
 
         $deleteForm = $this->createDeleteForm($jobAd);
-        $editForm = $this->createForm('AppBundle\Form\Type\JobAdType', $jobAd);
-        $editForm->handleRequest($request);
+        $form = $this->createForm('AppBundle\Form\Type\JobAdType', $jobAd);
+        $form->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('jobad_edit', array('id' => $jobAd->getId()));
@@ -125,7 +125,7 @@ class JobAdController extends Controller
 
         return $this->render('jobad/edit.html.twig', array(
             'jobAd' => $jobAd,
-            'edit_form' => $editForm->createView(),
+            'form' => $form->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

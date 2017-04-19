@@ -227,7 +227,7 @@ body {
     position: relative;
 }
 
-.add-skill {
+.add-requirement, .add-skill {
     position: absolute;
     z-index: 1;
     right: -4px;
@@ -236,7 +236,7 @@ body {
     border-top-left-radius: 0;
 }
 
-.added-skills {
+.added-requirements, .added-skills {
     margin-top: 5px;
     margin-bottom: 20px;
 }
