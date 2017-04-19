@@ -69,5 +69,27 @@ class Requirement
     {
         return $this->title;
     }
+
+    /**
+     *
+     * @param object $jobAd
+     *
+     */
+    public function setJobAd($jobAd)
+    {
+        $this->jobAd = $jobAd;
+
+        return $this;
+    }
+
+    /**
+     * Get jobAd
+     *
+     * @return string
+     */
+    public function geJobAd()
+    {
+        return $this->jobAd;
+    }
 }
 

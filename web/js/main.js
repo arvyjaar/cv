@@ -25,7 +25,31 @@ function deleteSkill() {
     });
 }
 
+function deleteRequirement() {
+    var requirement_id = $(this).data('id');
+
+    var delete_requirement_url = Routing.generate('delete_requirement', {
+        id: requirement_id
+    });
+
+    $.ajax({
+        url: delete_requirement_url,
+        method: 'delete',
+        data: {
+            'requirement-id': requirement_id
+        },
+        success: function (response) {
+            $('#' + requirement_id).remove();
+        },
+        fail: function (error) {
+            console.log('Failed to delete skill');
+            console.log(error);
+        }
+    });
+}
+
 $(document).ready(function() {
+
     //Datepicker for user profile edit form;
     $('.js-datepicker').datepicker({
         dateFormat: 'yy-mm-dd',
@@ -51,6 +75,7 @@ $(document).ready(function() {
         $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
 
         var added_skills = $('.added-skills');
+        var added_requirements = $('.added-requirements');
 
         //Add all added skills to profile-edit form
         $('.all-skills').append(added_skills.html());
@@ -58,8 +83,17 @@ $(document).ready(function() {
         //Remove added skills from pop-up
         added_skills.html('');
 
+        //Add all added requirement to jobAd-edit form
+        $('.all-requirements').append(added_requirements.html());
+
+        //Remove added skills from pop-up
+        added_requirements.html('');
+
         //Delete skill after pop-up was closed
         $('.skill-delete').unbind().click(deleteSkill);
+
+        //Delete requirement after pop-up was closed
+        $('.requirement-delete').unbind().click(deleteRequirement);
 
         e.preventDefault();
     });
@@ -83,7 +117,7 @@ $(document).ready(function() {
                 success: function (response) {
                     var inserted_id = response.id;
                     skills_input.val('');
-                    $('.added-skills').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + skill +
+                    $('.added-requirements').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + skill +
                         '</span>' + '<i class="fa fa-times skill-delete" aria-hidden="true" data-id="'+ inserted_id +'"></i></div>');
 
                     // Delete skill after skill was added
@@ -107,6 +141,50 @@ $(document).ready(function() {
 
     //Delete skill
     $('.skill-delete').unbind().click(deleteSkill);
+
+    //Add requirement on button click
+    $('.add-requirement').click(function(){
+        var requirements_input = $('.requirements-input');
+        var requirement = requirements_input.val();
+
+        if(requirement) {
+            var ad_id = $(this).data('id');
+            var create_requirement_url = Routing.generate('add_requirement');
+
+            $.ajax({
+                url: create_requirement_url,
+                method: 'post',
+                data: {
+                    'requirement': requirement,
+                    'ad-id': ad_id
+                },
+                success: function (response) {
+                    var inserted_id = response.id;
+                    requirements_input.val('');
+                    $('.added-requirements').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + requirement +
+                        '</span>' + '<i class="fa fa-times requirement-delete" aria-hidden="true" data-id="'+ inserted_id +'"></i></div>');
+
+                    // Delete requirement after requirement was added
+                    $('.requirement-delete').unbind().click(deleteRequirement);
+                },
+                fail: function (error) {
+                    console.log('Failed to add requirement');
+                    console.log(error);
+                }
+            });
+
+        }
+    });
+
+    //Add requirement, when enter key is pressed
+    $('.requirements-input').keydown(function(e){
+        if(e.which === 13){
+            $('.add-requirement').click();
+        }
+    });
+
+    //Delete requirement
+    $('.requirement-delete').unbind().click(deleteRequirement);
 
 
 });

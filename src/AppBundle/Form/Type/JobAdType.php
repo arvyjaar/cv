@@ -16,8 +16,7 @@ class JobAdType extends AbstractType
         $builder
             ->add('title', null, ['label' => false])
             ->add('description', null, ['label' => false])
-            ->add('assignment', null, ['label' => false])
-            ->add('requirements', null, ['label' => false]);
+            ->add('assignment', null, ['label' => false]);
     }
     
     /**

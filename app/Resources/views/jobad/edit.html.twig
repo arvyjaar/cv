@@ -1,33 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Redaguok skelbimą!</h2>
+    <div class="container">
+        <div class="form-container">
+            <h2>Redaguok skelbimą!</h2>
 
-    {{ form_start(edit_form) }}
+            {{ form_start(edit_form) }}
 
-        {{ form_label(edit_form.title, null, {'label': 'Siūloma pozicija*'}) }}
-        {{ form_row(edit_form.title) }}
+                {{ form_label(edit_form.title, null, {'label': 'Siūloma pozicija*'}) }}
+                {{ form_row(edit_form.title) }}
 
-        {{ form_label(edit_form.description, null, {'label': 'Apie siūlomą poziciją*'}) }}
-        {{ form_row(edit_form.description) }}
+                <div class="form-group">
+                    <label>Reikalavimai</label>
+                    <div class="all-requirements">
+                        {% if jobAd.requirements %}
+                            {% for requirement in jobAd.requirements %}
+                                <div id="{{ requirement.id }}" class="skill-block">
+                                    <span class="skill">{{ requirement.title }}</span>
+                                    <i class="fa fa-times skill-delete" data-id="{{ requirement.id }}" aria-hidden="true"></i>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <a class="add-requirements-btn" data-popup-open="popup-2" href="#">Pridėti reikalavimus</a>
+                </div>
 
-        {{ form_label(edit_form.assigment, null, {'label': 'Nuoroda į užduotį*'}) }}
-        {{ form_row(edit_form.assignment) }}
+                {{ form_label(edit_form.description, null, {'label': 'Apie siūlomą poziciją*'}) }}
+                {{ form_row(edit_form.description) }}
 
-        {#<label for="form_requirements">reikalavimai</label>#}
-        {#{{ form_row(edit_form.requirements) }}#}
+                {{ form_label(edit_form.assignment, null, {'label': 'Nuoroda į užduotį*'}) }}
+                {{ form_row(edit_form.assignment) }}
 
-        <div class="text-center">
-            <input class="btn btn-primary" type="submit" value="Sukurti"/>
+                <div class="text-center">
+                    <input class="btn btn-primary" type="submit" value="Sukurti"/>
+                </div>
+                {{ form_start(delete_form) }}
+                    <div class="text-center">
+                        <input  class="btn btn-default" type="submit" value="Ištrinti">
+                    </div>
+                {{ form_end(delete_form) }}
+
+            {{ form_end(edit_form) }}
+
+            <a class="pull-right" href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
         </div>
-        {{ form_start(delete_form) }}
-            <div class="text-center">
-                <input  class="btn btn-default" type="submit" value="Trinti">
+
+        <div class="popup" data-popup="popup-2">
+            <div class="popup-inner">
+                <h4>Reikalavimai</h4>
+                <div class="skill-input-container">
+                    <input class="form-control requirements-input" type="text" placeholder="Po vieną įrašyk reikalavimus. Pvz.: php" required/>
+                    <button class="btn btn-primary add-requirement" data-id="{{ jobAd.id }}">Pridėk</button>
+                </div>
+                <div class="added-requirements"></div>
+                <a class="popup-close" data-popup-close="popup-2" href="#">x</a>
             </div>
-        {{ form_end(delete_form) }}
-
-    {{ form_end(edit_form) }}
-
-    <a class="pull-right" href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
+        </div>
+    </div>
 
 {% endblock %}

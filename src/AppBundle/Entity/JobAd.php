@@ -59,7 +59,7 @@ class JobAd
     private $assignment;
 
     /**
-     * @ORM\OneToMany(targetEntity="Requirement", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Requirement", mappedBy="jobAd")
      */
     private $requirements;
 
