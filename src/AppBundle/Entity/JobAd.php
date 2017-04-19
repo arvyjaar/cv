@@ -58,13 +58,8 @@ class JobAd
      */
     private $assignment;
 
-    //!!!REQUIREMENTS property will be refactored
     /**
-     * @var array
-     *
-     * @ORM\Column(name="requirements", type="text")
-     *
-     * @Assert\NotBlank(message="Būtu šaunu, jei apibrėžtum aiškius reikalavimus kandidatams. Užpildyk šį lauką")
+     * @ORM\OneToMany(targetEntity="Requirement", mappedBy="user")
      */
     private $requirements;
 
