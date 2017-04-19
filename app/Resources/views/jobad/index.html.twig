@@ -1,45 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Darbo skelbimai</h2>
+    <div class="container">
+        <div class="content-container">
+            <div class="row">
+                <p class="page-heading">Darbo skelbimai</p>
+            </div>
+            {% for jobAd in jobAds %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Siūlomos pareigos</th>
-                <th>Aprašymas</th>
-                <th>Assignment</th>
-                <th>Reikalavimai</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for jobAd in jobAds %}
-            <tr>
-                <td><a href="{{ path('jobad_show', { 'id': jobAd.id }) }}">{{ jobAd.id }}</a></td>
-                <td>{{ jobAd.title }}</td>
-                <td>{{ jobAd.description }}</td>
-                <td>{{ jobAd.assignment }}</td>
-                <td>{% if jobAd.requirements %}{{ jobAd.requirements|join(', ') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('jobad_show', { 'id': jobAd.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('jobad_edit', { 'id': jobAd.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <!-- This is to list 3 divs in one row -->
+                {% if loop.index0 is divisibleby(3) %}
+                    <div class="row">
+                {% endif %}
 
-    <ul>
-        <li>
-            <a href="{{ path('jobad_new') }}">Sukurti naują skelbimą</a>
-        </li>
-    </ul>
+                    <div class="col-md-4 col-sm-6 col-xs-12 seeker-box">
+                        <div class="job-title">
+                            {{ jobAd.title }}
+                        </div>
+
+                        <div>
+                            <p class="section-heading">Reikalavimai:</p>
+                            <div class="text-center">
+                                {% for requirement in jobAd.requirements %}
+                                    <span class="skill">{{ requirement.title }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="section-heading">Trumpai apie siūlomą poziciją:</p>
+                            <p>{{ jobAd.description|length > 200 ? jobAd.description|slice(0, 200) ~ '...' : jobAd.description  }}</p>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="{{ path('jobad_show', { 'id': jobAd.id }) }}" class="btn btn-primary show-more-btn">Rodyti daugiau</a>
+                        </div>
+                    </div>
+
+                {% if loop.index is divisibleby(3) or loop.last %}
+                    </div><!-- /row -->
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

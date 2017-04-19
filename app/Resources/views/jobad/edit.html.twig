@@ -5,27 +5,29 @@
 
     {{ form_start(edit_form) }}
 
-    <label for="form_title">siūloma pozicija *</label>
-    {{ form_row(edit_form.title) }}
-    <label for="form_description">trumpas aprašymas *</label>
-    {{ form_row(edit_form.description) }}
-    <label for="form_assignment">užduotis</label>
-    {{ form_row(edit_form.assignment) }}
-    <label for="form_requirements">reikalavimai</label>
-    {{ form_row(edit_form.requirements) }}
-    <input type="submit" value="Sukurti"/>
+        {{ form_label(edit_form.title, null, {'label': 'Siūloma pozicija*'}) }}
+        {{ form_row(edit_form.title) }}
+
+        {{ form_label(edit_form.description, null, {'label': 'Apie siūlomą poziciją*'}) }}
+        {{ form_row(edit_form.description) }}
+
+        {{ form_label(edit_form.assigment, null, {'label': 'Nuoroda į užduotį*'}) }}
+        {{ form_row(edit_form.assignment) }}
+
+        {#<label for="form_requirements">reikalavimai</label>#}
+        {#{{ form_row(edit_form.requirements) }}#}
+
+        <div class="text-center">
+            <input class="btn btn-primary" type="submit" value="Sukurti"/>
+        </div>
+        {{ form_start(delete_form) }}
+            <div class="text-center">
+                <input  class="btn btn-default" type="submit" value="Trinti">
+            </div>
+        {{ form_end(delete_form) }}
 
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
-        </li>
-        <li>
-            Manau, šitos komplikacijos mums nereikia
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Trinti">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <a class="pull-right" href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
+
 {% endblock %}

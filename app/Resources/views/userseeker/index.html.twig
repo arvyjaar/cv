@@ -1,43 +1,51 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container form-container">
-        <div class="row">
-            <p class="page-heading">Šiuo metu darbo ieško:</p>
-        </div>
-        {% for userSeeker in userSeekers %}
-
+    <div class="container">
+        <div class="content-container">
             <div class="row">
-                <div class="col-md-4 seeker-box">
-                    <div class="row box-upper-row">
-                        <div class="col-md-6">
-                            <img class="img-responsive seeker-box-img" src="{{ asset('img/profiles/')~userSeeker.photo }}" alt="Nuotrauka">
-                        </div>
-                        <div class="col-md-6">
-                            <strong>{{ userSeeker.name }}{{ userSeeker.surname }}</strong>
-                            <p>{{ userSeeker.profession }}</p>
-                            <p>{% if userSeeker.birthday %}{{ userSeeker.birthday|date('Y-m-d') }}{% endif %}</p>
-                            <p>{{ userSeeker.city }}</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="section-heading">Gebėjimai:</p>
-                        {% for skill in userSeeker.skills %}
-                            <span class="skill">{{ skill.title }}</span>
-                        {% endfor %}
-                    </div>
-                    <div>
-                        <p class="section-heading">Trumpai apie mane:</p>
-                        <p>{{ userSeeker.introduction }}</p>
-                    </div>
-
-                    <div class="text-center">
-                        <a href="#" class="btn btn-primary show-more-btn">Rodyti daugiau</a>
-                    </div>
-                </div>
+                <p class="page-heading">Šiuo metu darbo ieško:</p>
             </div>
+            {% for userSeeker in userSeekers %}
 
-        {% endfor %}
+                <!-- This is to list 3 divs in one row -->
+                {% if loop.index0 is divisibleby(3) %}
+                    <div class="row">
+                {% endif %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 seeker-box">
+                        <div class="row box-upper-row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <img class="img-responsive seeker-box-img" src="{{ asset('img/profiles/')~userSeeker.photo }}" alt="Nuotrauka">
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <p class="section-heading">{{ userSeeker.name }} {{ userSeeker.surname }}</p>
+                                <p>{{ userSeeker.profession }}</p>
+                                <p>{% if userSeeker.birthday %}{{ userSeeker.birthday|date('Y-m-d') }}{% endif %}</p>
+                                <p>{{ userSeeker.city }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="section-heading">Gebėjimai:</p>
+                            {% for skill in userSeeker.skills %}
+                                <span class="skill">{{ skill.title }}</span>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <p class="section-heading">Trumpai apie mane:</p>
+                            {#<p>{{ userSeeker.introduction }}</p>#}
+                            <p>{{ userSeeker.introduction|length > 150 ? userSeeker.introduction|slice(0, 150) ~ '...' : userSeeker.introduction  }}</p>
+                        </div>
+
+                        <div class="text-center">
+                            {# add path to seekers profile!#}
+                            <a href="#" class="btn btn-primary show-more-btn">Rodyti daugiau</a>
+                        </div>
+                    </div>
+                {% if loop.index is divisibleby(3) or loop.last %}
+                    </div><!-- /row -->
+                {% endif %}
+
+            {% endfor %}
+        </div>
     </div>
-
 {% endblock %}

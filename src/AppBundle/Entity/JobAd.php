@@ -58,6 +58,7 @@ class JobAd
      */
     private $assignment;
 
+    //!!!REQUIREMENTS property will be refactored
     /**
      * @var array
      *
