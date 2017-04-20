@@ -29,7 +29,7 @@ class UserSeekerController extends Controller
 
         $userSeekers = $em->getRepository('AppBundle:UserSeeker')->findAll();
 
-        return $this->render('userseeker/index.html.twig', array(
+        return $this->render('userseeker/show.html.twig', array(
             'userSeekers' => $userSeekers,
         ));
     }

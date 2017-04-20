@@ -49,7 +49,7 @@ class JobAdController extends Controller
             ['employer' => $this->getUser()]
         );
 
-        return $this->render('jobad/index.html.twig', array(
+        return $this->render('jobad/show.html.twig', array(
             'jobAds' => $jobAds,
         ));
     }
@@ -120,10 +120,10 @@ class JobAdController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('jobad_edit', array('id' => $jobAd->getId()));
+            return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
 
-        return $this->render('jobad/new.html.twig', array(
+        return $this->render('jobad/edit.html.twig', array(
             'jobAd' => $jobAd,
             'form' => $form->createView(),
             'delete_form' => $deleteForm->createView(),

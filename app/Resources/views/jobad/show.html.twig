@@ -21,9 +21,7 @@
 
             <div>
                 <p class="section-heading">Užduotis kandidatams</p>
-                <div class="text-center">
-                    <a href="{{ jobAd.assignment }}">{{ jobAd.assignment }}</a>
-                </div>
+                <a href="{{ jobAd.assignment }}">{{ jobAd.assignment }}</a>
             </div>
 
             <div class="text-center">
@@ -33,11 +31,6 @@
             <div class="text-center">
                 Matoma owneriui
                 <a class="btn btn-primary" href="{{ path('jobad_edit', { 'id': jobAd.id }) }}">Redaguoti</a>
-            </div>
-
-            <div class="text-center">
-                Matoma owneriui
-                <input class="btn btn-default" type="submit" value="Trinti">
             </div>
 
             Matoma role_employer

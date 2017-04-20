@@ -12,7 +12,7 @@
     <label for="form_name">TELEFONO NUMERIS</label>
     {{ form_row(form.phone) }}
     <label for="form_name">LOGOTIPAS</label>
-    <img src="{{ asset('img/profiles/')~app.user.photo}}" alt="Logotipas">
+    <img src="{{ asset('img/profiles/'~app.user.photo)}}" alt="Logotipas">
     {{ form_row(form.imageFile) }}
     <label for="form_name">MIESTAS</label>
     {{ form_row(form.city) }}
