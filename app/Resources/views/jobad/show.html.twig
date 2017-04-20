@@ -16,7 +16,7 @@
 
             <div>
                 <p class="section-heading">Apie siūlomą poziciją:</p>
-                <p>{{ jobAd.description  }}</p>
+                <p>{{ jobAd.description }}</p>
             </div>
 
             <div>
@@ -25,16 +25,28 @@
             </div>
 
             <div class="text-center">
-                <a class="btn btn-primary" href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
+                {# Only registered ROLE_SEEKER can apply #}
+                {% if is_granted('ROLE_USER_SEEKER') %}
+                    <a class="btn btn-primary" href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
+                {% else %}
+                    <p>Prisijunkite arba užsiregistruokite</p>
+                    <a class="btn btn-primary disabled" href="{{ path('user_seeker_registration') }}">Kandidatuoti</a>
+                {% endif %}
+
             </div>
 
-            <div class="text-center">
-                Matoma owneriui
-                <a class="btn btn-primary" href="{{ path('jobad_edit', { 'id': jobAd.id }) }}">Redaguoti</a>
-            </div>
+            {# Show EDIT button only for owner #}
+            {% if app.user == jobAd.getOwner %}
+                <div class="text-center">
+                    <a class="btn btn-primary" href="{{ path('jobad_edit', { 'id': jobAd.id }) }}">Redaguoti</a>
+                </div>
+            {% endif %}
 
-            Matoma role_employer
-            <a class="pull-right" href="{{ path('jobad_my_index') }}">Atgal į sąrašą</a>
+            {% if is_granted('ROLE_USER_EMPLOYER') %}
+                <a class="pull-right" href="{{ path('jobad_my_index') }}">Atgal į sąrašą </a>
+            {% else %}
+                <a class="pull-right" href="{{ path('jobad_index') }}">Atgal į sąrašą </a>
+            {% endif %}
 
         </div>
     </div>

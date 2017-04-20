@@ -17,7 +17,6 @@ class JobApplyType extends AbstractType
         $builder
             ->add('assignmentSolution', null, ['label' => false])
             ->add('imageFile', VichFileType::class, [
-                'required' => false,
                 'label' => false
             ]);
 

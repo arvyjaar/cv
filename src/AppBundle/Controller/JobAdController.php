@@ -97,7 +97,7 @@ class JobAdController extends Controller
     {
         $deleteForm = $this->createDeleteForm($jobAd);
 
-        return $this->render('jobad/index.html.twig', array(
+        return $this->render('jobad/show.html.twig', array(
             'jobAd' => $jobAd,
             'delete_form' => $deleteForm->createView(),
         ));

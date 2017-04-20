@@ -94,9 +94,7 @@ class JobApplyController extends Controller
 //     */
 //    public function editAction(Request $request, JobApply $jobApply)
 //    {
-//        // Make Voter for JobApply
-//        if ($this->getUser() !== $jobApply->getOwner())
-//            throw new AccessDeniedException();
+//        $this->denyAccessUnlessGranted('edit', $jobApply);
 //
 //        $deleteForm = $this->createDeleteForm($jobApply);
 //        $form = $this->createForm('AppBundle\Form\Type\JobApplyType', $jobApply);
@@ -123,9 +121,7 @@ class JobApplyController extends Controller
      */
     public function deleteAction(Request $request, JobApply $jobApply)
     {
-        // Make Voter for JobApply
-        if ($this->getUser() !== $jobApply->getOwner())
-            throw new AccessDeniedException();
+        $this->denyAccessUnlessGranted('edit', $jobApply);
 
         $form = $this->createDeleteForm($jobApply);
         $form->handleRequest($request);
