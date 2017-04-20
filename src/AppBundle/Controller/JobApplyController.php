@@ -30,7 +30,7 @@ class JobApplyController extends Controller
 //
 //        $jobApplies = $em->getRepository('AppBundle:JobApply')->findAll();
 //
-//        return $this->render('jobapply/show.html.twig', array(
+//        return $this->render('jobapply/index.html.twig', array(
 //            'jobApplies' => $jobApplies,
 //        ));
 //    }
@@ -80,7 +80,7 @@ class JobApplyController extends Controller
 //    {
 //        $deleteForm = $this->createDeleteForm($jobApply);
 //
-//        return $this->render('jobapply/show.html.twig', array(
+//        return $this->render('jobapply/index.html.twig', array(
 //            'jobApply' => $jobApply,
 //            'delete_form' => $deleteForm->createView(),
 //        ));

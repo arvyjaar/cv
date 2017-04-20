@@ -38,7 +38,7 @@
 
                         <div class="text-center">
                             {# add path to seekers profile!#}
-                            <a href="#" class="btn btn-primary show-more-btn">Rodyti daugiau</a>
+                            <a href="{{ path('user_seeker_show', {'id' : userSeeker.id}) }}" class="btn btn-primary show-more-btn">Rodyti daugiau</a>
                         </div>
                     </div>
                 {% if loop.index is divisibleby(3) or loop.last %}

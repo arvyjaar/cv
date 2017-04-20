@@ -49,7 +49,7 @@ class JobAdController extends Controller
             ['employer' => $this->getUser()]
         );
 
-        return $this->render('jobad/show.html.twig', array(
+        return $this->render('jobad/index.html.twig', array(
             'jobAds' => $jobAds,
         ));
     }
@@ -81,7 +81,7 @@ class JobAdController extends Controller
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
 
-        return $this->render('jobad/new.html.twig', array(
+        return $this->render('jobad/edit.html.twig', array(
             'jobAd' => $jobAd,
             'form' => $form->createView(),
         ));
@@ -97,7 +97,7 @@ class JobAdController extends Controller
     {
         $deleteForm = $this->createDeleteForm($jobAd);
 
-        return $this->render('jobad/show.html.twig', array(
+        return $this->render('jobad/index.html.twig', array(
             'jobAd' => $jobAd,
             'delete_form' => $deleteForm->createView(),
         ));

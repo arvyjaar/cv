@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="content-container">
+            <p class="page-heading">Employerio profilis</p>
+            {{ userEmployer.title }}
+            <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~userEmployer.photo)}}" alt="Nuotrauka">
+            <a class="pull-right" href="{{ path('user_employer_index') }}">Grįžti atgal</a>
+        </div>
+    </div>
+{% endblock %}

@@ -16,13 +16,3 @@ user_employer_registration:
 user_seeker_registration:
     path:  /register/seeker
     defaults: { _controller: AppBundle:RegistrationUserSeeker:register }
-#add_skill:
-#    path:  /skill/create
-#    defaults: { _controller: AppBundle:Skill:create }
-#    options:
-#        expose: true
-#delete_skill:
-#    path: /{{id}}
-#    defaults: { _controller: AppBundle:Skill:delete }
-#    options:
-#      expose: true

@@ -1,52 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Userseeker</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ userSeeker.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ userSeeker.name }}</td>
-            </tr>
-            <tr>
-                <th>Surname</th>
-                <td>{{ userSeeker.surname }}</td>
-            </tr>
-            <tr>
-                <th>Birthday</th>
-                <td>{% if userSeeker.birthday %}{{ userSeeker.birthday|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td><img src="{{ asset('img/profiles/')~userSeeker.photo }}" alt="Nuotrauka"></td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ userSeeker.phone }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ userSeeker.city }}</td>
-            </tr>
-            <tr>
-                <th>Profession</th>
-                <td>{{ userSeeker.profession }}</td>
-            </tr>
-            <tr>
-                <th>Introduction</th>
-                <td>{{ userSeeker.introduction }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('user_seeker_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="content-container">
+            <p class="page-heading">Seekerio profilis</p>
+            {{ userSeeker.name }}
+            <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~userSeeker.photo)}}" alt="Nuotrauka">
+            <a class="pull-right" href="{{ path('user_seeker_index') }}">Grįžti atgal</a>
+        </div>
+    </div>
 {% endblock %}
