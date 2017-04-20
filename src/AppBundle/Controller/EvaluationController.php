@@ -41,7 +41,7 @@ class EvaluationController extends Controller
             return $this->redirectToRoute('evaluation_edit', array('id' => $evaluation->getId()));
         }
 
-        return $this->render('evaluation/edit.html.twig', array(
+        return $this->render('evaluation/new.html.twig', array(
             'evaluation' => $evaluation,
             'form' => $form->createView(),
         ));
@@ -66,7 +66,7 @@ class EvaluationController extends Controller
             return $this->redirectToRoute('evaluation_edit', array('id' => $evaluation->getId()));
         }
 
-        return $this->render('evaluation/edit.html.twig', array(
+        return $this->render('evaluation/new.html.twig', array(
             'evaluation' => $evaluation,
             'form' => $form->createView(),
             'delete_form' => $deleteForm->createView(),

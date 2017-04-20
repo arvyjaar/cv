@@ -3,19 +3,24 @@
 {% block body %}
     <div class="container">
         <div class="form-container">
-            <p class="page-heading">{{ form.vars.value.id ? "Redaguok skelbimą!" : "Sukurk skelbimą!" }}</p>
+            <p class="page-heading">Kandidatuok!</p>
 
             {{ form_start(form) }}
-                {% set action = form.vars.value.id is null? path('jobapply_new'): path('jobapply_edit', {'id': form.vars.value.id }) %}
+
+
+                {{ form_label(form.assignmentSolution, 'Nuoroda į užduoties sprendimą') }}
+                {{ form_row(form.assignmentSolution) }}
+
+                {{ form_label(form.imageFile, 'Įkelk savo CV') }}
+                {{ form_row(form.imageFile) }}
 
 
                 <div class="text-center">
-                    <input class="btn btn-primary" type="submit" value="Redaguoti" />
+                    <input class="btn btn-primary" type="submit" value="Kandidatuoti" />
                 </div>
 
             {{ form_end(form) }}
 
-            <a class="pull-right" href="{{ path('jobapply_index') }}">Back to the list</a>
 
             {# Delete form. Visable only in edit route#}
             {% if( form.vars.value.id != null) %}

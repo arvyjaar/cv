@@ -70,6 +70,8 @@ class JobAd
      */
     private $employer;
 
+
+
     /**
      * Get id
      *

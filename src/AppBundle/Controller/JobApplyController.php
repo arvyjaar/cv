@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 /**
  * Jobapply controller.
  *
- * @Route("jobapply")
+ * @Route("kandidatuoti")
  */
 class JobApplyController extends Controller
 {
@@ -61,10 +61,10 @@ class JobApplyController extends Controller
             $em->persist($jobApply);
             $em->flush();
 
-            return $this->redirectToRoute('jobapply_show', array('id' => $jobApply->getId()));
+            return $this->redirectToRoute('jobad_index');
         }
 
-        return $this->render('jobapply/edit.html.twig', array(
+        return $this->render('jobapply/new.html.twig', array(
             'jobApply' => $jobApply,
             'form' => $form->createView(),
         ));
@@ -86,34 +86,34 @@ class JobApplyController extends Controller
 //        ));
 //    }
 
-    /**
-     * Displays a form to edit an existing jobApply entity.
-     *
-     * @Route("/{id}/edit", name="jobapply_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, JobApply $jobApply)
-    {
-        // Make Voter for JobApply
-        if ($this->getUser() !== $jobApply->getOwner())
-            throw new AccessDeniedException();
-
-        $deleteForm = $this->createDeleteForm($jobApply);
-        $form = $this->createForm('AppBundle\Form\Type\JobApplyType', $jobApply);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('jobapply_edit', array('id' => $jobApply->getId()));
-        }
-
-        return $this->render('jobapply/edit.html.twig', array(
-            'jobApply' => $jobApply,
-            'edit_form' => $form->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+//    /**
+//     * Displays a form to edit an existing jobApply entity.
+//     *
+//     * @Route("/{id}/edit", name="jobapply_edit")
+//     * @Method({"GET", "POST"})
+//     */
+//    public function editAction(Request $request, JobApply $jobApply)
+//    {
+//        // Make Voter for JobApply
+//        if ($this->getUser() !== $jobApply->getOwner())
+//            throw new AccessDeniedException();
+//
+//        $deleteForm = $this->createDeleteForm($jobApply);
+//        $form = $this->createForm('AppBundle\Form\Type\JobApplyType', $jobApply);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $this->getDoctrine()->getManager()->flush();
+//
+//            return $this->redirectToRoute('jobapply_edit', array('id' => $jobApply->getId()));
+//        }
+//
+//        return $this->render('jobapply/new.html.twig', array(
+//            'jobApply' => $jobApply,
+//            'edit_form' => $form->createView(),
+//            'delete_form' => $deleteForm->createView(),
+//        ));
+//    }
 
     /**
      * Deletes a jobApply entity.

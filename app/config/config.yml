@@ -41,7 +41,7 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
           - 'bootstrap_3_layout.html.twig'
-          #- 'bootstrap_3_horizontal_layout.html.twig']
+#          - 'bootstrap_3_horizontal_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -126,6 +126,12 @@ vich_uploader:
         employerLogo:
             uri_prefix: /img/profiles
             upload_destination: '%kernel.root_dir%/../web/img/profiles'
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        cv:
+            uri_prefix:         /files/cv
+            upload_destination: '%kernel.root_dir%/../web/files/cv'
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
