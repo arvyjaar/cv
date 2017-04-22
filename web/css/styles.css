@@ -138,6 +138,8 @@ body {
 .seeker-box {
     min-height: 550px;
     padding: 30px;
+    box-sizing: border-box;
+    margin: 15px 0;
     border-radius: 30px;
     background-color: lightgrey;
     font-size: 16px;
@@ -159,7 +161,6 @@ body {
 }
 
 .box-upper-row {
-    /*min-height: 150px;*/
     padding-bottom: 10px;
     border-bottom: 0.5px solid darkgrey;
 }
@@ -328,8 +329,13 @@ body {
         padding-left: 15px;
     }
 
+    /*seekers index*/
     .seeker-box-img {
         max-height: 175px;
+    }
+
+    .box-upper-row {
+        height: 175px;
     }
 
 }
