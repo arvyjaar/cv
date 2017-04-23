@@ -8,13 +8,14 @@
  */
 namespace AppBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\UserEmployer;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadUserEmployerData implements FixtureInterface, ContainerAwareInterface
+class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -24,6 +25,11 @@ class LoadUserEmployerData implements FixtureInterface, ContainerAwareInterface
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
+    }
+
+    public function getOrder()
+    {
+        return 2;
     }
 
     public function load(ObjectManager $manager)
@@ -195,7 +201,6 @@ class LoadUserEmployerData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($employer11);
 
         $manager->flush();
-
 
     }
 }

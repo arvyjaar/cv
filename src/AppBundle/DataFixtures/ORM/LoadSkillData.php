@@ -8,6 +8,7 @@
  */
 namespace AppBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Skill;
@@ -15,7 +16,7 @@ use AppBundle\Entity\UserSeeker;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadSkillData implements FixtureInterface, ContainerAwareInterface
+class LoadSkillData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -25,6 +26,11 @@ class LoadSkillData implements FixtureInterface, ContainerAwareInterface
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
+    }
+
+    public function getOrder()
+    {
+        return 3;
     }
 
     /**

@@ -8,12 +8,18 @@
  */
 namespace AppBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Evaluation;
 
-class LoadEvaluationData implements FixtureInterface
+class LoadEvaluationData implements FixtureInterface, OrderedFixtureInterface
 {
+    public function getOrder()
+    {
+        return 5;
+    }
+
     public function load(ObjectManager $manager)
     {
         $evaluation1 = new Evaluation();

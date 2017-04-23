@@ -8,6 +8,7 @@
  */
 namespace AppBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\JobApply;
@@ -17,7 +18,7 @@ use AppBundle\Entity\Evaluation;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadJobApplyData implements FixtureInterface, ContainerAwareInterface
+class LoadJobApplyData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -27,6 +28,11 @@ class LoadJobApplyData implements FixtureInterface, ContainerAwareInterface
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
+    }
+
+    public function getOrder()
+    {
+        return 6;
     }
 
     /**
