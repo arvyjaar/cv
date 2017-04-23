@@ -45,6 +45,7 @@
                             </li>
                             <li><a href="{{ path('fos_user_security_login') }}">Prisijunk!</a></li>
                         {% else %}
+                            <li><a href="{{ path('fos_user_profile_show') }}">Profilis</a></li>
                             <li><a href="{{ path('fos_user_security_logout') }}">Atsijungti</a></li>
                         {% endif %}
                     </ul>

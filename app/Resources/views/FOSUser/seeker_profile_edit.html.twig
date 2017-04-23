@@ -16,7 +16,7 @@
 
             <label for="form.imageFile">{{ app.user.photo ? 'Pakeisti nuotrauką' : 'Įkelti nuotrauką' }}</label>
             {% if app.user.photo %}
-                <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo)}}" alt="Nuotrauka">
+                <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo ?? 'no-photo.jpg')}}" alt="Nuotrauka">
             {% endif %}
             {{ form_row(form.imageFile) }}
 

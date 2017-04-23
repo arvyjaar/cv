@@ -13,7 +13,7 @@
         <label for="form_name">TELEFONO NUMERIS</label>
         {{ form_row(form.phone) }}
         <label for="form_name">LOGOTIPAS</label>
-        <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo)}}" alt="Logotipas">
+        <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo ?? 'no-logo.jpg')}}" alt="Logotipas">
         {{ form_row(form.imageFile) }}
         <label for="form_name">MIESTAS</label>
         {{ form_row(form.city) }}

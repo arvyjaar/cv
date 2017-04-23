@@ -16,7 +16,7 @@
                         <div class="seeker-box">
                             <div class="row box-upper-row">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <img class="img-responsive seeker-box-img" src="{{ asset('img/profiles/')~userSeeker.photo }}" alt="Nuotrauka">
+                                    <img class="img-responsive seeker-box-img" src="{{ asset('img/profiles/'~userSeeker.photo ?? 'no-photo.jpg')}}" alt="Nuotrauka">
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <p class="section-heading">{{ userSeeker.name }} {{ userSeeker.surname }}</p>

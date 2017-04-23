@@ -5,7 +5,7 @@
         <div class="content-container">
             <p class="page-heading">Employerio profilis</p>
             {{ userEmployer.title }}
-            <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~userEmployer.photo)}}" alt="Nuotrauka">
+            <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~userEmployer.photo ?? 'no-logo.jpg')}}" alt="Nuotrauka">
             <a class="pull-right" href="{{ path('user_employer_index') }}">Grįžti atgal</a>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="content-container">
         <p class="page-heading">Tavo profilis</p>
-        <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo)}}" alt="Nuotrauka">
+        <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo ?? 'no-photo.jpg')}}" alt="Nuotrauka">
         <div class="text-center">
             <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Redaguoti</a>
         </div>
