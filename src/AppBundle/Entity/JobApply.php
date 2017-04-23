@@ -206,6 +206,22 @@ class JobApply
         $this->jobAd = $jobAd;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEvaluation()
+    {
+        return $this->evaluation;
+    }
+
+    /**
+     * @param mixed $evaluation
+     */
+    public function setEvaluation($evaluation)
+    {
+        $this->evaluation = $evaluation;
+    }
+
 
 
 }
