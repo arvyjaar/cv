@@ -26,7 +26,11 @@
                         <br>
                         <a href=" {{ asset('files/cv/'~jobApply.cv) }}" target="_blank">Gyvenimo aprašymas</a>
                         <br>
-                        <button href="#" class="btn btn-primary">Siųsti įvertinimą</button>
+                        {% if jobApply.evaluation %}
+                            <a href="{{ path('evaluation_edit', {'id' : jobApply.evaluation.id}) }}" class="btn btn-primary">Redaguoti įvertinimą</a>
+                        {% else %}
+                        <a href="{{ path('evaluation_new', {'apply_id' : jobApply.id}) }}" class="btn btn-primary">Siųsti įvertinimą</a>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

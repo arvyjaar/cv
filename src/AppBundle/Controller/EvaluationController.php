@@ -3,6 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Evaluation;
+use AppBundle\Entity\JobAd;
+use AppBundle\Entity\JobApply;
+use AppBundle\Entity\UserSeeker;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,30 +24,41 @@ class EvaluationController extends Controller
     /**
      * Creates a new Evaluation entity.
      *
-     * @Route("/naujas", name="evaluation_new")
+     * @Route("/naujas/{apply_id}", name="evaluation_new")
      * @Method({"GET", "POST"})
+     * @ParamConverter("jobApply", class="AppBundle:JobApply", options={"id" = "apply_id"})
      */
-    public function newAction(Request $request)
+
+    public function newAction(JobApply $jobApply, Request $request)
     {
-        if (! $this->getUser()->hasRole('ROLE_USER_EMPLOYER'))
-            throw new AccessDeniedException();
+        $this->denyAccessUnlessGranted('edit', $jobApply);
+
+        // Only one evaluation for one jobApply
+        if ($jobApply->getEvaluation() !== null)
+            throw  new AccessDeniedException();
 
         $evaluation = new Evaluation();
         $form = $this->createForm('AppBundle\Form\Type\EvaluationType', $evaluation);
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($evaluation);
             $em->flush();
 
+            // Gets last insert ID
+
+            $jobApply->setEvaluation($evaluation);
+            $em->persist($jobApply);
+            $em->flush();
+
             return $this->redirectToRoute('evaluation_edit', array('id' => $evaluation->getId()));
         }
 
         return $this->render('evaluation/new.html.twig', array(
-            'evaluation' => $evaluation,
-            'form' => $form->createView(),
+            'jobApply'      => $jobApply,
+            'evaluation'    => $evaluation,
+            'form'          => $form->createView(),
         ));
     }
 
@@ -55,6 +70,7 @@ class EvaluationController extends Controller
      */
     public function editAction(Request $request, Evaluation $evaluation)
     {
+        // TODO Security
 
         $deleteForm = $this->createDeleteForm($evaluation);
         $form = $this->createForm('AppBundle\Form\Type\EvaluationType', $evaluation);
@@ -67,9 +83,10 @@ class EvaluationController extends Controller
         }
 
         return $this->render('evaluation/new.html.twig', array(
-            'evaluation' => $evaluation,
-            'form' => $form->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'jobApply'      => $evaluation->getJobApply(),
+            'evaluation'    => $evaluation,
+            'form'          => $form->createView(),
+            'delete_form'   => $deleteForm->createView(),
         ));
     }
 
@@ -82,7 +99,9 @@ class EvaluationController extends Controller
      */
     public function deleteAction(Request $request, Evaluation $evaluation)
     {
-        $this->denyAccessUnlessGranted('edit', $evaluation);
+        // TODO: Write permissions to this action. Who has access delete?
+        // TODO: What  to do with foreign key on JobApply?
+        //$this->denyAccessUnlessGranted('edit', $evaluation);
 
         $form = $this->createDeleteForm($evaluation);
         $form->handleRequest($request);

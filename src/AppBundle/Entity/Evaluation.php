@@ -111,5 +111,21 @@ class Evaluation
     {
         return $this->comment;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getJobApply()
+    {
+        return $this->jobApply;
+    }
+
+    /**
+     * @param mixed $jobApply
+     */
+    public function setJobApply($jobApply)
+    {
+        $this->jobApply = $jobApply;
+    }
 }
 

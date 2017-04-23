@@ -300,4 +300,20 @@ class UserSeeker extends User
         $this->updatedAt = $updatedAt;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getJobApply()
+    {
+        return $this->jobApply;
+    }
+
+    /**
+     * @param mixed $jobApply
+     */
+    public function setJobApply($jobApply)
+    {
+        $this->jobApply = $jobApply;
+    }
+
 }

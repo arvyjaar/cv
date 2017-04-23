@@ -2,7 +2,7 @@
 
     <div class="form-container">
         <h2>Redaguoti profilį</h2>
-        <p>Grįžti atgal</p>
+        <a href="{{ path('fos_user_profile_show') }}" class="pull-right">Gįžti atgal</a>
 
         {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 

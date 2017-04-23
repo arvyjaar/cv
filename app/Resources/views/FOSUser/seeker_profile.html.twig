@@ -1,9 +1,70 @@
 <div class="container">
     <div class="content-container">
-        <p class="page-heading">Tavo profilis</p>
-        <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo ?? 'no-photo.jpg')}}" alt="Nuotrauka">
-        <div class="text-center">
-            <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Redaguoti</a>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p class="page-heading">Jūsų profilis</p>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img class="img-responsive profile-img"
+                     src="{{ asset('img/profiles/'~app.user.photo ?? 'no-photo.jpg') }}" alt="Nuotrauka">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ app.user.name }} {{ app.user.surname }}</h2>
+                <p>{{ app.user.email }}</p>
+                <p>{{ app.user.phone }}</p>
+                <p>{{ app.user.city }}</p>
+
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Redaguoti</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <b>Gebėjimai</b>
+                <div>
+                    {% for skill in app.user.skills %}
+                        <span class="skill">{{ skill.title }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <b>Trumpas prisistatymas</b>
+                <p>{{ app.user.introduction }}</p>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <b>Pozicijos į kurias kandidatavau</b>
+            </div>
+            <div class="col-md-6">
+                <b>Įvertinimas</b>
+            </div>
+        </div>
+        {% for jobApply in app.user.jobApply %}
+            <div class="row">
+                <div class="col-md-6">
+                    <p><a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}"
+                          target="_blank">{{ jobApply.jobAd.title }}<br>
+                            {{ jobApply.jobAd.owner.title }}
+                    </a></p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ jobApply.evaluation.mark }}</p>
+                    <p>{{ jobApply.evaluation.comment }}</p>
+                </div>
+            </div>
+        {% endfor %}
+
     </div>
 </div>

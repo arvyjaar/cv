@@ -3,9 +3,45 @@
 {% block body %}
     <div class="container">
         <div class="content-container">
-            <p class="page-heading">Seekerio profilis</p>
-            {{ userSeeker.name }}
-            <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~userSeeker.photo)}}" alt="Nuotrauka">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="page-heading">Public profile</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-responsive profile-img"
+                         src="{{ asset('img/profiles/'~userSeeker.photo ?? 'no-photo.jpg') }}" alt="Nuotrauka">
+                </div>
+                <div class="col-md-6">
+                    <h2>{{ userSeeker.name }} {{ userSeeker.surname }}</h2>
+                    <p>{{ userSeeker.email }}</p>
+                    <p>{{ userSeeker.phone }}</p>
+                    <p>{{ userSeeker.city }}</p>
+
+                </div>
+             </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                    <b>Gebėjimai</b>
+                    <div>
+                        {% for skill in userSeeker.skills %}
+                            <span class="skill">{{ skill.title }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                    <b>Trumpas prisistatymas</b>
+                    <p>{{ userSeeker.introduction }}</p>
+                    <hr>
+                </div>
+            </div>
             <a class="pull-right" href="{{ path('user_seeker_index') }}">Grįžti atgal</a>
         </div>
     </div>
