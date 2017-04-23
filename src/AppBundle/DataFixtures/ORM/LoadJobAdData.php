@@ -54,7 +54,7 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
         ⚬Create system architecture and design, and tune and optimize code;
         ⚬Provide ongoing data quality monitoring and support.');
         $jobAd1->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');
-        $jobAd1->setOwner($this->getOwner(1));
+        $jobAd1->setOwner($this->getOwner(14));
 
         $jobAd2 = new JobAd();
         $jobAd2->setTitle('Frontend/JavaScript Developer');
@@ -63,7 +63,7 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
         - Frontend dalies programavimas.
         ');
         $jobAd2->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');
-        $jobAd2->setOwner($this->getOwner(3));
+        $jobAd2->setOwner($this->getOwner(15));
 
         $jobAd3 = new JobAd();
         $jobAd3->setTitle('Projekto vadovas IT projektui');
@@ -72,7 +72,7 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
         •	Aktyvi online ir offline rinkodara;
         •	Operatyvus mokymasis naujų IT įgūdžių ir jų pritaikymas.');
         $jobAd3->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');
-        $jobAd3->setOwner($this->getOwner(4));
+        $jobAd3->setOwner($this->getOwner(16));
 
         $jobAd4 = new JobAd();
         $jobAd4->setTitle('Full Stack PHP programuotojas');
@@ -80,7 +80,7 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
         - Naujų elektroninės komercijos sistemų funkcijų programavimas;
         - Esamų sistemų priežiūra ir tobulinimas.');
         $jobAd4->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');
-        $jobAd4->setOwner($this->getOwner(5));
+        $jobAd4->setOwner($this->getOwner(17));
 
         $manager->persist($jobAd1);
         $manager->persist($jobAd2);
