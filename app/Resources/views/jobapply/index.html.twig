@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="content-container">
+            <p class="page-heading">Kandidatai į poziciją: {{ jobAd.title }}</p>
+
+            {% for jobApply in jobApplies %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-responsive profile-img"
+                                     src="{{ asset('img/profiles/'~jobApply.owner.photo ?? 'no-photo.jpg') }}"
+                                     alt="Nuotrauka">
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{ jobApply.owner.name }} {{ jobApply.owner.surname }}</p>
+                                <p>ToDo: diskriminacija pagal amziu</p>
+                                <p>{{ jobApply.owner.city }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="{{ jobApply.assignmentSolution ?? '#' }}">Užduoties sprendimas</a>
+                        <br>
+                        <a href=" {{ asset('files/cv/'~jobApply.cv) }}" target="_blank">Gyvenimo aprašymas</a>
+                        <br>
+                        <button href="#" class="btn btn-primary">Siųsti įvertinimą</button>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

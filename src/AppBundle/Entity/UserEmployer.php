@@ -234,4 +234,21 @@ class UserEmployer extends User
     {
         $this->updatedAt = $updatedAt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getJobAd()
+    {
+        return $this->jobAd;
+    }
+
+    /**
+     * @param mixed $jobAd
+     */
+    public function setJobAd($jobAd)
+    {
+        $this->jobAd = $jobAd;
+    }
+
 }

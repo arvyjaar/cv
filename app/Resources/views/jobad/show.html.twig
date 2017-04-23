@@ -24,6 +24,10 @@
                 <a href="{{ jobAd.assignment }}">{{ jobAd.assignment }}</a>
             </div>
 
+            <div class="section-heading">
+                <p class="section-heading">Kandidatavo: {{ jobAd.jobApply.count }}</p>
+            </div>
+
             <div class="text-center">
                 {# Don't show for ROLE_EMPLOYER #}
                 {% if not is_granted('ROLE_USER_EMPLOYER') %}
