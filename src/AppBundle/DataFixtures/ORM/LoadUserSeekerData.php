@@ -10,9 +10,21 @@
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\UserSeeker;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadUserSeekerData implements FixtureInterface
+class LoadUserSeekerData implements FixtureInterface, ContainerAwareInterface
 {
+    /**
+    * @var ContainerInterface
+    */
+    private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     public function load(ObjectManager $manager)
     {
         $seeker1 = new UserSeeker();
@@ -25,7 +37,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker1->setPhoto('profile-img.jpg');
         $seeker1->setProfession('IT guru');
         $seeker1->setEmail('jonas@email.com');
-        $seeker1->setPassword('123456');
+        // password encoding
+        $seeker1->setEnabled(true);
+        $seeker1->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker1, '123456');
+        $seeker1->setPassword($password);
 
         $seeker2 = new UserSeeker();
         $seeker2->setName('Onutė');
@@ -37,7 +54,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker2->setPhoto('profile-img.jpg');
         $seeker2->setProfession('IT konsultantė');
         $seeker2->setEmail('onutė@email.com');
-        $seeker2->setPassword('123456');
+        // password encoding
+        $seeker2->setEnabled(true);
+        $seeker2->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker2, '123456');
+        $seeker2->setPassword($password);
 
         $seeker3 = new UserSeeker();
         $seeker3->setName('Sandra');
@@ -49,7 +71,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker3->setPhoto('profile-img.jpg');
         $seeker3->setProfession('Finansų analitikė');
         $seeker3->setEmail('sandra@email.com');
-        $seeker3->setPassword('123456');
+        // password encoding
+        $seeker3->setEnabled(true);
+        $seeker3->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker3, '123456');
+        $seeker3->setPassword($password);
 
         $seeker4 = new UserSeeker();
         $seeker4->setName('Andrius');
@@ -61,7 +88,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker4->setPhoto('profile-img.jpg');
         $seeker4->setProfession('Pardavimų vadybininkas');
         $seeker4->setEmail('andrius@email.com');
-        $seeker4->setPassword('123456');
+        // password encoding
+        $seeker4->setEnabled(true);
+        $seeker4->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker4, '123456');
+        $seeker4->setPassword($password);
 
         $seeker5 = new UserSeeker();
         $seeker5->setName('Rokas');
@@ -73,7 +105,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker5->setPhoto('profile-img.jpg');
         $seeker5->setProfession('IS administratorius');
         $seeker5->setEmail('rokas@email.com');
-        $seeker5->setPassword('123456');
+        // password encoding
+        $seeker5->setEnabled(true);
+        $seeker5->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker5, '123456');
+        $seeker5->setPassword($password);
 
         $seeker6 = new UserSeeker();
         $seeker6->setName('Virgilijus');
@@ -85,7 +122,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker6->setPhoto('profile-img.jpg');
         $seeker6->setProfession('Android programuotojas');
         $seeker6->setEmail('virgilijus@email.com');
-        $seeker6->setPassword('123456');
+        // password encoding
+        $seeker6->setEnabled(true);
+        $seeker6->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker6, '123456');
+        $seeker6->setPassword($password);
 
         $seeker7 = new UserSeeker();
         $seeker7->setName('Antanas');
@@ -97,7 +139,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker7->setPhoto('profile-img.jpg');
         $seeker7->setProfession('Informacinių sistemų inžinierius');
         $seeker7->setEmail('antanas@email.com');
-        $seeker7->setPassword('123456');
+        // password encoding
+        $seeker7->setEnabled(true);
+        $seeker7->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker7, '123456');
+        $seeker7->setPassword($password);
 
         $seeker8 = new UserSeeker();
         $seeker8->setName('Laima');
@@ -109,7 +156,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker8->setPhoto('profile-img.jpg');
         $seeker8->setProfession('Vadybininkė');
         $seeker8->setEmail('laima@email.com');
-        $seeker8->setPassword('123456');
+        // password encoding
+        $seeker8->setEnabled(true);
+        $seeker8->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker8, '123456');
+        $seeker8->setPassword($password);
 
         $seeker9 = new UserSeeker();
         $seeker9->setName('Karolis');
@@ -121,7 +173,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker9->setPhoto('profile-img.jpg');
         $seeker9->setProfession('Elektronikos inžinierius');
         $seeker9->setEmail('karolis@email.com');
-        $seeker9->setPassword('123456');
+        // password encoding
+        $seeker9->setEnabled(true);
+        $seeker9->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker9, '123456');
+        $seeker9->setPassword($password);
 
         $seeker10 = new UserSeeker();
         $seeker10->setName('Aistė');
@@ -133,7 +190,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker10->setPhoto('profile-img.jpg');
         $seeker10->setProfession('Pardavimų vadybininkė');
         $seeker10->setEmail('aiste@email.com');
-        $seeker10->setPassword('123456');
+        // password encoding
+        $seeker10->setEnabled(true);
+        $seeker10->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker10, '123456');
+        $seeker10->setPassword($password);
 
         $seeker11 = new UserSeeker();
         $seeker11->setName('Ovidijus');
@@ -145,7 +207,12 @@ class LoadUserSeekerData implements FixtureInterface
         $seeker11->setPhoto('profile-img.jpg');
         $seeker11->setProfession('Projektų vadovas');
         $seeker11->setEmail('ovidijus@email.com');
-        $seeker11->setPassword('123456');
+        // password encoding
+        $seeker11->setEnabled(true);
+        $seeker11->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.password_encoder');
+        $password = $encoder->encodePassword($seeker11, '123456');
+        $seeker11->setPassword($password);
 
         $manager->persist($seeker1);
         $manager->persist($seeker2);

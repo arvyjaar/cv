@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+    {% if is_granted('ROLE_USER_SEEKER') %}
+        {{ include('FOSUser/seeker_profile.html.twig') }}
+    {% elseif is_granted('ROLE_USER_EMPLOYER') %}
+        {{ include('FOSUser/employer_profile.html.twig') }}
+    {% else %}
+        {# -- do nothing -- #}
+    {% endif %}
+
+{% endblock body %}
