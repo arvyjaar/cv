@@ -25,12 +25,17 @@
             </div>
 
             <div class="text-center">
-                {# Only registered ROLE_SEEKER can apply #}
-                {% if is_granted('ROLE_USER_SEEKER') %}
-                    <a class="btn btn-primary" href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
-                {% else %}
-                    <p>Prisijunkite arba užsiregistruokite</p>
-                    <a class="btn btn-primary disabled" href="{{ path('user_seeker_registration') }}">Kandidatuoti</a>
+                {# Don't show for ROLE_EMPLOYER #}
+                {% if not is_granted('ROLE_USER_EMPLOYER') %}
+                    {# Only registered ROLE_SEEKER can apply #}
+                    {% if is_granted('ROLE_USER_SEEKER') %}
+                        <a class="btn btn-primary"
+                           href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
+                    {% else %}
+                        <p>Prisijunkite arba užsiregistruokite</p>
+                        <a class="btn btn-primary disabled"
+                           href="{{ path('user_seeker_registration') }}">Kandidatuoti</a>
+                    {% endif %}
                 {% endif %}
 
             </div>
