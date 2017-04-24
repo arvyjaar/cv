@@ -54,7 +54,7 @@ class JobApply
     /**
      * One JobApply has One Evaluation.
      * @ORM\OneToOne(targetEntity="Evaluation", inversedBy="jobApply")
-     * @ORM\JoinColumn(name="evaluation_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="evaluation_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $evaluation;
 
