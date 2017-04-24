@@ -3,34 +3,33 @@
 {% block body %}
     <div class="container">
 
-        <div class="col-md-8 col-md-offset-2 form-container">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-container">
 
-            <h2>Užsiregistruok!</h2>
-            <p>Užpildyk žemiau esančius laukus:</p>
+                <p class="page-heading">Užsiregistruok!</p>
+                <p>Užpildyk žemiau esančius laukus:</p>
 
-            {{ form_start(form, {'action': path('user_seeker_registration'), 'method': 'POST'}) }}
-                {{ form_label(form.name, null, {'label': 'Vardas*'}) }}
-                {{ form_row(form.name) }}
+                {{ form_start(form, {'action': path('user_seeker_registration'), 'method': 'POST', 'attr': {'novalidate': 'novalidate'} }) }}
 
-                {{ form_label(form.surname, null, {'label': 'Pavardė*'}) }}
-                {{ form_row(form.surname) }}
+                    {{ form_row(form.name) }}
 
-                {{ form_label(form.email, null, {'label': 'El. Paštas*'}) }}
-                {{ form_row(form.email) }}
+                    {{ form_row(form.surname) }}
 
-                {{ form_label(form.plainPassword.first, null, {'label': 'Slaptažodis*'}) }}
-                {{ form_row(form.plainPassword.first) }}
+                    {{ form_row(form.email) }}
 
-                {{ form_label(form.plainPassword.second, null, {'label': 'Patvirtink slaptažodį*'}) }}
-                {{ form_row(form.plainPassword.second) }}
+                    {{ form_row(form.plainPassword.first) }}
 
-                <div class="text-center">
-                    <input type="hidden" name="role" value="ROLE_USER_SEEKER">
-                    <input type="submit" class="btn btn-primary" value="Registruokis"/>
-                </div>
-            {{ form_end(form) }}
+                    {{ form_row(form.plainPassword.second) }}
 
-            <p class="pull-right">* Visi laukai turi būti užpildyti</p>
+                    <small>* Pažymėti laukai turi būti užpildyti</small>
+
+                    <div class="text-center">
+                        <input type="hidden" name="role" value="ROLE_USER_SEEKER">
+                        <input type="submit" class="btn btn-primary" value="Registruokis"/>
+                    </div>
+                {{ form_end(form) }}
+
+            </div>
         </div>
 
     </div>

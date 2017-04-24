@@ -1,0 +1,14 @@
+<div class="form-group">
+    <label>Reikalavimai</label>
+    <div class="all-requirements">
+        {% if jobAd.requirements %}
+            {% for requirement in jobAd.requirements %}
+                <div id="{{ requirement.id }}" class="skill-block">
+                    <span class="skill">{{ requirement.title }}</span>
+                    <i class="fa fa-times skill-delete" data-id="{{ requirement.id }}" aria-hidden="true"></i>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <a class="add-requirements-btn" data-popup-open="popup-2" href="#">Pridėti reikalavimus</a>
+</div>

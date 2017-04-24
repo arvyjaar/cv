@@ -34,6 +34,15 @@ body {
     border-radius: 45px;
 }
 
+.info-block {
+    padding-bottom: 10px;
+}
+
+.btn-block {
+    padding: 5px 0;
+    text-align: center;
+}
+
 /*NAVIGATION*/
 
 .navbar-brand {
@@ -168,21 +177,41 @@ body {
 /* JobAd list*/
 
 .job-ad-box {
-    min-height: 400px;
+    margin-bottom: 30px;
     padding: 30px;
     border-radius: 30px;
     background-color: lightgrey;
     font-size: 16px;
     position: relative;
+}
 
+.job-title-block {
+    display: table;
+    min-height: 75px;
 }
 
 .job-title {
     padding-bottom: 10px;
     border-bottom: 0.5px solid darkgrey;
-    font-size: 26px;
+    font-size: 20px;
     text-transform: uppercase;
     text-align: center;
+}
+
+.job-list-job-title {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/*JobAd show*/
+
+.candidates-count-block {
+    text-align: right;
+    font-size: 14px;
+}
+
+.candidates-count-block p {
+    margin-bottom: 0;
 }
 
 /*Skills pop-up*/
@@ -250,24 +279,24 @@ body {
     color: whitesmoke;
 }
 
-.skill {
+.skill, .requirement {
     font-weight: 400;
 }
 
-.skill:before {
+.skill:before, .requirement:before {
     content: '#';
     color: grey;
     font-weight: 500;
 }
 
-.skill-block .skill-delete {
+.skill-block .skill-delete, .requirement-delete {
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 15px;
     color: grey;
 }
 
-.skill-block:hover .skill-delete {
+.skill-block:hover .skill-delete, .requirement-delete {
     color: #3379b5;
     cursor: pointer;
 }
@@ -319,14 +348,9 @@ body {
 }
 
 @media only screen and (min-width : 768px) {
-    /*Hides search on mobile view*/
-    .navbar-form {
-        display: none;
-    }
-
-    .navbar-brand {
-        padding-right: 15px;
-        padding-left: 15px;
+    /*jobAd index*/
+    .job-ad-box {
+        min-height: 500px;
     }
 
     /*seekers index*/

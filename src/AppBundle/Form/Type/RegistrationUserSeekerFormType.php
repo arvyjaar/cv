@@ -21,13 +21,13 @@ class RegistrationUserSeekerFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => false])
-            ->add('surname', null, ['label' => false])
-            ->add('email', EmailType::class, array('label' => false))
+            ->add('name', null, ['label' => 'Vardas*'])
+            ->add('surname', null, ['label' => 'Pavardė*'])
+            ->add('email', EmailType::class, ['label' => 'El. paštas*'])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => array('label' => false),
-                'second_options' => array('label' => false),
+                'first_options' => ['label' => 'Slaptažodis*'],
+                'second_options' => ['label' => 'Patvirtink slaptažodį*'],
                 'invalid_message' => 'Slaptažodis nesutampa',
             ]);
     }
@@ -36,7 +36,7 @@ class RegistrationUserSeekerFormType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => UserSeeker::class,
-            'csrf_token_id' => 'registration',
+            'csrf_token_id' => 'registration'
         ));
     }
 }

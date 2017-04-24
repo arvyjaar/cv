@@ -28,13 +28,13 @@ class UserSeeker extends User
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Įrašykite vardą")
+     * @Assert\NotBlank(message = "Koks tavo vardas? Užpildyk šį lauką.")
      */
     protected $name;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Įrašykite vardą")
+     * @Assert\NotBlank(message = "Kokia tavo pavardė? Užpildyk šį lauką.")
      */
     protected $surname;
 
@@ -59,16 +59,19 @@ class UserSeeker extends User
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\NotBlank(message = "Koks tavo telefono numeris? Užpildyk šį lauką.")
      */
     protected $phone;
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\NotBlank(message = "Kuriame mieste gyveni? Užpildyk šį lauką.")
      */
     protected $city;
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\NotBlank(message = "Kokia tavo profesija? Užpildyk šį lauką.")
      */
     protected $profession;
 
@@ -79,6 +82,7 @@ class UserSeeker extends User
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank(message = "Papasakok trumpai apie save - kokie tavo gebėjimai, kokio darbo šiuo metu ieškai.")
      */
     protected $introduction;
 

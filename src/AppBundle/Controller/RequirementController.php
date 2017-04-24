@@ -8,10 +8,15 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Requirement;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/**
+ * Class RequirementController
+ * @package AppBundle\Controller
+ * @Route("reikalavimai")
+ */
 class RequirementController extends Controller
 {
     /**
-     * @Route("/requirement/create",
+     * @Route("/naujas",
      *     defaults = { "page" = 1 },
      *     options = { "expose" = true },
      *     name = "add_requirement",

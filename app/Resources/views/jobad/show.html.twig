@@ -4,31 +4,37 @@
     <div class="container">
         <div class="form-container">
 
+            <div class="text-right">
+                {% if jobAd.jobApply.count > 0 %}
+                    <p>Į šią poziciją kandidatavo: {{ jobAd.jobApply.count }}</p>
+                {% elseif jobAd.jobApplly.count == 0 and is_granted('ROLE_USER_SEEKER') %}
+                    <a href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Tapk pirmu kandidatu į šią poziciją!</a>
+                {% else %}
+                    <p>Kandidatų į šią poziciją kol kas neturite</p>
+                {% endif %}
+            </div>
+
             <div class="text-center">
                 <p class="job-title">{{ jobAd.title }}</p>
             </div>
 
             <div class="text-center">
                 {% for requirement in jobAd.requirements %}
-                    <span class="skill">{{ requirement.title }}</span>
+                    <span class="requirement">{{ requirement.title }}</span>
                 {% endfor %}
             </div>
 
-            <div>
+            <div class="info-block">
                 <p class="section-heading">Apie siūlomą poziciją:</p>
                 <p>{{ jobAd.description }}</p>
             </div>
 
-            <div>
+            <div class="info-block">
                 <p class="section-heading">Užduotis kandidatams</p>
                 <a href="{{ jobAd.assignment }}">{{ jobAd.assignment }}</a>
-            </div>
+            </div cla>
 
-            <div class="section-heading">
-                <p class="section-heading">Kandidatavo: {{ jobAd.jobApply.count }}</p>
-            </div>
-
-            <div class="text-center">
+            <div class="btn-block">
                 {# Don't show for ROLE_EMPLOYER #}
                 {% if not is_granted('ROLE_USER_EMPLOYER') %}
                     {# Only registered ROLE_SEEKER can apply #}
@@ -51,11 +57,13 @@
                 </div>
             {% endif %}
 
-            {% if is_granted('ROLE_USER_EMPLOYER') %}
-                <a class="pull-right" href="{{ path('jobad_my_index') }}">Atgal į sąrašą </a>
-            {% else %}
-                <a class="pull-right" href="{{ path('jobad_index') }}">Atgal į sąrašą </a>
-            {% endif %}
+            <div class="text-right">
+                {% if is_granted('ROLE_USER_EMPLOYER') %}
+                    <a href="{{ path('jobad_my_index') }}">Atgal į sąrašą </a>
+                {% else %}
+                    <a href="{{ path('jobad_index') }}">Atgal į sąrašą </a>
+                {% endif %}
+            </div>
 
         </div>
     </div>

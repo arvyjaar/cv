@@ -9,11 +9,16 @@ use AppBundle\Entity\Skill;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+/**
+ * Class SkillController
+ * @package AppBundle\Controller
+ * @Route("gebejimai")
+ */
 class SkillController extends Controller
 {
 
     /**
-     * @Route("/skill/create",
+     * @Route("/naujas",
      *     defaults = { "page" = 1 },
      *     options = { "expose" = true },
      *     name = "add_skill",

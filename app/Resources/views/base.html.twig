@@ -55,13 +55,14 @@
                                     {% if is_granted('ROLE_USER_SEEKER') %}
                                         {#Ivertinimu ir skalebimu i kuriuos kandidavo sarasas#}
                                         <li><a href="#">Mano įvertinimai</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('jobad_index') }}">Peržiūrėti darbo skelbimus</a></li>
                                     {% elseif is_granted('ROLE_USER_EMPLOYER') %}
                                         <li><a href="{{ path('jobad_my_index') }}">Mano skelbimai</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="{{ path('jobad_new') }}">Sukurti naują skelbimą</a></li>
                                     {% endif %}
                                 </ul>
-                            </li>
                             <li><a href="{{ path('fos_user_security_logout') }}">Atsijungti</a></li>
                         {% endif %}
                     </ul>

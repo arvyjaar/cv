@@ -8,7 +8,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Entity\UserSeeker;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
@@ -19,15 +18,17 @@ class ProfileUserSeekerFormType extends AbstractType
         $builder
             ->add('name', null, ['label' => 'Vardas'])
             ->add('surname', null, ['label' => 'Pavardė'])
-            ->add('email', EmailType::class, ['label' => 'El. paštas'])
+            ->add('email', EmailType::class, [
+                'label' => 'El. paštas'
+            ])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
-                'label' => 'Gimimo data'
+                'label' => 'Gimimo data',
+                'invalid_message' => 'Neteisingas datos formatas. Įvesk datą tokiu formatu: mmmm-mm-dd.'
             ])
-
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'label' => false,
@@ -35,9 +36,6 @@ class ProfileUserSeekerFormType extends AbstractType
             ->add('phone', null, ['label' => 'Telefonas'])
             ->add('city', null, ['label' => 'Miestas'])
             ->add('profession', null, [
-                'constraints' => [
-                    new NotBlank()
-                ],
                 'label' => 'Profesija'
             ])
             ->add('introduction', TextareaType::class, ['label' => 'Trumpas prisistatymas', 'required' => false]);

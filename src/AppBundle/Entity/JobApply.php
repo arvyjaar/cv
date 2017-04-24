@@ -32,6 +32,7 @@ class JobApply
      * @var string
      *
      * @ORM\Column(name="cv", type="string", length=255)
+     * @Assert\NotBlank(message="Prašome įkelti CV.")
      */
     private $cv;
 
@@ -61,6 +62,7 @@ class JobApply
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\NotBlank(message="Prašome įkelti užduoties sprendimą.")
      * @Assert\Url(message="Užduoties sprendimas turi būti pateiktas kaip nuoroda. Pvz.:https://drive.google.com/open...")
      */
     private $assignment_solution;

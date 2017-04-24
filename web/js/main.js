@@ -42,7 +42,7 @@ function deleteRequirement() {
             $('#' + requirement_id).remove();
         },
         fail: function (error) {
-            console.log('Failed to delete skill');
+            console.log('Failed to delete requirement');
             console.log(error);
         }
     });
@@ -54,7 +54,8 @@ $(document).ready(function() {
     $('.js-datepicker').datepicker({
         dateFormat: 'yy-mm-dd',
         changeMonth: true,
-        changeYear: true
+        changeYear: true,
+        yearRange: "-70:+0"
     });
 
     $('#fos_user_profile_form_birthday').click(function () {
@@ -117,8 +118,11 @@ $(document).ready(function() {
                 success: function (response) {
                     var inserted_id = response.id;
                     skills_input.val('');
-                    $('.added-requirements').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + skill +
+                    $('.added-skills').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + skill +
                         '</span>' + '<i class="fa fa-times skill-delete" aria-hidden="true" data-id="'+ inserted_id +'"></i></div>');
+
+                    $('.added-requirements').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + skill +
+                        '</span>' + '<i class="fa fa-times requirement-delete" aria-hidden="true" data-id="'+ inserted_id +'"></i></div>');
 
                     // Delete skill after skill was added
                     $('.skill-delete').unbind().click(deleteSkill);

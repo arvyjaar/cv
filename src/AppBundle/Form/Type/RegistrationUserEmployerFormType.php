@@ -24,13 +24,13 @@ class RegistrationUserEmployerFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['label' => false])
-            ->add('email', EmailType::class, array('label' => false))
+            ->add('title', null, ['label' => 'Įmonė*'])
+            ->add('email', EmailType::class, ['label' => 'El. Paštas*'])
             //->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => array('label' => false),
-                'second_options' => array('label' => false),
+                'first_options' => ['label' => 'Slaptažodis*'],
+                'second_options' => ['label' => 'Patvirtink slaptažodį*'],
                 'invalid_message' => 'Slaptažodis nesutampa',
             ]);
     }

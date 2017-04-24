@@ -4,7 +4,7 @@
         <a href="{{ path('fos_user_profile_show') }}" class="pull-right">Gįžti atgal</a>
         <h3 class="form-title">Redaguoti profilį</h3>
 
-        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit', 'novalidate': 'novalidate'} }) }}
 
             {{ form_row(form.name) }}
 
@@ -12,6 +12,7 @@
 
             {{ form_row(form.phone) }}
 
+            {#TODO translate email validation message#}
             {{ form_row(form.email) }}
 
             <label for="form.imageFile">{{ app.user.photo ? 'Pakeisti nuotrauką' : 'Įkelti nuotrauką' }}</label>
