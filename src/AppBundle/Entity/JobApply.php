@@ -32,7 +32,6 @@ class JobApply
      * @var string
      *
      * @ORM\Column(name="cv", type="string", length=255)
-     * @Assert\NotBlank(message="Prašome įkelti CV.")
      */
     private $cv;
 
@@ -65,7 +64,7 @@ class JobApply
      * @Assert\NotBlank(message="Prašome įkelti užduoties sprendimą.")
      * @Assert\Url(message="Užduoties sprendimas turi būti pateiktas kaip nuoroda. Pvz.:https://drive.google.com/open...")
      */
-    private $assignment_solution;
+    private $assignmentSolution;
 
     /**
      * Many JobApply have One JobAd.
@@ -165,15 +164,15 @@ class JobApply
      */
     public function getAssignmentSolution()
     {
-        return $this->assignment_solution;
+        return $this->assignmentSolution;
     }
 
     /**
      * @param string $assignment_solution
      */
-    public function setAssignmentSolution($assignment_solution)
+    public function setAssignmentSolution($assignmentSolution)
     {
-        $this->assignment_solution = $assignment_solution;
+        $this->assignmentSolution = $assignmentSolution;
     }
 
     /**

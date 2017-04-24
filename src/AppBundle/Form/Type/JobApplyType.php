@@ -15,11 +15,12 @@ class JobApplyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('assignmentSolution', null, ['label' => false])
+            ->add('assignmentSolution', null, [
+                'label' => 'Nuoroda į užduoties sprendimą'
+            ])
             ->add('imageFile', VichFileType::class, [
                 'label' => false
             ]);
-
     }
     
     /**

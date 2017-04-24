@@ -6,20 +6,10 @@
             <p class="page-heading">Kandidatuok!</p>
 
             {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
-                {#{{  form_errors(form) }}#}
 
-                <div class="form-group">
-                    {{ form_label(form.assignmentSolution, 'Nuoroda į užduoties sprendimą') }}
-                    {{ form_widget(form.assignmentSolution) }}
-                    {# TODO fix errors rendering problem - errors doesn't render below input field#}
-                    {{ form_errors(form.assignmentSolution) }}
-                </div>
+                {{ form_row(form.assignmentSolution) }}
 
-                <div class="form-group">
-                    {{ form_label(form.imageFile, 'Įkelk savo CV') }}
-                    {{ form_widget(form.imageFile) }}
-                    {{ form_errors(form.imageFile) }}
-                </div>
+                {{ form_row(form.imageFile) }}
 
                 <div class="btn-block">
                     <input class="btn btn-primary" type="submit" value="Kandidatuoti" />

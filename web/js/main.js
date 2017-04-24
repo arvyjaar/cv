@@ -50,7 +50,27 @@ function deleteRequirement() {
 
 $(document).ready(function() {
 
-    //Datepicker for user profile edit form;
+    //Styles CV file upload field
+    $("#appbundle_jobapply_imageFile_file").jfilestyle({
+        buttonBefore: true,
+        buttonText: '<i class="fa fa-upload" aria-hidden="true"></i>',
+        placeholder: 'Įkelk savo CV'
+    });
+
+    //Styles profile image upload field
+    $("#fos_user_profile_form_imageFile_file").jfilestyle({
+        buttonBefore: true,
+        buttonText: '<i class="fa fa-upload" aria-hidden="true"></i>',
+        placeholder: 'Įkelk nuotrauką'
+    });
+
+    var delete_label = $('#fos_user_profile_form_imageFile_delete');
+    delete_label.parent("label").html('<input type=' + '"checkbox"'
+        + 'id="' + 'fos_user_profile_form_imageFile_delete" name="'
+        + 'fos_user_profile_form[imageFile][delete]"' + 'value="1'
+        + '" /> Ištrinti?');
+
+    //Datepicker for user profile edit form
     $('.js-datepicker').datepicker({
         dateFormat: 'yy-mm-dd',
         changeMonth: true,

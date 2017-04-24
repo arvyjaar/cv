@@ -7,6 +7,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/bootstrap-3.3.7.min.css') }}">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="{{ asset('css/jquery-filestyle.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
@@ -77,6 +78,7 @@
     <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
             integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/jquery-filestyle.min.js') }}"></script>
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="https://use.fontawesome.com/1542fb3828.js"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
