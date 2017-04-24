@@ -51,20 +51,22 @@
                 <b>Įvertinimas</b>
             </div>
         </div>
-        {#{% for jobApply in app.user.jobApply %}#}
-            {#<div class="row">#}
-                {#<div class="col-md-6">#}
-                    {#<p><a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}"#}
-                          {#target="_blank">{{ jobApply.jobAd.title }}<br>#}
-                            {#{{ jobApply.jobAd.owner.title }}#}
-                    {#</a></p>#}
-                {#</div>#}
-                {#<div class="col-md-6">#}
-                    {#<p>{{ jobApply.evaluation.mark }}</p>#}
-                    {#<p>{{ jobApply.evaluation.comment }}</p>#}
-                {#</div>#}
-            {#</div>#}
-        {#{% endfor %}#}
+        {% for jobApply in app.user.jobApply %}
+            <div class="row">
+                <div class="col-md-6">
+                    <p><a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}"
+                          target="_blank">{{ jobApply.jobAd.title }}<br>
+                            {{ jobApply.jobAd.owner.title }}
+                    </a></p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ jobApply.evaluation.mark }}</p>
+                    <p>{{ jobApply.evaluation.comment }}</p>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% dump(app.user.averageMark) %}
 
     </div>
 </div>
