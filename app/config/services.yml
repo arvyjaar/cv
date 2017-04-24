@@ -24,3 +24,10 @@ services:
             - { name: security.voter }
         # small performance boost
         public: false
+
+    # get age from birthday
+    app.twig_extension:
+        class: AppBundle\Twig\AppExtension
+        public: false
+        tags:
+            - { name: twig.extension }

@@ -8,22 +8,25 @@
             <h3><i>{{ jobApply.owner.name }} {{ jobApply.owner.surname }}</i></h3>
             {{ form_start(form) }}
             {{ form_widget(form) }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <input class="btn btn-primary" type="submit" value="Siųsti"/>
+                    </div>
 
-            <div class="text-center">
-                <input class="btn btn-primary" type="submit" value="Siųsti" />
-            </div>
-
-            {{ form_end(form) }}
-
-            {# Delete form. Visable only in edit route#}
-            {% if( form.vars.value.id != null) %}
-                {{ form_start(delete_form) }}
-                <div class="text-center">
-                    <input  class="btn btn-default" type="submit" value="Ištrinti">
+                    {{ form_end(form) }}
                 </div>
-                {{ form_end(delete_form) }}
-            {% endif %}
-
+                <div class="col-md-6">
+                    {# Delete form. Visable only in edit route#}
+                    {% if( form.vars.value.id != null) %}
+                        {{ form_start(delete_form) }}
+                        <div class="text-center">
+                            <input class="btn btn-danger" type="submit" value="Ištrinti" onsubmit="confirm('Ar tikrai norite ištrinti?')">
+                        </div>
+                        {{ form_end(delete_form) }}
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

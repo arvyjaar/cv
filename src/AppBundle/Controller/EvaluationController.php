@@ -31,8 +31,9 @@ class EvaluationController extends Controller
 
     public function newAction(JobApply $jobApply, Request $request)
     {
-        $this->denyAccessUnlessGranted('edit', $jobApply);
-
+        // Only this JobAd author can write evaluation
+        $jobAd = $jobApply->getJobAd();
+        $this->denyAccessUnlessGranted('edit', $jobAd);
         // Only one evaluation for one jobApply
         if ($jobApply->getEvaluation() !== null)
             throw  new AccessDeniedException();
@@ -52,7 +53,8 @@ class EvaluationController extends Controller
             $em->persist($jobApply);
             $em->flush();
 
-            return $this->redirectToRoute('evaluation_edit', array('id' => $evaluation->getId()));
+            //return $this->redirectToRoute('evaluation_edit', array('id' => $evaluation->getId()));
+            return $this->redirectToRoute('jobapply_index', ['id' => $jobAd->getId()]);
         }
 
         return $this->render('evaluation/new.html.twig', array(
@@ -70,7 +72,9 @@ class EvaluationController extends Controller
      */
     public function editAction(Request $request, Evaluation $evaluation)
     {
-        // TODO Security
+        // Only this JobAd author can edit evaluation
+        $jobAd = $evaluation->getJobApply()->getJobAd();
+        $this->denyAccessUnlessGranted('edit', $jobAd);
 
         $deleteForm = $this->createDeleteForm($evaluation);
         $form = $this->createForm('AppBundle\Form\Type\EvaluationType', $evaluation);
@@ -79,7 +83,7 @@ class EvaluationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('evaluation_edit', array('id' => $evaluation->getId()));
+            return $this->redirectToRoute('jobapply_index', ['id' => $jobAd->getId()]);
         }
 
         return $this->render('evaluation/new.html.twig', array(
@@ -99,9 +103,9 @@ class EvaluationController extends Controller
      */
     public function deleteAction(Request $request, Evaluation $evaluation)
     {
-        // TODO: Write permissions to this action. Who has access delete?
-        // TODO: What  to do with foreign key on JobApply?
-        //$this->denyAccessUnlessGranted('edit', $evaluation);
+        // Only this JobAd author can edit evaluation
+        $jobAd = $evaluation->getJobApply()->getJobAd();
+        $this->denyAccessUnlessGranted('edit', $jobAd);
 
         $form = $this->createDeleteForm($evaluation);
         $form->handleRequest($request);
@@ -112,7 +116,7 @@ class EvaluationController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('jobad_index');
+        return $this->redirectToRoute('jobapply_index', ['id' => $jobAd->getId()]);
     }
 
     /**

@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-md-6">
                                 <p>{{ jobApply.owner.name }} {{ jobApply.owner.surname }}</p>
-                                <p>ToDo: diskriminacija pagal amziu</p>
+                                <p>Amžius: {{ jobApply.owner.birthDay|age }}</p>
                                 <p>{{ jobApply.owner.city }}</p>
                             </div>
                         </div>
@@ -28,9 +28,12 @@
                         <br>
                         {% if jobApply.evaluation %}
                             <a href="{{ path('evaluation_edit', {'id' : jobApply.evaluation.id}) }}" class="btn btn-primary">Redaguoti įvertinimą</a>
+                            <br>
+                            <p>Įvertinau: {{ jobApply.evaluation.mark }}</p>
                         {% else %}
                         <a href="{{ path('evaluation_new', {'apply_id' : jobApply.id}) }}" class="btn btn-primary">Siųsti įvertinimą</a>
                         {% endif %}
+                        <br>
                     </div>
                 </div>
             {% endfor %}
