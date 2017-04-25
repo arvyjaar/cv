@@ -79,7 +79,8 @@ class UserEmployer extends User
      */
     private $jobAd;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->jobAd = new ArrayCollection();
     }
@@ -250,5 +251,4 @@ class UserEmployer extends User
     {
         $this->jobAd = $jobAd;
     }
-
 }

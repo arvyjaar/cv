@@ -62,8 +62,9 @@ class JobAdController extends Controller
      */
     public function newAction(Request $request)
     {
-        if (! $this->getUser()->hasRole('ROLE_USER_EMPLOYER'))
+        if (! $this->getUser()->hasRole('ROLE_USER_EMPLOYER')) {
             throw new AccessDeniedException();
+        }
 
         $jobAd = new Jobad();
         $form = $this->createForm('AppBundle\Form\Type\JobAdType', $jobAd);

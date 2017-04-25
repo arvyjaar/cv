@@ -6,6 +6,7 @@
  * Date: 17.4.23
  * Time: 11.51
  */
+
 namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -15,7 +16,6 @@ use AppBundle\Entity\JobAd;
 use AppBundle\Entity\UserEmployer;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
 
 class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
@@ -38,7 +38,8 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
     /**
      * @var UserEmployer
      */
-    public function getOwner($id){
+    public function getOwner($id)
+    {
         $owner = $this->container->get('doctrine')
             ->getRepository('AppBundle:UserEmployer')
             ->find($id);
@@ -49,7 +50,11 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
     {
         $jobAd1 = new JobAd();
         $jobAd1->setTitle('Web Application Developer');
-        $jobAd1->setDescription('Joberate is expanding operations in Lithuania and are looking for creative and highly intelligent developers with technical and scientific educational backgrounds. We are also looking for motivated or self taught programmers. The successful candidate must have a passion for programming, and show demonstrable expertise in more than one modern programming languages. Responsibilities include but are not limited to: ⚬design, code, and support a new data analytics platform; 
+        $jobAd1->setDescription('Joberate is expanding operations in Lithuania and are looking for creative and highly
+            intelligent developers with technical and scientific educational backgrounds. We are also looking for 
+            motivated or self taught programmers. The successful candidate must have a passion for programming, and 
+            show demonstrable expertise in more than one modern programming languages. Responsibilities include but are 
+            not limited to: ⚬design, code, and support a new data analytics platform; 
         ⚬Create and support various applications, APIs, and 3rd party tools;
         ⚬Create system architecture and design, and tune and optimize code;
         ⚬Provide ongoing data quality monitoring and support.');
@@ -76,7 +81,8 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
 
         $jobAd4 = new JobAd();
         $jobAd4->setTitle('Full Stack PHP programuotojas');
-        $jobAd4->setDescription('- Spartus elektroninės komercijos WEB/MOBILE tobulinimas ir naujausių programavimo technologijų diegimas (darbas su Frontend ir Backend dalimis);
+        $jobAd4->setDescription('- Spartus elektroninės komercijos WEB/MOBILE tobulinimas ir naujausių programavimo 
+            technologijų diegimas (darbas su Frontend ir Backend dalimis);
         - Naujų elektroninės komercijos sistemų funkcijų programavimas;
         - Esamų sistemų priežiūra ir tobulinimas.');
         $jobAd4->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');

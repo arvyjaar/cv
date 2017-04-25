@@ -6,7 +6,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
 class EvaluationType extends AbstractType
 {
 
@@ -17,12 +16,10 @@ class EvaluationType extends AbstractType
             ->add('comment', null, ['label' => "Komentaras"]);
     }
 
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Evaluation'
         ));
     }
-
 }

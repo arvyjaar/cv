@@ -36,8 +36,8 @@ class LoadRequirementData implements FixtureInterface, OrderedFixtureInterface, 
     /**
      * @var JobAd
      */
-    public function getJobAd($id){
-
+    public function getJobAd($id)
+    {
         $jobAd = $this->container->get('doctrine')
             ->getRepository('AppBundle:JobAd')
             ->find($id);
@@ -79,5 +79,4 @@ class LoadRequirementData implements FixtureInterface, OrderedFixtureInterface, 
 
         $manager->flush();
     }
-
 }

@@ -72,7 +72,7 @@ class Requirement
 
     /**
      * @param object $jobAd
-     * 
+     *
      * @return Requirement
      */
     public function setJobAd($jobAd)
@@ -92,4 +92,3 @@ class Requirement
         return $this->jobAd;
     }
 }
-

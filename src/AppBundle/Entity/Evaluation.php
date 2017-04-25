@@ -128,4 +128,3 @@ class Evaluation
         $this->jobApply = $jobApply;
     }
 }
-

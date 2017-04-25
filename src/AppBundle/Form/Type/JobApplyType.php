@@ -22,7 +22,7 @@ class JobApplyType extends AbstractType
                 'label' => false
             ]);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -40,6 +40,4 @@ class JobApplyType extends AbstractType
     {
         return 'appbundle_jobapply';
     }
-
-
 }

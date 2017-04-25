@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Requirement;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -22,7 +22,8 @@ class RequirementController extends Controller
      *     name = "add_requirement",
      * )
      */
-    public function createAction(Request $request) {
+    public function createAction(Request $request)
+    {
 
         $requirementTitle = $request->request->get('requirement');
         $adID = (integer)$request->request->get('ad-id');

@@ -222,8 +222,4 @@ class JobApply
     {
         $this->evaluation = $evaluation;
     }
-
-
-
 }
-

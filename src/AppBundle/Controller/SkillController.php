@@ -24,8 +24,8 @@ class SkillController extends Controller
      *     name = "add_skill",
      * )
      */
-    public function createAction(Request $request) {
-
+    public function createAction(Request $request)
+    {
         $skillTitle = $request->request->get('skill');
         //$userID = (integer)$request->request->get('user-id');
 
@@ -63,8 +63,9 @@ class SkillController extends Controller
     public function deleteAction(Request $request, Skill $skill)
     {
         // Security! Check user.
-        if ($skill->getUser() !== $this->getUser())
+        if ($skill->getUser() !== $this->getUser()) {
             throw new AccessDeniedException();
+        }
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($skill);
@@ -72,6 +73,4 @@ class SkillController extends Controller
 
         return new JsonResponse();
     }
-
-
 }

@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-
 /**
  * Class CandidatesController
  * @package AppBundle\Controller
@@ -39,8 +38,8 @@ class CandidatesController extends Controller
         );
 
         return $this->render('jobapply/index.html.twig', array(
-            'jobAd'         => $jobAd,
-            'jobApplies'    => $jobApplies,
+            'jobAd' => $jobAd,
+            'jobApplies' => $jobApplies,
         ));
     }
 }

@@ -44,8 +44,9 @@ class JobApplyController extends Controller
      */
     public function newAction(JobAd $jobad, Request $request)
     {
-        if (! $this->getUser()->hasRole('ROLE_USER_SEEKER'))
+        if (! $this->getUser()->hasRole('ROLE_USER_SEEKER')) {
             throw new AccessDeniedException();
+        }
 
         $jobApply = new Jobapply();
         $form = $this->createForm('AppBundle\Form\Type\JobApplyType', $jobApply);
@@ -147,7 +148,6 @@ class JobApplyController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('jobapply_delete', array('id' => $jobApply->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
