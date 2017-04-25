@@ -3,6 +3,7 @@
 /*GLOBAL*/
 body {
     font-family: 'Raleway', Helvetica, Arial;
+    background-image: url("../img/escheresque.png");
 }
 
 .btn {
@@ -18,20 +19,31 @@ body {
 .page-heading {
     font-size: 26px;
     font-weight: 500;
+    color: dimgrey;
 }
 
 .section-heading {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     margin-top: 5px;
 }
 
 .content-container {
-    margin-top: 40px;
+    margin-top: 140px;
     margin-bottom: 40px;
-    padding: 25px 70px 40px;
+    padding: 30px;
     border: 1px solid lightgray;
     border-radius: 45px;
+    background-color: white;
+}
+
+.form-container {
+    margin-top: 140px;
+    margin-bottom: 40px;
+    padding: 40px 60px 20px;
+    border: 1px solid lightgray;
+    border-radius: 45px;
+    background-color: white;
 }
 
 .info-block {
@@ -45,19 +57,67 @@ body {
 
 /*NAVIGATION*/
 
+.navbar {
+    min-height: 70px;
+}
+
+.nav {
+    min-height: 70px;
+}
+
+.navbar-nav li {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.navbar-nav li a {
+    font-size: 16px;
+    font-weight: 400;
+    color: darkgrey;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.navbar-nav li a:hover {
+    color: #c32aff;
+    background-color: white;
+}
+
+.navbar-nav li a:focus {
+    background-color: white;
+}
+
+.navbar-nav li a:focus:hover {
+    background-color: white;
+}
+
 .navbar-brand {
-    padding-right: 50px;
-    padding-left: 50px;
-    font-size: 36px;
+    height: 70px;
+    font-size: 40px;
     font-weight: 500;
+    display: table;
 }
 
-.navbar-default .navbar-brand span{
+.navbar-toggle .icon-bar {
+    background-color: #00b8e7;
+    height: 4px;
+    width: 28px;
+}
+
+.navbar-toggle {
+    padding: 20px;
+}
+
+.navbar-fixed-top .navbar-brand .get{
     color: #00b8e7;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-.navbar-default .navbar-brand {
-    color: #7030a0;
+.navbar-fixed-top .navbar-brand .hired{
+    color: #c32aff;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .navbar-left .form-control {
@@ -68,10 +128,6 @@ body {
 
 .navbar-form .form-control {
     width: 250px;
-}
-
-.navbar-default {
-    background-color: transparent;
 }
 
 .navbar-form {
@@ -90,6 +146,15 @@ body {
     margin-bottom: 0;
 }
 
+.affix {
+    -webkit-transition:padding 0.2s ease-out;
+    -moz-transition:padding 0.2s ease-out;
+    -o-transition:padding 0.2s ease-out;
+    transition:padding 0.2s ease-out;
+    background-color: white;
+    border-bottom: 0.5px solid lightgrey;
+}
+
 /* HOMEPAGE */
 
 .slogan-block {
@@ -97,15 +162,17 @@ body {
 }
 
 .slogan-background {
-    padding: 300px 0;
+    padding: 400px 0;
     background-size: cover;
-    background-image: url("../img/bg.jpg");
+    background-position: center center;
+    background-image: url("../img/cover.jpg");
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .slogan {
     position: absolute;
-    z-index: 1;
+    z-index: 200;
     right: 50%;
     margin-right: -450px;
     width: 900px;
@@ -135,14 +202,6 @@ body {
     max-height: 350px;
 }
 
-.form-container {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    padding: 40px 60px 20px;
-    border: 1px solid lightgray;
-    border-radius: 45px;
-}
-
 /*Users Seekers list*/
 .seeker-box {
     min-height: 550px;
@@ -160,14 +219,14 @@ body {
     border-radius: 20px;
 }
 
-.show-more-btn {
-    position: absolute;
-    z-index: 0;
-    bottom: 25px;
-    right: 50%;
-    max-width: 124px;
-    margin-right: -62px;
-}
+/*.show-more-btn {*/
+    /*position: absolute;*/
+    /*z-index: 0;*/
+    /*bottom: 25px;*/
+    /*right: 50%;*/
+    /*max-width: 124px;*/
+    /*margin-right: -62px;*/
+/*}*/
 
 .box-upper-row {
     padding-bottom: 10px;
@@ -180,8 +239,7 @@ body {
     margin-bottom: 30px;
     padding: 30px;
     border-radius: 30px;
-    background-color: lightgrey;
-    font-size: 16px;
+    background-color: #ededed;
     position: relative;
 }
 
@@ -192,8 +250,7 @@ body {
 
 .job-title {
     padding-bottom: 10px;
-    border-bottom: 0.5px solid darkgrey;
-    font-size: 20px;
+    font-size: 18px;
     text-transform: uppercase;
     text-align: center;
 }
@@ -202,6 +259,8 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
+
+
 
 /*JobAd show*/
 
@@ -335,10 +394,6 @@ body {
 /* Small Devices, Tablets */
 
 @media only screen and (max-width : 768px) {
-    /*Hides search on mobile view*/
-    .navbar-form {
-        display: none;
-    }
 
     .navbar-brand {
         padding-right: 15px;
@@ -347,10 +402,60 @@ body {
 
 }
 
+@media only screen and (min-width: 1080px) {
+    .content-container {
+        padding: 25px 70px 40px;
+    }
+
+}
+
 @media only screen and (min-width : 768px) {
-    /*jobAd index*/
-    .job-ad-box {
-        min-height: 500px;
+
+    .affix-top {
+        /* navbar style at top */
+        background:transparent;
+        border-color:transparent;
+        padding: 15px;
+        -webkit-transition:all 0.5s ease;
+        -moz-transition:all 0.5s ease;
+        -o-transition:all 0.5s ease;
+        transition:all 0.5s ease;
+    }
+
+    .navbar-nav li {
+        padding-top: 10px;
+        text-align: center;
+    }
+
+    .navbar-nav li a {
+        padding: 8px 20px;
+        min-width: 136px;
+    }
+
+    .dropdown-menu li {
+        margin: 0;
+        padding-top: 0;
+    }
+
+    .nav .open a {
+        background-color: white;
+    }
+
+    .nav .open a:hover {
+        background-color: white;
+    }
+
+    .nav .open a:focus {
+        background-color: white;
+    }
+
+    .job-ad-info {
+        min-height: 146px;
+        text-align: justify;
+    }
+
+    .job-ad-requirements {
+        min-height: 62px;
     }
 
     /*seekers index*/
