@@ -62,10 +62,20 @@ class LoadRequirementData implements FixtureInterface, OrderedFixtureInterface, 
         $requirement4->setTitle('javascript');
         $requirement4->setJobAd($this->getJobAd(2));
 
+        $requirement5 = new Requirement();
+        $requirement5->setTitle('javascript');
+        $requirement5->setJobAd($this->getJobAd(4));
+
+        $requirement6 = new Requirement();
+        $requirement6->setTitle('javascript');
+        $requirement6->setJobAd($this->getJobAd(3));
+
         $manager->persist($requirement1);
         $manager->persist($requirement2);
         $manager->persist($requirement3);
         $manager->persist($requirement4);
+        $manager->persist($requirement5);
+        $manager->persist($requirement6);
 
         $manager->flush();
     }

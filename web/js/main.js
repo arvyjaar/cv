@@ -50,6 +50,18 @@ function deleteRequirement() {
 
 $(document).ready(function() {
 
+    //TODO - refactor all methods
+
+    //Changes navbar padding and background color on main page
+    var first_section = $('#some-content');
+    if ( first_section && first_section.length ) {
+        $('#nav').affix({
+            offset: {
+                top: first_section.offset().top
+            }
+        });
+    }
+
     //Styles CV file upload field
     $("#appbundle_jobapply_imageFile_file").jfilestyle({
         buttonBefore: true,
@@ -64,6 +76,7 @@ $(document).ready(function() {
         placeholder: 'Įkelk nuotrauką'
     });
 
+    // Changes uploaded file delete label
     var delete_label = $('#fos_user_profile_form_imageFile_delete');
     delete_label.parent("label").html('<input type=' + '"checkbox"'
         + 'id="' + 'fos_user_profile_form_imageFile_delete" name="'
