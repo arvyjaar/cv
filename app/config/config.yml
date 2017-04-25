@@ -80,8 +80,8 @@ fos_user:
     service:
         user_manager: pugx_user_manager
     from_email:
-        address: "%from_email%"
-        sender_name: "%from_email_name%"
+        address: info@gethired.eu
+        sender_name: Gethired
 
 # PGUX Multi User Bundle configuration
 pugx_multi_user:
