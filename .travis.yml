@@ -16,3 +16,6 @@ script:
   - bin/console doctrine:schema:update --force
 #  - bin/console doctrine:fixtures:load -q
   - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src --ignore=*/DataFixtures/*
+
+notifications:
+  slack: nfqakademija:D39BmJYjiYZsrNylRdNfIBzm
