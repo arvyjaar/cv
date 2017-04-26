@@ -23,7 +23,8 @@ abstract class User extends BaseUser
      */
     protected $id;
 
-    public function setEmail($email){
+    public function setEmail($email)
+    {
         parent::setEmail($email);
         parent::setUsername($email);
     }
@@ -36,7 +37,8 @@ abstract class User extends BaseUser
             return ['ROLE_USER_SEEKER'];
         } elseif ($this instanceof UserEmployer) {
             return ['ROLE_USER_EMPLOYER'];
-        } else
+        } else {
             return ['ROLE_DEFAULT'];
+        }
     }
 }

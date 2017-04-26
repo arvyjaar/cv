@@ -93,6 +93,4 @@ class Skill
     {
         return $this->user;
     }
-
 }
-

@@ -18,7 +18,7 @@ class JobAdType extends AbstractType
             ->add('description', null, ['label' => 'Apie siūlomą poziciją:'])
             ->add('assignment', null, ['label' => 'Užduotis kandidatams (url)*']);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -32,8 +32,8 @@ class JobAdType extends AbstractType
     /**
      * {@inheritdoc}
      */
-/*    public function getBlockPrefix()
-    {
-        return 'appbundle_jobad';
-    }*/
+    /*    public function getBlockPrefix()
+        {
+            return 'appbundle_jobad';
+        }*/
 }

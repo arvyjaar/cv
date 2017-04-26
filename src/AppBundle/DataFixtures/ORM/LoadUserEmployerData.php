@@ -6,6 +6,7 @@
  * Date: 17.4.23
  * Time: 10.26
  */
+
 namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -39,7 +40,10 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer1->setSector('IRT');
         $employer1->setCity('Vilnius');
         $employer1->setPhone('+37061358794');
-        $employer1->setDescription('Šviesolaidinio interneto, skaiteninės televizijos bei fiksuotojo telefono ryšio paslaugos. INIT - lietuviško kapitalo telekomunikacijų bendrovė, savo veiklą pradėjusi nuo 1990 m. šiandien yra trečia pagal dydį telekomunikacijų paslaugų teikėja Lietuvoje. Šiuo metu paslaugas teikiame: Vilniuje, Kaune, Mažeikiuose.');
+        $employer1->setDescription('Šviesolaidinio interneto, skaiteninės televizijos bei fiksuotojo telefono ryšio 
+            paslaugos. INIT - lietuviško kapitalo telekomunikacijų bendrovė, savo veiklą pradėjusi nuo 1990 m. šiandien 
+            yra trečia pagal dydį telekomunikacijų paslaugų teikėja Lietuvoje. Šiuo metu paslaugas teikiame: Vilniuje, 
+            Kaune, Mažeikiuose.');
         $employer1->setEmail('cgates@email.com');
         // password encoding
         $employer1->setEnabled(true);
@@ -53,7 +57,8 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer2->setSector('IT');
         $employer2->setCity('Vilnius');
         $employer2->setPhone('+370613555555');
-        $employer2->setDescription('Programinės įrangos kūrimas, elektroninio verslo sprendimai, internetinių svetainių kūrimas.');
+        $employer2->setDescription('Programinės įrangos kūrimas, elektroninio verslo sprendimai, internetinių 
+            svetainių kūrimas.');
         $employer2->setEmail('nfq@email.com');
         // password encoding
         $employer2->setEnabled(true);
@@ -81,7 +86,9 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer4->setSector('IT');
         $employer4->setCity('Vilnius');
         $employer4->setPhone('+370614155888');
-        $employer4->setDescription('„Blue Bridge“ teikia kompleksines IT paslaugas ir sprendimus stambioms verslo bei valstybinėms organizacijoms. Kompetencijos sritys: debesų kompiuterija, IT valdymas ir priežiūra, duomenų perdavimas ir kibernetinis saugumas, serveriai ir duomenų saugyklos, infrastruktūros valdymas.');
+        $employer4->setDescription('„Blue Bridge“ teikia kompleksines IT paslaugas ir sprendimus stambioms verslo bei 
+            valstybinėms organizacijoms. Kompetencijos sritys: debesų kompiuterija, IT valdymas ir priežiūra, duomenų 
+            perdavimas ir kibernetinis saugumas, serveriai ir duomenų saugyklos, infrastruktūros valdymas.');
         $employer4->setEmail('bluebridge@email.com');
         // password encoding
         $employer4->setEnabled(true);
@@ -95,7 +102,10 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer5->setSector('IRT');
         $employer5->setCity('Vilnius');
         $employer5->setPhone('+370614145789');
-        $employer5->setDescription('2017 m. vasario 1 d. „Teo“, „Omnitel“ ir „Baltic Data Center“ tapo viena įmone - „Telia Lietuva“. Nuo šiol telekomunikacijų, IT ir TV paslaugas teikiame iš vienų rankų. TEO įmonių grupė yra didžiausios Šiaurės ir Baltijos šalių telekomunikacijų bendrovės "TeliaSonera AB (publ)" įmonių grupės dalis.');
+        $employer5->setDescription('2017 m. vasario 1 d. „Teo“, „Omnitel“ ir „Baltic Data Center“ tapo viena įmone - 
+            „Telia Lietuva“. Nuo šiol telekomunikacijų, IT ir TV paslaugas teikiame iš vienų rankų. TEO įmonių grupė 
+            yra didžiausios Šiaurės ir Baltijos šalių telekomunikacijų bendrovės "TeliaSonera AB (publ)" įmonių 
+            grupės dalis.');
         $employer5->setEmail('telia@email.com');
         // password encoding
         $employer5->setEnabled(true);
@@ -109,7 +119,8 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer6->setSector('Farmacija');
         $employer6->setCity('Vilnius');
         $employer6->setPhone('+370614145789');
-        $employer6->setDescription('UAB "Sicor Biotech" – biotechnologinės farmacijos įmonė, kurianti ir gaminanti rekombinantinius biofarmacinius preparatus pagal pažangiausias mokslo ir gamybos technologijas.');
+        $employer6->setDescription('UAB "Sicor Biotech" – biotechnologinės farmacijos įmonė, kurianti ir gaminanti 
+            rekombinantinius biofarmacinius preparatus pagal pažangiausias mokslo ir gamybos technologijas.');
         $employer6->setEmail('sicorbiotech@email.com');
         // password encoding
         $employer6->setEnabled(true);
@@ -137,7 +148,9 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer8->setSector('IT');
         $employer8->setCity('Vilnius');
         $employer8->setPhone('+370614178945');
-        $employer8->setDescription('Esame komanda, kurianti kokybiškus IT sprendimus pasaulinėms telekomunikacijų, finansų ir logistikos rinkoms. Patirtis įvairiose verslo srityse, kaupta nuo pat įmonės įkūrimo 1988 m. rugsėjo 27 d., leidžia mums būti universaliems, priimti ir realizuoti bet kokį klientų siūlomą iššūkį.');
+        $employer8->setDescription('Esame komanda, kurianti kokybiškus IT sprendimus pasaulinėms telekomunikacijų, 
+            finansų ir logistikos rinkoms. Patirtis įvairiose verslo srityse, kaupta nuo pat įmonės įkūrimo 1988 m. 
+            rugsėjo 27 d., leidžia mums būti universaliems, priimti ir realizuoti bet kokį klientų siūlomą iššūkį.');
         $employer8->setEmail('balticamadeus@email.com');
         // password encoding
         $employer8->setEnabled(true);
@@ -165,7 +178,9 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer10->setSector('IT');
         $employer10->setCity('Vilnius');
         $employer10->setPhone('+370614178945');
-        $employer10->setDescription('Vertybinių popierių birža „Nasdaq Vilnius” priklauso didžiausiai biržų operatorei pasaulyje Nasdaq. Lietuvoje vertybinių popierių birža „Nasdaq Vilnius” yra vieninetelė reguliuojamos rinkos operatorė, teikianti vertybinių popierių prekybos, listingo bei informacines paslaugas.');
+        $employer10->setDescription('Vertybinių popierių birža „Nasdaq Vilnius” priklauso didžiausiai biržų operatorei 
+            pasaulyje Nasdaq. Lietuvoje vertybinių popierių birža „Nasdaq Vilnius” yra vieninetelė reguliuojamos 
+            rinkos operatorė, teikianti vertybinių popierių prekybos, listingo bei informacines paslaugas.');
         $employer10->setEmail('nasdaq@email.com');
         // password encoding
         $employer10->setEnabled(true);
@@ -201,6 +216,5 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $manager->persist($employer11);
 
         $manager->flush();
-
     }
 }

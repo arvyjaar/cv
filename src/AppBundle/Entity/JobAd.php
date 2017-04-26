@@ -71,7 +71,6 @@ class JobAd
     private $employer;
 
 
-
     /**
      * Get id
      *
@@ -210,4 +209,3 @@ class JobAd
         $this->employer = $employer;
     }
 }
-

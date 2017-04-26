@@ -1,0 +1,18 @@
+sudo: false
+language: php
+php:
+  - 7.1
+services:
+  - mysql
+before_script:
+# Get the token from github and put it in travis repo under GITHUB_COMPOSER_AUTH ENV variable, then uncomment line below.
+#  - composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH
+
+# Below are necessary(?) commands for database creating. But they do not work.
+
+  - composer install --no-interaction --prefer-dist
+script:
+  - bin/console doctrine:database:create
+  - bin/console doctrine:schema:update --force
+#  - bin/console doctrine:fixtures:load -q
+  - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src

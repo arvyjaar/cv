@@ -22,12 +22,12 @@ class JobAdVoter extends Voter
     protected function supports($attribute, $subject)
     {
         // if the attribute isn't one we support, return false
-        if (!in_array($attribute, array(self::VIEW, self::EDIT))) {
+        if (! in_array($attribute, array(self::VIEW, self::EDIT))) {
             return false;
         }
 
         // only vote on JobAd objects inside this voter
-        if (!$subject instanceof JobAd) {
+        if (! $subject instanceof JobAd) {
             return false;
         }
 
@@ -38,7 +38,7 @@ class JobAdVoter extends Voter
     {
         $user = $token->getUser();
 
-        if (!$user instanceof User) {
+        if (! $user instanceof User) {
             // the user must be logged in; if not, deny access
             return false;
         }

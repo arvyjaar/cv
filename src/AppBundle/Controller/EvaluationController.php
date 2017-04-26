@@ -35,8 +35,9 @@ class EvaluationController extends Controller
         $jobAd = $jobApply->getJobAd();
         $this->denyAccessUnlessGranted('edit', $jobAd);
         // Only one evaluation for one jobApply
-        if ($jobApply->getEvaluation() !== null)
+        if ($jobApply->getEvaluation() !== null) {
             throw  new AccessDeniedException();
+        }
 
         $evaluation = new Evaluation();
         $form = $this->createForm('AppBundle\Form\Type\EvaluationType', $evaluation);
@@ -58,9 +59,9 @@ class EvaluationController extends Controller
         }
 
         return $this->render('evaluation/new.html.twig', array(
-            'jobApply'      => $jobApply,
-            'evaluation'    => $evaluation,
-            'form'          => $form->createView(),
+            'jobApply' => $jobApply,
+            'evaluation' => $evaluation,
+            'form' => $form->createView(),
         ));
     }
 
@@ -87,10 +88,10 @@ class EvaluationController extends Controller
         }
 
         return $this->render('evaluation/new.html.twig', array(
-            'jobApply'      => $evaluation->getJobApply(),
-            'evaluation'    => $evaluation,
-            'form'          => $form->createView(),
-            'delete_form'   => $deleteForm->createView(),
+            'jobApply' => $evaluation->getJobApply(),
+            'evaluation' => $evaluation,
+            'form' => $form->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 

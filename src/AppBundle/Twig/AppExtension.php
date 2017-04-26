@@ -6,7 +6,6 @@
 
 namespace AppBundle\Twig;
 
-
 class AppExtension extends \Twig_Extension
 {
     public function getFilters()
@@ -18,10 +17,9 @@ class AppExtension extends \Twig_Extension
 
     public function ageFilter($birthday)
     {
-        if ($birthday === null)
-
+        if ($birthday === null) {
             return 'nenurodytas';
-        else {
+        } else {
             $now = new \DateTime('now');
             $diff = $now->diff($birthday);
 

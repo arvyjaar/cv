@@ -15,5 +15,9 @@ parameters:
     mailer_user: ~
     mailer_password: ~
 
+    # FOSUser from_email
+    from_email: ~
+    from_email_name: ~
+
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt

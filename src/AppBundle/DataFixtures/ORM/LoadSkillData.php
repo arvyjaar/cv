@@ -6,6 +6,7 @@
  * Date: 17.4.23
  * Time: 14.17
  */
+
 namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -36,7 +37,8 @@ class LoadSkillData implements FixtureInterface, OrderedFixtureInterface, Contai
     /**
      * @var UserSeeker
      */
-    public function getOwner($id){
+    public function getOwner($id)
+    {
 
         $owner = $this->container->get('doctrine')
             ->getRepository('AppBundle:UserSeeker')
@@ -69,5 +71,4 @@ class LoadSkillData implements FixtureInterface, OrderedFixtureInterface, Contai
 
         $manager->flush();
     }
-
 }

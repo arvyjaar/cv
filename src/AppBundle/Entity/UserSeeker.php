@@ -99,7 +99,8 @@ class UserSeeker extends User
      */
     protected $jobApply;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->jobApply = new ArrayCollection();
         $this->skills = new ArrayCollection();
@@ -319,5 +320,4 @@ class UserSeeker extends User
     {
         $this->jobApply = $jobApply;
     }
-
 }
