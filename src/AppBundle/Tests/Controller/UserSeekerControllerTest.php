@@ -14,7 +14,8 @@ class UserSeekerControllerTest extends WebTestCase
 
         // Go to the list view
         $crawler = $client->request('GET', '/iesko-darbo/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /iesko-darbo/");
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(),
+        "Unexpected HTTP status code for GET /iesko-darbo/");
 
         // Go to the show view
         $crawler = $client->click($crawler->selectLink('show')->link());

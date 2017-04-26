@@ -178,9 +178,10 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer10->setSector('IT');
         $employer10->setCity('Vilnius');
         $employer10->setPhone('+370614178945');
-        $employer10->setDescription('Vertybinių popierių birža „Nasdaq Vilnius” priklauso didžiausiai biržų operatorei 
-            pasaulyje Nasdaq. Lietuvoje vertybinių popierių birža „Nasdaq Vilnius” yra vieninetelė reguliuojamos 
-            rinkos operatorė, teikianti vertybinių popierių prekybos, listingo bei informacines paslaugas.');
+        $employer10->setDescription('Vertybinių Vertybinių popierių birža „Nasdaq Vilnius” priklauso didžiausiai 
+            biržų operatorei pasaulyje Nasdaq. Lietuvoje vertybinių popierių birža „Nasdaq Vilnius” yra vieninetelė 
+            reguliuojamos rinkos operatorė, teikianti vertybinių popierių prekybos, listingo bei 
+            informacines paslaugas.');
         $employer10->setEmail('nasdaq@email.com');
         // password encoding
         $employer10->setEnabled(true);

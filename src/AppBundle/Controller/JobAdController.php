@@ -132,7 +132,8 @@ class JobAdController extends Controller
     }
 
     /**
-     * Deletes a jobAd entity. TODO: I think, we shouldn't delete jobAds. We should write 'Valid To' instead. Valid to - lb gerai, bet manau, kad reiketu ir galimybes istrinti. o jeigu nebenori, kad tavo skelbimas butu viesas?
+     * Deletes a jobAd entity. TODO: I think, we shouldn't delete jobAds. We should write 'Valid To' instead. Valid to
+     * - lb gerai, bet manau, kad reiketu ir galimybes istrinti. o jeigu nebenori, kad tavo skelbimas butu viesas?
      *
      * @Route("/{id}", name="jobad_delete")
      * @Method("DELETE")

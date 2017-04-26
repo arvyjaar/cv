@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="user_seeker")
  * @UniqueEntity(fields = "username", targetClass = "AppBundle\Entity\User", message="fos_user.username.already_used")
- * @UniqueEntity(fields = "email", targetClass = "AppBundle\Entity\User", message="Vartotojas su tokiu su adresu jau yra")
+ * @UniqueEntity(fields = "email", targetClass = "AppBundle\Entity\User", message="Vartotojas tokiu su adresu jau yra")
  * @Vich\Uploadable
  */
 class UserSeeker extends User
@@ -82,7 +82,7 @@ class UserSeeker extends User
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Assert\NotBlank(message = "Papasakok trumpai apie save - kokie tavo gebėjimai, kokio darbo šiuo metu ieškai.")
+     * @Assert\NotBlank(message = "Papasakok trumpai apie save- kokie tavo gebėjimai, kokio darbo šiuo metu ieškai.")
      */
     protected $introduction;
 
