@@ -62,7 +62,7 @@ class JobApply
      *
      * @ORM\Column(type="string", nullable=true)
      * @Assert\NotBlank(message="Prašome įkelti užduoties sprendimą.")
-     * @Assert\Url(message="Užduoties sprendimas turi būti pateiktas kaip nuoroda. Pvz.:https://drive.google.com/open...")
+     * @Assert\Url(message="Užduoties sprendimas turi būti pateiktas kaip nuoroda. Pvz.:https://drive.google.com/")
      */
     private $assignmentSolution;
 
