@@ -59,7 +59,7 @@
 
             <div class="text-right">
                 {% if is_granted('ROLE_USER_EMPLOYER') %}
-                    <a href="{{ path('jobad_my_index') }}">Atgal į sąrašą </a>
+                    <a href="{{ path('jobad_my_index') }}">Peržiūrėti kitus jūsų skelbimus</a>
                 {% else %}
                     <a href="{{ path('jobad_index') }}">Atgal į sąrašą </a>
                 {% endif %}

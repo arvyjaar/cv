@@ -1,29 +1,34 @@
 <div class="container">
+    <div class="col-md-10 col-md-offset-1 form-container">
 
-    <div class="form-container">
-        <h2>Redaguoti profilį</h2>
-        <a href="{{ path('fos_user_profile_show') }}" class="pull-right">Gįžti atgal</a>
+        <p class="page-heading">Redaguoti profilį</p>
+        <a href="{{ path('fos_user_profile_show') }}" class="form-upper-btn">Gįžti atgal</a>
 
         {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
-        <label for="form_name">ĮMONĖS PAVADINIMAS *</label>
-        {{ form_row(form.title) }}
-        <label for="form_name">SEKTORIUS *</label>
-        {{ form_row(form.sector) }}
-        <label for="form_name">TELEFONO NUMERIS</label>
-        {{ form_row(form.phone) }}
-        <label for="form_name">LOGOTIPAS</label>
-        <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo ?? 'no-logo.jpg')}}" alt="Logotipas">
-        {{ form_row(form.imageFile) }}
-        <label for="form_name">MIESTAS</label>
-        {{ form_row(form.city) }}
-        <label for="form_name">APRAŠYMAS</label>
-        {{ form_row(form.description) }}
+            {{ form_row(form.title) }}
 
-        <input type="submit" value="Redaguoti"/>
+            {{ form_row(form.email) }}
+
+            {{ form_row(form.phone) }}
+
+            <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo ?? 'no-logo.jpg')}}" alt="Logotipas">
+            {{ form_row(form.imageFile) }}
+
+            {{ form_row(form.city) }}
+
+            {{ form_row(form.sector) }}
+
+            {{ form_row(form.description) }}
+
+            <div class="text-right">
+                <small>* Pažymėti laukai turi būti užpildyti</small>
+            </div>
+
+            <div class="text-center">
+                <input class="btn btn-primary" type="submit" value="Redaguoti"/>
+            </div>
         {{ form_end(form) }}
 
-        <p>* Laukai turi būti užpildyti</p>
     </div>
-
 </div>

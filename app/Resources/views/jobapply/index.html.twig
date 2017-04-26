@@ -6,34 +6,40 @@
             <p class="page-heading">Kandidatai į poziciją: {{ jobAd.title }}</p>
 
             {% for jobApply in jobApplies %}
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img class="img-responsive profile-img"
-                                     src="{{ asset('img/profiles/'~jobApply.owner.photo ?? 'no-photo.jpg') }}"
-                                     alt="Nuotrauka">
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{ jobApply.owner.name }} {{ jobApply.owner.surname }}</p>
-                                <p>Amžius: {{ jobApply.owner.birthDay|age }}</p>
-                                <p>{{ jobApply.owner.city }}</p>
-                            </div>
+                <div class="row-list">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="img-responsive profile-img"
+                                 src="{{ asset('img/profiles/'~jobApply.owner.photo ?? 'no-photo.jpg') }}"
+                                 alt="Nuotrauka">
                         </div>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a href="{{ jobApply.assignmentSolution ?? '#' }}">Užduoties sprendimas</a>
-                        <br>
-                        <a href=" {{ asset('files/cv/'~jobApply.cv) }}" target="_blank">Gyvenimo aprašymas</a>
-                        <br>
-                        {% if jobApply.evaluation %}
-                            <a href="{{ path('evaluation_edit', {'id' : jobApply.evaluation.id}) }}" class="btn btn-primary">Redaguoti įvertinimą</a>
-                            <br>
-                            <p>Įvertinau: {{ jobApply.evaluation.mark }}</p>
-                        {% else %}
-                        <a href="{{ path('evaluation_new', {'apply_id' : jobApply.id}) }}" class="btn btn-primary">Siųsti įvertinimą</a>
-                        {% endif %}
-                        <br>
+                        <div class="col-md-4">
+                            <ul class="profile-list">
+                                <li class="section-heading">{{ jobApply.owner.name }} {{ jobApply.owner.surname }}</li>
+                                <li>Amžius: {{ jobApply.owner.birthDay|age }}</li>
+                                <li>{{ jobApply.owner.city }}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="profile-list">
+                                <li>
+                                    <a href="{{ jobApply.assignmentSolution ?? '#' }}">Užduoties sprendimas</a>
+                                </li>
+                                <li>
+                                    <a href=" {{ asset('files/cv/'~jobApply.cv) }}" target="_blank">Gyvenimo aprašymas</a>
+                                </li>
+                                {% if jobApply.evaluation %}
+                                    <li>Įvertinau: {{ jobApply.evaluation.mark }}</li>
+                                    <li>
+                                        <a class="btn btn-primary" href="{{ path('evaluation_edit', {'id' : jobApply.evaluation.id}) }}">Redaguoti įvertinimą</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="{{ path('evaluation_new', {'apply_id' : jobApply.id}) }}" class="btn btn-primary">Įvertink kandidatą!</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             {% endfor %}

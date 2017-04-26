@@ -3,29 +3,29 @@
 {% block body %}
     <div class="container">
         <div class="content-container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p class="page-heading">Public profile</p>
-                </div>
+
+            <div class="text-right">
+                <a href="{{ app.request.headers.get('referer') }}">Grįžti atgal</a>
             </div>
+
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-6">
                     <img class="img-responsive profile-img"
                          src="{{ asset('img/profiles/'~userSeeker.photo ?? 'no-photo.jpg') }}" alt="Nuotrauka">
                 </div>
-                <div class="col-md-6">
-                    <h2>{{ userSeeker.name }} {{ userSeeker.surname }}</h2>
-                    <p>{{ userSeeker.email }}</p>
-                    <p>{{ userSeeker.phone }}</p>
-                    <p>{{ userSeeker.city }}</p>
-
+                <div class="col-md-8 col-sm-6">
+                    <ul class="profile-list">
+                        <li class="profile-user-name">{{ userSeeker.name }} {{ userSeeker.surname }}</li>
+                        <li>{{ userSeeker.email }}</li>
+                        <li>{{ userSeeker.phone }}</li>
+                        <li>{{ userSeeker.city }}</li>
+                    </ul>
                 </div>
-             </div>
+            </div>
 
             <div class="row">
                 <div class="col-md-12">
-                    <hr>
-                    <b>Gebėjimai</b>
+                    <p class="section-heading profile-heading">Gebėjimai</p>
                     <div>
                         {% for skill in userSeeker.skills %}
                             <span class="skill">{{ skill.title }}</span>
@@ -36,13 +36,11 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <hr>
-                    <b>Trumpas prisistatymas</b>
+                    <p class="section-heading profile-heading">Trumpas prisistatymas</p>
                     <p>{{ userSeeker.introduction }}</p>
-                    <hr>
                 </div>
             </div>
-            <a class="pull-right" href="{{ path('user_seeker_index') }}">Grįžti atgal</a>
+
         </div>
     </div>
 {% endblock %}

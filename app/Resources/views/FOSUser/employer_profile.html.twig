@@ -1,50 +1,45 @@
 <div class="container">
     <div class="content-container">
+
+        <a class="form-upper-btn" href="{{ path('fos_user_profile_edit') }}">Redaguoti</a>
+
         <div class="row">
-            <div class="col-md-12 text-center">
-                <p class="page-heading">Jūsų profilis</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6">
                 <img class="img-responsive profile-img"
                      src="{{ asset('img/profiles/'~app.user.photo ?? 'no-logo.jpg') }}" alt="Logotipas">
             </div>
-            <div class="col-md-6">
-                <h2>{{ app.user.title }}</h2>
-                <p>{{ app.user.email }}</p>
-                <p>{{ app.user.phone }}</p>
-                <p>{{ app.user.city }}</p>
-
-            </div>
-            <div class="col-md-2">
-                <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Redaguoti</a>
+            <div class="col-md-8 col-sm-6">
+                <ul class="profile-list">
+                    <li class="profile-user-name">{{ app.user.title }}</li>
+                    <li>{{ app.user.email }}</li>
+                    <li>{{ app.user.phone }}</li>
+                    <li>{{ app.user.city }}</li>
+                </ul>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <hr>
-                <b>Apie įmonę</b>
+                <p class="section-heading profile-heading">Trumpai apie įmonę</p>
                 <p>{{ app.user.description }}</p>
-                <hr>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <p class="section-heading">Mano sukurti skelbimai</p>
+                <p class="section-heading profile-heading">Mano sukurti skelbimai</p>
             </div>
         </div>
-        {% for jobad in app.user.jobAd %}
-        <div class="row">
-            <div class="col-md-6">
-                <a href="{{ path('jobad_show', {'id': jobad.id }) }}" target="_blank">{{ jobad.title }}</a>
-            </div>
-            <div class="col-md-6 text-right">
-                <a href="{{ path('jobapply_index', {'id': jobad.id }) }}" target="_blank">Peržiūrėti kandidatų sąrašą ({{ jobad.jobApply.count }})</a>
-            </div>
-        </div>
-        {% endfor %}
+
+        <ul class="profile-list">
+            {% for jobad in app.user.jobAd %}
+                <li>
+                    <a href="{{ path('jobad_show', {'id': jobad.id }) }}">{{ jobad.title }}</a>
+                    <small>
+                        <a href="{{ path('jobapply_index', {'id': jobad.id }) }}"> | Peržiūrėti kandidatų sąrašą ({{ jobad.jobApply.count }})</a>
+                    </small>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 </div>

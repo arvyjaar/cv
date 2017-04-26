@@ -8,16 +8,20 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Entity\UserEmployer;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class ProfileUserEmployerFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['label' => false])
-            ->add('description', null, ['label' => false])
-            ->add('phone', null, ['label' => false])
-            ->add('city', null, ['label' => false])
+            ->add('title', null, ['label' => 'Įmonės pavadinimas'])
+            ->add('description', null, ['label' => 'Trumpai apie įmonę'])
+            ->add('phone', null, ['label' => 'Telefonas'])
+            ->add('email', EmailType::class, [
+                'label' => 'El. paštas'
+            ])
+            ->add('city', null, ['label' => 'Miestas'])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'label' => false,
@@ -26,7 +30,7 @@ class ProfileUserEmployerFormType extends AbstractType
                 'constraints' => [
                     new NotBlank()
                 ],
-                'label' => false
+                'label' => 'Sektorius'
             ]);
     }
 

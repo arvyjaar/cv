@@ -64,6 +64,12 @@ body {
     text-align: center;
 }
 
+.row-list {
+    background-color: #ededed;
+    border-radius: 30px;
+    padding: 10px;
+}
+
 /*NAVIGATION*/
 
 .navbar {
@@ -255,12 +261,12 @@ body {
 /*USERS SEEKERS LIST*/
 
 
-.seeker-box-img {
+.seekers-list-img {
     border-radius: 20px;
 }
 
 .seekers-list-skills {
-    margin: 10px 0;
+    margin: 5px 0 10px;
     padding: 10px;
     border-radius: 20px;
     background-image: url("../img/debut_light.png");
@@ -404,7 +410,6 @@ body {
 }
 
 .skill-block:hover .skill-delete, .requirement-delete {
-    color: #3379b5;
     cursor: pointer;
 }
 
@@ -442,6 +447,7 @@ body {
 /* Small Devices, Tablets */
 
 @media only screen and (max-width : 768px) {
+
     .form-container {
        padding: 30px 20px;
     }
@@ -546,4 +552,10 @@ body {
 
     }
 
+}
+
+@media only screen and (min-width: 1200px) {
+    .box-lg {
+        min-height: 550px;
+    }
 }

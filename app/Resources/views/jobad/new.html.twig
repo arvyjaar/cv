@@ -4,6 +4,10 @@
     <div class="container">
         <div class="form-container">
 
+            <div class="text-right">
+                <a href="{{ app.request.headers.get('referer') }}">Grįžti atgal</a>
+            </div>
+
             <p class="page-heading">{{ form.vars.value.id ? "Redaguok skelbimą!" : "Sukurk skelbimą!" }}</p>
 
             {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
@@ -14,9 +18,9 @@
                     {# Add requirements form #}
                     {{ include('jobad/add_requirements_form.html.twig') }}
 
-                    {{ form_row(form.description) }}
-
                     {{ form_row(form.assignment) }}
+
+                    {{ form_row(form.description) }}
 
                     <div class="text-right">
                         <small>* Pažymėti laukai turi būti užpildyti</small>
