@@ -186,6 +186,7 @@ $(document).ready(function() {
 
         if(requirement) {
             var ad_id = $(this).data('id');
+            console.log(ad_id);
             var create_requirement_url = Routing.generate('add_requirement');
 
             $.ajax({
@@ -196,6 +197,7 @@ $(document).ready(function() {
                     'ad-id': ad_id
                 },
                 success: function (response) {
+                    console.log(response);
                     var inserted_id = response.id;
                     requirements_input.val('');
                     $('.added-requirements').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + requirement +

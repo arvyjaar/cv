@@ -1,12 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div class="container">
         <div class="content-container">
-            <p class="page-heading">Employerio profilis</p>
-            {{ userEmployer.title }}
-            <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~userEmployer.photo ?? 'no-logo.jpg')}}" alt="Nuotrauka">
-            <a class="pull-right" href="{{ path('user_employer_index') }}">Grįžti atgal</a>
+
+            <a class="form-upper-btn" href="{{ path('user_employer_index') }}">Grįžti atgal</a>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <img class="img-responsive profile-img"
+                         src="{{ asset('img/profiles/'~userEmployer.photo ?? 'no-logo.jpg') }}" alt="Logotipas">
+                </div>
+                <div class="col-md-8 col-sm-6">
+                    <ul class="profile-list">
+                        <li class="profile-user-name">{{ userEmployer.title }}</li>
+                        <li>{{ userEmployer.email }}</li>
+                        <li>{{ userEmployer.phone }}</li>
+                        <li>{{ userEmployer.city }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="section-heading profile-heading">Trumpai apie įmonę</p>
+                    <p>{{ userEmployer.description }}</p>
+                </div>
+            </div>
+
         </div>
     </div>
+
 {% endblock %}

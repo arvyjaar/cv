@@ -6,6 +6,10 @@
 
             <p class="page-heading">Darbo skelbimai</p>
 
+            {% if  path(app.request.attributes.get('_route')) == '/skelbimai/mano-skelbimai' and jobAds == null %}
+                <p>Jūs dar nesukūrėte skelbimų</p>
+            {% endif %}
+
             {% for jobAd in jobAds %}
 
                 <!-- This is to list 3 divs in one row -->

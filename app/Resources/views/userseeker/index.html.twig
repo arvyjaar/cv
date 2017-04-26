@@ -7,16 +7,16 @@
             <p class="page-heading">Šiuo metu darbo ieško:</p>
 
             {% for userSeeker in userSeekers %}
-                <!-- This is to list 3 divs in one row -->
+                {# Lists 3 divs in one row #}
                 {% if loop.index0 is divisibleby(3) %}
                     <div class="row">
                 {% endif %}
                     <div class="col-md-4">
-                        <div class="job-ad-box">
+                        <div class="job-ad-box box-lg">
 
                             <div class="row">
                                 <div class="col-md-12 col-sm-6">
-                                    <img class="img-responsive seeker-box-img" src="{{ asset('img/profiles/'~userSeeker.photo ?? 'no-photo.jpg')}}" alt="Nuotrauka">
+                                    <img class="img-responsive seekers-list-img" src="{{ asset('img/profiles/'~userSeeker.photo ?? 'no-photo.jpg')}}" alt="Nuotrauka">
                                 </div>
                                 <div class="col-md-12 col-sm-6 col-xs-12">
                                     <ul class="profile-list">
@@ -42,9 +42,8 @@
                         </div>
                     </div>
                 {% if loop.index is divisibleby(3) or loop.last %}
-                    </div><!-- /row -->
+                    </div> {# /row #}
                 {% endif %}
-
             {% endfor %}
         </div>
     </div>

@@ -22,7 +22,6 @@ class AppExtension extends \Twig_Extension
         } else {
             $now = new \DateTime('now');
             $diff = $now->diff($birthday);
-
             return $diff->y;
         }
     }
