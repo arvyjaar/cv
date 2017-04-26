@@ -1,31 +1,26 @@
 <div class="container">
     <div class="content-container">
+
+        <a class="form-upper-btn" href="{{ path('fos_user_profile_edit') }}">Redaguoti</a>
+
         <div class="row">
-            <div class="col-md-12 text-center">
-                <p class="page-heading">Jūsų profilis</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6">
                 <img class="img-responsive profile-img"
                      src="{{ asset('img/profiles/'~app.user.photo ?? 'no-photo.jpg') }}" alt="Nuotrauka">
             </div>
-            <div class="col-md-6">
-                <h2>{{ app.user.name }} {{ app.user.surname }}</h2>
-                <p>{{ app.user.email }}</p>
-                <p>{{ app.user.phone }}</p>
-                <p>{{ app.user.city }}</p>
-
-            </div>
-            <div class="col-md-2">
-                <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Redaguoti</a>
+            <div class="col-md-8 col-sm-6">
+                <ul class="profile-list">
+                    <li class="profile-user-name">{{ app.user.name }} {{ app.user.surname }}</li>
+                    <li>{{ app.user.email }}</li>
+                    <li>{{ app.user.phone }}</li>
+                    <li>{{ app.user.city }}</li>
+                </ul>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <hr>
-                <b>Gebėjimai</b>
+                <p class="section-heading profile-heading">Gebėjimai</p>
                 <div>
                     {% for skill in app.user.skills %}
                         <span class="skill">{{ skill.title }}</span>
@@ -36,35 +31,35 @@
 
         <div class="row">
             <div class="col-md-12">
-                <hr>
-                <b>Trumpas prisistatymas</b>
+                <p class="section-heading profile-heading">Trumpas prisistatymas</p>
                 <p>{{ app.user.introduction }}</p>
-                <hr>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                <b>Pozicijos į kurias kandidatavau</b>
+                <p class="section-heading profile-heading">Pozicijos į kurias kandidatavau</p>
+                <ul class="profile-list">
+                    {% for jobApply in app.user.jobApply %}
+                        <li class="profile-jobapply-list-item">
+                            <a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}" target="_blank">{{ jobApply.jobAd.title }}</a>
+                            <span>| {{ jobApply.jobAd.owner.title }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
             <div class="col-md-6">
-                <b>Įvertinimas</b>
+                <p class="section-heading profile-heading">Įvertinimai</p>
+                <ul class="profile-list">
+                    {% for jobApply in app.user.jobApply %}
+                        <li class="profile-jobapply-list-item">
+                            <span class="mark">{{ jobApply.evaluation.mark }}</span>
+                            <span class="comment">{{ jobApply.evaluation.comment }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-        {% for jobApply in app.user.jobApply %}
-            <div class="row">
-                <div class="col-md-6">
-                    <p><a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}"
-                          target="_blank">{{ jobApply.jobAd.title }}<br>
-                            {{ jobApply.jobAd.owner.title }}
-                    </a></p>
-                </div>
-                <div class="col-md-6">
-                    <p>{{ jobApply.evaluation.mark }}</p>
-                    <p>{{ jobApply.evaluation.comment }}</p>
-                </div>
-            </div>
-        {% endfor %}
 
         {#{% dump(app.user.averageMark) %}#}
 

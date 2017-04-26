@@ -1,0 +1,14 @@
+<div class="form-group">
+    <label>Gebėjimai</label>
+    <div class="all-skills">
+        {% if app.user.skills %}
+            {% for skill in app.user.skills %}
+                <div id="{{ skill.id }}" class="skill-block">
+                    <span class="skill">{{ skill.title }}</span>
+                    <i class="fa fa-times skill-delete" data-id="{{ skill.id }}" aria-hidden="true"></i>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <a class="add-skills-btn" data-popup-open="popup-1" href="#">Pridėti gebėjimus</a>
+</div>

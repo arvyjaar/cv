@@ -16,14 +16,9 @@
                 </div>
             {{ form_end(form) }}
 
-            {# Delete form. Visable only in edit route#}
-            {% if( form.vars.value.id != null) %}
-                {{ form_start(delete_form) }}
-                <div class="btn-block">
-                    <input  class="btn btn-default" type="submit" value="Ištrinti">
-                </div>
-                {{ form_end(delete_form) }}
-            {% endif %}
+            <div class="text-right">
+                <a href="{{ app.request.headers.get('referer') }}">Atgal</a>
+            </div>
 
         </div>
     </div>

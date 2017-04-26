@@ -4,7 +4,7 @@
     <div class="container">
         <div class="form-container">
 
-            <div class="text-right">
+            <div class="show-candidates-count">
                 {% if jobAd.jobApply.count > 0 %}
                     <p>Į šią poziciją kandidatavo: {{ jobAd.jobApply.count }}</p>
                 {% elseif jobAd.jobApply.count == 0 and is_granted('ROLE_USER_SEEKER') %}
@@ -15,7 +15,7 @@
             </div>
 
             <div class="text-center">
-                <p class="job-title">{{ jobAd.title }}</p>
+                <p class="job-title show-job-ad-title">{{ jobAd.title }}</p>
             </div>
 
             <div class="text-center">

@@ -1,8 +1,9 @@
 <div class="container">
 
-    <div class="col-md-8 col-md-offset-2 form-container">
-        <a href="{{ path('fos_user_profile_show') }}" class="pull-right">Gįžti atgal</a>
-        <h3 class="form-title">Redaguoti profilį</h3>
+    <div class="form-container col-md-10 col-md-offset-1">
+
+        <a class="form-upper-btn" href="{{ path('fos_user_profile_show') }}">Gįžti atgal</a>
+        <p class="page-heading">Redaguoti profilį</p>
 
         {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit', 'novalidate': 'novalidate'} }) }}
 
@@ -12,10 +13,9 @@
 
             {{ form_row(form.phone) }}
 
-            {#TODO translate email validation message#}
             {{ form_row(form.email) }}
 
-            <label for="form.imageFile">{{ app.user.photo ? 'Pakeisti nuotrauką' : 'Įkelti nuotrauką' }}</label>
+            {#TODO remove displayed photo when new one is selected#}
             {% if app.user.photo %}
                 <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo ?? 'no-photo.jpg')}}" alt="Nuotrauka">
             {% endif %}
@@ -27,20 +27,7 @@
 
             {{ form_row(form.profession) }}
 
-            <div class="form-group">
-                <label>Gebėjimai</label>
-                <div class="all-skills">
-                    {% if app.user.skills %}
-                        {% for skill in app.user.skills %}
-                            <div id="{{ skill.id }}" class="skill-block">
-                                <span class="skill">{{ skill.title }}</span>
-                                <i class="fa fa-times skill-delete" data-id="{{ skill.id }}" aria-hidden="true"></i>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <a class="add-skills-btn" data-popup-open="popup-1" href="#">Pridėti gebėjimus</a>
-            </div>
+            {{ include('FOSUser/add_skills_form.html.twig') }}
 
             {{ form_row(form.introduction) }}
 
@@ -50,19 +37,11 @@
 
         {{ form_end(form) }}
 
-        <p class="pull-right">* Laukai turi būti užpildyti</p>
+        <p class="pull-right">* Pažymėti laukai turi būti užpildyti</p>
+
     </div>
 
-    <div class="popup" data-popup="popup-1">
-        <div class="popup-inner">
-            <h4>Gebėjimai</h4>
-            <div class="skill-input-container">
-                <input class="form-control skills-input" type="text" placeholder="Koks tavo gebėjimas?" required/>
-                <button class="btn btn-primary add-skill" data-id="{{ app.user.id }}">Pridėk</button>
-            </div>
-            <div class="added-skills"></div>
-            <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
-        </div>
-    </div>
+    {# Pop-up renders on add-skills button click #}
+    {{ include('FOSUser/add_skills_popup.html.twig') }}
 
 </div>

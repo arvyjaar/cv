@@ -3,43 +3,42 @@
 {% block body %}
     <div class="container">
         <div class="content-container">
-            <div class="row">
-                <p class="page-heading">Šiuo metu darbo ieško:</p>
-            </div>
-            {% for userSeeker in userSeekers %}
 
+            <p class="page-heading">Šiuo metu darbo ieško:</p>
+
+            {% for userSeeker in userSeekers %}
                 <!-- This is to list 3 divs in one row -->
                 {% if loop.index0 is divisibleby(3) %}
                     <div class="row">
                 {% endif %}
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="seeker-box">
-                            <div class="row box-upper-row">
-                                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-md-4">
+                        <div class="job-ad-box">
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-6">
                                     <img class="img-responsive seeker-box-img" src="{{ asset('img/profiles/'~userSeeker.photo ?? 'no-photo.jpg')}}" alt="Nuotrauka">
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <p class="section-heading">{{ userSeeker.name }} {{ userSeeker.surname }}</p>
-                                    <p>{{ userSeeker.profession }}</p>
-                                    <p>{{ userSeeker.city }}</p>
+                                <div class="col-md-12 col-sm-6 col-xs-12">
+                                    <ul class="profile-list">
+                                        <li class="section-heading">{{ userSeeker.name }} {{ userSeeker.surname }}</li>
+                                        <li>{{ userSeeker.profession }}</li>
+                                        <li>{{ userSeeker.city }}</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div>
-                                <p class="section-heading">Gebėjimai:</p>
-                                {% for skill in userSeeker.skills %}
-                                    <span class="skill">{{ skill.title }}</span>
-                                {% endfor %}
-                            </div>
-                            <div>
-                                <p class="section-heading">Trumpai apie mane:</p>
-                                {#<p>{{ userSeeker.introduction }}</p>#}
-                                <p>{{ userSeeker.introduction|length > 150 ? userSeeker.introduction|slice(0, 150) ~ '...' : userSeeker.introduction  }}</p>
+
+                            {% if userSeeker.skills.count > 0 %}
+                                <div class="seekers-list-skills">
+                                    {% for skill in userSeeker.skills %}
+                                        <span class="skill">{{ skill.title }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+                            <div class="job-ad-button">
+                                <a href="{{ path('user_seeker_show', {'id' : userSeeker.id}) }}" class="btn btn-primary">Rodyti daugiau</a>
                             </div>
 
-                            <div class="text-center">
-                                {# add path to seekers profile!#}
-                                <a href="{{ path('user_seeker_show', {'id' : userSeeker.id}) }}" class="btn btn-primary show-more-btn">Rodyti daugiau</a>
-                            </div>
                         </div>
                     </div>
                 {% if loop.index is divisibleby(3) or loop.last %}
