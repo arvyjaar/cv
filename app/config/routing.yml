@@ -3,11 +3,11 @@ app:
     type: annotation
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-#Dirty disabled FOSUser route /register
+#Disabled FOSUser route /register
 fos_user_registration_register:
     path:  /register
     methods: [GET, POST]
-    #defaults:  { _controller: FOSUserBundle:Security:login }
+    defaults:  { _controller: AppBundle:Default:register }
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 user_employer_registration:
