@@ -5,23 +5,27 @@
         <div class="content-container">
             <p class="page-heading">Kandidatai į poziciją: {{ jobAd.title }}</p>
 
+            <a class="form-upper-btn" href="{{ app.request.headers.get('referer') }}">Grįžti atgal</a>
+
             {% for jobApply in jobApplies %}
                 <div class="row-list">
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="img-responsive profile-img"
+                            <img class="img-responsive profile-img img-center"
                                  src="{{ asset('img/profiles/'~jobApply.owner.photo ?? 'no-photo.jpg') }}"
                                  alt="Nuotrauka">
                         </div>
                         <div class="col-md-4">
                             <ul class="profile-list">
-                                <li class="section-heading">{{ jobApply.owner.name }} {{ jobApply.owner.surname }}</li>
+                                <a class="candidates-list-heading" href="{{ path('user_seeker_show', {'id' : jobApply.owner.id}) }}">
+                                    <li>{{ jobApply.owner.name }} {{ jobApply.owner.surname }}</li>
+                                </a>
                                 <li>Amžius: {{ jobApply.owner.birthDay|age }}</li>
                                 <li>{{ jobApply.owner.city }}</li>
                             </ul>
                         </div>
                         <div class="col-md-4">
-                            <ul class="profile-list">
+                            <ul class="profile-list assignment-list">
                                 <li>
                                     <a href="{{ jobApply.assignmentSolution ?? '#' }}">Užduoties sprendimas</a>
                                 </li>
@@ -29,7 +33,7 @@
                                     <a href=" {{ asset('files/cv/'~jobApply.cv) }}" target="_blank">Gyvenimo aprašymas</a>
                                 </li>
                                 {% if jobApply.evaluation %}
-                                    <li>Įvertinau: {{ jobApply.evaluation.mark }}</li>
+                                    <li class="assignment-evaluation">Mano įvertinimas: {{ jobApply.evaluation.mark }}</li>
                                     <li>
                                         <a class="btn btn-primary" href="{{ path('evaluation_edit', {'id' : jobApply.evaluation.id}) }}">Redaguoti įvertinimą</a>
                                     </li>

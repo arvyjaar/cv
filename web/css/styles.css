@@ -52,7 +52,7 @@ body {
     position: absolute;
     z-index: 1;
     right: 40px;
-    top: 20px;
+    top: 10px;
 }
 
 .info-block {
@@ -64,10 +64,9 @@ body {
     text-align: center;
 }
 
-.row-list {
-    background-color: #ededed;
-    border-radius: 30px;
-    padding: 10px;
+.img-center {
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /*NAVIGATION*/
@@ -208,7 +207,7 @@ body {
 /* USER PROFILE EDIT*/
 
 .profile-img {
-    max-height: 350px;
+    /*max-height: 350px;*/
     border-radius: 30px;
 }
 
@@ -272,7 +271,7 @@ body {
     background-image: url("../img/debut_light.png");
 }
 
-/* JobAd list*/
+/*JOB AD LIST*/
 
 .job-ad-box {
     margin-bottom: 30px;
@@ -305,12 +304,7 @@ body {
 }
 
 .candidates-count-block {
-    text-align: right;
-    font-size: 14px;
-}
-
-.candidates-count-block p {
-    margin-bottom: 0;
+    display: none;
 }
 
 /*JOB AD SHOW*/
@@ -327,7 +321,48 @@ body {
     margin-top: 30px;
 }
 
-/*Skills pop-up*/
+/*JOB APPLY INDEX*/
+
+.candidates-list-heading {
+    font-size: 20px;
+}
+
+.candidates-list-heading:hover {
+    text-decoration: none;
+    color: darkmagenta;
+}
+
+.assignment-list {
+    border-top: 0.5px solid lightgrey;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.assignment-evaluation {
+    text-transform: uppercase;
+    color: #7030a0;
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: 0.5px solid lightgrey;
+    border-bottom: 0.5px solid lightgrey;
+}
+
+.row-list {
+    background-color: #ededed;
+    border-radius: 30px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/*EMPLOYERS LIST*/
+
+.employers-list-border {
+    border-top: 0.5px solid lightgrey;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/*POPUP*/
 
 /* Outer */
 .popup {
@@ -445,6 +480,7 @@ body {
 }
 
 /* Small Devices, Tablets */
+/*TODO refactor media queries*/
 
 @media only screen and (max-width : 768px) {
 
@@ -477,6 +513,7 @@ body {
         right: auto;
         left: auto;
     }
+
 
 }
 
@@ -533,11 +570,27 @@ body {
         min-height: 62px;
     }
 
+    .candidates-count-block {
+        display: block;
+        margin-top: 5px;
+        text-align: right;
+        font-size: 14px;
+    }
+
+    .candidates-count-block p {
+        margin-bottom: 0;
+    }
+
+    .employers-list-border {
+        text-align: left;
+        border: none;
+        padding-top: 0;
+    }
+
 }
 
-
 @media only screen and (min-width: 992px) {
-    /*job ad list*/
+    /*JOB AD LIST*/
     .job-ad-box {
         min-height: 475px;
         position: relative;
@@ -552,6 +605,11 @@ body {
 
     }
 
+    .assignment-list {
+        text-align: left;
+        border: none;
+        padding-top: 0;
+    }
 }
 
 @media only screen and (min-width: 1200px) {

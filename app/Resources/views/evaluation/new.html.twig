@@ -8,16 +8,15 @@
             <p class="page-heading">{{ form.vars.value.id ? "Redaguok įvertinimą!" : "Įvertink kandidatą!" }}</p>
 
             {{ form_start(form) }}
-            {% set action = form.vars.value.id is null? path('evaluation_new'): path('evaluation_edit', {'id': form.vars.value.id }) %}
+                {% set action = form.vars.value.id is null? path('evaluation_new'): path('evaluation_edit', {'id': form.vars.value.id }) %}
 
-            {{ form_row(form.mark) }}
+                {{ form_row(form.mark) }}
 
-            {{ form_row(form.comment) }}
+                {{ form_row(form.comment) }}
 
-            <div class="btn-block">
-                <input class="btn btn-primary" type="submit" value="Siųsti įvertinimą kandidatui"/>
-            </div>
-
+                <div class="btn-block">
+                    <input class="btn btn-primary" type="submit" value="Siųsti įvertinimą"/>
+                </div>
             {{ form_end(form) }}
 
             {% if( form.vars.value.id != null) %}

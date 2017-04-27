@@ -39,6 +39,8 @@
                                 <li role="separator" class="divider"></li>
                                 {% if is_granted('ROLE_USER_SEEKER') %}
                                     <li><a href="{{ path('jobad_index') }}">Peržiūrėti darbo skelbimus</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{{ path('user_employer_index') }}">Peržiūrėti įmonių sąrašą</a></li>
                                 {% elseif is_granted('ROLE_USER_EMPLOYER') %}
                                     <li><a href="{{ path('jobad_my_index') }}">Mano skelbimai</a></li>
                                     <li role="separator" class="divider"></li>
