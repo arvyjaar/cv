@@ -1,5 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   Darbdavių sarasas
+    <div class="container">
+        <div class="content-container">
+
+            <div class="text-right">
+                <a class="form-upper-btn" href="{{ app.request.headers.get('referer') }}">Grįžti atgal</a>
+            </div>
+
+            {% for employer in userEmployers %}
+                <div class="row-list">
+                    <div class="row">
+                        <div class="col-md-4 visible-md visible-lg">
+                            <img class="img-responsive"
+                                 src="{{ asset('img/profiles/'~employer.photo ?? 'no-logo.jpg') }}"
+                                 alt="Logotipas">
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <ul class="profile-list">
+                                <li>
+                                    <a class="candidates-list-heading" href="{{ path('user_employer_show', {'id' : employer.id }) }}">
+                                        {{ employer.title }}
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>{{ employer.sector }}</li>
+                                <li>{{ employer.phone }}</li>
+                                <li>{{ employer.email }}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-6 employers-list-border">
+                            {#TODO add link to companies jobad list#}
+                            <a class="text-uppercase" href="{{ path('jobad_by_employer_index', {'id' : employer.id }) }}">Peržiūrėti įmonės skelbimus</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
 {% endblock %}

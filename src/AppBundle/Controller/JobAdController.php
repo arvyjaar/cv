@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\JobAd;
+use AppBundle\Entity\UserEmployer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -49,8 +50,29 @@ class JobAdController extends Controller
             ['employer' => $this->getUser()]
         );
 
+        return $this->render('jobad/my_index.html.twig', array(
+            'jobAds' => $jobAds,
+        ));
+    }
+
+    /**
+     * List all jobAd entities of Employer.
+     *
+     * @Route("/imone/{id}", name="jobad_by_employer_index")
+     * @Method("GET")
+     */
+    public function indexEmployerAdsAction(UserEmployer $employer)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        // TODO: make pagination
+        $jobAds = $em->getRepository('AppBundle:JobAd')->findBy(
+            ['employer' => $employer]
+        );
+
         return $this->render('jobad/index.html.twig', array(
             'jobAds' => $jobAds,
+            'employer' => $employer,
         ));
     }
 

@@ -28,7 +28,7 @@ class ProfileUserEmployerFormType extends AbstractType
             ])
             ->add('sector', null, [
                 'constraints' => [
-                    new NotBlank()
+                    new NotBlank(['message' => 'Įveskite veiklos sektorių, kuriame specializuojasi jūsų įmonė.'])
                 ],
                 'label' => 'Sektorius'
             ]);
