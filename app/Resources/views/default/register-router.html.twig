@@ -1,0 +1,17 @@
+{% extends ':default:index.html.twig' %}
+
+{% block registerModal %}
+
+    <div class="slogan text-center">
+        <div>
+            <h2>Į GetHired atėjau, nes...</h2>
+        </div>
+        <a href="{{ path('user_seeker_registration') }}">
+            <button class="btn btn-info">ieškau darbo</button>
+        </a>
+        <a href="{{ path('user_employer_registration') }}">
+            <button class="btn btn-info">siūlau darbą</button>
+        </a>
+    </div>>
+
+{% endblock %}

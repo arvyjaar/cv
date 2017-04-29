@@ -25,6 +25,10 @@ class DefaultController extends Controller
      */
     public function registerAction()
     {
-        return new JsonResponse('You are in the middle of nowhere...');
+        //return new JsonResponse('You are in the middle of nowhere...');
+        if ($this->getUser()) {
+            return $this->redirectToRoute('homepage');
+        }
+        return $this->render(':default:register-router.html.twig');
     }
 }
