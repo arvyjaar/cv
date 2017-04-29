@@ -24,7 +24,6 @@ class RequirementController extends Controller
      */
     public function createAction(Request $request)
     {
-
         $requirementTitle = $request->request->get('requirement');
         $adID = (integer)$request->request->get('ad-id');
 

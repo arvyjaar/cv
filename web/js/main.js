@@ -181,8 +181,11 @@ $(document).ready(function() {
 
     //Add requirement on button click
     $('.add-requirement').click(function(){
+
         var requirements_input = $('.requirements-input');
         var requirement = requirements_input.val();
+
+        requirements_input.val('');
 
         if(requirement) {
             var ad_id = $(this).data('id');
@@ -211,7 +214,6 @@ $(document).ready(function() {
                     console.log(error);
                 }
             });
-
         }
     });
 
@@ -224,6 +226,4 @@ $(document).ready(function() {
 
     //Delete requirement
     $('.requirement-delete').unbind().click(deleteRequirement);
-
-
 });
