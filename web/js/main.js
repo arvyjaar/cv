@@ -2,24 +2,23 @@
  * Created by monika on 17.4.5.
  */
 
-function deleteSkill() {
-    var skill_id = $(this).data('id');
+function deleteEntityFromDb(entity, id) {
 
-    var delete_skill_url = Routing.generate('delete_skill', {
-        id: skill_id
+    var delete_url = Routing.generate('delete_' + entity, {
+        id: id
     });
 
     $.ajax({
-        url: delete_skill_url,
+        url: delete_url,
         method: 'delete',
         data: {
-            'skill-id': skill_id
+            'id': id
         },
         success: function (response) {
-            $('#' + skill_id).remove();
+            $('#' + id).remove();
         },
         fail: function (error) {
-            console.log('Failed to delete skill');
+            console.log('Failed to delete ' + entity);
             console.log(error);
         }
     });
@@ -27,30 +26,16 @@ function deleteSkill() {
 
 function deleteRequirement() {
     var requirement_id = $(this).data('id');
+    $('#' + requirement_id).remove();
+}
 
-    var delete_requirement_url = Routing.generate('delete_requirement', {
-        id: requirement_id
-    });
-
-    $.ajax({
-        url: delete_requirement_url,
-        method: 'delete',
-        data: {
-            'requirement-id': requirement_id
-        },
-        success: function (response) {
-            $('#' + requirement_id).remove();
-        },
-        fail: function (error) {
-            console.log('Failed to delete requirement');
-            console.log(error);
-        }
-    });
+function uniqueId() {
+    return Math.round(new Date().getTime() + (Math.random() * 100));
 }
 
 $(document).ready(function() {
-
-    //TODO - refactor all methods
+    //TODO refactor all methods
+    var requirements = [];
 
     //Changes navbar padding and background color on main page
     var first_section = $('#some-content');
@@ -124,7 +109,10 @@ $(document).ready(function() {
         added_requirements.html('');
 
         //Delete skill after pop-up was closed
-        $('.skill-delete').unbind().click(deleteSkill);
+        $('.skill-delete').unbind().click(function() {
+            var id = $(this).data('id');
+            deleteEntityFromDb('skill', id);
+        });
 
         //Delete requirement after pop-up was closed
         $('.requirement-delete').unbind().click(deleteRequirement);
@@ -151,14 +139,19 @@ $(document).ready(function() {
                 success: function (response) {
                     var inserted_id = response.id;
                     skills_input.val('');
-                    $('.added-skills').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + skill +
-                        '</span>' + '<i class="fa fa-times skill-delete" aria-hidden="true" data-id="'+ inserted_id +'"></i></div>');
+                    $('.added-skills').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">'
+                        + skill + '</span>' + '<i class="fa fa-times skill-delete" aria-hidden="true" data-id="'
+                        + inserted_id +'"></i></div>');
 
-                    $('.added-requirements').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + skill +
-                        '</span>' + '<i class="fa fa-times requirement-delete" aria-hidden="true" data-id="'+ inserted_id +'"></i></div>');
+                    $('.added-requirements').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">'
+                        + skill + '</span>' + '<i class="fa fa-times requirement-delete" aria-hidden="true" data-id="'
+                        + inserted_id +'"></i></div>');
 
                     // Delete skill after skill was added
-                    $('.skill-delete').unbind().click(deleteSkill);
+                    $('.skill-delete').unbind().click(function() {
+                        var id = $(this).data('id');
+                        deleteEntityFromDb('skill', id);
+                    });
                 },
                 fail: function (error) {
                     console.log('Failed to add skill');
@@ -177,42 +170,60 @@ $(document).ready(function() {
     });
 
     //Delete skill
-    $('.skill-delete').unbind().click(deleteSkill);
+    $('.skill-delete').unbind().click(function() {
+        var id = $(this).data('id');
+        deleteEntityFromDb('skill', id);
+    });
 
     //Add requirement on button click
+    $('#jobad-create-btn').click(function(){
+        var job_add_title = $('#job_ad_title').val();
+        var job_add_assignment = $('#job_add_assignment').val();
+        var job_add_description = $('#job_add_description').val();
+
+        console.log(job_add_title);
+        console.log(requirements);
+
+        var send_data_url = Routing.generate('jobad_new');
+        console.log(send_data_url);
+
+        $.ajax({
+            url: send_data_url,
+            method: 'post',
+            data: {
+                'data': 'test'
+            },
+            success: function (response) {
+                console.log('success');
+                console.log(send_data_url);
+            },
+            fail: function (error) {
+                console.log('Failed to add skill');
+                console.log(error);
+            }
+        });
+    });
+
     $('.add-requirement').click(function(){
         var requirements_input = $('.requirements-input');
         var requirement = requirements_input.val();
 
         if(requirement) {
-            var ad_id = $(this).data('id');
-            console.log(ad_id);
-            var create_requirement_url = Routing.generate('add_requirement');
+            requirements_input.val('');
+            requirements.push(requirement);
 
-            $.ajax({
-                url: create_requirement_url,
-                method: 'post',
-                data: {
-                    'requirement': requirement,
-                    'ad-id': ad_id
-                },
-                success: function (response) {
-                    console.log(response);
-                    var inserted_id = response.id;
-                    requirements_input.val('');
-                    $('.added-requirements').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + requirement +
-                        '</span>' + '<i class="fa fa-times requirement-delete" aria-hidden="true" data-id="'+ inserted_id +'"></i></div>');
+            $('#job_ad_requirements').val(requirements);
 
-                    // Delete requirement after requirement was added
-                    $('.requirement-delete').unbind().click(deleteRequirement);
-                },
-                fail: function (error) {
-                    console.log('Failed to add requirement');
-                    console.log(error);
-                }
-            });
+            var inserted_id = uniqueId();
 
+            requirements_input.val('');
+
+            $('.added-requirements').append('<div id="'+ inserted_id +'" class="skill-block"><span class="skill">' + requirement +
+                '</span>' + '<i class="fa fa-times requirement-delete" aria-hidden="true" data-id="'+ inserted_id +'"></i></div>');
         }
+
+        // Delete requirement after requirement was added
+        $('.requirement-delete').unbind().click(deleteRequirement);
     });
 
     //Add requirement, when enter key is pressed
@@ -225,5 +236,10 @@ $(document).ready(function() {
     //Delete requirement
     $('.requirement-delete').unbind().click(deleteRequirement);
 
+    // Delete requirement after requirement was added
+    $('.requirement-delete-from-db').unbind().click(function() {
+        var id = $(this).data('id');
+        deleteEntityFromDb('requirement', id);
+    });
 
 });

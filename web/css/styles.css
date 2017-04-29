@@ -437,14 +437,14 @@ body {
     font-weight: 500;
 }
 
-.skill-block .skill-delete, .requirement-delete {
+.skill-block .skill-delete, .requirement-delete, .requirement-delete-from-db {
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 15px;
     color: grey;
 }
 
-.skill-block:hover .skill-delete, .requirement-delete {
+.skill-block:hover .skill-delete, .requirement-delete, .requirement-delete-from-db {
     cursor: pointer;
 }
 

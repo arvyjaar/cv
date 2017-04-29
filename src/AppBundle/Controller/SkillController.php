@@ -27,10 +27,7 @@ class SkillController extends Controller
     public function createAction(Request $request)
     {
         $skillTitle = $request->request->get('skill');
-        //$userID = (integer)$request->request->get('user-id');
 
-        //$repository = $this->getDoctrine()->getRepository('AppBundle:UserSeeker');
-        //$user = $repository->find($userID);
         $user = $this->getUser();
 
         $skill = new Skill();
