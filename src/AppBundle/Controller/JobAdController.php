@@ -1,5 +1,6 @@
 <?php
 namespace AppBundle\Controller;
+
 use AppBundle\Entity\JobAd;
 use AppBundle\Entity\UserEmployer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
