@@ -4,70 +4,59 @@
     <div class="container">
         <div class="content-container">
 
-            <p class="page-heading">Darbo skelbimai</p>
+            <p class="page-heading">{% block heading %}Darbo{% endblock %} skelbimai</p>
 
-            {% if  path(app.request.attributes.get('_route')) == '/skelbimai/mano-skelbimai' and jobAds == null %}
-                <p>Jūs dar nesukūrėte skelbimų</p>
-            {% endif %}
+            {% block noResults %}{% endblock %}
 
             {% for jobAd in jobAds %}
 
                 <!-- This is to list 3 divs in one row -->
-                {% if loop.index0 is divisibleby(3) %}
+                {% if loop.index0 is divisible by(3) %}
                     <div class="row">
                 {% endif %}
 
-                    <div class="col-md-4 col-sm-12 col-xs-12">
-                        <div class="job-ad-box">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="job-ad-box">
 
-                            <div class="job-title-block">
-                                <div class="job-title job-list-job-title">
-                                    {{ jobAd.title }}
-                                </div>
+                        <div class="job-title-block">
+                            <div class="job-title job-list-job-title">
+                                {{ jobAd.title }}
                             </div>
+                        </div>
 
-                            <div class="job-ad-requirements">
-                                <p class="section-heading">Reikalavimai:</p>
-                                <div class="text-center">
-                                    {% for requirement in jobAd.requirements %}
-                                        <span class="skill">{{ requirement.title }}</span>
-                                    {% endfor %}
-                                </div>
+                        <div class="job-ad-requirements">
+                            <p class="section-heading">Reikalavimai:</p>
+                            <div class="text-center">
+                                {% for requirement in jobAd.requirements %}
+                                    <span class="skill">{{ requirement.title }}</span>
+                                {% endfor %}
                             </div>
+                        </div>
 
-                            <div class="job-ad-info">
-                                <p class="section-heading">Trumpai apie siūlomą poziciją:</p>
-                                <p>{{ jobAd.description|length > 200 ? jobAd.description|slice(0, 200) ~ '...' : jobAd.description  }}</p>
-                            </div>
+                        <div class="job-ad-info">
+                            <p class="section-heading">Trumpai apie siūlomą poziciją:</p>
+                            <p>{{ jobAd.description|length > 200 ? jobAd.description|slice(0, 200) ~ '...' : jobAd.description  }}</p>
 
-                            <div class="job-ad-button">
-                                <a href="{{ path('jobad_show', { 'id': jobAd.id }) }}" class="btn btn-primary">Rodyti daugiau</a>
-                            </div>
-
-                            {#Count of candidates visable only on path "/mano-skelbimai"#}
-                            {% if path(app.request.attributes.get('_route')) == '/skelbimai/mano-skelbimai' and jobAd.jobApply.count > 0 %}
-                                <div class="candidates-count-block">
-                                    {% for jobApply in jobAd.jobApply %}
-                                        <a href="{{ path('jobapply_index', { 'id': jobApply.id }) }}">Kandidatų į šią poziciją: {{jobAd.JobApply.count}}</a>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
+                            {% block employer %} {# employer title block is empty in my_index.html #}
+                                <p class="text-center"><b>{{ jobAd.owner.title }}</b></p>
+                            {% endblock %}
 
                         </div>
-                    </div>
 
-                {% if loop.index is divisibleby(3) or loop.last %}
+                        <div class="job-ad-button">
+                            <a href="{{ path('jobad_show', { 'id': jobAd.id }) }}" class="btn btn-primary">Rodyti daugiau</a>
+                        </div>
+
+                        {% block linkAds %}{% endblock %}
+
+                    </div>
+                </div>
+
+                {% if loop.index is divisible by(3) or loop.last %}
                     </div><!-- /row -->
                 {% endif %}
 
             {% endfor %}
-
-            {#Link to all job ads list is visable only on path "/mano-skelbimai"#}
-            {% if path(app.request.attributes.get('_route')) == '/skelbimai/mano-skelbimai' %}
-                <div class="text-right">
-                    <a href="{{ path('jobad_index') }}">Peržiūrėti visus GetHired skelbimus</a>
-                </div>
-            {% endif %}
 
         </div>
     </div>

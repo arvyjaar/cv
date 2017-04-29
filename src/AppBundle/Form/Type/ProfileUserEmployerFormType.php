@@ -15,11 +15,11 @@ class ProfileUserEmployerFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['label' => 'Įmonės pavadinimas'])
+            ->add('title', null, ['label' => 'Įmonės pavadinimas*'])
             ->add('description', null, ['label' => 'Trumpai apie įmonę'])
             ->add('phone', null, ['label' => 'Telefonas'])
             ->add('email', EmailType::class, [
-                'label' => 'El. paštas'
+                'label' => 'El. paštas*'
             ])
             ->add('city', null, ['label' => 'Miestas'])
             ->add('imageFile', VichImageType::class, [
@@ -28,9 +28,9 @@ class ProfileUserEmployerFormType extends AbstractType
             ])
             ->add('sector', null, [
                 'constraints' => [
-                    new NotBlank()
+                    new NotBlank(['message' => 'Įveskite veiklos sektorių, kuriame specializuojasi jūsų įmonė.'])
                 ],
-                'label' => 'Sektorius'
+                'label' => 'Sektorius*'
             ]);
     }
 

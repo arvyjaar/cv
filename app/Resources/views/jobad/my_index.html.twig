@@ -1,0 +1,26 @@
+{% extends ":jobad:index.html.twig" %}
+
+{% block heading %}
+    {{ app.user.title }}
+{% endblock %}
+
+{% block noResults %}
+    {% if  jobAds == null %}
+        <p>Jūs dar nesukūrėte skelbimų</p>
+    {% endif %}
+{% endblock %}
+
+{% block employer %}
+    {# empty #}
+{% endblock %}
+
+{% block linkAds %}
+    {% if jobAd.jobApply.count > 0 %}
+        <div class="candidates-count-block">
+            {% for jobApply in jobAd.jobApply %}
+                <a href="{{ path('jobapply_index', { 'id': jobApply.id }) }}">Kandidatų į šią
+                    poziciją: {{ jobAd.JobApply.count }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

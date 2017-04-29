@@ -8,7 +8,7 @@
 
             {% for userSeeker in userSeekers %}
                 {# Lists 3 divs in one row #}
-                {% if loop.index0 is divisibleby(3) %}
+                {% if loop.index0 is divisible by(3) %}
                     <div class="row">
                 {% endif %}
                     <div class="col-md-4">
@@ -41,7 +41,7 @@
 
                         </div>
                     </div>
-                {% if loop.index is divisibleby(3) or loop.last %}
+                {% if loop.index is divisible by(3) or loop.last %}
                     </div> {# /row #}
                 {% endif %}
             {% endfor %}

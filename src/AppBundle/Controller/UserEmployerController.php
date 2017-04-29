@@ -30,7 +30,7 @@ class UserEmployerController extends Controller
 
         $userEmployers = $em->getRepository('AppBundle:UserEmployer')->findAll();
 
-        return $this->render('employers/index.html.twig', array(
+        return $this->render('useremployer/index.html.twig', array(
             'userEmployers' => $userEmployers,
         ));
     }

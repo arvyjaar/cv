@@ -18,6 +18,10 @@
                 <p class="job-title show-job-ad-title">{{ jobAd.title }}</p>
             </div>
 
+            <div class="text-center info-block">
+                <p><b>{{ jobAd.owner.title }}</b></p>
+            </div>
+
             <div class="text-center">
                 {% for requirement in jobAd.requirements %}
                     <span class="requirement">{{ requirement.title }}</span>
@@ -63,7 +67,5 @@
 
         </div>
     </div>
-
-
 
 {% endblock %}

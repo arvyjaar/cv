@@ -36,7 +36,6 @@ class RegistrationConfirmSubscriber implements EventSubscriberInterface
 
     public function onRegistrationConfirm(FormEvent $event)
     {
-        // TODO: here generate different url's for different ROLE
         $role = $title = $event->getRequest()->get('role');
         $url = (isset($role) && $role === 'ROLE_USER_EMPLOYER')
             ? $this->router->generate('user_seeker_index') : $this->router->generate('jobad_index');
