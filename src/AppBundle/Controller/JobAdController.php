@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use AppBundle\Entity\Requirement;
+
 /**
  * Jobad controller.
  *
@@ -29,6 +31,7 @@ class JobAdController extends Controller
             'jobAds' => $jobAds,
         ));
     }
+
     /**
      * List all my jobAd entities.
      *
@@ -46,6 +49,7 @@ class JobAdController extends Controller
             'jobAds' => $jobAds,
         ));
     }
+
     /**
      * List all jobAd entities of Employer.
      *
@@ -64,10 +68,15 @@ class JobAdController extends Controller
             'employer' => $employer,
         ));
     }
+
     /**
      * Creates a new jobAd entity.
      *
-     * @Route("/naujas", name="jobad_new")
+     * @Route("/naujas",
+     *     defaults = { "page" = 1 },
+     *     options = { "expose" = true },
+     *     name="jobad_new"
+     * )
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -78,13 +87,21 @@ class JobAdController extends Controller
         $jobAd = new Jobad();
         $form = $this->createForm('AppBundle\Form\Type\JobAdType', $jobAd);
         $form->handleRequest($request);
-        // Add employer_id
-        $employer = $this->getUser();
-        $jobAd->setOwner($employer);
+
         if ($form->isSubmitted() && $form->isValid()) {
+            //Save requirements and exclude it's value from jobAd entity
+            $requirements = $form->get('requirements')->getData();
+            $jobAd->setRequirements(null);
+
+            $employer = $this->getUser();
+            $jobAd->setOwner($employer);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($jobAd);
             $em->flush();
+
+            $this->saveJobAdRequirements($requirements, $jobAd);
+
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
         return $this->render('jobad/new.html.twig', array(
@@ -92,6 +109,7 @@ class JobAdController extends Controller
             'form' => $form->createView(),
         ));
     }
+
     /**
      * Finds and displays a jobAd entity.
      *
@@ -106,6 +124,7 @@ class JobAdController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Displays a form to edit an existing jobAd entity.
      *
@@ -115,11 +134,20 @@ class JobAdController extends Controller
     public function editAction(Request $request, JobAd $jobAd)
     {
         $this->denyAccessUnlessGranted('edit', $jobAd);
+
         $deleteForm = $this->createDeleteForm($jobAd);
         $form = $this->createForm('AppBundle\Form\Type\JobAdType', $jobAd);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
+            //Save requirements and exclude it's value from jobAd entity
+            $requirements = $form->get('requirements')->getData();
+            $jobAd->setRequirements(null);
+
             $this->getDoctrine()->getManager()->flush();
+
+            $this->saveJobAdRequirements($requirements, $jobAd);
+
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
         return $this->render('jobad/new.html.twig', array(
@@ -128,6 +156,7 @@ class JobAdController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a jobAd entity. TODO: I think, we shouldn't delete jobAds. We should write 'Valid To' instead.
      *
@@ -147,6 +176,7 @@ class JobAdController extends Controller
         }
         return $this->redirectToRoute('jobad_index');
     }
+
     /**
      * Creates a form to delete a jobAd entity.
      *
@@ -160,5 +190,23 @@ class JobAdController extends Controller
             ->setAction($this->generateUrl('jobad_delete', array('id' => $jobAd->getId())))
             ->setMethod('DELETE')
             ->getForm();
+    }
+
+    /**
+     * Saves JobAd Requirements to db
+     */
+    public function saveJobAdRequirements($requirements, JobAd $jobAd)
+    {
+        $requirements = explode(',', $requirements);
+
+        foreach ($requirements as $requirementTitle) {
+            $requirement = new Requirement();
+            $requirement->setTitle($requirementTitle);
+            $requirement->setJobAd($jobAd);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($requirement);
+            $em->flush();
+        }
     }
 }

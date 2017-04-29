@@ -5,7 +5,7 @@
             {% for requirement in jobAd.requirements %}
                 <div id="{{ requirement.id }}" class="skill-block">
                     <span class="skill">{{ requirement.title }}</span>
-                    <i class="fa fa-times skill-delete" data-id="{{ requirement.id }}" aria-hidden="true"></i>
+                    <i class="fa fa-times requirement-delete-from-db" data-id="{{ requirement.id }}" aria-hidden="true"></i>
                 </div>
             {% endfor %}
         {% endif %}

@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="btn-block">
-                        <input id="jobad-create-btn" class="btn btn-primary" type="submit" value="Sukurti"/>
+                        <input class="btn btn-primary" type="submit" value="Sukurti"/>
                     </div>
             {{ form_end(form) }}
 
@@ -35,7 +35,7 @@
             {% if( form.vars.value.id != null) %}
                 {{ form_start(delete_form) }}
                 <div class="btn-block">
-                    <input  class="btn btn-default" type="submit" value="Ištrinti">
+                    <input class="btn btn-default" type="submit" value="Ištrinti">
                 </div>
                 {{ form_end(delete_form) }}
             {% endif %}
@@ -43,7 +43,5 @@
 
         {# Pop-up renders on add-requirements button click #}
         {{ include('jobad/add_requirements_popup.html.twig') }}
-
     </div>
-
 {% endblock %}
