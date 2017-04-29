@@ -53,8 +53,6 @@ class JobAd
      * @var string
      *
      * @ORM\Column(name="assignment", type="string")
-     *
-     * @Assert\NotBlank(message="Pateik užduotį kandidatui - užpildyk šį lauką!")
      */
     private $assignment;
 

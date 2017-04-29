@@ -14,9 +14,9 @@ class JobAdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['label' => 'Siūloma pozicija'])
-            ->add('description', null, ['label' => 'Apie siūlomą poziciją:'])
-            ->add('assignment', null, ['label' => 'Užduotis kandidatams (url)*']);
+            ->add('title', null, ['label' => 'Siūloma pozicija*'])
+            ->add('description', null, ['label' => 'Apie siūlomą poziciją:*'])
+            ->add('assignment', null, ['label' => 'Užduotis kandidatams (url)']);
     }
 
     /**

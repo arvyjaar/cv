@@ -17,10 +17,10 @@ class ProfileUserSeekerFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => 'Vardas'])
-            ->add('surname', null, ['label' => 'Pavardė'])
+            ->add('name', null, ['label' => 'Vardas*'])
+            ->add('surname', null, ['label' => 'Pavardė*'])
             ->add('email', EmailType::class, [
-                'label' => 'El. paštas'
+                'label' => 'El. paštas*'
             ])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
@@ -35,22 +35,21 @@ class ProfileUserSeekerFormType extends AbstractType
                 'label' => false,
             ])
             ->add('phone', null, [
-                'constraints' => new NotBlank(),
                 'label' => 'Telefonas'
             ])
             ->add('city', null, [
                 'constraints' => new NotBlank(),
-                'label' => 'Miestas'
+                'label' => 'Miestas*'
             ])
             ->add('profession', null, [
                 'constraints' => new NotBlank(),
-                'label' => 'Profesija'
+                'label' => 'Profesija*'
             ])
             ->add('introduction', TextareaType::class, [
                 'constraints' => new NotBlank([
                     'message' => 'Papasakok trumpai apie save- kokie tavo gebėjimai, kokio darbo šiuo metu ieškai.',
                     ]),
-                'label' => 'Trumpas prisistatymas',
+                'label' => 'Trumpas prisistatymas*',
             ]);
     }
 
