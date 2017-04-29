@@ -2,13 +2,12 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use AppBundle\Entity\JobAd;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -38,7 +37,9 @@ class UserEmployer extends User
     protected $description;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * Many UserEmployer has One Sector.
+     * @ORM\ManyToOne(targetEntity="Sector")
+     * @ORM\JoinColumn(name="sector", referencedColumnName="id")
      */
     protected $sector;
 

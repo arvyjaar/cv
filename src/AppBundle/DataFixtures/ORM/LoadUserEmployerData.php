@@ -33,11 +33,19 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         return 2;
     }
 
+    public function getSector($id)
+    {
+        $sector = $this->container->get('doctrine')
+            ->getRepository('AppBundle:Sector')
+            ->find($id);
+        return $sector;
+    }
+
     public function load(ObjectManager $manager)
     {
         $employer1 = new UserEmployer();
         $employer1->setTitle('Cgates');
-        $employer1->setSector('IRT');
+        $employer1->setSector($this->getSector(1));
         $employer1->setCity('Vilnius');
         $employer1->setPhone('+37061358794');
         $employer1->setDescription('Šviesolaidinio interneto, skaiteninės televizijos bei fiksuotojo telefono ryšio 
@@ -54,7 +62,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer2 = new UserEmployer();
         $employer2->setTitle('NFQ Technologies');
-        $employer2->setSector('IT');
+        $employer2->setSector($this->getSector(1));
         $employer2->setCity('Vilnius');
         $employer2->setPhone('+370613555555');
         $employer2->setDescription('Programinės įrangos kūrimas, elektroninio verslo sprendimai, internetinių 
@@ -69,7 +77,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer3 = new UserEmployer();
         $employer3->setTitle('Microsoft Lietuva');
-        $employer3->setSector('IT');
+        $employer3->setSector($this->getSector(1));
         $employer3->setCity('Vilnius');
         $employer3->setPhone('+370613123456');
         $employer3->setDescription('Microsoft atstovybė Lietuvoje. Programinė įranga, didmeninė ir mažmeninė prekyba.');
@@ -83,7 +91,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer4 = new UserEmployer();
         $employer4->setTitle('Blue Bridge');
-        $employer4->setSector('IT');
+        $employer4->setSector($this->getSector(1));
         $employer4->setCity('Vilnius');
         $employer4->setPhone('+370614155888');
         $employer4->setDescription('„Blue Bridge“ teikia kompleksines IT paslaugas ir sprendimus stambioms verslo bei 
@@ -99,7 +107,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer5 = new UserEmployer();
         $employer5->setTitle('Telia');
-        $employer5->setSector('IRT');
+        $employer5->setSector($this->getSector(2));
         $employer5->setCity('Vilnius');
         $employer5->setPhone('+370614145789');
         $employer5->setDescription('2017 m. vasario 1 d. „Teo“, „Omnitel“ ir „Baltic Data Center“ tapo viena įmone - 
@@ -116,7 +124,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer6 = new UserEmployer();
         $employer6->setTitle('Sicor Biotech');
-        $employer6->setSector('Farmacija');
+        $employer6->setSector($this->getSector(3));
         $employer6->setCity('Vilnius');
         $employer6->setPhone('+370614145789');
         $employer6->setDescription('UAB "Sicor Biotech" – biotechnologinės farmacijos įmonė, kurianti ir gaminanti 
@@ -131,7 +139,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer7 = new UserEmployer();
         $employer7->setTitle('EIS Group Lietuva');
-        $employer7->setSector('IT');
+        $employer7->setSector($this->getSector(1));
         $employer7->setCity('Vilnius');
         $employer7->setPhone('+370614145888');
         $employer7->setDescription('Kompiuterinių programų kūrimas.');
@@ -145,7 +153,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer8 = new UserEmployer();
         $employer8->setTitle('Baltic Amadeus');
-        $employer8->setSector('IT');
+        $employer8->setSector($this->getSector(1));
         $employer8->setCity('Vilnius');
         $employer8->setPhone('+370614178945');
         $employer8->setDescription('Esame komanda, kurianti kokybiškus IT sprendimus pasaulinėms telekomunikacijų, 
@@ -161,10 +169,11 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer9 = new UserEmployer();
         $employer9->setTitle('Devbridge');
-        $employer9->setSector('IT');
+        $employer9->setSector($this->getSector(1));
         $employer9->setCity('Vilnius');
         $employer9->setPhone('+370614145612');
-        $employer9->setDescription('Programinės įrangos kūrimas, elektroninio verslo sprendimai, internetinių svetainių kūrimas.');
+        $employer9->setDescription('Programinės įrangos kūrimas, elektroninio verslo sprendimai, 
+            internetinių svetainių kūrimas.');
         $employer9->setEmail('devbridge@email.com');
         // password encoding
         $employer9->setEnabled(true);
@@ -175,7 +184,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer10 = new UserEmployer();
         $employer10->setTitle('Nasdaq');
-        $employer10->setSector('IT');
+        $employer10->setSector($this->getSector(6));
         $employer10->setCity('Vilnius');
         $employer10->setPhone('+370614178945');
         $employer10->setDescription('Vertybinių Vertybinių popierių birža „Nasdaq Vilnius” priklauso didžiausiai 
@@ -192,7 +201,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
         $employer11 = new UserEmployer();
         $employer11->setTitle('Google');
-        $employer11->setSector('IT');
+        //$employer11->setSector('IT');
         $employer11->setCity('Vilnius');
         $employer11->setPhone('+370614133333');
         $employer11->setDescription('Pasaulinė GOOGLE paieškos sistema Lietuvoje.');

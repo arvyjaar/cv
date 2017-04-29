@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form\Type;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -9,6 +10,7 @@ use AppBundle\Entity\UserEmployer;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Doctrine\ORM\EntityRepository;
 
 class ProfileUserEmployerFormType extends AbstractType
 {
@@ -26,7 +28,11 @@ class ProfileUserEmployerFormType extends AbstractType
                 'required' => false,
                 'label' => false,
             ])
-            ->add('sector', null, [
+            ->add('sector', EntityType::class, [
+                'class' => 'AppBundle\Entity\Sector',
+                'query_builder' => function (EntityRepository $repo) {
+                    return $repo->createQueryBuilder('cat')->orderBy('cat.title', 'ASC');
+                },
                 'constraints' => [
                     new NotBlank(['message' => 'Įveskite veiklos sektorių, kuriame specializuojasi jūsų įmonė.'])
                 ],
