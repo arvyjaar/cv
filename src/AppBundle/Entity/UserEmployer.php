@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="user_employer")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserEmployerRepository")
  * @UniqueEntity(fields = "username", targetClass = "AppBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "AppBundle\Entity\User", message="Vartotojas su tokiu adresu jau yra")
  * @Vich\Uploadable

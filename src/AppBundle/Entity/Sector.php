@@ -68,4 +68,3 @@ class Sector
         return $this->title;
     }
 }
-
