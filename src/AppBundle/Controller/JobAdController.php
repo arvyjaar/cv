@@ -30,6 +30,7 @@ class JobAdController extends Controller
         $jobAds = $em->getRepository('AppBundle:JobAd')->findAll();
         return $this->render('jobad/index.html.twig', array(
             'jobAds' => $jobAds,
+            'searchPath' => 'searchAds',
         ));
     }
 
@@ -48,6 +49,7 @@ class JobAdController extends Controller
         );
         return $this->render('jobad/my_index.html.twig', array(
             'jobAds' => $jobAds,
+            'searchPath' => 'searchMyAds'
         ));
     }
 

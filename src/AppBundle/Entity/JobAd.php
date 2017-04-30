@@ -52,7 +52,7 @@ class JobAd
     /**
      * @var string
      *
-     * @ORM\Column(name="assignment", type="string")
+     * @ORM\Column(name="assignment", type="string", nullable=true)
      */
     private $assignment;
 

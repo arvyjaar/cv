@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
         <div class="content-container">
-            {{ render(controller('AppBundle:Search:searchEmployerForm')) }}
+            {{ render(controller('AppBundle:Search:searchEmployersForm')) }}
             <div class="text-right">
                 <a class="form-upper-btn" href="{{ app.request.headers.get('referer') }}">Grįžti atgal</a>
             </div>

@@ -18,7 +18,7 @@ class EmployerSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->setMethod('GET')
+            ->setMethod('GET')
             ->add('title', SearchType::class, [
                 'label' => false,
                 'required' => false
