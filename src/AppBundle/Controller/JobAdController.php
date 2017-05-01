@@ -101,7 +101,9 @@ class JobAdController extends Controller
             $em->persist($jobAd);
             $em->flush();
 
-            $this->saveJobAdRequirements($requirements, $jobAd);
+            if($requirements) {
+                $this->saveJobAdRequirements($requirements, $jobAd);
+            }
 
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
@@ -147,7 +149,9 @@ class JobAdController extends Controller
 
             $this->getDoctrine()->getManager()->flush();
 
-            $this->saveJobAdRequirements($requirements, $jobAd);
+            if($requirements) {
+                $this->saveJobAdRequirements($requirements, $jobAd);
+            }
 
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
