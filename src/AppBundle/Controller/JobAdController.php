@@ -101,7 +101,7 @@ class JobAdController extends Controller
             $em->persist($jobAd);
             $em->flush();
 
-            if($requirements) {
+            if ($requirements) {
                 $this->saveJobAdRequirements($requirements, $jobAd);
             }
 
@@ -149,7 +149,7 @@ class JobAdController extends Controller
 
             $this->getDoctrine()->getManager()->flush();
 
-            if($requirements) {
+            if ($requirements) {
                 $this->saveJobAdRequirements($requirements, $jobAd);
             }
 
