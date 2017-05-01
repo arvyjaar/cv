@@ -27,8 +27,6 @@ class SearchController extends Controller
      */
     public function searchEmployerAction(Request $request)
     {
-        $key = $request->get('employer_search');
-
         $form = $this->createForm('AppBundle\Form\Type\EmployerSearchType', null, [
             'action' => $this->generateUrl('searchEmployers'),
         ]);
@@ -36,22 +34,10 @@ class SearchController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $repository = $this->getDoctrine()->getRepository('AppBundle:UserEmployer');
-            $qb = $repository->createQueryBuilder('emp');
-            $qb->select('emp');
-            if ($key['title']) {
-                $qb->where('emp.title LIKE :title')
-                    ->setParameter('title', '%' . $key['title'] . '%');
-            }
-            if ($key['sector']) {
-                $qb->andWhere('emp.sector = :sector')
-                    ->setParameter('sector', $key['sector']);
-            }
-
-            $employers = $qb->getQuery()->getResult();
+            $employers = $repository->searchEmployers($request->get('title'), $request->get('sector'));
 
             return $this->render('useremployer/index.html.twig', array(
                 'userEmployers' => $employers,
-                //'form' => $form->createView(),
             ));
         }
 

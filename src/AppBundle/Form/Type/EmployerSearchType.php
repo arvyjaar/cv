@@ -40,4 +40,10 @@ class EmployerSearchType extends AbstractType
             // Don't set data_class !
         ));
     }
+
+    public function getBlockPrefix()
+    {
+        // to avoid form values wrapping inside array
+        return '';
+    }
 }
