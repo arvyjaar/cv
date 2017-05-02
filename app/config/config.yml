@@ -83,7 +83,7 @@ fos_user:
         address: info@gethired.eu
         sender_name: Gethired
 
-# PGUX Multi User Bundle configuration
+# PUGX Multi User Bundle configuration
 pugx_multi_user:
   users:
     user_employer:
