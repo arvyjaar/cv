@@ -1,9 +1,10 @@
-<form class="form-inline" action="{{ path(searchPath) }}">
-    <div class="form-group">
-        <label for="title"></label>
-        <input type="text" class="form-control" name="keyword" placeholder="Raktažodis" value="{{ keyword ?? '' }}">
-        <input type="hidden" name="_token" value="{{ csrf_token('searchAds') }}">
+{# Ads search form #}
+<div class="row">
+    <div class="col-md-12">
+        {{ form_start(form, {'attr': { 'class': 'form-inline' },
+        }) }}
+        {{ form_row(form.title, {'attr': {'placeholder': 'Raktažodis' }}) }}
+        <input class="btn btn-default" type="submit" value="Ieškoti"/>
+        {{ form_end(form) }}
     </div>
-    <button type="submit" class="btn btn-default">Ieškoti</button>
-</form>
-<hr>
+</div>

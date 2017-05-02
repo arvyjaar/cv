@@ -3,10 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\UserEmployer;
-use AppBundle\Entity\UserSeeker;
+use AppBundle\Form\Type\EmployerSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * UserEmployer controller.
@@ -19,19 +21,28 @@ class UserEmployerController extends Controller
     /**
      * Lists all userEmployer entities.
      *
+     * @param Request $request
+     *
+     * @return Response
+     *
      * @Route("/", name="user_employer_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        // TODO: pagination
+        $form = $this->createForm(EmployerSearchType::class, null, ['method' => 'GET']);
+        $form->handleRequest($request);
 
-        $em = $this->getDoctrine()->getManager();
-
-        $userEmployers = $em->getRepository('AppBundle:UserEmployer')->findAll();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository = $this->getDoctrine()->getRepository(UserEmployer::class);
+            $userEmployers = $repository->searchEmployers($request->get('title'), $request->get('sector'));
+        } else {
+            $userEmployers = $this->getDoctrine()->getRepository('AppBundle:UserEmployer')->findAll();
+        }
 
         return $this->render('useremployer/index.html.twig', array(
             'userEmployers' => $userEmployers,
+            'searchForm' => $form->createView(),
         ));
     }
 
@@ -43,7 +54,6 @@ class UserEmployerController extends Controller
      */
     public function showAction(UserEmployer $userEmployer)
     {
-
         return $this->render('useremployer/show.html.twig', array(
             'userEmployer' => $userEmployer,
         ));

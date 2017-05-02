@@ -2,7 +2,9 @@
 
 namespace AppBundle\Repository;
 
-class UserEmployerRepository extends \Doctrine\ORM\EntityRepository
+use Doctrine\ORM\EntityRepository;
+
+class UserEmployerRepository extends EntityRepository
 {
     public function searchEmployers($title, $sector)
     {

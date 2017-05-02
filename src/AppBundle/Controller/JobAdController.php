@@ -2,13 +2,15 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\JobAd;
+use AppBundle\Entity\Requirement;
 use AppBundle\Entity\UserEmployer;
+use AppBundle\Form\Type\AdsSearchType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use AppBundle\Entity\Requirement;
 
 /**
  * Jobad controller.
@@ -20,17 +22,26 @@ class JobAdController extends Controller
     /**
      * Lists all jobAd entities.
      *
+     * @param Request $request
+     * @return Response
      * @Route("/", name="jobad_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        // TODO: make pagination
-        $jobAds = $em->getRepository('AppBundle:JobAd')->findAll();
+        $form = $this->createForm(AdsSearchType::class, null, ['method' => 'GET']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository = $this->getDoctrine()->getRepository(JobAd::class);
+            $jobAds = $repository->searchAds($request->get('title'));
+        } else {
+            $jobAds = $this->getDoctrine()->getRepository(JobAd::class)->findAll();
+        }
+
         return $this->render('jobad/index.html.twig', array(
             'jobAds' => $jobAds,
-            'searchPath' => 'searchAds',
+            'searchForm' => $form->createView(),
         ));
     }
 
@@ -40,16 +51,23 @@ class JobAdController extends Controller
      * @Route("/mano-skelbimai", name="jobad_my_index")
      * @Method("GET")
      */
-    public function indexMyAdsAction()
+    public function indexMyAdsAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        // TODO: make pagination
-        $jobAds = $em->getRepository('AppBundle:JobAd')->findBy(
-            ['employer' => $this->getUser()]
-        );
+        $form = $this->createForm(AdsSearchType::class, null, ['method' => 'GET']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository = $this->getDoctrine()->getRepository(JobAd::class);
+            $jobAds = $repository->searchMyAds($request->get('title'), $this->getUser());
+        } else {
+            $jobAds = $this->getDoctrine()->getRepository(JobAd::class)->findBy(
+                ['employer' => $this->getUser()]
+            );
+        }
+
         return $this->render('jobad/my_index.html.twig', array(
             'jobAds' => $jobAds,
-            'searchPath' => 'searchMyAds'
+            'searchForm' => $form->createView(),
         ));
     }
 
