@@ -47,6 +47,11 @@ class Evaluation
      */
     private $comment;
 
+    /**
+     * One Evaluation has One JobApply.
+     * @ORM\OneToOne(targetEntity="JobApply", mappedBy="evaluation")
+     */
+    private $jobApply;
 
     /**
      * Get id
@@ -57,12 +62,6 @@ class Evaluation
     {
         return $this->id;
     }
-
-    /**
-     * One Evaluation has One JobApply.
-     * @ORM\OneToOne(targetEntity="JobApply", mappedBy="evaluation")
-     */
-    private $jobApply;
 
     /**
      * Set mark

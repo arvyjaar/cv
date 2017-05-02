@@ -7,9 +7,7 @@ use AppBundle\Entity\UserSeeker;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Symfony\Component\Validator\Constraints\DateTime;
-use Psr\Cache\CacheItemPoolInterface;
+use AppBundle\Provider\AverageSalaryProvider;
 
 /**
  * UserEmployer controller.
@@ -33,9 +31,9 @@ class UserEmployerController extends Controller
 
         $userEmployers = $em->getRepository('AppBundle:UserEmployer')->findAll();
 
-        return $this->render('useremployer/index.html.twig', array(
+        return $this->render('useremployer/index.html.twig', [
             'userEmployers' => $userEmployers,
-        ));
+        ]);
     }
 
     /**
@@ -48,34 +46,13 @@ class UserEmployerController extends Controller
     {
         $legalEntitysCode = $userEmployer->getlegalEntitysCode();
 
-        $salary = $this->getSalary($legalEntitysCode);
+        //TODO refactor this method
+        $salaryProvider = new AverageSalaryProvider();
+        $salary = $salaryProvider->getSalary($legalEntitysCode);
 
-        return $this->render('useremployer/show.html.twig', array(
+        return $this->render('useremployer/show.html.twig', [
             'userEmployer' => $userEmployer,
             'salary' => $salary,
-        ));
-    }
-
-    public function getSalary($legalEntitysCode)
-    {
-        $cache = new FilesystemAdapter();
-        $cachedValues = $cache->getItem($legalEntitysCode);
-
-        if ($cachedValues->isHit()) {
-            $cachedData = $cachedValues->get();
-            $salary = $cachedData[$legalEntitysCode];
-        } else {
-            $salary = $this->get('app.salary_crawler')->fetchSalary($legalEntitysCode);
-
-            $cachedValues->set(array(
-                $legalEntitysCode => $salary,
-            ));
-
-            $firstDayOfNextMonth = date_modify(new \DateTime('now'), 'first day of +1 month 00:00:00');
-            $cachedValues->expiresAt($firstDayOfNextMonth);
-            $cache->save($cachedValues);
-        }
-
-        return $salary;
+        ]);
     }
 }

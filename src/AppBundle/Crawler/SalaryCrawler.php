@@ -20,14 +20,11 @@ class SalaryCrawler
         $form = $crawler->selectButton('Ieškoti')->form(array(
             'code' => $legalEntitysCode
         ));
-
         $crawler = $client->submit($form);
-
         $link = $crawler->filter('a[class="firmTitle"]')->attr('href');
         $crawler = $client->request('GET', $link);
 
         $salary = $crawler->filter('tr:contains("Vidutinis atlyginimas") > td:contains("€")')->text();
-
         $salary = (float) substr($salary, 0, strpos($salary, "€"));
 
         return $salary;

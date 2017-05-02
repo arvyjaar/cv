@@ -20,11 +20,11 @@
             {{ form_end(form) }}
 
             {% if( form.vars.value.id != null) %}
-                {{ form_start(delete_form) }}
+                {{ form_start(deleteForm) }}
                 <div class="btn-block">
                     <input  class="btn btn-default" type="submit" value="Ištrinti įvertinimą">
                 </div>
-                {{ form_end(delete_form) }}
+                {{ form_end(deleteForm) }}
             {% endif %}
 
         </div>

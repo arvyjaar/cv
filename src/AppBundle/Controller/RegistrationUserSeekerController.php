@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Entity\UserSeeker;
 
 class RegistrationUserSeekerController extends Controller
 {
@@ -10,6 +11,6 @@ class RegistrationUserSeekerController extends Controller
     {
         return $this->container
             ->get('pugx_multi_user.registration_manager')
-            ->register('AppBundle\Entity\UserSeeker');
+            ->register(UserSeeker::class);
     }
 }

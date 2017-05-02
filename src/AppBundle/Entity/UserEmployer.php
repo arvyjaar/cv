@@ -51,7 +51,7 @@ class UserEmployer extends User
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="employerLogo", fileNameProperty="photo")
+     * @Vich\UploadableField(mapping="employer_logo", fileNameProperty="photo")
      *
      * @var File
      */
@@ -82,6 +82,11 @@ class UserEmployer extends User
 
     /**
      * @ORM\Column(name="legal_code", type="string")
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min=7,
+     *     max=9
+ *     )
      */
     protected $legalEntitysCode;
 
