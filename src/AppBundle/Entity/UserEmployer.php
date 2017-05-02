@@ -80,6 +80,11 @@ class UserEmployer extends User
      */
     private $jobAd;
 
+    /**
+     * @ORM\Column(name="legal_code", type="string")
+     */
+    protected $legalEntitysCode;
+
     public function __construct()
     {
         parent::__construct();
@@ -251,5 +256,21 @@ class UserEmployer extends User
     public function setJobAd($jobAd)
     {
         $this->jobAd = $jobAd;
+    }
+
+    /**
+     * @param string $legalEntitysCode
+     */
+    public function setlegalEntitysCode($legalEntitysCode)
+    {
+        $this->legalEntitysCode = $legalEntitysCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getlegalEntitysCode()
+    {
+        return $this->legalEntitysCode;
     }
 }

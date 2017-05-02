@@ -30,7 +30,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
 
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 
     public function load(ObjectManager $manager)

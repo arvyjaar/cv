@@ -33,7 +33,7 @@ class LoadJobApplyData implements FixtureInterface, OrderedFixtureInterface, Con
 
     public function getOrder()
     {
-        return 6;
+        return 7;
     }
 
     /**
