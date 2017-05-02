@@ -26,6 +26,9 @@ class RegistrationUserEmployerFormType extends AbstractType
         $builder
             ->add('title', null, ['label' => 'Įmonė*'])
             ->add('email', EmailType::class, ['label' => 'El. Paštas*'])
+            ->add('legalEntitysCode', null, [
+                'label' => 'Įmonės kodas*'
+                ])
             //->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,

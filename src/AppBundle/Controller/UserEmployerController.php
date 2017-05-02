@@ -7,6 +7,7 @@ use AppBundle\Entity\UserSeeker;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Provider\AverageSalaryProvider;
 
 /**
  * UserEmployer controller.
@@ -30,9 +31,9 @@ class UserEmployerController extends Controller
 
         $userEmployers = $em->getRepository('AppBundle:UserEmployer')->findAll();
 
-        return $this->render('useremployer/index.html.twig', array(
+        return $this->render('useremployer/index.html.twig', [
             'userEmployers' => $userEmployers,
-        ));
+        ]);
     }
 
     /**
@@ -43,9 +44,15 @@ class UserEmployerController extends Controller
      */
     public function showAction(UserEmployer $userEmployer)
     {
+        $legalEntitysCode = $userEmployer->getlegalEntitysCode();
 
-        return $this->render('useremployer/show.html.twig', array(
+        //TODO refactor this method
+        $salaryProvider = new AverageSalaryProvider();
+        $salary = $salaryProvider->getSalary($legalEntitysCode);
+
+        return $this->render('useremployer/show.html.twig', [
             'userEmployer' => $userEmployer,
-        ));
+            'salary' => $salary,
+        ]);
     }
 }

@@ -52,7 +52,7 @@ class UserEmployer extends User
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="employerLogo", fileNameProperty="photo")
+     * @Vich\UploadableField(mapping="employer_logo", fileNameProperty="photo")
      *
      * @var File
      */
@@ -80,6 +80,16 @@ class UserEmployer extends User
      * @ORM\OneToMany(targetEntity="JobAd", mappedBy="employer")
      */
     private $jobAd;
+
+    /**
+     * @ORM\Column(name="legal_code", type="string")
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min=7,
+     *     max=9
+ *     )
+     */
+    protected $legalEntitysCode;
 
     public function __construct()
     {
@@ -252,5 +262,21 @@ class UserEmployer extends User
     public function setJobAd($jobAd)
     {
         $this->jobAd = $jobAd;
+    }
+
+    /**
+     * @param string $legalEntitysCode
+     */
+    public function setlegalEntitysCode($legalEntitysCode)
+    {
+        $this->legalEntitysCode = $legalEntitysCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getlegalEntitysCode()
+    {
+        return $this->legalEntitysCode;
     }
 }

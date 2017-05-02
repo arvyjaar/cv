@@ -1,18 +1,23 @@
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 #Disabled FOSUser route /register
 fos_user_registration_register:
     path:  /register
     methods: [GET, POST]
     defaults:  { _controller: AppBundle:Default:register }
+
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 user_employer_registration:
     path:  /register/employer
     defaults: { _controller: AppBundle:RegistrationUserEmployer:register }
+
 user_seeker_registration:
     path:  /register/seeker
     defaults: { _controller: AppBundle:RegistrationUserSeeker:register }

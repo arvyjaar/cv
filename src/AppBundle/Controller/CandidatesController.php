@@ -37,9 +37,9 @@ class CandidatesController extends Controller
             ['jobAd' => $jobAd]
         );
 
-        return $this->render('jobapply/index.html.twig', array(
+        return $this->render('jobapply/index.html.twig', [
             'jobAd' => $jobAd,
             'jobApplies' => $jobApplies,
-        ));
+        ]);
     }
 }

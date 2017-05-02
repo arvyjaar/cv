@@ -30,7 +30,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
 
     public function getOrder()
     {
-        return 2;
+        return 3;
     }
 
     public function getSector($id)
@@ -53,6 +53,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
             yra trečia pagal dydį telekomunikacijų paslaugų teikėja Lietuvoje. Šiuo metu paslaugas teikiame: Vilniuje, 
             Kaune, Mažeikiuose.');
         $employer1->setEmail('cgates@email.com');
+        $employer1->setlegalEntitysCode('120622256');
         // password encoding
         $employer1->setEnabled(true);
         $employer1->setSalt(md5(uniqid()));
@@ -68,6 +69,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer2->setDescription('Programinės įrangos kūrimas, elektroninio verslo sprendimai, internetinių 
             svetainių kūrimas.');
         $employer2->setEmail('nfq@email.com');
+        $employer2->setlegalEntitysCode('	135867375');
         // password encoding
         $employer2->setEnabled(true);
         $employer2->setSalt(md5(uniqid()));
@@ -82,6 +84,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer3->setPhone('+370613123456');
         $employer3->setDescription('Microsoft atstovybė Lietuvoje. Programinė įranga, didmeninė ir mažmeninė prekyba.');
         $employer3->setEmail('microsoft@email.com');
+        $employer3->setlegalEntitysCode('	111751978');
         // password encoding
         $employer3->setEnabled(true);
         $employer3->setSalt(md5(uniqid()));
@@ -98,6 +101,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
             valstybinėms organizacijoms. Kompetencijos sritys: debesų kompiuterija, IT valdymas ir priežiūra, duomenų 
             perdavimas ir kibernetinis saugumas, serveriai ir duomenų saugyklos, infrastruktūros valdymas.');
         $employer4->setEmail('bluebridge@email.com');
+        $employer4->setlegalEntitysCode('	111445337');
         // password encoding
         $employer4->setEnabled(true);
         $employer4->setSalt(md5(uniqid()));
@@ -115,6 +119,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
             yra didžiausios Šiaurės ir Baltijos šalių telekomunikacijų bendrovės "TeliaSonera AB (publ)" įmonių 
             grupės dalis.');
         $employer5->setEmail('telia@email.com');
+        $employer5->setlegalEntitysCode('121215434');
         // password encoding
         $employer5->setEnabled(true);
         $employer5->setSalt(md5(uniqid()));
@@ -130,6 +135,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer6->setDescription('UAB "Sicor Biotech" – biotechnologinės farmacijos įmonė, kurianti ir gaminanti 
             rekombinantinius biofarmacinius preparatus pagal pažangiausias mokslo ir gamybos technologijas.');
         $employer6->setEmail('sicorbiotech@email.com');
+        $employer6->setlegalEntitysCode('111660489 ');
         // password encoding
         $employer6->setEnabled(true);
         $employer6->setSalt(md5(uniqid()));
@@ -144,6 +150,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer7->setPhone('+370614145888');
         $employer7->setDescription('Kompiuterinių programų kūrimas.');
         $employer7->setEmail('eisgroup@email.com');
+        $employer7->setlegalEntitysCode('300607099 ');
         // password encoding
         $employer7->setEnabled(true);
         $employer7->setSalt(md5(uniqid()));
@@ -160,6 +167,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
             finansų ir logistikos rinkoms. Patirtis įvairiose verslo srityse, kaupta nuo pat įmonės įkūrimo 1988 m. 
             rugsėjo 27 d., leidžia mums būti universaliems, priimti ir realizuoti bet kokį klientų siūlomą iššūkį.');
         $employer8->setEmail('balticamadeus@email.com');
+        $employer8->setlegalEntitysCode('110320619');
         // password encoding
         $employer8->setEnabled(true);
         $employer8->setSalt(md5(uniqid()));
@@ -175,6 +183,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer9->setDescription('Programinės įrangos kūrimas, elektroninio verslo sprendimai, 
             internetinių svetainių kūrimas.');
         $employer9->setEmail('devbridge@email.com');
+        $employer9->setlegalEntitysCode('300132841');
         // password encoding
         $employer9->setEnabled(true);
         $employer9->setSalt(md5(uniqid()));
@@ -192,6 +201,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
             reguliuojamos rinkos operatorė, teikianti vertybinių popierių prekybos, listingo bei 
             informacines paslaugas.');
         $employer10->setEmail('nasdaq@email.com');
+        $employer10->setlegalEntitysCode('110057488');
         // password encoding
         $employer10->setEnabled(true);
         $employer10->setSalt(md5(uniqid()));
@@ -206,6 +216,7 @@ class LoadUserEmployerData implements FixtureInterface, OrderedFixtureInterface,
         $employer11->setPhone('+370614133333');
         $employer11->setDescription('Pasaulinė GOOGLE paieškos sistema Lietuvoje.');
         $employer11->setEmail('google@email.com');
+        $employer11->setlegalEntitysCode('303876350');
         // password encoding
         $employer11->setEnabled(true);
         $employer11->setSalt(md5(uniqid()));

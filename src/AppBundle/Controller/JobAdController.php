@@ -2,6 +2,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\JobAd;
+use AppBundle\Form\Type\JobAdType;
 use AppBundle\Entity\UserEmployer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -9,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use AppBundle\Entity\Requirement;
+use Symfony\Component\Form\Form;
 
 /**
  * Jobad controller.
@@ -28,9 +30,9 @@ class JobAdController extends Controller
         $em = $this->getDoctrine()->getManager();
         // TODO: make pagination
         $jobAds = $em->getRepository('AppBundle:JobAd')->findAll();
-        return $this->render('jobad/index.html.twig', array(
+        return $this->render('jobad/index.html.twig', [
             'jobAds' => $jobAds,
-        ));
+        ]);
     }
 
     /**
@@ -46,9 +48,9 @@ class JobAdController extends Controller
         $jobAds = $em->getRepository('AppBundle:JobAd')->findBy(
             ['employer' => $this->getUser()]
         );
-        return $this->render('jobad/my_index.html.twig', array(
+        return $this->render('jobad/my_index.html.twig', [
             'jobAds' => $jobAds,
-        ));
+        ]);
     }
 
     /**
@@ -64,10 +66,10 @@ class JobAdController extends Controller
         $jobAds = $em->getRepository('AppBundle:JobAd')->findBy(
             ['employer' => $employer]
         );
-        return $this->render('jobad/index.html.twig', array(
+        return $this->render('jobad/index.html.twig', [
             'jobAds' => $jobAds,
             'employer' => $employer,
-        ));
+        ]);
     }
 
     /**
@@ -86,7 +88,7 @@ class JobAdController extends Controller
             throw new AccessDeniedException();
         }
         $jobAd = new Jobad();
-        $form = $this->createForm('AppBundle\Form\Type\JobAdType', $jobAd);
+        $form = $this->createForm(JobAdType::class, $jobAd);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -101,14 +103,16 @@ class JobAdController extends Controller
             $em->persist($jobAd);
             $em->flush();
 
-            $this->saveJobAdRequirements($requirements, $jobAd);
+            if ($requirements) {
+                $this->saveJobAdRequirements($requirements, $jobAd);
+            }
 
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
-        return $this->render('jobad/new.html.twig', array(
+        return $this->render('jobad/new.html.twig', [
             'jobAd' => $jobAd,
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -120,10 +124,10 @@ class JobAdController extends Controller
     public function showAction(JobAd $jobAd)
     {
         $deleteForm = $this->createDeleteForm($jobAd);
-        return $this->render('jobad/show.html.twig', array(
+        return $this->render('jobad/show.html.twig', [
             'jobAd' => $jobAd,
-            'delete_form' => $deleteForm->createView(),
-        ));
+            'deleteForm' => $deleteForm->createView(),
+        ]);
     }
 
     /**
@@ -137,7 +141,7 @@ class JobAdController extends Controller
         $this->denyAccessUnlessGranted('edit', $jobAd);
 
         $deleteForm = $this->createDeleteForm($jobAd);
-        $form = $this->createForm('AppBundle\Form\Type\JobAdType', $jobAd);
+        $form = $this->createForm(JobAdType::class, $jobAd);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -147,24 +151,25 @@ class JobAdController extends Controller
 
             $this->getDoctrine()->getManager()->flush();
 
-            $this->saveJobAdRequirements($requirements, $jobAd);
+            if ($requirements) {
+                $this->saveJobAdRequirements($requirements, $jobAd);
+            }
 
-            return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
+            return $this->redirectToRoute('jobad_show', ['id' => $jobAd->getId()]);
         }
-        return $this->render('jobad/new.html.twig', array(
+        return $this->render('jobad/new.html.twig', [
             'jobAd' => $jobAd,
             'form' => $form->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+            'deleteForm' => $deleteForm->createView(),
+        ]);
     }
 
     /**
-     * Deletes a jobAd entity. TODO: I think, we shouldn't delete jobAds. We should write 'Valid To' instead.
+     * Deletes a jobAd entity.
      *
      * @Route("/{id}", name="jobad_delete")
      * @Method("DELETE")
      */
-    //TODO Valid to - lb gerai, bet reiketu ir galimybes istrinti. o jeigu nenori, kad tavo skelbimas butu viesas?
     public function deleteAction(Request $request, JobAd $jobAd)
     {
         $this->denyAccessUnlessGranted('edit', $jobAd);
@@ -183,12 +188,12 @@ class JobAdController extends Controller
      *
      * @param JobAd $jobAd The jobAd entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm(JobAd $jobAd)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('jobad_delete', array('id' => $jobAd->getId())))
+            ->setAction($this->generateUrl('jobad_delete', ['id' => $jobAd->getId()]))
             ->setMethod('DELETE')
             ->getForm();
     }

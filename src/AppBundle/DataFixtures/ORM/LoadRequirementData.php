@@ -30,7 +30,7 @@ class LoadRequirementData implements FixtureInterface, OrderedFixtureInterface, 
 
     public function getOrder()
     {
-        return 7;
+        return 8;
     }
 
     /**

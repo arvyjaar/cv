@@ -19,7 +19,6 @@ class SkillController extends Controller
 
     /**
      * @Route("/naujas",
-     *     defaults = { "page" = 1 },
      *     options = { "expose" = true },
      *     name = "add_skill",
      * )
@@ -43,16 +42,15 @@ class SkillController extends Controller
 
         // Sends last insert id to main.js class
         $response = new JsonResponse();
-        $response->setData(array(
+        $response->setData([
             'id' => $id
-        ));
+        ]);
 
         return $response;
     }
 
     /**
-     * @Route("/{{id}}",
-     *     defaults = { "page" = 1 },
+     * @Route("/{id}",
      *     options = { "expose" = true },
      *     name = "delete_skill",
      * )

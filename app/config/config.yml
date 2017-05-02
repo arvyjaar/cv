@@ -85,32 +85,31 @@ fos_user:
 
 # PGUX Multi User Bundle configuration
 pugx_multi_user:
-  users:
-    user_employer:
-        entity:
-          class: AppBundle\Entity\UserEmployer
-#          factory:
-        registration:
-          form:
-            type: AppBundle\Form\Type\RegistrationUserEmployerFormType
-            name: fos_user_registration_form
-            validation_groups:  [Registration, Default]
-          template: :Registration:user_employer.form.html.twig
-        profile:
-          form:
-            type: AppBundle\Form\Type\ProfileUserEmployerFormType
-            name: fos_user_profile_form
-            validation_groups:  [Profile, Default]
-    user_seeker:
-        entity:
-            class: AppBundle\Entity\UserSeeker
-        registration:
-            form:
-                type: AppBundle\Form\Type\RegistrationUserSeekerFormType
-            template: :Registration:user_seeker.form.html.twig
-        profile:
-            form:
-                type: AppBundle\Form\Type\ProfileUserSeekerFormType
+    users:
+        user_employer:
+            entity:
+                class: AppBundle\Entity\UserEmployer
+            registration:
+                form:
+                    type: AppBundle\Form\Type\RegistrationUserEmployerFormType
+                    name: fos_user_registration_form
+                    validation_groups:  [Registration, Default]
+                template: :Registration:user_employer.form.html.twig
+            profile:
+                form:
+                    type: AppBundle\Form\Type\ProfileUserEmployerFormType
+                    name: fos_user_profile_form
+                    validation_groups:  [Profile, Default]
+        user_seeker:
+            entity:
+                class: AppBundle\Entity\UserSeeker
+            registration:
+                form:
+                    type: AppBundle\Form\Type\RegistrationUserSeekerFormType
+                template: :Registration:user_seeker.form.html.twig
+            profile:
+                form:
+                    type: AppBundle\Form\Type\ProfileUserSeekerFormType
 
 # File uploader
 vich_uploader:
@@ -123,7 +122,7 @@ vich_uploader:
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
-        employerLogo:
+        employer_logo:
             uri_prefix: /img/profiles
             upload_destination: '%kernel.root_dir%/../web/img/profiles'
             namer: vich_uploader.namer_origname

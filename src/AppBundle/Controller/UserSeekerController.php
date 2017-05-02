@@ -24,14 +24,13 @@ class UserSeekerController extends Controller
     public function indexAction()
     {
         // TODO: pagination
-
         $em = $this->getDoctrine()->getManager();
 
         $userSeekers = $em->getRepository('AppBundle:UserSeeker')->findAll();
 
-        return $this->render('userseeker/index.html.twig', array(
+        return $this->render('userseeker/index.html.twig', [
             'userSeekers' => $userSeekers,
-        ));
+        ]);
     }
 
     /**
@@ -42,9 +41,8 @@ class UserSeekerController extends Controller
      */
     public function showAction(UserSeeker $userSeeker)
     {
-
-        return $this->render('userseeker/show.html.twig', array(
+        return $this->render('userseeker/show.html.twig', [
             'userSeeker' => $userSeeker,
-        ));
+        ]);
     }
 }

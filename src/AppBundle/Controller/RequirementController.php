@@ -9,15 +9,12 @@ use AppBundle\Entity\Requirement;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * Class RequirementController
- * @package AppBundle\Controller
  * @Route("reikalavimai")
  */
 class RequirementController extends Controller
 {
     /**
-     * @Route("/{{id}}",
-     *     defaults = { "page" = 1 },
+     * @Route("/{id}",
      *     options = { "expose" = true },
      *     name = "delete_requirement",
      * )
