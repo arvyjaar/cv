@@ -1,0 +1,10 @@
+{# Ads search form #}
+<div class="row">
+    <div class="col-md-12">
+        {{ form_start(form, {'attr': { 'class': 'form-inline' },
+        }) }}
+        {{ form_row(form.title, {'attr': {'placeholder': 'Raktažodis' }}) }}
+        <input class="btn btn-default" type="submit" value="Ieškoti"/>
+        {{ form_end(form) }}
+    </div>
+</div>

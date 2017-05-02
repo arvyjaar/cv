@@ -3,10 +3,13 @@
 {% block body %}
     <div class="container">
         <div class="content-container">
+            <p class="page-heading">{% block heading %}Darbo{% endblock %} skelbimai {% include 'search-ads.html.twig' with {'form': searchForm} %}</p>
 
-            <p class="page-heading">{% block heading %}Darbo{% endblock %} skelbimai</p>
-
-            {% block noResults %}{% endblock %}
+            {% block noResults %}
+                {% if  jobAds == null %}
+                    <p>Nieko nerasta...</p>
+                {% endif %}
+            {% endblock %}
 
             {% for jobAd in jobAds %}
 

@@ -1,11 +1,20 @@
 <?php
 
-namespace AppBundle\Tests\Controller;
+namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Tests\App\Helper\LogInHelper;
 
 class JobAdControllerTest extends WebTestCase
 {
+    /*
+    public function testMyAdsIndexScenario()
+    {
+        // Create a new client to browse the application
+        $client = static::createClient();
+    }
+    */
+
     /*
     public function testCompleteScenario()
     {
