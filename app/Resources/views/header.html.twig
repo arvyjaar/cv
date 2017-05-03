@@ -24,7 +24,6 @@
                                         class="caret navbar-item"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('user_seeker_registration') }}">Ieškantiems darbo</a></li>
-                                <li role="separator" class="divider"></li>
                                 <li><a href="{{ path('user_employer_registration') }}">Siūlantiems darbą</a></li>
                             </ul>
                         </li>
@@ -36,18 +35,13 @@
                                         class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('fos_user_profile_show') }}">Mano profilis</a></li>
-                                <li role="separator" class="divider"></li>
                                 {% if is_granted('ROLE_USER_SEEKER') %}
                                     <li><a href="{{ path('jobad_index') }}">Peržiūrėti darbo skelbimus</a></li>
-                                    <li role="separator" class="divider"></li>
                                     <li><a href="{{ path('user_employer_index') }}">Peržiūrėti įmonių sąrašą</a></li>
                                 {% elseif is_granted('ROLE_USER_EMPLOYER') %}
                                     <li><a href="{{ path('jobad_my_index') }}">Mano skelbimai</a></li>
-                                    <li role="separator" class="divider"></li>
                                     <li><a href="{{ path('jobad_new') }}">Sukurti naują skelbimą</a></li>
-                                    <li role="separator" class="divider"></li>
                                     <li><a href="{{ path('user_seeker_index') }}">Peržiūrėti darbuotojus</a></li>
-                                    <li role="separator" class="divider"></li>
                                     <li><a href="{{ path('jobad_index') }}">Peržiūrėti visus skelbimus</a></li>
                                 {% endif %}
                             </ul>

@@ -181,12 +181,11 @@ class JobAdController extends Controller
     }
 
     /**
-     * Deletes a jobAd entity. TODO: I think, we shouldn't delete jobAds. We should write 'Valid To' instead.
+     * Deletes a jobAd entity. TODO: add 'Valid To'.
      *
      * @Route("/{id}", name="jobad_delete")
      * @Method("DELETE")
      */
-    //TODO Valid to - lb gerai, bet reiketu ir galimybes istrinti. o jeigu nenori, kad tavo skelbimas butu viesas?
     public function deleteAction(Request $request, JobAd $jobAd)
     {
         $this->denyAccessUnlessGranted('edit', $jobAd);

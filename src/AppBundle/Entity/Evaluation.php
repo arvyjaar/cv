@@ -65,7 +65,7 @@ class Evaluation
     /**
      * Set mark
      *
-     * @param integer $mark
+     * @param int $mark
      *
      * @return Evaluation
      */
@@ -111,7 +111,7 @@ class Evaluation
     }
 
     /**
-     * @return mixed
+     * @return JobApply
      */
     public function getJobApply()
     {
@@ -121,7 +121,7 @@ class Evaluation
     /**
      * @param mixed $jobApply
      */
-    public function setJobApply($jobApply)
+    public function setJobApply(JobApply $jobApply)
     {
         $this->jobApply = $jobApply;
     }

@@ -12,16 +12,26 @@ use AppBundle\Crawler\SalaryCrawler;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use DateTime;
 
-// TODO refactor this class and its methods
 class AverageSalaryProvider
 {
+    /**
+     * @var SalaryCrawler
+     */
     private $salaryCrawler;
 
+    /**
+     * @param SalaryCrawler $salaryCrawler
+     */
     public function __construct(SalaryCrawler $salaryCrawler)
     {
         $this->salaryCrawler = $salaryCrawler;
     }
 
+    /**
+     * @param string $legalEntitysCode
+     *
+     * @return mixed
+     */
     public function getSalary($legalEntitysCode)
     {
         $cache = new FilesystemAdapter();
@@ -31,18 +41,19 @@ class AverageSalaryProvider
             $cachedData = $cachedValues->get();
             $salary = $cachedData[$legalEntitysCode];
         } else {
-            //TODO: if service is down or takes too long - skip fetching, don't display salary on twig
             $salary = $this->salaryCrawler->fetchSalary($legalEntitysCode);
+
+            if ($salary == null) {
+                return $salary;
+            }
 
             $cachedValues->set([
                 $legalEntitysCode => $salary,
             ]);
-
             $firstDayOfNextMonth = date_modify(new DateTime('now'), 'first day of +1 month 00:00:00');
             $cachedValues->expiresAt($firstDayOfNextMonth);
             $cache->save($cachedValues);
         }
-
         return $salary;
     }
 }

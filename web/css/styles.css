@@ -113,7 +113,7 @@ body {
 }
 
 .navbar-toggle .icon-bar {
-    background-color: #00b8e7;
+    background-color: grey;
     height: 4px;
     width: 28px;
 }
@@ -134,30 +134,29 @@ body {
     vertical-align: middle;
 }
 
-.navbar-left .form-control {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius:10px;
-}
-
-.navbar-form .form-control {
-    width: 250px;
-}
-
-.navbar-form {
-    position: relative;
-}
-.navbar-form .btn {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    right: 15px;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-}
-
 .navbar {
     margin-bottom: 0;
+}
+
+.nav .open a, .nav .open a:focus, .nav .open a:hover {
+    background-color: white;
+}
+
+.dropdown-menu {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 30px;
+}
+
+.affix .navbar-nav li .dropdown-menu {
+    margin-top: 14px;
+    border-top-color: #00b8e7;
+}
+
+.affix-top li .dropdown-menu {
+    margin-top: 2px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 .affix {
@@ -169,14 +168,75 @@ body {
     border-bottom: 0.5px solid lightgrey;
 }
 
+/*FOOTER*/
+
+.footer {
+    padding: 30px 0;
+}
+
 /* HOMEPAGE */
+
+.homepage-heading {
+    font-size: 40px;
+}
+
+.homepage-heading-block {
+    padding: 50px 0 20px;
+}
+
+.homepage-heading-block-sm {
+    padding: 30px 0 20px;
+}
+
+.homepage-block {
+    padding: 30px;
+}
+
+.homepage-contact-us {
+    font-size: 32px;
+    color: #00b8e7;
+    font-weight: 400;
+}
+
+.homepage-circle-block {
+    display: table;
+    text-align: center;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    margin: 5px auto;
+    background: white;
+    border: 0.5px solid lightgrey;
+    position: relative;
+}
+
+.homepage-circle-block:hover {
+    border-color: #00b8e7;
+    cursor: pointer;
+}
+
+.homepage-circle-block:hover .homepage-circle-text {
+    color: #7030a0;
+    -webkit-transition: color .5s;
+    transition: color .5s;
+}
+
+.homepage-circle-text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.homepage-row-background {
+    background-image: url("../img/diagonal_striped_brick.png");
+    padding-bottom: 50px;
+    margin-top: 50px;
+}
 
 .slogan-block {
     position: relative;
 }
 
 .slogan-background {
-    /*min-height: 800px;*/
     background-size: cover;
     background-position: center center;
     background-image: url("../img/cover.jpg");
@@ -370,8 +430,8 @@ body {
     height:100%;
     display:none;
     position:fixed;
-    top:0px;
-    left:0px;
+    top:0;
+    left:0;
     background:rgba(0,0,0,0.75);
 }
 
@@ -386,7 +446,7 @@ body {
     left:50%;
     -webkit-transform:translate(-50%, -50%);
     transform:translate(-50%, -50%);
-    box-shadow:0px 2px 6px rgba(0,0,0,1);
+    box-shadow:0 2px 6px rgba(0,0,0,1);
     border-radius:3px;
     background:#fff;
 }
@@ -455,8 +515,8 @@ body {
     padding-top:4px;
     display:inline-block;
     position:absolute;
-    top:0px;
-    right:0px;
+    top:0;
+    right:0;
     transition:ease 0.25s all;
     -webkit-transform:translate(50%, -50%);
     transform:translate(50%, -50%);
@@ -484,6 +544,11 @@ body {
 
 @media only screen and (max-width : 768px) {
 
+    .affix-top {
+        /* navbar style at top */
+        background: white;
+    }
+
     .form-container {
        padding: 30px 20px;
     }
@@ -493,7 +558,10 @@ body {
     }
 
     .slogan {
+        height: 250px;
         width: 100%;
+        padding-top: 50px;
+        top: 70%;
         right: auto;
         left: auto;
         border-radius: 0;
@@ -547,6 +615,11 @@ body {
     .dropdown-menu li {
         margin: 0;
         padding-top: 0;
+        border-bottom: 0.5px solid lightgrey;
+    }
+
+    .dropdown-menu li:last-child {
+        border: none;
     }
 
     .nav .open a {
@@ -587,9 +660,25 @@ body {
         padding-top: 0;
     }
 
+    .homepage-circle-block {
+        border-radius: 50%;
+        width: 100%;
+        height: 140px;
+        margin-right: auto;
+        margin-left: auto;
+        background: white;
+        border: 0.5px solid lightgrey;
+    }
+
 }
 
 @media only screen and (min-width: 992px) {
+
+    .homepage-circle-block {
+        height: 180px;
+        width: 180px;
+    }
+
     /*JOB AD LIST*/
     .job-ad-box {
         min-height: 475px;
