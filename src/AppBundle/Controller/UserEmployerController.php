@@ -58,7 +58,7 @@ class UserEmployerController extends Controller
         $legalEntitysCode = $userEmployer->getlegalEntitysCode();
 
         //TODO refactor this method
-        $salaryProvider = new AverageSalaryProvider();
+        $salaryProvider = new AverageSalaryProvider($this->container->get('app.salary_crawler'));
         $salary = $salaryProvider->getSalary($legalEntitysCode);
 
         return $this->render('useremployer/show.html.twig', [

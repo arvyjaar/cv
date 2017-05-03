@@ -8,19 +8,18 @@
 
 namespace AppBundle\Provider;
 
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use AppBundle\Crawler\SalaryCrawler;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use DateTime;
 
 // TODO refactor this class and its methods
-class AverageSalaryProvider implements ContainerAwareInterface
+class AverageSalaryProvider
 {
-    private $container;
+    private $salaryCrawler;
 
-    public function setContainer(ContainerInterface $container = null)
+    public function __construct(SalaryCrawler $salaryCrawler)
     {
-        $this->container = $container;
+        $this->salaryCrawler = $salaryCrawler;
     }
 
     public function getSalary($legalEntitysCode)
@@ -33,7 +32,7 @@ class AverageSalaryProvider implements ContainerAwareInterface
             $salary = $cachedData[$legalEntitysCode];
         } else {
             //TODO: if service is down or takes too long - skip fetching, don't display salary on twig
-            $salary = $this->container->get('app.salary_crawler')->fetchSalary($legalEntitysCode);
+            $salary = $this->salaryCrawler->fetchSalary($legalEntitysCode);
 
             $cachedValues->set([
                 $legalEntitysCode => $salary,

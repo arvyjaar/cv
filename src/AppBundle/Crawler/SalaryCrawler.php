@@ -14,6 +14,7 @@ class SalaryCrawler
 {
     public function fetchSalary($legalEntitysCode)
     {
+        //Todo set request time limit & error handling
         $client = new Client();
         $crawler = $client->request('GET', 'http://rekvizitai.vz.lt/');
 
