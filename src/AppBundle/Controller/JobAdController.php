@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\JobAd;
 use AppBundle\Entity\Requirement;
 use AppBundle\Entity\UserEmployer;
+use AppBundle\Form\Type\JobAdType;
 use AppBundle\Form\Type\AdsSearchType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -144,7 +145,7 @@ class JobAdController extends Controller
         $deleteForm = $this->createDeleteForm($jobAd);
         return $this->render('jobad/show.html.twig', array(
             'jobAd' => $jobAd,
-            'delete_form' => $deleteForm->createView(),
+            'deleteForm' => $deleteForm->createView(),
         ));
     }
 
@@ -159,7 +160,7 @@ class JobAdController extends Controller
         $this->denyAccessUnlessGranted('edit', $jobAd);
 
         $deleteForm = $this->createDeleteForm($jobAd);
-        $form = $this->createForm('AppBundle\Form\Type\JobAdType', $jobAd);
+        $form = $this->createForm(JobAdType::class, $jobAd);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -176,7 +177,7 @@ class JobAdController extends Controller
         return $this->render('jobad/new.html.twig', array(
             'jobAd' => $jobAd,
             'form' => $form->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'deleteForm' => $deleteForm->createView(),
         ));
     }
 

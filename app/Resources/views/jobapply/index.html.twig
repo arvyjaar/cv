@@ -17,9 +17,10 @@
                         </div>
                         <div class="col-md-4">
                             <ul class="profile-list">
-                                <a class="candidates-list-heading" href="{{ path('user_seeker_show', {'id' : jobApply.owner.id}) }}">
-                                    <li>{{ jobApply.owner.name }} {{ jobApply.owner.surname }}</li>
-                                </a>
+                                <li>
+                                    <a class="candidates-list-heading" href="{{ path('user_seeker_show', {'id' : jobApply.owner.id}) }}">
+                                    {{ jobApply.owner.name }} {{ jobApply.owner.surname }}</a>
+                                </li>
                                 <li>Amžius: {{ jobApply.owner.birthDay|age }}</li>
                                 <li>{{ jobApply.owner.city }}</li>
                             </ul>
@@ -29,9 +30,11 @@
                                 <li>
                                     <a href="{{ jobApply.assignmentSolution ?? '#' }}">Užduoties sprendimas</a>
                                 </li>
-                                <li>s
-                                    <a href=" {{ asset('files/cv/'~jobApply.cv) }}" target="_blank">Gyvenimo aprašymas</a>
+                                {% if jobApply.cv %}
+                                <li>
+                                    <a href=" {{ asset('files/cv/'~jobApply.cv ?? '#') }}" target="_blank">Gyvenimo aprašymas</a>
                                 </li>
+                                {% endif %}
                                 {% if jobApply.evaluation %}
                                     <li class="assignment-evaluation">Mano įvertinimas: {{ jobApply.evaluation.mark }}</li>
                                     <li>

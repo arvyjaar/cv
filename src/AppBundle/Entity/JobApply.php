@@ -3,9 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Evaluation;
-use AppBundle\Entity\JobAd;
-use AppBundle\Entity\UserSeeker;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
@@ -31,7 +28,7 @@ class JobApply
     /**
      * @var string
      *
-     * @ORM\Column(name="cv", type="string", length=255)
+     * @ORM\Column(name="cv", type="string", length=255, nullable=true)
      */
     private $cv;
 

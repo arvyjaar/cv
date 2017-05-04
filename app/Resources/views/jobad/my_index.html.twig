@@ -17,10 +17,7 @@
 {% block linkAds %}
     {% if jobAd.jobApply.count > 0 %}
         <div class="candidates-count-block">
-            {% for jobApply in jobAd.jobApply %}
-                <a href="{{ path('jobapply_index', { 'id': jobApply.id }) }}">Kandidatų į šią
-                    poziciją: {{ jobAd.JobApply.count }}</a>
-            {% endfor %}
+            <a href="{{ path('jobapply_index', { 'id': jobAd.id }) }}">Kandidatų į šią poziciją: {{ jobAd.JobApply.count }}</a>
         </div>
     {% endif %}
 {% endblock %}

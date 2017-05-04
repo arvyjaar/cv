@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\JobAd;
 use AppBundle\Entity\JobApply;
+use AppBundle\Form\Type\JobApplyType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -33,7 +34,7 @@ class JobApplyController extends Controller
         }
 
         $jobApply = new Jobapply();
-        $form = $this->createForm(JobApply::class, $jobApply);
+        $form = $this->createForm(JobApplyType::class, $jobApply);
         $form->handleRequest($request);
 
         // Add UserSeeker, add JobAd
