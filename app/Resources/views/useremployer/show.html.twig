@@ -18,7 +18,9 @@
                         <li>{{ userEmployer.email }}</li>
                         <li>{{ userEmployer.phone }}</li>
                         <li>{{ userEmployer.city }}</li>
-                        <li>Vidutinis atlyginimas: {{ salary }} €</li>
+                        {% if salary %}
+                            <li>Vidutinis atlyginimas: {{ salary }} €</li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

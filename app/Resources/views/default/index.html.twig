@@ -3,111 +3,120 @@
 {% block body %}
     <div class="slogan-block">
         <div class="slogan-background"></div>
-        {% block registerModal %}
             <div class="slogan text-center">
                 <div>
                     <h2>Kitoks požiūris į darbo paieškas!</h2>
                 </div>
                 {% if not app.user %}
-                    <a href="{{ path('fos_user_registration_register') }}">
-                        <button class="btn btn-info">Registruokis ir būk pastebėtas!</button>
-                    </a>
+                    <button id="register" data-popup-open="popup-3" class="btn btn-info">
+                        Registruokis ir būk pastebėtas!
+                    </button>
                 {% endif %}
             </div>
-        {% endblock %}
     </div>
-    <div id="some-content" class="container">
+    <div id="homepage-content" class="container">
         <div class="homepage-heading-block">
-            <p class="homepage-heading">Kuo ypatingas GetHired?</p>
+            <p class="homepage-heading">Kuo ypatingas <strong class="get-hired">GetHired?</strong></p>
         </div>
-        <div class="row">
+        <div class="row homepage-about-project-row">
             <div class="col-sm-6 text-justify">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                    laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                    laborum.</p>
+                <p>GetHired - inovatyvi darbo paieškos platforma, formuojanti visiškai naują požiūrį į darbo paieškas:
+                    nesvarbu, koks Tavo išsilavinimas, amžius, lytis, kiek ir kokios darbo patirties turi - svarbiausi
+                    yra Tavo gebėjimai, kuriuos įrodyti galėsi priėmęs GetHired darbdavių mestą iššūkį bei atlikęs
+                    pateiktas užduotis.
+                </p>
+                <p>Užduotys kandidatams padės ne tik tiksliau įvertinti galimybes kandidatuoti į tam tikrą poziciją, bet
+                ir leis sparčiau tobulėti kaip profesionalams - kiekvienas įveikęs išbandymą kandidatas galės gauti
+                    darbdavio įvertinimą su komentaru - kas buvo atlikta puikiai, o kur dar reikėtų pasitempti,
+                    norint užimti norimą poziciją.</p>
             </div>
             <div class="col-sm-6 text-justify">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                    laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                    laborum.</p>
+                <p>GetHired sprendimas džiugina ne tik ieškančius darbo - darbuotojų ieškančioms įmonėms šis projektas
+                    sutaupo nemažai resursų. Nebereikia į pokalbius kviesti begalės atsiuntusių savo CV - didžioji dalis
+                    atrankos įvykdoma peržiūrėjėsiu atliktas užduotis, todėl kalbėtis belieka tik su kompetentingiausiai
+                    kandidatais.
+                </p>
+                <p>Beto, tokiu būdu dažniau pastebimi talentai, kurie dažnai prarandami įprastinio paieškos proceso metu,
+                    nes tiesiog neturi prašmatnaus bei turiningo CV ir nepatenka net į pirmąjį atrankos etapą - pokalbį.
+                </p>
+                <p class="pull-right">Būk pastebėtas su <strong>GetHired</strong>!</p>
             </div>
         </div>
     </div>
 
     <section class="homepage-row-background">
         <div class="homepage-heading-block">
-            <p class="homepage-heading text-center">Kaip veikia GetHired?</p>
+            <p class="homepage-heading text-center">Kaip veikia <strong>GetHired?</strong></p>
         </div>
-        <div class="row">
+        <div class="row homepage-circle-row">
             <div class="col-sm-2 col-sm-offset-1 text-justify">
                 <div class="homepage-circle-block">
-                    <p class="homepage-circle-text">Užsiregistruok</p>
+                    <p class="homepage-circle-text">1. Užsiregistruok</p>
                 </div>
             </div>
             <div class="col-sm-2 text-justify">
                 <div class="homepage-circle-block">
-                    <p class="homepage-circle-text">Susikurk profilį</p>
+                    <p class="homepage-circle-text">2. Susikurk profilį</p>
                 </div>
             </div>
             <div class="col-sm-2 text-justify">
                 <div class="homepage-circle-block">
-                    <p class="homepage-circle-text">Įveik užduotį</p>
+                    <p class="homepage-circle-text">3. Įveik užduotį</p>
                 </div>
             </div>
             <div class="col-sm-2 text-justify">
                 <div class="homepage-circle-block">
-                    <p class="homepage-circle-text">Būk įvertintas</p>
+                    <p class="homepage-circle-text">4. Būk įvertintas</p>
                 </div>
             </div>
             <div class="col-sm-2 text-justify">
                 <div class="homepage-circle-block">
-                    <p class="homepage-circle-text">Pradėk dirbti!</p>
+                    <p class="homepage-circle-text">5. Pradėk dirbti!</p>
                 </div>
             </div>
         </div>
     </section>
 
     <div class="container">
-        <div class="homepage-heading-block-sm">
-            <p class="page-heading">GetHired darbus siūlo</p>
-        </div>
-        <div class="row">
-            {#TODO list logos#}
-        </div>
+        <section class="homepage-logo-row">
+            <div class="homepage-heading-block-sm">
+                <p class="page-heading"><strong>GetHired</strong> darbus siūlo:</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <img class="img-responsive homepage-logo" src="{{ asset('img/profiles/nfq.png') }}">
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive homepage-logo" src="{{ asset('img/profiles/apple-logo.png') }}">
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive homepage-logo" src="{{ asset('img/profiles/google-logo.png') }}">
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive homepage-logo" src="{{ asset('img/profiles/nasa.png') }}">
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive homepage-logo" src="{{ asset('img/profiles/teslalogo.png') }}">
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive homepage-logo" src="{{ asset('img/profiles/facebook-logo.png') }}">
+                </div>
+            </div>
+        </section>
 
-        <div class="homepage-block">
+        <section class="homepage-block">
             <p class="page-heading text-center">Turi mums klausimų?</p>
             <p class="text-uppercase text-center homepage-contact-us">susisiekime!</p>
             <div class="row">
                 <div class="col-xs-6 text-right">
-                    <p>El. paštas: gethired@email.com</p>
+                    <p class="smaller-sm"><span class="hidden-xs">El. paštas:</span> gethired@email.com</p>
                 </div>
                 <div class="col-xs-6 text-left">
-                    <p>Telefonas: +370 666 66666</p>
+                    <p class="smaller-sm"><span class="hidden-xs">Telefonas:</span> +370 666 66666</p>
                 </div>
             </div>
-        </div>
+        </section>
+
+        {{ include('default/register-popup.html.twig') }}
     </div>
 {% endblock %}

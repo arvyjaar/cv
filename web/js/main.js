@@ -49,7 +49,7 @@ $(document).ready(function() {
     var requirements = [];
 
     //Changes navbar padding and background color on main page
-    var first_section = $('#some-content');
+    var first_section = $('#homepage-content');
     if ( first_section && first_section.length ) {
         $('#nav').affix({
             offset: {
@@ -97,6 +97,14 @@ $(document).ready(function() {
         $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
 
         e.preventDefault();
+    });
+
+    $('#register').click(function () {
+        $('.slogan').css('display', 'none');
+    });
+
+    $('#register-popup-close').click(function () {
+        $('.slogan').css('display', 'block');
     });
 
     //Close pop-up
