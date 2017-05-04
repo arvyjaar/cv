@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * JobApply
@@ -76,7 +77,6 @@ class JobApply
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
-
 
     /**
      * Get id

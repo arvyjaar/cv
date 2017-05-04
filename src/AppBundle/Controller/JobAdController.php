@@ -83,8 +83,8 @@ class JobAdController extends Controller
     public function indexEmployerAdsAction(UserEmployer $employer)
     {
         $em = $this->getDoctrine()->getManager();
-        // TODO: make pagination
-        $jobAds = $em->getRepository('AppBundle:JobAd')->findBy(
+
+        $jobAds = $em->getRepository(JobAd::class)->findBy(
             ['employer' => $employer]
         );
         return $this->render('jobad/index.html.twig', array(
@@ -109,7 +109,7 @@ class JobAdController extends Controller
             throw new AccessDeniedException();
         }
         $jobAd = new Jobad();
-        $form = $this->createForm('AppBundle\Form\Type\JobAdType', $jobAd);
+        $form = $this->createForm(JobAdType::class, $jobAd);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -182,7 +182,7 @@ class JobAdController extends Controller
     }
 
     /**
-     * Deletes a jobAd entity. TODO: add 'Valid To'.
+     * Deletes a jobAd entity.
      *
      * @Route("/{id}", name="jobad_delete")
      * @Method("DELETE")
