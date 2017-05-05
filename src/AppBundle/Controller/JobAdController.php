@@ -23,8 +23,8 @@ class JobAdController extends Controller
 {
     /**
      * Lists all jobAd entities.
-     *
      * @param Request $request
+     *
      * @return Response
      * @Route("/", name="jobad_index")
      * @Method("GET")
@@ -49,8 +49,8 @@ class JobAdController extends Controller
 
     /**
      * List all my jobAd entities.
-     *
      * @param Request $request
+     *
      * @return Response
      * @Route("/mano-skelbimai", name="jobad_my_index")
      * @Method("GET")
@@ -79,6 +79,7 @@ class JobAdController extends Controller
      * List all jobAd entities of Employer.
      * @param UserEmployer $employer
      * @param Request $request
+     *
      * @return Response
      * @Route("/imone/{id}", name="jobad_by_employer_index")
      * @Method("GET")
@@ -107,7 +108,9 @@ class JobAdController extends Controller
     /**
      * Creates a new jobAd entity.
      * @param Request $request
+     *
      * @return Response
+     *
      * @Route("/naujas",
      *     defaults = { "page" = 1 },
      *     options = { "expose" = true },
@@ -151,7 +154,6 @@ class JobAdController extends Controller
 
     /**
      * Finds and displays a jobAd entity.
-     *
      * @Route("/{id}", name="jobad_show")
      * @Method("GET")
      */
@@ -166,6 +168,10 @@ class JobAdController extends Controller
 
     /**
      * Displays a form to edit an existing jobAd entity.
+     * @param Request $request
+     * @param JobAd $jobAd
+     *
+     * @return Response
      *
      * @Route("/{id}/edit", name="jobad_edit")
      * @Method({"GET", "POST"})
@@ -200,6 +206,10 @@ class JobAdController extends Controller
 
     /**
      * Deletes a jobAd entity.
+     * @param Request $request
+     * @param JobAd $jobAd
+     *
+     * @return Response
      *
      * @Route("/{id}", name="jobad_delete")
      * @Method("DELETE")
@@ -219,7 +229,6 @@ class JobAdController extends Controller
 
     /**
      * Creates a form to delete a jobAd entity.
-     *
      * @param JobAd $jobAd The jobAd entity
      *
      * @return \Symfony\Component\Form\Form The form
@@ -234,6 +243,8 @@ class JobAdController extends Controller
 
     /**
      * Saves JobAd Requirements to db
+     * @param string $requirements
+     * @param JobAd $jobAd
      */
     public function saveJobAdRequirements($requirements, JobAd $jobAd)
     {
