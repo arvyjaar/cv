@@ -2,7 +2,9 @@
 
 namespace AppBundle\Form\Type;
 
+use AppBundle\Entity\JobAd;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -17,7 +19,10 @@ class JobAdType extends AbstractType
         $builder
             ->add('title', null, ['label' => 'Siūloma pozicija*'])
             ->add('description', null, ['label' => 'Apie siūlomą poziciją:*'])
-            ->add('assignment', null, ['label' => 'Užduotis kandidatams (url)'])
+            ->add('assignment', UrlType::class, [
+                'default_protocol' => '',
+                'label' => 'Užduotis kandidatams*'
+            ])
             ->add('requirements', HiddenType::class, array(
                 'data' => '',
             ));
@@ -28,16 +33,8 @@ class JobAdType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\JobAd'
-        ));
+        $resolver->setDefaults([
+            'data_class' => JobAd::class
+        ]);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    /*    public function getBlockPrefix()
-        {
-            return 'appbundle_jobad';
-        }*/
 }

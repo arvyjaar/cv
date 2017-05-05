@@ -29,12 +29,14 @@ class UserSeeker extends User
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message = "Koks tavo vardas? Užpildyk šį lauką.")
+     * @Assert\Length(max=55)
      */
     protected $name;
 
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message = "Kokia tavo pavardė? Užpildyk šį lauką.")
+     * @Assert\Length(max=55)
      */
     protected $surname;
 
@@ -59,7 +61,7 @@ class UserSeeker extends User
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * message = "Koks tavo telefono numeris? Užpildyk šį lauką."
+     * @Assert\Length(max=12)
      */
     protected $phone;
 
@@ -70,6 +72,7 @@ class UserSeeker extends User
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(max=55)
      */
     protected $profession;
 

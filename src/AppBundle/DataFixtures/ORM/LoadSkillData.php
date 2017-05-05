@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: monika
- * Date: 17.4.23
- * Time: 14.17
- */
-
 namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -64,10 +57,55 @@ class LoadSkillData implements FixtureInterface, OrderedFixtureInterface, Contai
         $skill4->setTitle('javascript');
         $skill4->setUser($this->getOwner(2));
 
+        $skill5 = new Skill();
+        $skill5->setTitle('javascript');
+        $skill5->setUser($this->getOwner(3));
+
+        $skill6 = new Skill();
+        $skill6->setTitle('project management');
+        $skill6->setUser($this->getOwner(4));
+
+        $skill7 = new Skill();
+        $skill7->setTitle('project management');
+        $skill7->setUser($this->getOwner(5));
+
+        $skill8 = new Skill();
+        $skill8->setTitle('php');
+        $skill8->setUser($this->getOwner(6));
+
+        $skill9 = new Skill();
+        $skill9->setTitle('php');
+        $skill9->setUser($this->getOwner(7));
+
+        $skill10 = new Skill();
+        $skill10->setTitle('php');
+        $skill10->setUser($this->getOwner(8));
+
+        $skill11 = new Skill();
+        $skill11->setTitle('php');
+        $skill11->setUser($this->getOwner(9));
+
+        $skill12 = new Skill();
+        $skill12->setTitle('php');
+        $skill12->setUser($this->getOwner(10));
+
+        $skill13 = new Skill();
+        $skill13->setTitle('php');
+        $skill13->setUser($this->getOwner(11));
+
         $manager->persist($skill1);
         $manager->persist($skill2);
         $manager->persist($skill3);
         $manager->persist($skill4);
+        $manager->persist($skill5);
+        $manager->persist($skill6);
+        $manager->persist($skill7);
+        $manager->persist($skill8);
+        $manager->persist($skill9);
+        $manager->persist($skill10);
+        $manager->persist($skill11);
+        $manager->persist($skill12);
+        $manager->persist($skill13);
 
         $manager->flush();
     }

@@ -6,6 +6,7 @@ use AppBundle\Entity\Evaluation;
 use AppBundle\Entity\JobAd;
 use AppBundle\Entity\JobApply;
 use AppBundle\Entity\UserSeeker;
+use AppBundle\Form\Type\EvaluationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -41,7 +42,7 @@ class EvaluationController extends Controller
         }
 
         $evaluation = new Evaluation();
-        $form = $this->createForm(Evaluation::class, $evaluation);
+        $form = $this->createForm(EvaluationType::class, $evaluation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -76,7 +77,7 @@ class EvaluationController extends Controller
         $this->denyAccessUnlessGranted('edit', $jobAd);
 
         $deleteForm = $this->createDeleteForm($evaluation);
-        $form = $this->createForm(Evaluation::class, $evaluation);
+        $form = $this->createForm(EvaluationType::class, $evaluation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -66,6 +66,13 @@ $(document).ready(function() {
     });
 
     //Styles profile image upload field
+    $("#job_apply_imageFile_file").jfilestyle({
+        buttonBefore: true,
+        buttonText: '<i class="fa fa-upload" aria-hidden="true"></i>',
+        placeholder: 'Įkelk savo CV'
+    });
+
+    //Styles cv upload field
     $("#fos_user_profile_form_imageFile_file").jfilestyle({
         buttonBefore: true,
         buttonText: '<i class="fa fa-upload" aria-hidden="true"></i>',

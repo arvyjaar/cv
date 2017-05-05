@@ -6,12 +6,15 @@
 
 namespace AppBundle\Twig;
 
+use Twig_SimpleFilter;
+use DateTime;
+
 class AppExtension extends \Twig_Extension
 {
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('age', array($this, 'ageFilter')),
+            new Twig_SimpleFilter('age', [$this, 'ageFilter']),
         );
     }
 
@@ -20,7 +23,7 @@ class AppExtension extends \Twig_Extension
         if ($birthday === null) {
             return 'nenurodytas';
         } else {
-            $now = new \DateTime('now');
+            $now = new DateTime('now');
             $diff = $now->diff($birthday);
             return $diff->y;
         }

@@ -23,12 +23,18 @@ abstract class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * {@inheritdoc}
+     */
     public function setEmail($email)
     {
         parent::setEmail($email);
         parent::setUsername($email);
     }
 
+   /**
+    * {@inheritdoc}
+    */
     public function getRoles()
     {
         parent::getRoles();

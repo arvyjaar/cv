@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class ProfileUserSeekerFormType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -53,10 +56,13 @@ class ProfileUserSeekerFormType extends AbstractType
             ]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => UserSeeker::class
-        ));
+        ]);
     }
 }

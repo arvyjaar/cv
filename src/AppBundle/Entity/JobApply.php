@@ -7,6 +7,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use DateTime;
 
 /**
  * JobApply
@@ -44,7 +46,7 @@ class JobApply
     /**
      * @ORM\Column(type="datetime", nullable=true)
      *
-     * @var \DateTime
+     * @var DateTime
      */
     protected $updatedAt;
 
@@ -58,23 +60,24 @@ class JobApply
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=false)
      * @Assert\NotBlank(message="Prašome įkelti užduoties sprendimą.")
      * @Assert\Url(message="Užduoties sprendimas turi būti pateiktas kaip nuoroda. Pvz.:https://drive.google.com/")
+     * @Assert\Length(max=255)
      */
     private $assignmentSolution;
 
     /**
      * Many JobApply have One JobAd.
      * @ORM\ManyToOne(targetEntity="JobAd", inversedBy="jobApply")
-     * @ORM\JoinColumn(name="jobAd_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="job_ad_id", referencedColumnName="id", nullable=false)
      */
     private $jobAd;
 
     /**
      * Many JobApply have One UserSeeker.
      * @ORM\ManyToOne(targetEntity="UserSeeker", inversedBy="jobApply")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     private $user;
 
@@ -112,10 +115,8 @@ class JobApply
         return $this->cv;
     }
 
-    // File upload
-
     /**
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * @param File|UploadedFile $image
      *
      * @return JobApply
      */
@@ -165,7 +166,7 @@ class JobApply
     }
 
     /**
-     * @param string $assignment_solution
+     * @param string $assignmentSolution
      */
     public function setAssignmentSolution($assignmentSolution)
     {

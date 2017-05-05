@@ -18,6 +18,9 @@ use AppBundle\Entity\UserSeeker;
 
 class RegistrationUserSeekerFormType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -32,11 +35,14 @@ class RegistrationUserSeekerFormType extends AbstractType
             ]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => UserSeeker::class,
             'csrf_token_id' => 'registration'
-        ));
+        ]);
     }
 }

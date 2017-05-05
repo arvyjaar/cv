@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: monika
- * Date: 17.5.1
- * Time: 16.17
- */
 namespace AppBundle\Crawler;
 
 use Goutte\Client;

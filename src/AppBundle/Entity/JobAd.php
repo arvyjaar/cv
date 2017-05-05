@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use AppBundle\Entity\UserEmployer;
+use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\Requirement;
 
 /**
  * JobAd
@@ -52,22 +54,32 @@ class JobAd
     /**
      * @var string
      *
-     * @ORM\Column(name="assignment", type="string", nullable=true)
+     * @ORM\Column(name="assignment", type="string", nullable=false)
+     * @Assert\NotBlank(message = "Įkelk užduotį kandidatams!")
+     * @Assert\Url(message="Užduotis turi būti pateikta kaip nuoroda. Pvz.:https://drive.google.com/")
+     * @Assert\Length(max=255)
      */
     private $assignment;
 
     /**
+     * @var ArrayCollection|Requirement[]
+     *
      * @ORM\OneToMany(targetEntity="Requirement", mappedBy="jobAd")
      */
     private $requirements;
 
     /**
      * Many JobAd have One UserEmployer.
-     * @ORM\ManyToOne(targetEntity="UserEmployer", inversedBy="jobAd")
-     * @ORM\JoinColumn(name="employer_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="UserEmployer", inversedBy="jobAds")
+     * @ORM\JoinColumn(name="employer_id", referencedColumnName="id", nullable=false)
      */
     private $employer;
 
+    public function __construct()
+    {
+        $this->requirements = new ArrayCollection();
+        $this->jobApply = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -152,23 +164,7 @@ class JobAd
     }
 
     /**
-     * Set requirements
-     *
-     * @param string $requirements
-     *
-     * @return JobAd
-     */
-    public function setRequirements($requirements)
-    {
-        $this->requirements = $requirements;
-
-        return $this;
-    }
-
-    /**
-     * Get requirements
-     *
-     * @return string
+     * @return mixed
      */
     public function getRequirements()
     {
@@ -176,7 +172,15 @@ class JobAd
     }
 
     /**
-     * @return int
+     * @param mixed $requirements
+     */
+    public function setRequirements($requirements)
+    {
+        $this->skills = $requirements;
+    }
+
+    /**
+     * @return mixed
      */
     public function getJobApply()
     {
@@ -184,15 +188,15 @@ class JobAd
     }
 
     /**
-     * @param int $jobApply
+     * @param mixed $jobApply
      */
-    public function setJobApply($jobApply)
+    public function setJobApply(JobApply $jobApply)
     {
         $this->jobApply = $jobApply;
     }
 
     /**
-     * @return int
+     * @return mixed
      */
     public function getOwner()
     {
@@ -200,7 +204,7 @@ class JobAd
     }
 
     /**
-     * @param int $employer
+     * @param mixed $employer
      */
     public function setOwner($employer)
     {

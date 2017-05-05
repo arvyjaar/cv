@@ -10,12 +10,12 @@ namespace AppBundle\Security;
 
 use AppBundle\Entity\JobAd;
 use AppBundle\Entity\User;
+use LogicException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
 class JobAdVoter extends Voter
 {
-    // these strings are just invented: you can use anything
     const VIEW = 'view';
     const EDIT = 'edit';
 
@@ -54,7 +54,7 @@ class JobAdVoter extends Voter
                 return $this->canEdit($jobad, $user);
         }
 
-        throw new \LogicException('This code should not be reached!');
+        throw new LogicException('This code should not be reached!');
     }
 
     private function canView(JobAd $jobad, User $user)

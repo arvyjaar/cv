@@ -27,12 +27,13 @@ class Skill
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="Koks Tavo gebėjimas? Užpildyk šį lauką")
+     * @Assert\Length(max=55)
      */
     private $title;
 
     /**
      * @ORM\ManyToOne(targetEntity="UserSeeker", inversedBy="skills")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     private $user;
 

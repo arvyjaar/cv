@@ -29,6 +29,7 @@ class UserEmployer extends User
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message = "Įrašykite įmonės pavadinimą")
+     * @Assert\Length(max=55)
      */
     protected $title;
 
@@ -46,6 +47,7 @@ class UserEmployer extends User
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(max=12)
      */
     protected $phone;
 
@@ -65,6 +67,7 @@ class UserEmployer extends User
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(max=55)
      */
     protected $city;
 
@@ -78,8 +81,10 @@ class UserEmployer extends User
     /**
      * One UserEmployer has Many JobAd.
      * @ORM\OneToMany(targetEntity="JobAd", mappedBy="employer")
+     *
+     * @var ArrayCollection|JobAd[]
      */
-    private $jobAd;
+    private $jobAds;
 
     /**
      * @ORM\Column(name="legal_code", type="string")
@@ -94,7 +99,7 @@ class UserEmployer extends User
     public function __construct()
     {
         parent::__construct();
-        $this->jobAd = new ArrayCollection();
+        $this->jobAds = new ArrayCollection();
     }
 
 
@@ -253,7 +258,7 @@ class UserEmployer extends User
      */
     public function getJobAd()
     {
-        return $this->jobAd;
+        return $this->jobAds;
     }
 
     /**
@@ -261,7 +266,7 @@ class UserEmployer extends User
      */
     public function setJobAd($jobAd)
     {
-        $this->jobAd = $jobAd;
+        $this->jobAds = $jobAd;
     }
 
     /**

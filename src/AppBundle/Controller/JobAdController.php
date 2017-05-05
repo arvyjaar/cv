@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\JobAd;
@@ -80,16 +81,28 @@ class JobAdController extends Controller
      * @Route("/imone/{id}", name="jobad_by_employer_index")
      * @Method("GET")
      */
-    public function indexEmployerAdsAction(UserEmployer $employer)
+    public function indexEmployerAdsAction(UserEmployer $employer, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $jobAds = $em->getRepository(JobAd::class)->findBy(
             ['employer' => $employer]
         );
+
+        $form = $this->createForm(AdsSearchType::class, null, ['method' => 'GET']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository = $this->getDoctrine()->getRepository(JobAd::class);
+            $jobAds = $repository->searchAds($request->get('title'));
+        } else {
+            $jobAds = $this->getDoctrine()->getRepository(JobAd::class)->findAll();
+        }
+
         return $this->render('jobad/index.html.twig', array(
             'jobAds' => $jobAds,
             'employer' => $employer,
+            'searchForm' => $form->createView(),
         ));
     }
 
@@ -115,6 +128,7 @@ class JobAdController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             //Save requirements and exclude it's value from jobAd entity
             $requirements = $form->get('requirements')->getData();
+
             $jobAd->setRequirements(null);
 
             $employer = $this->getUser();
@@ -124,7 +138,9 @@ class JobAdController extends Controller
             $em->persist($jobAd);
             $em->flush();
 
-            $this->saveJobAdRequirements($requirements, $jobAd);
+            if ($requirements) {
+                $this->saveJobAdRequirements($requirements, $jobAd);
+            }
 
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
@@ -170,7 +186,9 @@ class JobAdController extends Controller
 
             $this->getDoctrine()->getManager()->flush();
 
-            $this->saveJobAdRequirements($requirements, $jobAd);
+            if ($requirements) {
+                $this->saveJobAdRequirements($requirements, $jobAd);
+            }
 
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }

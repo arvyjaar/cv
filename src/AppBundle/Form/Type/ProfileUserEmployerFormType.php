@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form\Type;
 
+use AppBundle\Entity\Sector;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,6 +15,9 @@ use Doctrine\ORM\EntityRepository;
 
 class ProfileUserEmployerFormType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -29,7 +33,7 @@ class ProfileUserEmployerFormType extends AbstractType
                 'label' => false,
             ])
             ->add('sector', EntityType::class, [
-                'class' => 'AppBundle\Entity\Sector',
+                'class' => Sector::class,
                 'query_builder' => function (EntityRepository $repo) {
                     return $repo->createQueryBuilder('cat')->orderBy('cat.title', 'ASC');
                 },
@@ -40,10 +44,13 @@ class ProfileUserEmployerFormType extends AbstractType
             ]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => UserEmployer::class,
-        ));
+        ]);
     }
 }

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Requirement
@@ -25,8 +26,9 @@ class Requirement
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
      * @Assert\NotBlank(message="Kokių gebėjimų reikalauja ši pozicija? Užpildyk šį lauką")
+     * @Assert\Length(max=55)
      */
     private $title;
 

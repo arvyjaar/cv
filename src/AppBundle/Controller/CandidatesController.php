@@ -1,8 +1,4 @@
 <?php
-/**
- * Created by arvydas.
- * Date: 4/23/17 - Time: 1:58 PM
- */
 
 namespace AppBundle\Controller;
 

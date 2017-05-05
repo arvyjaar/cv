@@ -1,8 +1,4 @@
 <?php
-/**
- * Created by arvydas.
- * Date: 4/29/17 - Time: 3:02 PM
- */
 
 namespace AppBundle\DataFixtures\ORM;
 
