@@ -9,7 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EvaluationType extends AbstractType
 {
-
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -17,6 +19,9 @@ class EvaluationType extends AbstractType
             ->add('comment', null, ['label' => "Komentaras"]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

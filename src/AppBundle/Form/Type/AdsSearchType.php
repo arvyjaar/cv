@@ -9,6 +9,9 @@ use Symfony\Component\Form\Extension\Core\Type\SearchType;
 
 class AdsSearchType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -18,6 +21,9 @@ class AdsSearchType extends AbstractType
             ]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -26,6 +32,9 @@ class AdsSearchType extends AbstractType
         ]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getBlockPrefix()
     {
         // to avoid form values wrapping inside array

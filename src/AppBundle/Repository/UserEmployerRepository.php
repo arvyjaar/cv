@@ -6,6 +6,11 @@ use Doctrine\ORM\EntityRepository;
 
 class UserEmployerRepository extends EntityRepository
 {
+    /**
+     * @param string|null $title
+     * @param int|null $sector
+     * @return array
+     */
     public function searchEmployers($title, $sector)
     {
         $qb = $this->createQueryBuilder('emp');
