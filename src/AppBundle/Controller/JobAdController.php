@@ -77,26 +77,24 @@ class JobAdController extends Controller
 
     /**
      * List all jobAd entities of Employer.
-     *
+     * @param UserEmployer $employer
+     * @param Request $request
+     * @return Response
      * @Route("/imone/{id}", name="jobad_by_employer_index")
      * @Method("GET")
      */
     public function indexEmployerAdsAction(UserEmployer $employer, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $jobAds = $em->getRepository(JobAd::class)->findBy(
-            ['employer' => $employer]
-        );
-
         $form = $this->createForm(AdsSearchType::class, null, ['method' => 'GET']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $repository = $this->getDoctrine()->getRepository(JobAd::class);
-            $jobAds = $repository->searchAds($request->get('title'));
+            $jobAds = $repository->searchMyAds($request->get('title'), $employer);
         } else {
-            $jobAds = $this->getDoctrine()->getRepository(JobAd::class)->findAll();
+            $jobAds = $this->getDoctrine()->getRepository(JobAd::class)->findBy(
+                ['employer' => $employer]
+            );
         }
 
         return $this->render('jobad/index.html.twig', array(
@@ -108,7 +106,8 @@ class JobAdController extends Controller
 
     /**
      * Creates a new jobAd entity.
-     *
+     * @param Request $request
+     * @return Response
      * @Route("/naujas",
      *     defaults = { "page" = 1 },
      *     options = { "expose" = true },
