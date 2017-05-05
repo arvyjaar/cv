@@ -53,8 +53,6 @@ class Evaluation
     private $jobApply;
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -63,8 +61,6 @@ class Evaluation
     }
 
     /**
-     * Set mark
-     *
      * @param int $mark
      *
      * @return Evaluation
@@ -77,8 +73,6 @@ class Evaluation
     }
 
     /**
-     * Get mark
-     *
      * @return int
      */
     public function getMark()
@@ -87,8 +81,6 @@ class Evaluation
     }
 
     /**
-     * Set comment
-     *
      * @param string $comment
      *
      * @return Evaluation
@@ -101,8 +93,6 @@ class Evaluation
     }
 
     /**
-     * Get comment
-     *
      * @return string
      */
     public function getComment()
@@ -119,7 +109,7 @@ class Evaluation
     }
 
     /**
-     * @param mixed $jobApply
+     * @param JobApply
      */
     public function setJobApply(JobApply $jobApply)
     {

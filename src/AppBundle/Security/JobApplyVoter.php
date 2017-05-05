@@ -19,6 +19,9 @@ class JobAdVoter extends Voter
     const VIEW = 'view';
     const EDIT = 'edit';
 
+    /**
+     * {@inheritdoc}
+     */
     protected function supports($attribute, $subject)
     {
         // if the attribute isn't one we support, return false
@@ -34,6 +37,9 @@ class JobAdVoter extends Voter
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
         $user = $token->getUser();
@@ -57,6 +63,11 @@ class JobAdVoter extends Voter
         throw new \LogicException('This code should not be reached!');
     }
 
+    /**
+     * @param JobApply $jobapply
+     * @param User $user
+     * @return bool
+     */
     private function canView(JobApply $jobapply, User $user)
     {
         // if they can edit, they can view
@@ -69,6 +80,11 @@ class JobAdVoter extends Voter
         // return !$jobad->isPrivate();
     }
 
+    /**
+     * @param JobApply $jobapply
+     * @param User $user
+     * @return bool
+     */
     private function canEdit(JobApply $jobapply, User $user)
     {
         // this assumes that the data object has a getOwner() method

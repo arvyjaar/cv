@@ -82,8 +82,6 @@ class JobApply
     private $user;
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -92,8 +90,6 @@ class JobApply
     }
 
     /**
-     * Set cv
-     *
      * @param string $cv
      *
      * @return JobApply
@@ -106,8 +102,6 @@ class JobApply
     }
 
     /**
-     * Get cv
-     *
      * @return string
      */
     public function getCv()
@@ -142,7 +136,7 @@ class JobApply
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getUpdatedAt()
     {
@@ -150,7 +144,7 @@ class JobApply
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param DateTime $updatedAt
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -174,7 +168,7 @@ class JobApply
     }
 
     /**
-     * @return mixed
+     * @return UserSeeker
      */
     public function getOwner()
     {
@@ -182,7 +176,7 @@ class JobApply
     }
 
     /**
-     * @param mixed $user
+     * @param UserSeeker
      */
     public function setOwner($user)
     {
@@ -190,7 +184,7 @@ class JobApply
     }
 
     /**
-     * @return mixed
+     * @return JobAd
      */
     public function getJobAd()
     {
@@ -198,15 +192,15 @@ class JobApply
     }
 
     /**
-     * @param mixed $jobAd
+     * @param JobAd
      */
-    public function setJobAd($jobAd)
+    public function setJobAd(JobAd $jobAd)
     {
         $this->jobAd = $jobAd;
     }
 
     /**
-     * @return mixed
+     * @return Evaluation
      */
     public function getEvaluation()
     {
@@ -214,9 +208,9 @@ class JobApply
     }
 
     /**
-     * @param mixed $evaluation
+     * @param Evaluation
      */
-    public function setEvaluation($evaluation)
+    public function setEvaluation(Evaluation $evaluation)
     {
         $this->evaluation = $evaluation;
     }

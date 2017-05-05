@@ -39,8 +39,6 @@ class Requirement
     private $jobAd;
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -49,8 +47,6 @@ class Requirement
     }
 
     /**
-     * Set title
-     *
      * @param string $title
      *
      * @return Requirement
@@ -63,8 +59,6 @@ class Requirement
     }
 
     /**
-     * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -73,11 +67,11 @@ class Requirement
     }
 
     /**
-     * @param object $jobAd
+     * @param JobAd
      *
      * @return Requirement
      */
-    public function setJobAd($jobAd)
+    public function setJobAd(JobAd $jobAd)
     {
         $this->jobAd = $jobAd;
 
@@ -85,8 +79,6 @@ class Requirement
     }
 
     /**
-     * Get jobAd
-     *
      * @return string
      */
     public function getJobAd()

@@ -20,12 +20,22 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
     protected $router;
     protected $authorizationChecker;
 
+    /**
+     * @param Router $router
+     * @param AuthorizationChecker $authorizationChecker
+     */
     public function __construct(Router $router, AuthorizationChecker $authorizationChecker)
     {
         $this->router = $router;
         $this->authorizationChecker = $authorizationChecker;
     }
 
+    /**
+     * @param Request $request
+     * @param TokenInterface $token
+     *
+     * @return null|RedirectResponse
+     */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
 

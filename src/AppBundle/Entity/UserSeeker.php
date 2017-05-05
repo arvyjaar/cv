@@ -230,7 +230,7 @@ class UserSeeker extends User
     }
 
     /**
-     * @return string
+     * @return ArrayCollection
      */
     public function getSkills()
     {

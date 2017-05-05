@@ -8,6 +8,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity
@@ -238,7 +239,7 @@ class UserEmployer extends User
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getUpdatedAt()
     {
@@ -246,7 +247,7 @@ class UserEmployer extends User
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param DateTime $updatedAt
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -254,7 +255,7 @@ class UserEmployer extends User
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getJobAd()
     {
@@ -262,7 +263,7 @@ class UserEmployer extends User
     }
 
     /**
-     * @param mixed $jobAd
+     * @param JobAd $jobAd
      */
     public function setJobAd($jobAd)
     {

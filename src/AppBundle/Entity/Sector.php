@@ -35,8 +35,6 @@ class Sector
     }
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -45,8 +43,6 @@ class Sector
     }
 
     /**
-     * Set title
-     *
      * @param string $title
      *
      * @return Sector
@@ -59,8 +55,6 @@ class Sector
     }
 
     /**
-     * Get title
-     *
      * @return string
      */
     public function getTitle()

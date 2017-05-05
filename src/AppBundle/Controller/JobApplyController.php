@@ -27,7 +27,7 @@ class JobApplyController extends Controller
      * @param Request $request
      *
      * @return Response
-     * @Route("/{ad_id}/new", name="jobapply_new")
+     * @Route("/{ad_id}/naujas", name="jobapply_new")
      * @Method({"GET", "POST"})
      * @ParamConverter("jobad", class="AppBundle:JobAd", options={"id" = "ad_id"})
      */

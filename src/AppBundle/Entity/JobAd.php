@@ -82,8 +82,6 @@ class JobAd
     }
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -92,8 +90,6 @@ class JobAd
     }
 
     /**
-     * Set title
-     *
      * @param string $title
      *
      * @return JobAd
@@ -106,8 +102,6 @@ class JobAd
     }
 
     /**
-     * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -116,8 +110,6 @@ class JobAd
     }
 
     /**
-     * Set description
-     *
      * @param string $description
      *
      * @return JobAd
@@ -130,8 +122,6 @@ class JobAd
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -140,8 +130,6 @@ class JobAd
     }
 
     /**
-     * Set assignment
-     *
      * @param string $assignment
      *
      * @return JobAd
@@ -154,8 +142,6 @@ class JobAd
     }
 
     /**
-     * Get assignment
-     *
      * @return string
      */
     public function getAssignment()
@@ -164,7 +150,7 @@ class JobAd
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection|Requirement[]
      */
     public function getRequirements()
     {
@@ -172,7 +158,7 @@ class JobAd
     }
 
     /**
-     * @param mixed $requirements
+     * @param ArrayCollection $requirements
      */
     public function setRequirements($requirements)
     {
@@ -180,7 +166,7 @@ class JobAd
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getJobApply()
     {
@@ -188,7 +174,7 @@ class JobAd
     }
 
     /**
-     * @param mixed $jobApply
+     * @param JobApply
      */
     public function setJobApply(JobApply $jobApply)
     {
@@ -196,7 +182,7 @@ class JobAd
     }
 
     /**
-     * @return mixed
+     * @return UserEmployer
      */
     public function getOwner()
     {
@@ -204,7 +190,7 @@ class JobAd
     }
 
     /**
-     * @param mixed $employer
+     * @param UserEmployer
      */
     public function setOwner($employer)
     {

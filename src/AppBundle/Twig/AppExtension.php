@@ -7,9 +7,10 @@
 namespace AppBundle\Twig;
 
 use Twig_SimpleFilter;
+use Twig_Extension;
 use DateTime;
 
-class AppExtension extends \Twig_Extension
+class AppExtension extends Twig_Extension
 {
     public function getFilters()
     {

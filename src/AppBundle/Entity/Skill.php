@@ -38,8 +38,6 @@ class Skill
     private $user;
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -48,8 +46,6 @@ class Skill
     }
 
     /**
-     * Set title
-     *
      * @param string $title
      *
      * @return Skill
@@ -62,8 +58,6 @@ class Skill
     }
 
     /**
-     * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -72,13 +66,11 @@ class Skill
     }
 
     /**
-     * Set user
-     *
-     * @param object $user
+     * @param UserSeeker
      *
      * @return Skill
      */
-    public function setUser($user)
+    public function setUser(UserSeeker $user)
     {
         $this->user = $user;
 
@@ -86,9 +78,7 @@ class Skill
     }
 
     /**
-     * Get user
-     *
-     * @return string
+     * @return UserSeeker
      */
     public function getUser()
     {
