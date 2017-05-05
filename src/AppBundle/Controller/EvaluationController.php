@@ -2,18 +2,18 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Evaluation;
-use AppBundle\Entity\JobAd;
 use AppBundle\Entity\JobApply;
-use AppBundle\Entity\UserSeeker;
-use AppBundle\Form\Type\EvaluationType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use AppBundle\Entity\Evaluation;
 use Symfony\Component\Form\Form;
+use AppBundle\Form\Type\EvaluationType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Evaluation controller.
@@ -24,7 +24,10 @@ class EvaluationController extends Controller
 {
     /**
      * Creates a new Evaluation entity.
+     * @param JobApply $jobApply
+     * @param Request $request
      *
+     * @return Response
      * @Route("/naujas/{apply_id}", name="evaluation_new")
      * @Method({"GET", "POST"})
      * @ParamConverter("jobApply", class="AppBundle:JobApply", options={"id" = "apply_id"})
@@ -53,7 +56,6 @@ class EvaluationController extends Controller
 
             $em->flush();
 
-            //TODO return $this->redirectToRoute('evaluation_edit', array('id' => $evaluation->getId()));
             return $this->redirectToRoute('jobapply_index', ['id' => $jobAd->getId()]);
         }
 
@@ -66,7 +68,10 @@ class EvaluationController extends Controller
 
     /**
      * Displays a form to edit an existing Evaluation entity.
+     * @param Request $request
+     * @param Evaluation $evaluation
      *
+     * @return mixed
      * @Route("/{id}/edit", name="evaluation_edit")
      * @Method({"GET", "POST"})
      */
@@ -96,7 +101,10 @@ class EvaluationController extends Controller
 
     /**
      * Deletes a Evaluation entity.
+     * @param Request $request
+     * @param Evaluation $evaluation
      *
+     * @return RedirectResponse
      * @Route("/{id}", name="evaluation_delete")
      * @Method("DELETE")
      */
@@ -120,7 +128,6 @@ class EvaluationController extends Controller
 
     /**
      * Creates a form to delete a Evaluation entity.
-     *
      * @param Evaluation $evaluation The Evaluation entity
      *
      * @return Form The form

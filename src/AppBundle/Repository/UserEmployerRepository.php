@@ -10,7 +10,7 @@ class UserEmployerRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('emp');
         $qb->select('emp');
-        if ($title) {
+        if (! empty($title)) {
             $qb->where('emp.title LIKE :title')
                 ->setParameter('title', '%' . $title . '%');
         }
