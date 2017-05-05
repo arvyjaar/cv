@@ -4,12 +4,15 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
     /**
+     * @param Request $request
+     *
+     * @return Response
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
@@ -21,14 +24,11 @@ class DefaultController extends Controller
     }
 
     /**
-     * TODO: links to registration Employer || Seeker
+     * Disabled /register route
+     * @return Response
      */
     public function registerAction()
     {
-        //return new JsonResponse('You are in the middle of nowhere...');
-        if ($this->getUser()) {
-            return $this->redirectToRoute('homepage');
-        }
-        return $this->render(':default:register-router.html.twig');
+        return $this->redirectToRoute('homepage');
     }
 }

@@ -6,10 +6,11 @@ use AppBundle\Entity\JobAd;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CandidatesController
- * @package AppBundle\Controller
+ *
  * @Route("skelbimas/kandidatavo")
  */
 class CandidatesController extends Controller
@@ -17,7 +18,9 @@ class CandidatesController extends Controller
 
     /**
      * Lists of candidates to JobAd (jobApply entities).
+     * @param JobAd $jobAd
      *
+     * @return Response
      * @Route("/{id}", name="jobapply_index")
      * @Method("GET")
      *

@@ -6,6 +6,7 @@ use AppBundle\Entity\UserSeeker;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Userseeker controller.
@@ -17,13 +18,12 @@ class UserSeekerController extends Controller
 {
     /**
      * Lists all userSeeker entities.
-     *
+     * @return Response
      * @Route("/", name="user_seeker_index")
      * @Method("GET")
      */
     public function indexAction()
     {
-        // TODO: pagination
         $em = $this->getDoctrine()->getManager();
 
         $userSeekers = $em->getRepository('AppBundle:UserSeeker')->findAll();
@@ -35,7 +35,9 @@ class UserSeekerController extends Controller
 
     /**
      * Finds and displays a userSeeker entity.
+     * @param UserSeeker $userSeeker
      *
+     * @return Response
      * @Route("/{id}", name="user_seeker_show")
      * @Method("GET")
      */

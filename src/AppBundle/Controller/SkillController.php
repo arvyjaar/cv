@@ -18,6 +18,9 @@ class SkillController extends Controller
 {
 
     /**
+     * @param Request $request
+     *
+     * @return JsonResponse
      * @Route("/naujas",
      *     options = { "expose" = true },
      *     name = "add_skill",
@@ -50,6 +53,10 @@ class SkillController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param Skill $skill
+     *
+     * @return JsonResponse
      * @Route("/{id}",
      *     options = { "expose" = true },
      *     name = "delete_skill",

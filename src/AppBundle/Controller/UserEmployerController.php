@@ -21,8 +21,8 @@ class UserEmployerController extends Controller
 {
     /**
      * Lists all userEmployer entities.
-     *
      * @param Request $request
+     *
      * @return Response
      * @Route("/", name="user_employer_index")
      * @Method("GET")
@@ -47,8 +47,8 @@ class UserEmployerController extends Controller
 
     /**
      * Finds and displays a userEmployer entity.
-     *
      * @param UserEmployer $userEmployer
+     *
      * @return Response
      * @Route("/{id}", name="user_employer_show")
      * @Method("GET")
