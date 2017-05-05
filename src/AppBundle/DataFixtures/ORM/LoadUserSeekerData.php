@@ -8,6 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\UserSeeker;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use DateTime;
 
 class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
@@ -32,7 +33,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker1->setName('Jonas');
         $seeker1->setSurname('Jonauskas');
         $seeker1->setCity('Vilnius');
-        $seeker1->setBirthday(new \DateTime(1990 - 02 - 15));
+        $seeker1->setBirthday(new DateTime('1990-07-27' ));
         $seeker1->setIntroduction('Vadybos magistras, turintis vadovavimo darbo patirties medicinos vadybos, gamybos, 
             informacinių technologijų srityse. Atvykau gyventi ir dirbti į Vilnių, norėčiau pasidalinti savo darbo 
             patirtimi ir prisidėti prie Jūsų įstaigos veiklos rezultatų gerinimo.');
@@ -50,7 +51,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker2->setName('Onutė');
         $seeker2->setSurname('Petraškaitė');
         $seeker2->setCity('Kaunas');
-        $seeker2->setBirthday(new \DateTime(1965 - 04 - 18));
+        $seeker2->setBirthday(new DateTime('1965-04-18'));
         $seeker2->setIntroduction('Aukštasis išsilavinimas (VGTU, Inžinerinė Informatika: bakalauro ir magistro 
             diplomai). Daugiau negu 3 metų patirtis dirbant IT įmonėje (analitikė/testuotoja/sistemų 
             konsultantė/administratorė). IT sprendimų ir sistemų – DVS, PVS, pagrįstų Microsoft SharePoint ir 
@@ -69,7 +70,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker3->setName('Sandra');
         $seeker3->setSurname('Steponaitytė');
         $seeker3->setCity('Kaišiadorys');
-        $seeker3->setBirthday(new \DateTime(1980 - 06 - 10));
+        $seeker3->setBirthday(new DateTime('1980-06-10'));
         $seeker3->setIntroduction('Pastaruosius metus dirbdama finansų analitiku įgyjau daug patirties  rengdama 
             ir pristatydama įvairias įmonės veiklos analizes įvairiais pjūviais įmonės vadovybei bei akcininkams. 
             Dirbau su skirtingomis finansų valdymo bei MS Office programomis, dalyvavau diegiant programas bei 
@@ -89,7 +90,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker4->setName('Andrius');
         $seeker4->setSurname('Lapkauskas');
         $seeker4->setCity('Vilnius');
-        $seeker4->setBirthday(new \DateTime(1975 - 04 - 28));
+        $seeker4->setBirthday(new DateTime('1975-04-28'));
         $seeker4->setIntroduction('Ieškau kūrybingo darbo pardavimų, rinkodaros arba reklamos srityse. Mano patirtis 
             prekyboje siekia 18 metų. Paskutiniai 5 metai -  elektroninės parduotuvės vadovas. Pagal profesiją - 
             mokytojas, treneris. Svarbią  vietą mano gyvenime užima kūryba, esu 3 knygų autorius.');
@@ -107,7 +108,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker5->setName('Rokas');
         $seeker5->setSurname('Daukša');
         $seeker5->setCity('Kaunas');
-        $seeker5->setBirthday(new \DateTime(1989 - 02 - 15));
+        $seeker5->setBirthday(new DateTime('1989-02-15'));
         $seeker5->setIntroduction('Domiuosi it naujiemomis ir stengiuosi pritaikyti jas darbe.');
         $seeker5->setPhone('+370661433333');
         $seeker5->setProfession('IS administratorius');
@@ -123,7 +124,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker6->setName('Virgilijus');
         $seeker6->setSurname('Gerulaitis');
         $seeker6->setCity('Vilnius');
-        $seeker6->setBirthday(new \DateTime(1971 - 02 - 21));
+        $seeker6->setBirthday(new DateTime('1971-02-21'));
         $seeker6->setIntroduction('Esu Android mobiliųjų aplikacijų programuotojas, taip pat dirbu su Magento - 
             Magento 2 platforma, Laravel, ImpressPage. Esu nuolat tobulėjantis programavimo srityje, ieškantis 
             naujovių ir mylintis savo profesiją.');
@@ -141,7 +142,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker7->setName('Antanas');
         $seeker7->setSurname('Grigas');
         $seeker7->setCity('Prienai');
-        $seeker7->setBirthday(new \DateTime(1989 - 12 - 19));
+        $seeker7->setBirthday(new DateTime('1989-12-19'));
         $seeker7->setIntroduction('Esu informacinių sistemų inžinierius, įgyjęs profesinio bakalauro laipsnį 2014m. 
             Turiu patirties atliekant darbus su kompiuteriu ir jų komponentais, naudotis ir administruoti programines 
             įrangas (MS Office paketas, grafinių elementų redaktoriai, internetinių svetainių turinio valdymo sistemos, 
@@ -161,7 +162,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker8->setName('Laima');
         $seeker8->setSurname('Ivaškevičiūtė');
         $seeker8->setCity('Klaipėda');
-        $seeker8->setBirthday(new \DateTime(1985 - 05 - 19));
+        $seeker8->setBirthday(new DateTime('1985-05-19'));
         $seeker8->setIntroduction('12m. patirties dirbant su privačiais ir verslo klientais ir esu tai ko šiai dienai 
             reikia sėkmingiems pardavimams ir gerų santykių išlaikymui. Siekianti tikslo, komunikabili, pareiginga, 
             greitai perimanti naujoves.  Patinka dirbti įdomų, atsakingą  darbą, bendraujant, bendradarbiaujant su 
@@ -180,7 +181,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker9->setName('Karolis');
         $seeker9->setSurname('Strockis');
         $seeker9->setCity('Rietavas');
-        $seeker9->setBirthday(new \DateTime(1975 - 05 - 19));
+        $seeker9->setBirthday(new DateTime('1975-05-19'));
         $seeker9->setIntroduction('Ieškau darbo elektronikos, automatikos, elektros, gamybos, energetikos, IT srityse. 
             Neturiu žalingų įpročių. Suprantu techninę anglų kalbą. Turiu gerus darbo kompiuteriu įgūdžius. 
             Noriu visapusiškai tobulėti, dirbti ir mokytis darbo vietoje.');
@@ -198,7 +199,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker10->setName('Aistė');
         $seeker10->setSurname('Rugytė');
         $seeker10->setCity('Alytus');
-        $seeker10->setBirthday(new \DateTime(1997 - 02 - 12));
+        $seeker10->setBirthday(new DateTime('1997-02-12'));
         $seeker10->setIntroduction('Esu pilnametė moksleivė ir ieškau darbo visai vasarai. Noriu užsidirbti, todėl 
             darbą atliksiu atsakingai ir su šypsena.');
         $seeker10->setPhone('+370661466666');
@@ -215,7 +216,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker11->setName('Ovidijus');
         $seeker11->setSurname('Gaižauskas');
         $seeker11->setCity('Kaunas');
-        $seeker11->setBirthday(new \DateTime(1982 - 07 - 27));
+        $seeker11->setBirthday(new DateTime('1982-07-29'));
         $seeker11->setIntroduction('Baigiau KTU skaičiavimo technikos fakultetą taikomosios matematikos specialybę 
             ir įgijau informatikos magistro laipsnį. Turiu sukaupęs nemažą patirtį kaip IT specialistas 
             (programuotojas, sistemų bei tinklų inžinierius) ir kaip serviso bei pardavimo padalinių vadovas. 
