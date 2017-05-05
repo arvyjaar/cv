@@ -36,19 +36,21 @@
             <div class="info-block">
                 <p class="section-heading">Užduotis kandidatams</p>
                 <a href="{{ jobAd.assignment }}">{{ jobAd.assignment }}</a>
-            </div cla>
+            </div>
 
             <div class="btn-block">
                 {# Don't show for ROLE_EMPLOYER #}
                 {% if not is_granted('ROLE_USER_EMPLOYER') %}
                     {# Only registered ROLE_SEEKER can apply #}
                     {% if is_granted('ROLE_USER_SEEKER') %}
-                        <a class="btn btn-primary"
-                           href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
-                    {% else %}
-                        <p>Prisijunkite arba užsiregistruokite</p>
-                        <a class="btn btn-primary disabled"
-                           href="{{ path('user_seeker_registration') }}">Kandidatuoti</a>
+
+                       {#Show button only if candidate didn't applied for this position#}
+                       {% if not hide %}
+                           <a class="btn btn-primary" href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
+                       {% else %}
+                           <srong>Jūs jau kandidatovote į šią poziciją</srong>
+                       {% endif %}
+
                     {% endif %}
                 {% endif %}
             </div>
