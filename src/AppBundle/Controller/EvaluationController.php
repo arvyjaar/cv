@@ -41,7 +41,7 @@ class EvaluationController extends Controller
 
         // Only one evaluation for one jobApply
         if ($jobApply->getEvaluation() !== null) {
-            throw  new AccessDeniedException();
+            throw new AccessDeniedException();
         }
 
         $evaluation = new Evaluation();

@@ -9,12 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Form\Form;
 
 /**
- * Jobapply controller.
+ * JobApply controller.
  *
  * @Route("kandidatuoti")
  */
@@ -22,7 +23,10 @@ class JobApplyController extends Controller
 {
     /**
      * Creates a new jobApply entity.
+     * @param JobAd $jobad
+     * @param Request $request
      *
+     * @return Response
      * @Route("/{ad_id}/new", name="jobapply_new")
      * @Method({"GET", "POST"})
      * @ParamConverter("jobad", class="AppBundle:JobAd", options={"id" = "ad_id"})
@@ -58,7 +62,10 @@ class JobApplyController extends Controller
 
     /**
      * Deletes a jobApply entity.
+     * @param Request $request
+     * @param JobApply $jobApply
      *
+     * @return Response
      * @Route("/{id}", name="jobapply_delete")
      * @Method("DELETE")
      */
