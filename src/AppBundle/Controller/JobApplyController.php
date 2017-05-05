@@ -37,12 +37,22 @@ class JobApplyController extends Controller
             throw new AccessDeniedException();
         }
 
+        $seeker = $this->getUser();
+
+        //Prevents form resubmission
+        $jobApplies = $seeker->getJobApply();
+        foreach ($jobApplies as $jobApply) {
+            $appliedjobAd = $jobApply->getJobAd();
+            if ($appliedjobAd == $jobad) {
+                return $this->redirectToRoute('jobad_index');
+            }
+        }
+
         $jobApply = new Jobapply();
         $form = $this->createForm(JobApplyType::class, $jobApply);
         $form->handleRequest($request);
 
         // Add UserSeeker, add JobAd
-        $seeker = $this->getUser();
         $jobApply->setOwner($seeker);
         $jobApply->setJobAd($jobad);
 

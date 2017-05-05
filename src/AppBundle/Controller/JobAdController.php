@@ -160,9 +160,24 @@ class JobAdController extends Controller
     public function showAction(JobAd $jobAd)
     {
         $deleteForm = $this->createDeleteForm($jobAd);
+        $user = $this->getUser();
+        $hideButton = false;
+
+        //Checks if user already applied
+        if ($user->hasRole('ROLE_USER_SEEKER')) {
+            $jobApplies = $user->getJobApply();
+            foreach ($jobApplies as $jobApply) {
+                $appliedJobAd = $jobApply->getJobAd();
+                if ($appliedJobAd == $jobAd) {
+                    $hideButton = true;
+                }
+            }
+        }
+
         return $this->render('jobad/show.html.twig', array(
             'jobAd' => $jobAd,
-            'deleteForm' => $deleteForm->createView(),
+            'hide' => $hideButton,
+            'deleteForm' => $deleteForm->createView()
         ));
     }
 
