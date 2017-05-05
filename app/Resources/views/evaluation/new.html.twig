@@ -8,7 +8,7 @@
             <p class="page-heading">{{ form.vars.value.id ? "Redaguok įvertinimą!" : "Įvertink kandidatą!" }}</p>
 
             {{ form_start(form) }}
-                {% set action = form.vars.value.id is null? path('evaluation_new'): path('evaluation_edit', {'id': form.vars.value.id }) %}
+                {% set action = form.vars.value.id is null? path('evaluation_new', {'apply_id' : jobApply.id}): path('evaluation_edit', {'id': form.vars.value.id }) %}
 
                 {{ form_row(form.mark) }}
 
