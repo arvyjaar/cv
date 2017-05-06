@@ -32,6 +32,8 @@ class Skill
     private $title;
 
     /**
+     * @var UserSeeker
+     *
      * @ORM\ManyToOne(targetEntity="UserSeeker", inversedBy="skills")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */

@@ -33,7 +33,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker1->setName('Jonas');
         $seeker1->setSurname('Jonauskas');
         $seeker1->setCity('Vilnius');
-        $seeker1->setBirthday(new DateTime('1990-07-27' ));
+        $seeker1->setBirthday(new DateTime('1990-07-27'));
         $seeker1->setIntroduction('Vadybos magistras, turintis vadovavimo darbo patirties medicinos vadybos, gamybos, 
             informacinių technologijų srityse. Atvykau gyventi ir dirbti į Vilnių, norėčiau pasidalinti savo darbo 
             patirtimi ir prisidėti prie Jūsų įstaigos veiklos rezultatų gerinimo.');

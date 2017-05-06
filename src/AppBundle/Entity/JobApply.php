@@ -41,19 +41,19 @@ class JobApply
      * @Vich\UploadableField(mapping="cv", fileNameProperty="cv")
      * @var File
      */
-    protected $imageFile;
+    private $imageFile;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var DateTime
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
      * One JobApply has One Evaluation.
      * @ORM\OneToOne(targetEntity="Evaluation", inversedBy="jobApply")
-     * @ORM\JoinColumn(name="evaluation_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\JoinColumn(name="evaluation_id", referencedColumnName="id", onDelete="SET NULL", nullable=true)
      */
     private $evaluation;
 
@@ -149,6 +149,8 @@ class JobApply
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 
     /**
@@ -165,6 +167,8 @@ class JobApply
     public function setAssignmentSolution($assignmentSolution)
     {
         $this->assignmentSolution = $assignmentSolution;
+
+        return $this;
     }
 
     /**
@@ -181,6 +185,8 @@ class JobApply
     public function setOwner($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**
@@ -197,6 +203,8 @@ class JobApply
     public function setJobAd(JobAd $jobAd)
     {
         $this->jobAd = $jobAd;
+
+        return $this;
     }
 
     /**
@@ -213,5 +221,7 @@ class JobApply
     public function setEvaluation(Evaluation $evaluation)
     {
         $this->evaluation = $evaluation;
+
+        return $this;
     }
 }

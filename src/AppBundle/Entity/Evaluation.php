@@ -47,6 +47,8 @@ class Evaluation
     private $comment;
 
     /**
+     * @var JobApply
+     *
      * One Evaluation has One JobApply.
      * @ORM\OneToOne(targetEntity="JobApply", mappedBy="evaluation")
      */
@@ -114,5 +116,7 @@ class Evaluation
     public function setJobApply(JobApply $jobApply)
     {
         $this->jobApply = $jobApply;
+
+        return $this;
     }
 }

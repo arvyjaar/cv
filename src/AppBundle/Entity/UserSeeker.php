@@ -31,20 +31,20 @@ class UserSeeker extends User
      * @Assert\NotBlank(message = "Koks tavo vardas? Užpildyk šį lauką.")
      * @Assert\Length(max=55)
      */
-    protected $name;
+    private $name;
 
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message = "Kokia tavo pavardė? Užpildyk šį lauką.")
      * @Assert\Length(max=55)
      */
-    protected $surname;
+    private $surname;
 
     /**
      * @ORM\Column(type="date", nullable=true)
      * @Assert\Date()
      */
-    protected $birthday;
+    private $birthday;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -52,52 +52,52 @@ class UserSeeker extends User
      * @Vich\UploadableField(mapping="profile_image", fileNameProperty="photo")
      * @var File
      */
-    protected $imageFile;
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $photo;
+    private $photo;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(max=12)
      */
-    protected $phone;
+    private $phone;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $city;
+    private $city;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(max=55)
      */
-    protected $profession;
+    private $profession;
 
     /**
      * @ORM\OneToMany(targetEntity="Skill", mappedBy="user")
      */
-    protected $skills;
+    private $skills;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $introduction;
+    private $introduction;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
      * One UserSeeker has Many JobApply.
      * @ORM\OneToMany(targetEntity="JobApply", mappedBy="user")
      */
-    protected $jobApply;
+    private $jobApply;
 
     public function __construct()
     {
@@ -131,6 +131,8 @@ class UserSeeker extends User
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -147,6 +149,8 @@ class UserSeeker extends User
     public function setSurname($surname)
     {
         $this->surname = $surname;
+
+        return $this;
     }
 
     /**
@@ -163,6 +167,8 @@ class UserSeeker extends User
     public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
+
+        return $this;
     }
 
     /**
@@ -179,6 +185,8 @@ class UserSeeker extends User
     public function setPhoto($photo)
     {
         $this->photo = $photo;
+
+        return $this;
     }
 
     /**
@@ -195,6 +203,8 @@ class UserSeeker extends User
     public function setPhone($phone)
     {
         $this->phone = $phone;
+
+        return $this;
     }
 
     /**
@@ -211,6 +221,8 @@ class UserSeeker extends User
     public function setCity($city)
     {
         $this->city = $city;
+
+        return $this;
     }
 
     /**
@@ -227,6 +239,8 @@ class UserSeeker extends User
     public function setProfession($profession)
     {
         $this->profession = $profession;
+
+        return $this;
     }
 
     /**
@@ -243,6 +257,8 @@ class UserSeeker extends User
     public function setSkills($skills)
     {
         $this->skills = $skills;
+
+        return $this;
     }
 
     /**
@@ -259,6 +275,8 @@ class UserSeeker extends User
     public function setIntroduction($introduction)
     {
         $this->introduction = $introduction;
+
+        return $this;
     }
 
     // File upload
@@ -303,6 +321,8 @@ class UserSeeker extends User
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 
     /**
@@ -319,5 +339,7 @@ class UserSeeker extends User
     public function setJobApply($jobApply)
     {
         $this->jobApply = $jobApply;
+
+        return $this;
     }
 }

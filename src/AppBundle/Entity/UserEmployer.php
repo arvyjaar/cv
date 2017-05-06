@@ -32,25 +32,25 @@ class UserEmployer extends User
      * @Assert\NotBlank(message = "Įrašykite įmonės pavadinimą")
      * @Assert\Length(max=55)
      */
-    protected $title;
+    private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $description;
+    private $description;
 
     /**
      * Many UserEmployer has One Sector.
      * @ORM\ManyToOne(targetEntity="Sector")
      * @ORM\JoinColumn(name="sector", referencedColumnName="id")
      */
-    protected $sector;
+    private $sector;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(max=12)
      */
-    protected $phone;
+    private $phone;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -59,25 +59,25 @@ class UserEmployer extends User
      *
      * @var File
      */
-    protected $imageFile;
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $photo;
+    private $photo;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(max=55)
      */
-    protected $city;
+    private $city;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
      * One UserEmployer has Many JobAd.
@@ -95,7 +95,7 @@ class UserEmployer extends User
      *     max=9
  *     )
      */
-    protected $legalEntitysCode;
+    private $legalEntitysCode;
 
     public function __construct()
     {
@@ -128,6 +128,8 @@ class UserEmployer extends User
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -144,6 +146,8 @@ class UserEmployer extends User
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -160,6 +164,8 @@ class UserEmployer extends User
     public function setSector($sector)
     {
         $this->sector = $sector;
+
+        return $this;
     }
 
     /**
@@ -176,6 +182,8 @@ class UserEmployer extends User
     public function setPhone($phone)
     {
         $this->phone = $phone;
+
+        return $this;
     }
 
     /**
@@ -192,6 +200,8 @@ class UserEmployer extends User
     public function setPhoto($photo)
     {
         $this->photo = $photo;
+
+        return $this;
     }
 
     /**
@@ -208,6 +218,8 @@ class UserEmployer extends User
     public function setCity($city)
     {
         $this->city = $city;
+
+        return $this;
     }
 
     // File upload
@@ -252,6 +264,8 @@ class UserEmployer extends User
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 
     /**
@@ -268,6 +282,8 @@ class UserEmployer extends User
     public function setJobAd($jobAd)
     {
         $this->jobAds = $jobAd;
+
+        return $this;
     }
 
     /**
@@ -276,6 +292,8 @@ class UserEmployer extends User
     public function setlegalEntitysCode($legalEntitysCode)
     {
         $this->legalEntitysCode = $legalEntitysCode;
+
+        return $this;
     }
 
     /**

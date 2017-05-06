@@ -163,6 +163,8 @@ class JobAd
     public function setRequirements($requirements)
     {
         $this->skills = $requirements;
+
+        return $this;
     }
 
     /**
@@ -195,5 +197,7 @@ class JobAd
     public function setOwner($employer)
     {
         $this->employer = $employer;
+
+        return $this;
     }
 }
