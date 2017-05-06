@@ -53,7 +53,6 @@ class SkillController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param Skill $skill
      *
      * @return JsonResponse
@@ -62,7 +61,7 @@ class SkillController extends Controller
      *     name = "delete_skill",
      * )
      */
-    public function deleteAction(Request $request, Skill $skill)
+    public function deleteAction(Skill $skill)
     {
         // Security! Check user.
         if ($skill->getUser() !== $this->getUser()) {

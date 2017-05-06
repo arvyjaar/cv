@@ -49,6 +49,8 @@ class EvaluationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            var_dump($evaluation);
+            die;
             $em = $this->getDoctrine()->getManager();
             $em->persist($evaluation);
             $jobApply->setEvaluation($evaluation);

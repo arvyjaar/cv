@@ -42,7 +42,7 @@ class Evaluation
      *
      * @ORM\Column(name="comment", type="text", nullable=true)
      *
-     * @Assert\Length(max=300)
+     * @Assert\Length(max=255)
      */
     private $comment;
 

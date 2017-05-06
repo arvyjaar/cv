@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class RequirementController extends Controller
 {
     /**
-     * @param Request $request
      * @param Requirement $requirement
      *
      * @return JsonResponse
@@ -23,7 +22,7 @@ class RequirementController extends Controller
      *     name = "delete_requirement",
      * )
      */
-    public function deleteAction(Request $request, Requirement $requirement)
+    public function deleteAction(Requirement $requirement)
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($requirement);

@@ -7,7 +7,7 @@
             <a class="form-upper-btn" href="{{ app.request.headers.get('referer') }}">Atgal</a>
             <p class="page-heading">{{ form.vars.value.id ? "Redaguok įvertinimą!" : "Įvertink kandidatą!" }}</p>
 
-            {{ form_start(form) }}
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
                 {% set action = form.vars.value.id is null? path('evaluation_new', {'apply_id' : jobApply.id}): path('evaluation_edit', {'id': form.vars.value.id }) %}
 
                 {{ form_row(form.mark) }}

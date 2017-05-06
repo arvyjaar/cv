@@ -3,7 +3,7 @@
 /*GLOBAL*/
 body {
     font-family: 'Raleway', Helvetica, Arial;
-    background-image: url("../img/natural_paper.png");
+    background-image: url("../img/project_photos/natural_paper.png");
 }
 
 .container {
@@ -293,7 +293,7 @@ p. {
 }
 
 .homepage-row-background {
-    background-image: url("../img/diagonal_striped_brick.png");
+    background-image: url("../img/project_photos/diagonal_striped_brick.png");
     padding-bottom: 50px;
     margin-top: 70px;
 }
@@ -305,7 +305,7 @@ p. {
 .slogan-background {
     background-size: cover;
     background-position: center center;
-    background-image: url("../img/cover.jpg");
+    background-image: url("../img/project_photos/cover.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 600px;
@@ -399,7 +399,7 @@ p. {
     margin: 5px 0 10px;
     padding: 10px;
     border-radius: 20px;
-    background-image: url("../img/debut_light.png");
+    background-image: url("../img/project_photos/debut_light.png");
 }
 
 /*JOB AD LIST*/
