@@ -22,6 +22,7 @@ class ProfileUserEmployerFormType extends AbstractType
     {
         $builder
             ->add('title', null, ['label' => 'Įmonės pavadinimas*'])
+            ->add('legalEntitysCode', null, [ 'label' => 'Įmonės kodas*'])
             ->add('description', null, ['label' => 'Trumpai apie įmonę'])
             ->add('phone', null, ['label' => 'Telefonas'])
             ->add('email', EmailType::class, [

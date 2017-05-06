@@ -4,9 +4,11 @@
         <p class="page-heading">Redaguoti profilį</p>
         <a href="{{ path('fos_user_profile_show') }}" class="form-upper-btn">Gįžti atgal</a>
 
-        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit', 'novalidate': 'novalidate'} }) }}
 
             {{ form_row(form.title) }}
+
+            {{ form_row(form.legalEntitysCode) }}
 
             {{ form_row(form.email) }}
 
