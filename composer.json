@@ -27,6 +27,7 @@
         "symfony/css-selector": "^3.2",
         "symfony/dom-crawler": "^3.2",
         "symfony/monolog-bundle": "^3.0.2",
+        "symfony/phpunit-bridge": "^3.2",
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.2.*",
@@ -35,11 +36,10 @@
         "vich/uploader-bundle": "^1.4"
     },
     "require-dev": {
+        "codeception/codeception": "^2.2",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "sensio/generator-bundle": "^3.0",
-        "squizlabs/php_codesniffer": "^2.8",
-        "symfony/phpunit-bridge": "3.3.*@dev",
-        "phpunit/phpunit": "6.*"
+        "squizlabs/php_codesniffer": "^2.8"
     },
     "scripts": {
         "symfony-scripts": [

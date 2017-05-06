@@ -21,11 +21,12 @@
 
                     {{ form_row(form.plainPassword.second) }}
 
+                    <input type="hidden" name="role" value="ROLE_USER_SEEKER">
+
                     <small>* Pažymėti laukai turi būti užpildyti</small>
 
                     <div class="text-center">
-                        <input type="hidden" name="role" value="ROLE_USER_SEEKER">
-                        <input type="submit" class="btn btn-primary" value="Registruokis"/>
+                        <button class="btn btn-primary">Registruokis</button>
                     </div>
                 {{ form_end(form) }}
 
