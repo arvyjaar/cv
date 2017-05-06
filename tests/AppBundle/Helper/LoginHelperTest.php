@@ -1,24 +1,18 @@
 <?php
 
-namespace Tests\App\Helper;
+namespace Tests\AppBundle\Helper;
 
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
-class LogInHelper
+class LogInHelperTest
 {
-    public static function logInFakeAdmin(Client $client)
-    {
-        static::performLogIn($client, 'adminUser', [User::ROLE_ADMIN]);
-    }
-
-    public static function logInAdmin(Client $client)
-    {
-        static::logInUser($client, 'admin@admin');
-    }
-
+    /**
+     * @param Client $client
+     * @param string $email
+     */
     public static function logInUser(Client $client, $email)
     {
         $user = $client->getContainer()->get('doctrine.orm.default_entity_manager')->getRepository('AppBundle:User')
@@ -27,6 +21,11 @@ class LogInHelper
         static::performUserLogIn($client, $user);
     }
 
+    /**
+     * @param Client $client
+     * @param User $user
+     * @param array $roles
+     */
     private static function performLogIn(Client $client, $user, $roles)
     {
         $session = $client->getContainer()->get('session');
@@ -40,6 +39,10 @@ class LogInHelper
         $client->getCookieJar()->set($cookie);
     }
 
+    /**
+     * @param Client $client
+     * @param User $user
+     */
     private static function performUserLogIn(Client $client, User $user)
     {
         static::performLogIn($client, $user, $user->getRoles());
