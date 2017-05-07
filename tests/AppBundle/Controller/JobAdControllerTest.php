@@ -49,7 +49,7 @@ class JobAdControllerTest extends WebTestCase
             ->text());
 
         $this->assertContains('Projekto vystymas ir palaikymas. Pasyvūs ir aktyvūs pardavimai;
-            Aktyvi online ir offline rinkodara; Operatyvus mokymasis naujų IT įgūdžių ir jų pritaikymas.', $crawler
+        Aktyvi online ir offline rinkodara; Operatyvus mokymasis naujų IT įgūdžių ir jų pritaikymas.', $crawler
             ->filter('.ad-description')
             ->text());
 

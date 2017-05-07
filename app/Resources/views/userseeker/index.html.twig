@@ -4,8 +4,11 @@
     <div class="container">
         <div class="content-container">
 
-            <p class="page-heading">Šiuo metu darbo ieško:</p>
-
+            <p class="page-heading">Šiuo metu darbo ieško:{% include 'search-ads.html.twig' with {'form': searchForm} %}</p>
+            {% if userSeekers|length == 0 %}
+                <br>
+                Nieko nerasta...
+            {% endif %}
             {% for userSeeker in userSeekers %}
                 {# Lists 3 divs in one row #}
                 {% if loop.index0 is divisible by(3) %}

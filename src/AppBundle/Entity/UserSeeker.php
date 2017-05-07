@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="user_seeker")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserSeekerRepository")
  * @UniqueEntity(fields = "username", targetClass = "AppBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "AppBundle\Entity\User", message="Vartotojas tokiu su adresu jau yra")
  * @Vich\Uploadable
@@ -145,6 +146,7 @@ class UserSeeker extends User
 
     /**
      * @param string $surname
+     * @return User
      */
     public function setSurname($surname)
     {
@@ -163,6 +165,7 @@ class UserSeeker extends User
 
     /**
      * @param string $birthday
+     * @return User
      */
     public function setBirthday($birthday)
     {
@@ -181,6 +184,7 @@ class UserSeeker extends User
 
     /**
      * @param string $photo
+     * @return User
      */
     public function setPhoto($photo)
     {
@@ -199,6 +203,7 @@ class UserSeeker extends User
 
     /**
      * @param string $phone
+     * @return User
      */
     public function setPhone($phone)
     {
@@ -217,6 +222,7 @@ class UserSeeker extends User
 
     /**
      * @param string $city
+     * @return User
      */
     public function setCity($city)
     {
@@ -235,6 +241,7 @@ class UserSeeker extends User
 
     /**
      * @param string $profession
+     * @return User
      */
     public function setProfession($profession)
     {
