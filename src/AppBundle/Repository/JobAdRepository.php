@@ -12,15 +12,17 @@ class JobAdRepository extends EntityRepository
      */
     public function searchAds($keyword)
     {
-        $qb = $this->createQueryBuilder('ja');
-        $qb->select('ja');
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+            SELECT a
+            FROM AppBundle:JobAd a
+            LEFT JOIN a.requirements r
+            WHERE a.title LIKE :title
+            OR r.title LIKE :title
+            ')
+            ->setParameter('title', '%' . $keyword . '%');
 
-        if ($keyword) {
-            $qb->where('ja.title LIKE :keyword')
-                ->setParameter('keyword', '%' . $keyword . '%');
-        }
-
-        return $qb->getQuery()->getResult();
+        return $query->getResult();
     }
 
     /**
