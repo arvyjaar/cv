@@ -40,6 +40,7 @@ class UserSeekerController extends Controller
         return $this->render('userseeker/index.html.twig', [
             'userSeekers' => $userSeekers,
             'searchForm' => $form->createView(),
+            'placeholder' => 'Gebėjimai',
         ]);
     }
 

@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
         <div class="content-container">
-            <p class="page-heading">{% block heading %}Darbo{% endblock %} skelbimai{% include 'search-ads.html.twig' with {'form': searchForm} %}</p>
+            <p class="page-heading">{% block heading %}Darbo{% endblock %} skelbimai{% include 'search-ads-seekers.html.twig' with {'form': searchForm} %}</p>
 
             {% block noResults %}
                 {% if  jobAds == null %}

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="content-container">
 
-            <p class="page-heading">Šiuo metu darbo ieško:{% include 'search-ads.html.twig' with {'form': searchForm} %}</p>
+            <p class="page-heading">Šiuo metu darbo ieško:{% include 'search-ads-seekers.html.twig' with {'form': searchForm} %}</p>
             {% if userSeekers|length == 0 %}
                 <br>
                 Nieko nerasta...
