@@ -14,10 +14,10 @@
                 </div>
                 <div class="col-md-8 col-sm-6">
                     <ul class="profile-list">
-                        <li class="profile-user-name">{{ userEmployer.title|raw }}</li>
-                        <li>{{ userEmployer.email|raw }}</li>
-                        <li>{{ userEmployer.phone|raw }}</li>
-                        <li>{{ userEmployer.city|raw }}</li>
+                        <li class="profile-user-name">{{ userEmployer.title }}</li>
+                        <li>{{ userEmployer.email }}</li>
+                        <li>{{ userEmployer.phone }}</li>
+                        <li>{{ userEmployer.city }}</li>
                         {% if salary %}
                             <li>Vidutinis atlyginimas: {{ salary }} €</li>
                         {% endif %}

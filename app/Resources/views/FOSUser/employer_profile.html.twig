@@ -10,10 +10,10 @@
             </div>
             <div class="col-md-8 col-sm-6">
                 <ul class="profile-list">
-                    <li class="profile-user-name">{{ app.user.title|raw }}</li>
-                    <li>{{ app.user.email|raw }}</li>
-                    <li>{{ app.user.phone|raw }}</li>
-                    <li>{{ app.user.city|raw }}</li>
+                    <li class="profile-user-name">{{ app.user.title }}</li>
+                    <li>{{ app.user.email }}</li>
+                    <li>{{ app.user.phone }}</li>
+                    <li>{{ app.user.city }}</li>
                 </ul>
             </div>
         </div>
@@ -41,7 +41,7 @@
         <ul class="profile-list">
             {% for jobad in app.user.jobAd %}
                 <li>
-                    <a href="{{ path('jobad_show', {'id': jobad.id }) }}">{{ jobad.title|raw }}</a>
+                    <a href="{{ path('jobad_show', {'id': jobad.id }) }}">{{ jobad.title }}</a>
                     <small>
                         <a href="{{ path('jobapply_index', {'id': jobad.id }) }}"> | Peržiūrėti kandidatų sąrašą ({{ jobad.jobApply.count }})</a>
                     </small>
