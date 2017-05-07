@@ -6,4 +6,4 @@ modules:
             browser: chrome
             wait: 1
             window_size: maximize
-        - \Helper\Acceptance
+        - \Helper\Acceptances

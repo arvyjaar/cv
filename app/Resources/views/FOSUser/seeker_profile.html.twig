@@ -10,10 +10,10 @@
             </div>
             <div class="col-md-8 col-sm-6">
                 <ul class="profile-list">
-                    <li class="profile-user-name">{{ app.user.name }} {{ app.user.surname }}</li>
-                    <li>{{ app.user.email }}</li>
-                    <li>{{ app.user.phone }}</li>
-                    <li>{{ app.user.city }}</li>
+                    <li class="profile-user-name">{{ app.user.name|raw }} {{ app.user.surname|raw }}</li>
+                    <li>{{ app.user.email|raw }}</li>
+                    <li>{{ app.user.phone|raw }}</li>
+                    <li>{{ app.user.city|raw }}</li>
                 </ul>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <p class="section-heading profile-heading">Gebėjimai</p>
                 <div>
                     {% for skill in app.user.skills %}
-                        <span class="skill">{{ skill.title }}</span>
+                        <span class="skill">{{ skill.title|raw }}</span>
                     {% endfor %}
                 </div>
             </div>
@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="section-heading profile-heading">Trumpas prisistatymas</p>
-                <p>{{ app.user.introduction }}</p>
+                <p>{{ app.user.introduction|raw }}</p>
             </div>
         </div>
         {% if app.user.jobApply %}
@@ -42,8 +42,8 @@
                     <ul class="profile-list">
                         {% for jobApply in app.user.jobApply %}
                             <li class="profile-jobapply-list-item">
-                                <a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}" target="_blank">{{ jobApply.jobAd.title }}</a>
-                                <span>| {{ jobApply.jobAd.owner.title }}</span>
+                                <a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}" target="_blank">{{ jobApply.jobAd.title|raw }}</a>
+                                <span>| {{ jobApply.jobAd.owner.title|raw }}</span>
                             </li>
                         {% endfor %}
                     </ul>
@@ -54,8 +54,8 @@
                         {% for jobApply in app.user.jobApply %}
                             {% if jobApply.evaluation %}
                             <li class="profile-jobapply-list-item">
-                                <span class="mark">{{ jobApply.evaluation.mark }}</span>
-                                <span class="comment">{{ jobApply.evaluation.comment }}</span>
+                                <span class="mark">{{ jobApply.evaluation.mark|raw }}</span>
+                                <span class="comment">{{ jobApply.evaluation.comment|raw }}</span>
                             </li>
                             {% else %}
                             <li class="profile-jobapply-list-item">Šiuo metu įvertinimų neturite</li>
