@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
         <div class="content-container">
-            <p class="page-heading">Kandidatai į poziciją: {{ jobAd.title }}</p>
+            <p class="page-heading">Kandidatai į poziciją: {{ jobAd.title|raw }}</p>
 
             <a class="form-upper-btn" href="{{ app.request.headers.get('referer') }}">Grįžti atgal</a>
 
@@ -19,10 +19,10 @@
                             <ul class="profile-list">
                                 <li>
                                     <a class="candidates-list-heading" href="{{ path('user_seeker_show', {'id' : jobApply.owner.id}) }}">
-                                    {{ jobApply.owner.name }} {{ jobApply.owner.surname }}</a>
+                                    {{ jobApply.owner.name|raw }} {{ jobApply.owner.surname|raw }}</a>
                                 </li>
                                 <li>Amžius: {{ jobApply.owner.birthDay|age }}</li>
-                                <li>{{ jobApply.owner.city }}</li>
+                                <li>{{ jobApply.owner.city|raw }}</li>
                             </ul>
                         </div>
                         <div class="col-md-4">
@@ -36,7 +36,7 @@
                                 </li>
                                 {% endif %}
                                 {% if jobApply.evaluation %}
-                                    <li class="assignment-evaluation">Mano įvertinimas: {{ jobApply.evaluation.mark }}</li>
+                                    <li class="assignment-evaluation">Mano įvertinimas: {{ jobApply.evaluation.mark|raw }}</li>
                                     <li>
                                         <a class="btn btn-primary" href="{{ path('evaluation_edit', {'id' : jobApply.evaluation.id}) }}">Redaguoti įvertinimą</a>
                                     </li>

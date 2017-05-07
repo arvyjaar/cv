@@ -23,7 +23,7 @@
 
                         <div class="job-title-block">
                             <div class="job-title job-list-job-title">
-                                {{ jobAd.title }}
+                                {{ jobAd.title|raw }}
                             </div>
                         </div>
 
@@ -31,17 +31,17 @@
                             <p class="section-heading">Reikalavimai:</p>
                             <div class="text-center">
                                 {% for requirement in jobAd.requirements %}
-                                    <span class="skill">{{ requirement.title }}</span>
+                                    <span class="skill">{{ requirement.title|raw }}</span>
                                 {% endfor %}
                             </div>
                         </div>
 
                         <div class="job-ad-info">
                             <p class="section-heading">Trumpai apie siūlomą poziciją:</p>
-                            <p class="ad-description">{{ jobAd.description|length > 200 ? jobAd.description|slice(0, 200) ~ '...' : jobAd.description  }}</p>
+                            <p class="ad-description">{{ jobAd.description|length > 200 ? jobAd.description|slice(0, 200) ~ '...'|raw : jobAd.description|raw   }}</p>
 
                             {% block employer %} {# employer title block is empty in my_index.html #}
-                                <p class="text-center"><b>{{ jobAd.owner.title }}</b></p>
+                                <p class="text-center"><b>{{ jobAd.owner.title|raw }}</b></p>
                             {% endblock %}
 
                         </div>

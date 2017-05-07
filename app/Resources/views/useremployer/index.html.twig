@@ -26,13 +26,13 @@
                                 <li>
                                     <a class="candidates-list-heading"
                                        href="{{ path('user_employer_show', {'id' : employer.id }) }}">
-                                        {{ employer.title }}
+                                        {{ employer.title|raw }}
                                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                                     </a>
                                 </li>
-                                <li>{{ employer.sector }}</li>
-                                <li>{{ employer.phone }}</li>
-                                <li>{{ employer.email }}</li>
+                                <li>{{ employer.sector|raw }}</li>
+                                <li>{{ employer.phone|raw }}</li>
+                                <li>{{ employer.email|raw }}</li>
                             </ul>
                         </div>
                         <div class="col-md-4 col-sm-6 employers-list-border">

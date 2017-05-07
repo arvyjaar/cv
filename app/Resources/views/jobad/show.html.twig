@@ -15,27 +15,27 @@
             </div>
 
             <div class="text-center">
-                <p class="job-title show-job-ad-title">{{ jobAd.title }}</p>
+                <p class="job-title show-job-ad-title">{{ jobAd.title|raw }}</p>
             </div>
 
             <div class="text-center info-block">
-                <p><b>{{ jobAd.owner.title }}</b></p>
+                <p><b>{{ jobAd.owner.title|raw }}</b></p>
             </div>
 
             <div class="text-center">
                 {% for requirement in jobAd.requirements %}
-                    <span class="requirement">{{ requirement.title }}</span>
+                    <span class="requirement">{{ requirement.title|raw }}</span>
                 {% endfor %}
             </div>
 
             <div class="info-block">
                 <p class="section-heading">Apie siūlomą poziciją:</p>
-                <p>{{ jobAd.description }}</p>
+                <p>{{ jobAd.description|raw }}</p>
             </div>
 
             <div class="info-block">
                 <p class="section-heading">Užduotis kandidatams</p>
-                <a href="{{ jobAd.assignment }}">{{ jobAd.assignment }}</a>
+                <a href="{{ jobAd.assignment }}">{{ jobAd.assignment|raw }}</a>
             </div>
 
             <div class="btn-block">

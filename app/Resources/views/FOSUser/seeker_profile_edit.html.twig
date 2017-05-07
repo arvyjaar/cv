@@ -29,7 +29,7 @@
 
             {{ include('FOSUser/add_skills_form.html.twig') }}
 
-            {{ form_row(form.introduction) }}
+            {{ form_row(form.introduction, {'attr': {'class': 'tinymce'}}) }}
 
             <div class="text-right">
                 <small>* Pažymėti laukai turi būti užpildyti</small>

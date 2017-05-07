@@ -11,9 +11,9 @@ before_script:
 # Below are necessary(?) commands for database creating. But they do not work.
   - composer install --no-interaction --prefer-dist
 
-  - "wget https://goo.gl/s4o9Vx"
-  - "java -jar selenium-server-standalone-3.4.0.jar > /dev/null &"
-  - sleep 5
+#  - "wget https://goo.gl/s4o9Vx"
+#  - "java -jar selenium-server-standalone-3.4.0.jar > /dev/null &"
+#  - sleep 5
 #  - "wget https://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin"
 script:
   - bin/console doctrine:database:create
@@ -21,7 +21,7 @@ script:
 #  - bin/console doctrine:fixtures:load -q
   - bin/console doctrine:database:create --env=test
   - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src --ignore=*/DataFixtures/*
-  - vendor/bin/codecept run acceptance
+#  - vendor/bin/codecept run acceptance
   - vendor/bin/phpunit
 
 notifications:

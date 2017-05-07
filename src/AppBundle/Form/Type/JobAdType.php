@@ -18,7 +18,10 @@ class JobAdType extends AbstractType
     {
         $builder
             ->add('title', null, ['label' => 'Siūloma pozicija*'])
-            ->add('description', null, ['label' => 'Apie siūlomą poziciją:*'])
+            ->add('description', null, [
+//                'class' => 'tinymce',
+                'label' => 'Apie siūlomą poziciją:*'
+            ])
             ->add('assignment', UrlType::class, [
                 'default_protocol' => '',
                 'label' => 'Užduotis kandidatams*'
