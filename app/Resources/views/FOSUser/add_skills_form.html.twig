@@ -4,7 +4,7 @@
         {% if app.user.skills %}
             {% for skill in app.user.skills %}
                 <div id="{{ skill.id }}" class="skill-block">
-                    <span class="skill">{{ skill.title|raw }}</span>
+                    <span class="skill">{{ skill.title }}</span>
                     <i class="fa fa-times skill-delete" data-id="{{ skill.id }}" aria-hidden="true"></i>
                 </div>
             {% endfor %}

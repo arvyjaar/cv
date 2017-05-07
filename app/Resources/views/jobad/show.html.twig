@@ -15,16 +15,16 @@
             </div>
 
             <div class="text-center">
-                <p class="job-title show-job-ad-title">{{ jobAd.title|raw }}</p>
+                <p class="job-title show-job-ad-title">{{ jobAd.title }}</p>
             </div>
 
             <div class="text-center info-block">
-                <p><b>{{ jobAd.owner.title|raw }}</b></p>
+                <p><b>{{ jobAd.owner.title }}</b></p>
             </div>
 
             <div class="text-center">
                 {% for requirement in jobAd.requirements %}
-                    <span class="requirement">{{ requirement.title|raw }}</span>
+                    <span class="requirement">{{ requirement.title }}</span>
                 {% endfor %}
             </div>
 
@@ -35,7 +35,7 @@
 
             <div class="info-block">
                 <p class="section-heading">Užduotis kandidatams</p>
-                <a href="{{ jobAd.assignment }}">{{ jobAd.assignment|raw }}</a>
+                <a href="{{ jobAd.assignment }}">{{ jobAd.assignment }}</a>
             </div>
 
             <div class="btn-block">
