@@ -47,5 +47,13 @@ class JobAdControllerTest extends WebTestCase
         $this->assertContains('Projekto vadovas IT projektui', $crawler
             ->filter('.job-title')
             ->text());
+
+        $this->assertContains('Projekto vystymas ir palaikymas. Pasyvūs ir aktyvūs pardavimai;
+            Aktyvi online ir offline rinkodara; Operatyvus mokymasis naujų IT įgūdžių ir jų pritaikymas.', $crawler
+            ->filter('.ad-description')
+            ->text());
+
+        $this->assertContains('Kandidatų į šią poziciją: 1', $crawler
+            ->filter('.candidates-count-block > a')->text());
     }
 }
