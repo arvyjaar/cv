@@ -15,8 +15,8 @@ class SeekerCest
     public function register(AcceptanceTester $I)
     {
         $I->amOnPage('/');
-        $I->click('Registruokis ir būk pastebėtas!');
-        $I->click('Ieškau darbo');
+        $I->click('Registracija');
+        $I->click('Ieškantiems darbo');
         $I->fillField('fos_user_registration_form[name]', 'Vardas');
         $I->fillField('fos_user_registration_form[surname]', 'Pavardenis');
         $I->fillField('fos_user_registration_form[email]', $this->generateRandomEmail());
@@ -47,7 +47,8 @@ class SeekerCest
         $I->see('Jonas Jonauskas');
     }
 
-    public function generateRandomEmail(){
+    public function generateRandomEmail()
+    {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
