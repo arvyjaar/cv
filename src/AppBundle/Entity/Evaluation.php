@@ -112,6 +112,7 @@ class Evaluation
 
     /**
      * @param JobApply
+     * @return Evaluation
      */
     public function setJobApply(JobApply $jobApply)
     {

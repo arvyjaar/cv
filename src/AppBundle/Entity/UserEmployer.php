@@ -124,6 +124,7 @@ class UserEmployer extends User
 
     /**
      * @param string $title
+     * @return UserEmployer
      */
     public function setTitle($title)
     {
@@ -142,6 +143,7 @@ class UserEmployer extends User
 
     /**
      * @param string $description
+     * @return UserEmployer
      */
     public function setDescription($description)
     {
@@ -160,6 +162,7 @@ class UserEmployer extends User
 
     /**
      * @param string $sector
+     * @return UserEmployer
      */
     public function setSector($sector)
     {
@@ -178,6 +181,7 @@ class UserEmployer extends User
 
     /**
      * @param string $phone
+     * @return UserEmployer
      */
     public function setPhone($phone)
     {
@@ -196,6 +200,7 @@ class UserEmployer extends User
 
     /**
      * @param string $photo
+     * @return UserEmployer
      */
     public function setPhoto($photo)
     {
@@ -214,6 +219,7 @@ class UserEmployer extends User
 
     /**
      * @param string $city
+     * @return UserEmployer
      */
     public function setCity($city)
     {
@@ -260,6 +266,7 @@ class UserEmployer extends User
 
     /**
      * @param DateTime $updatedAt
+     * @return UserEmployer
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -278,6 +285,7 @@ class UserEmployer extends User
 
     /**
      * @param JobAd $jobAd
+     * @return UserEmployer
      */
     public function setJobAd($jobAd)
     {
@@ -288,6 +296,7 @@ class UserEmployer extends User
 
     /**
      * @param string $legalEntitysCode
+     * @return UserEmployer
      */
     public function setlegalEntitysCode($legalEntitysCode)
     {

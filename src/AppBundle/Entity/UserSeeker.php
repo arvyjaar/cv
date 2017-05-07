@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use AppBundle\Entity\JobApply;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -128,6 +129,7 @@ class UserSeeker extends User
 
     /**
      * @param string $name
+     * @return UserSeeker
      */
     public function setName($name)
     {
@@ -146,7 +148,7 @@ class UserSeeker extends User
 
     /**
      * @param string $surname
-     * @return User
+     * @return UserSeeker
      */
     public function setSurname($surname)
     {
@@ -165,7 +167,7 @@ class UserSeeker extends User
 
     /**
      * @param string $birthday
-     * @return User
+     * @return UserSeeker
      */
     public function setBirthday($birthday)
     {
@@ -184,7 +186,7 @@ class UserSeeker extends User
 
     /**
      * @param string $photo
-     * @return User
+     * @return UserSeeker
      */
     public function setPhoto($photo)
     {
@@ -203,7 +205,7 @@ class UserSeeker extends User
 
     /**
      * @param string $phone
-     * @return User
+     * @return UserSeeker
      */
     public function setPhone($phone)
     {
@@ -222,7 +224,7 @@ class UserSeeker extends User
 
     /**
      * @param string $city
-     * @return User
+     * @return UserSeeker
      */
     public function setCity($city)
     {
@@ -241,7 +243,7 @@ class UserSeeker extends User
 
     /**
      * @param string $profession
-     * @return User
+     * @return UserSeeker
      */
     public function setProfession($profession)
     {
@@ -260,6 +262,7 @@ class UserSeeker extends User
 
     /**
      * @param string $skills
+     * @return UserSeeker
      */
     public function setSkills($skills)
     {
@@ -278,6 +281,7 @@ class UserSeeker extends User
 
     /**
      * @param string $introduction
+     * @return UserSeeker
      */
     public function setIntroduction($introduction)
     {
@@ -315,7 +319,7 @@ class UserSeeker extends User
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getUpdatedAt()
     {
@@ -323,7 +327,8 @@ class UserSeeker extends User
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param DateTime $updatedAt
+     * @return UserSeeker
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -333,7 +338,7 @@ class UserSeeker extends User
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getJobApply()
     {
@@ -341,7 +346,8 @@ class UserSeeker extends User
     }
 
     /**
-     * @param mixed $jobApply
+     * @param JobApply $jobApply
+     * @return UserSeeker
      */
     public function setJobApply($jobApply)
     {
