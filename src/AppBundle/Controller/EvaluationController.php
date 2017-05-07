@@ -49,8 +49,6 @@ class EvaluationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump($evaluation);
-            die;
             $em = $this->getDoctrine()->getManager();
             $em->persist($evaluation);
             $jobApply->setEvaluation($evaluation);
@@ -74,7 +72,7 @@ class EvaluationController extends Controller
      * @param Evaluation $evaluation
      *
      * @return mixed
-     * @Route("/{id}/edit", name="evaluation_edit")
+     * @Route("/{id}/redaguoti", name="evaluation_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Evaluation $evaluation)

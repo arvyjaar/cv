@@ -188,7 +188,7 @@ class JobAdController extends Controller
      *
      * @return Response
      *
-     * @Route("/{id}/edit", name="jobad_edit")
+     * @Route("/{id}/redaguoti", name="jobad_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, JobAd $jobAd)

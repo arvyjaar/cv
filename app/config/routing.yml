@@ -15,9 +15,9 @@ fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 user_employer_registration:
-    path:  /register/employer
+    path:  /registruotis/siulau-darba
     defaults: { _controller: AppBundle:RegistrationUserEmployer:register }
 
 user_seeker_registration:
-    path:  /register/seeker
+    path:  /registruotis/ieskau-darbo
     defaults: { _controller: AppBundle:RegistrationUserSeeker:register }
