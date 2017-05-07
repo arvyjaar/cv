@@ -10,11 +10,6 @@ before_script:
 
 # Below are necessary(?) commands for database creating. But they do not work.
   - composer install --no-interaction --prefer-dist
-
-  # Start up a web server.
-  - php bin/console server:run
-  # Start up the webdriver.
-  - phantomjs --webdriver=4444
 script:
   - bin/console doctrine:database:create
   - bin/console doctrine:schema:update --force
