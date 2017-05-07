@@ -5,11 +5,21 @@ app:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
-#Disabled FOSUser route /register
+# Disabled FOSUser route /register
 fos_user_registration_register:
     path:  /register
     methods: [GET, POST]
     defaults:  { _controller: AppBundle:Default:register }
+# FOSUser routes in Lithuanian language
+fos_user_security_login:
+    path: /prisijungti
+    defaults: { _controller: FOSUserBundle:Security:login }
+fos_user_profile_show:
+    path: /profilis
+    defaults: { _controller: FOSUserBundle:Profile:show }
+fos_user_profile_edit:
+    path: /profilis/redaguoti
+    defaults: { _controller: FOSUserBundle:Profile:edit }
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
