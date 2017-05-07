@@ -159,6 +159,7 @@ class JobAd
 
     /**
      * @param ArrayCollection $requirements
+     * @return JobAd
      */
     public function setRequirements($requirements)
     {
@@ -193,6 +194,7 @@ class JobAd
 
     /**
      * @param UserEmployer
+     * @return JobAd
      */
     public function setOwner($employer)
     {

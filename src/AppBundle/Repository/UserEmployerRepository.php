@@ -19,7 +19,7 @@ class UserEmployerRepository extends EntityRepository
             $qb->where('emp.title LIKE :title')
                 ->setParameter('title', '%' . $title . '%');
         }
-        if ($sector) {
+        if (! empty($sector)) {
             $qb->andWhere('emp.sector = :sector')
                 ->setParameter('sector', $sector);
         }

@@ -19,8 +19,10 @@ script:
   - bin/console doctrine:database:create
   - bin/console doctrine:schema:update --force
 #  - bin/console doctrine:fixtures:load -q
+  - bin/console doctrine:database:create --env=test
   - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src --ignore=*/DataFixtures/*
   - vendor/bin/codecept run acceptance
+  - vendor/bin/phpunit
 
 notifications:
   slack: nfqakademija:D39BmJYjiYZsrNylRdNfIBzm

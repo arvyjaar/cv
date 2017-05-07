@@ -3,10 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\UserSeeker;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Form\Type\AdsSearchType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * Userseeker controller.
@@ -18,18 +20,27 @@ class UserSeekerController extends Controller
 {
     /**
      * Lists all userSeeker entities.
+     * @param Request $request
      * @return Response
      * @Route("/", name="user_seeker_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(AdsSearchType::class, null, ['method' => 'GET']);
+        $form->handleRequest($request);
 
-        $userSeekers = $em->getRepository('AppBundle:UserSeeker')->findAll();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository = $this->getDoctrine()->getRepository(UserSeeker::class);
+            $userSeekers = $repository->findSeekers($request->get('title'));
+        } else {
+            $userSeekers = $this->getDoctrine()->getRepository(UserSeeker::class)->findAll();
+        }
 
         return $this->render('userseeker/index.html.twig', [
             'userSeekers' => $userSeekers,
+            'searchForm' => $form->createView(),
+            'placeholder' => 'Gebėjimai',
         ]);
     }
 

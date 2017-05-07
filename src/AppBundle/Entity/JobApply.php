@@ -145,6 +145,7 @@ class JobApply
 
     /**
      * @param DateTime $updatedAt
+     * @return JobApply
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -163,6 +164,7 @@ class JobApply
 
     /**
      * @param string $assignmentSolution
+     * @return JobApply
      */
     public function setAssignmentSolution($assignmentSolution)
     {
@@ -181,6 +183,7 @@ class JobApply
 
     /**
      * @param UserSeeker
+     * @return JobApply
      */
     public function setOwner($user)
     {
@@ -199,6 +202,7 @@ class JobApply
 
     /**
      * @param JobAd
+     * @return JobApply
      */
     public function setJobAd(JobAd $jobAd)
     {
@@ -217,6 +221,7 @@ class JobApply
 
     /**
      * @param Evaluation
+     * @return JobApply
      */
     public function setEvaluation(Evaluation $evaluation)
     {

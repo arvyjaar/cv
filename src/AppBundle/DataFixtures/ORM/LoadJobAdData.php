@@ -30,6 +30,7 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
 
     /**
      * @var UserEmployer
+     * @return UserEmployer
      */
     public function getOwner($id)
     {
@@ -48,9 +49,9 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
             motivated or self taught programmers. The successful candidate must have a passion for programming, and 
             show demonstrable expertise in more than one modern programming languages. Responsibilities include but are 
             not limited to: ⚬design, code, and support a new data analytics platform; 
-        ⚬Create and support various applications, APIs, and 3rd party tools;
-        ⚬Create system architecture and design, and tune and optimize code;
-        ⚬Provide ongoing data quality monitoring and support.');
+            ⚬Create and support various applications, APIs, and 3rd party tools;
+            ⚬Create system architecture and design, and tune and optimize code;
+            ⚬Provide ongoing data quality monitoring and support.');
         $jobAd1->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');
         $jobAd1->setOwner($this->getOwner(14));
 
@@ -65,10 +66,8 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
 
         $jobAd3 = new JobAd();
         $jobAd3->setTitle('Projekto vadovas IT projektui');
-        $jobAd3->setDescription('•	Projekto vystymas ir palaikymas. Pasyvūs ir aktyvūs
-        pardavimai;
-        •	Aktyvi online ir offline rinkodara;
-        •	Operatyvus mokymasis naujų IT įgūdžių ir jų pritaikymas.');
+        $jobAd3->setDescription('Projekto vystymas ir palaikymas. Pasyvūs ir aktyvūs pardavimai;
+        Aktyvi online ir offline rinkodara; Operatyvus mokymasis naujų IT įgūdžių ir jų pritaikymas.');
         $jobAd3->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');
         $jobAd3->setOwner($this->getOwner(16));
 

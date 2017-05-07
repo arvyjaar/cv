@@ -41,10 +41,10 @@ class JobAdController extends Controller
             $jobAds = $this->getDoctrine()->getRepository(JobAd::class)->findAll();
         }
 
-        return $this->render('jobad/index.html.twig', array(
+        return $this->render('jobad/index.html.twig', [
             'jobAds' => $jobAds,
             'searchForm' => $form->createView(),
-        ));
+        ]);
     }
 
     /**

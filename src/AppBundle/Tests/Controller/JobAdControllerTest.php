@@ -7,13 +7,19 @@ use Tests\App\Helper\LogInHelper;
 
 class JobAdControllerTest extends WebTestCase
 {
-    /*
+/*
     public function testMyAdsIndexScenario()
     {
         // Create a new client to browse the application
         $client = static::createClient();
+        LogInHelper::logInUser($client, 'telia@email.com');
+
+        $crawler = $client->request('GET', '/skelbimai/mano-skelbimai/');
+        $this->assertEquals(200, $client
+            ->getResponse()
+            ->getStatusCode(), "Unexpected HTTP status code for GET /jobad/");
     }
-    */
+
 
     /*
     public function testCompleteScenario()

@@ -37,7 +37,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker1->setIntroduction('Vadybos magistras, turintis vadovavimo darbo patirties medicinos vadybos, gamybos, 
             informacinių technologijų srityse. Atvykau gyventi ir dirbti į Vilnių, norėčiau pasidalinti savo darbo 
             patirtimi ir prisidėti prie Jūsų įstaigos veiklos rezultatų gerinimo.');
-        $seeker1->setPhone('+370661255879');
+        $seeker1->setPhone('+37066125587');
         $seeker1->setProfession('IT guru');
         $seeker1->setEmail('jonas@email.com');
         // password encoding
@@ -56,7 +56,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
             diplomai). Daugiau negu 3 metų patirtis dirbant IT įmonėje (analitikė/testuotoja/sistemų 
             konsultantė/administratorė). IT sprendimų ir sistemų – DVS, PVS, pagrįstų Microsoft SharePoint ir 
             Microsoft Project Server technologija.');
-        $seeker2->setPhone('+370651266886');
+        $seeker2->setPhone('+37065126688');
         $seeker2->setProfession('IT konsultantė');
         $seeker2->setEmail('onutė@email.com');
         // password encoding
@@ -76,7 +76,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
             Dirbau su skirtingomis finansų valdymo bei MS Office programomis, dalyvavau diegiant programas bei 
             prisidėjau prie įmonės valdymo gerinimo (kaštų/pelno centrų nustatymas,duomenų pagal šiuos centrus 
             rinkimas, analizė  bei ataskaitų ruošimas).Esu imli naujovėms, atsakinga.');
-        $seeker3->setPhone('+370651266777');
+        $seeker3->setPhone('+37061266777');
         $seeker3->setProfession('Finansų analitikė');
         $seeker3->setEmail('sandra@email.com');
         // password encoding
@@ -94,7 +94,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker4->setIntroduction('Ieškau kūrybingo darbo pardavimų, rinkodaros arba reklamos srityse. Mano patirtis 
             prekyboje siekia 18 metų. Paskutiniai 5 metai -  elektroninės parduotuvės vadovas. Pagal profesiją - 
             mokytojas, treneris. Svarbią  vietą mano gyvenime užima kūryba, esu 3 knygų autorius.');
-        $seeker4->setPhone('+370651255444');
+        $seeker4->setPhone('+37065125544');
         $seeker4->setProfession('Pardavimų vadybininkas');
         $seeker4->setEmail('andrius@email.com');
         // password encoding
@@ -110,7 +110,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker5->setCity('Kaunas');
         $seeker5->setBirthday(new DateTime('1989-02-15'));
         $seeker5->setIntroduction('Domiuosi it naujiemomis ir stengiuosi pritaikyti jas darbe.');
-        $seeker5->setPhone('+370661433333');
+        $seeker5->setPhone('+37066143333');
         $seeker5->setProfession('IS administratorius');
         $seeker5->setEmail('rokas@email.com');
         // password encoding
@@ -128,7 +128,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker6->setIntroduction('Esu Android mobiliųjų aplikacijų programuotojas, taip pat dirbu su Magento - 
             Magento 2 platforma, Laravel, ImpressPage. Esu nuolat tobulėjantis programavimo srityje, ieškantis 
             naujovių ir mylintis savo profesiją.');
-        $seeker6->setPhone('+370661478995');
+        $seeker6->setPhone('+37066147899');
         $seeker6->setProfession('Android programuotojas');
         $seeker6->setEmail('virgilijus@email.com');
         // password encoding
@@ -148,7 +148,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
             įrangas (MS Office paketas, grafinių elementų redaktoriai, internetinių svetainių turinio valdymo sistemos, 
             vartotojų indentifikavimo sistema, antivirusinė įranga). Esu atsakingas ir kruopštus, sugebu dirbti 
             kolektyve bei atlikti paskirtas užduotis asmeniškai....');
-        $seeker7->setPhone('+370661478966');
+        $seeker7->setPhone('+37066147896');
         $seeker7->setProfession('Informacinių sistemų inžinierius');
         $seeker7->setEmail('antanas@email.com');
         // password encoding
@@ -167,7 +167,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
             reikia sėkmingiems pardavimams ir gerų santykių išlaikymui. Siekianti tikslo, komunikabili, pareiginga, 
             greitai perimanti naujoves.  Patinka dirbti įdomų, atsakingą  darbą, bendraujant, bendradarbiaujant su 
             klientais ir kolegomis.');
-        $seeker8->setPhone('+370661474569');
+        $seeker8->setPhone('+37066147456');
         $seeker8->setProfession('Vadybininkė');
         $seeker8->setEmail('laima@email.com');
         // password encoding
@@ -185,7 +185,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker9->setIntroduction('Ieškau darbo elektronikos, automatikos, elektros, gamybos, energetikos, IT srityse. 
             Neturiu žalingų įpročių. Suprantu techninę anglų kalbą. Turiu gerus darbo kompiuteriu įgūdžius. 
             Noriu visapusiškai tobulėti, dirbti ir mokytis darbo vietoje.');
-        $seeker9->setPhone('+370661477111');
+        $seeker9->setPhone('+37066147711');
         $seeker9->setProfession('Elektronikos inžinierius');
         $seeker9->setEmail('karolis@email.com');
         // password encoding
@@ -202,7 +202,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker10->setBirthday(new DateTime('1997-02-12'));
         $seeker10->setIntroduction('Esu pilnametė moksleivė ir ieškau darbo visai vasarai. Noriu užsidirbti, todėl 
             darbą atliksiu atsakingai ir su šypsena.');
-        $seeker10->setPhone('+370661466666');
+        $seeker10->setPhone('+37066146666');
         $seeker10->setProfession('Pardavimų vadybininkė');
         $seeker10->setEmail('aiste@email.com');
         // password encoding
@@ -222,7 +222,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
             (programuotojas, sistemų bei tinklų inžinierius) ir kaip serviso bei pardavimo padalinių vadovas. 
             Pasižymiu gerais organizaciniais sugebėjimais, atsakingumu bei motyvuotumu, visuomet siekiu užsibrėžto 
             tikslo, esu lojalus ir noriu tobulėti. Domintų IT specialisto, IS, OS, DB adm...');
-        $seeker11->setPhone('+370661411111');
+        $seeker11->setPhone('+37066141111');
         $seeker11->setProfession('Projektų vadovas');
         $seeker11->setEmail('ovidijus@email.com');
         // password encoding

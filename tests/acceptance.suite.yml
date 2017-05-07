@@ -1,9 +1,11 @@
 class_name: AcceptanceTester
 modules:
     enabled:
-        - WebDriver:
+#        - WebDriver:
+#            url: 'http://localhost:8000/'
+#            browser: phantomjs
+#            wait: 1
+#            window_size: maximize
+        - PhpDriver:
             url: 'http://localhost:8000/'
-            browser: phantomjs
-            wait: 1
-            window_size: maximize
         - \Helper\Acceptance
