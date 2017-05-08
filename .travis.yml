@@ -11,6 +11,16 @@ before_script:
 # Below are necessary(?) commands for database creating. But they do not work.
   - composer install --no-interaction --prefer-dist
 
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+  - echo "Download selenium-server-standalone jar file"
+  - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
+  - echo "Run selenium server - background process"
+  - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
+  - echo "Run php in-built server - background process"
+  - nohup bash -c "php -S localhost:8000 2>&1 -t app &" && sleep 1; cat nohup.out
+
 script:
   - bin/console doctrine:database:create
   - bin/console doctrine:schema:update --force
