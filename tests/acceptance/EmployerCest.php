@@ -5,7 +5,7 @@ class EmployerCest
 {
     public function signIn(AcceptanceTester $I)
     {
-        $I->amOnPage('/login');
+        $I->amOnPage('/prisijungti');
         $I->fillField('_username', 'microsoft@email.com');
         $I->fillField('_password', '123456');
         $I->click('Prisijunk');

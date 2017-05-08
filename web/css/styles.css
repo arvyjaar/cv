@@ -178,7 +178,7 @@ p. {
 }
 
 .affix .navbar-nav li .dropdown-menu {
-    margin-top: 10px;
+    margin-top: 8px;
     border-top-color: #00b8e7;
 }
 
@@ -256,7 +256,6 @@ p. {
 
 .homepage-circle-block:hover {
     border-color: #00b8e7;
-    cursor: pointer;
 }
 
 .homepage-circle-block:hover .homepage-circle-text {
@@ -668,7 +667,26 @@ p. {
     background: white;
 }
 
+.img-profile {
+    max-height: 700px;
+    margin-right: auto;
+    margin-left: auto;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius: 10px;
+}
+
 @media only screen and (min-width : 768px) {
+    .img-profile {
+        margin-left: 0;
+    }
+
+    .seekers-list-img {
+        max-height: 271px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .user-heading {
         font-size: 22px;
     }
@@ -792,7 +810,7 @@ p. {
 
     .register-popup {
         height: 400px;
-        margin-top: -50px;
+        margin-top: -5px;
     }
 
     .register-popup-open h2{
