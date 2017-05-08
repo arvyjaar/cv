@@ -11,9 +11,6 @@ fos_user_registration_register:
     methods: [GET, POST]
     defaults:  { _controller: AppBundle:Default:register }
 # FOSUser routes in Lithuanian language
-fos_user_security_login:
-    path: /prisijungti
-    defaults: { _controller: FOSUserBundle:Security:login }
 fos_user_profile_show:
     path: /profilis
     defaults: { _controller: FOSUserBundle:Profile:show }
