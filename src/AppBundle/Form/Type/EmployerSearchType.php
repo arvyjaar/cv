@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class EmployerSearchType extends AbstractType
 {
@@ -19,7 +20,8 @@ class EmployerSearchType extends AbstractType
         $builder
             ->add('title', SearchType::class, [
                 'label' => false,
-                'required' => false
+                'required' => false,
+                'constraints' => new Length(['max' => 30]),
             ])
             ->add('sector', EntityType::class, [
                 'label' => false,

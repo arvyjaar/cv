@@ -9,7 +9,7 @@
 
             <div class="row">
                 <div class="col-md-4 col-sm-6">
-                    <img class="img-responsive profile-img"
+                    <img class="img-responsive employer-logo-profile"
                          src="{{ asset('img/profiles/'~userEmployer.photo ?? 'no-logo.jpg') }}" alt="Logotipas">
                 </div>
                 <div class="col-md-8 col-sm-6">
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <p class="section-heading profile-heading">Trumpai apie įmonę</p>
-                    <p>{{ userEmployer.description|raw }}</p>
+                    <p>{{ userEmployer.description }}</p>
                 </div>
             </div>
 

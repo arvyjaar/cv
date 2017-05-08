@@ -135,4 +135,4 @@ vich_uploader:
             namer: vich_uploader.namer_origname
             inject_on_load: false
             delete_on_update: true
-            delete_on_remove: true
+            delete_on_remove:

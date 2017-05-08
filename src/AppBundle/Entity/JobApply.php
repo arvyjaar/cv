@@ -40,6 +40,10 @@ class JobApply
      *
      * @Vich\UploadableField(mapping="cv", fileNameProperty="cv")
      * @var File
+     *
+     * @Assert\File(
+     *     maxSize = "2048Ki"
+     * )
      */
     private $imageFile;
 

@@ -32,17 +32,17 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="section-heading profile-heading">Trumpas prisistatymas</p>
-                <p>{{ app.user.introduction|raw }}</p>
+                <p>{{ app.user.introduction }}</p>
             </div>
         </div>
-        {% if app.user.jobApply %}
+        {% if app.user.jobApply|length > 0 %}
             <div class="row">
                 <div class="col-md-6">
                     <p class="section-heading profile-heading">Pozicijos į kurias kandidatavau</p>
                     <ul class="profile-list">
                         {% for jobApply in app.user.jobApply %}
                             <li class="profile-jobapply-list-item">
-                                <a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}" target="_blank">{{ jobApply.jobAd.title }}</a>
+                                <a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}">{{ jobApply.jobAd.title }}</a>
                                 <span>| {{ jobApply.jobAd.owner.title }}</span>
                             </li>
                         {% endfor %}
@@ -58,7 +58,7 @@
                                 <span class="comment">{{ jobApply.evaluation.comment }}</span>
                             </li>
                             {% else %}
-                            <li class="profile-jobapply-list-item">Šiuo metu įvertinimų neturite</li>
+                            <li class="profile-jobapply-list-item">Būsi įvertintas artimiausiu metu</li>
                             {% endif %}
                         {% endfor %}
                     </ul>

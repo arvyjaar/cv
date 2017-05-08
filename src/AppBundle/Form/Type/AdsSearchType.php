@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Symfony\Component\Validator\Constraints\Length;
 
 class AdsSearchType extends AbstractType
 {
@@ -18,6 +19,7 @@ class AdsSearchType extends AbstractType
             ->add('title', SearchType::class, [
                 'label' => false,
                 'required' => false,
+                'constraints' => new Length(['max' => 30]),
             ]);
     }
 

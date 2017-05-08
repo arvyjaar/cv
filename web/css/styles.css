@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin:400,500|Raleway:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500');
 
 /*GLOBAL*/
 body {
@@ -61,7 +61,8 @@ p. {
     position: absolute;
     z-index: 1;
     right: 40px;
-    top: 10px;
+    top: 20px;
+    text-transform: uppercase;
 }
 
 .info-block {
@@ -315,7 +316,7 @@ p. {
     position: absolute;
     z-index: 1;
     top: 50%;
-    background:rgba(255,255,255,0.6);
+    background:rgba(255,255,255,0.7);
     padding-top: 50px;
     margin-top: -60px;
     height: 250px;
@@ -338,7 +339,7 @@ p. {
 /* USER PROFILE EDIT*/
 
 .profile-img {
-    /*max-height: 350px;*/
+    max-height: 490px;
     border-radius: 30px;
 }
 
@@ -415,13 +416,14 @@ p. {
 .job-title-block {
     display: table;
     min-height: 75px;
+    width: 100%;
+    text-align: center;
 }
 
 .job-title {
     padding-bottom: 10px;
     font-size: 18px;
     text-transform: uppercase;
-    text-align: center;
 }
 
 .job-list-job-title {
@@ -436,6 +438,29 @@ p. {
 
 .candidates-count-block {
     display: none;
+}
+
+/* SEARCH*/
+
+.search {
+    position: relative;
+    width: 100%;
+}
+
+.search input {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    height: 34px;
+}
+
+.search button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height: 34px;
 }
 
 /*JOB AD SHOW*/
@@ -492,6 +517,34 @@ p. {
     border-top: 0.5px solid lightgrey;
     padding-top: 20px;
     text-align: center;
+}
+
+.employer-logo-box {
+    height: 140px;
+    background-image: url("../img/project_photos/debut_light.png");
+    padding: 10px;
+    -webkit-border-radius:30px;
+    -moz-border-radius:30px;
+    border-radius: 30px;
+}
+
+.employer-list-block {
+    padding: 0 15px;
+}
+
+.employer-logo {
+    max-height: 120px;
+}
+
+.employer-logo-profile {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.search-employers input, .search-employers select {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 /*POPUP*/
@@ -589,7 +642,7 @@ p. {
     position:absolute;
     top:0;
     right:0;
-    transition:ease 0.25s all;
+    transition:ease 0.25s;
     -webkit-transform:translate(50%, -50%);
     transform:translate(50%, -50%);
     border-radius:1000px;
@@ -616,6 +669,21 @@ p. {
 }
 
 @media only screen and (min-width : 768px) {
+    .user-heading {
+        font-size: 22px;
+    }
+
+    .employer-logo-profile {
+        margin-left: 0;
+    }
+    .smaller-sm {
+        font-size: 16px;
+    }
+
+    .profile-padding {
+        padding-top: 10px;
+    }
+
     .show-candidates-count {
         right: 40px;
     }
@@ -717,24 +785,14 @@ p. {
     }
 
     .employers-list-border {
-        text-align: left;
+        text-align: right;
         border: none;
         padding-top: 0;
     }
 
-    .homepage-circle-block {
-        border-radius: 50%;
-        width: 100%;
-        height: 140px;
-        margin-right: auto;
-        margin-left: auto;
-        background: white;
-        border: 0.5px solid lightgrey;
-    }
-
     .register-popup {
         height: 400px;
-        margin-top: -30px;
+        margin-top: -50px;
     }
 
     .register-popup-open h2{
@@ -746,17 +804,42 @@ p. {
     .register-popup button {
         margin-bottom: 0;
     }
+
+    .homepage-circle-block {
+        height: 120px;
+        width: 120px;
+    }
+
+    .search {
+        margin-right: 0;
+        margin-left: auto;
+        width: 332px;
+    }
+
+    .search input {
+        width: 264px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right-color: transparent;
+    }
+
+    .search button {
+        width: 68px;
+    }
 }
 
 @media only screen and (min-width: 992px) {
+    .user-heading {
+        font-size: 26px;
+    }
 
     .popup-inner {
         width: 100%;
     }
 
     .homepage-circle-block {
-        height: 180px;
-        width: 180px;
+        height: 160px;
+        width: 160px;
     }
 
     /*JOB AD LIST*/
@@ -784,5 +867,10 @@ p. {
 @media only screen and (min-width: 1200px) {
     .box-lg {
         min-height: 550px;
+    }
+
+    .homepage-circle-block {
+        height: 200px;
+        width: 200px;
     }
 }

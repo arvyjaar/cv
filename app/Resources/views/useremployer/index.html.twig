@@ -4,20 +4,19 @@
     <div class="container">
         <div class="content-container">
 
-            {% include '::search-employers.html.twig' with {'form': searchForm} %}
+            {% include 'useremployer/search-employers.html.twig' with {'form': searchForm} %}
 
             <div class="text-right">
                 <a class="form-upper-btn" href="{{ app.request.headers.get('referer') }}">Grįžti atgal</a>
             </div>
             {% if userEmployers|length == 0 %}
-                <br>
                 Nieko nerasta...
             {% endif %}
             {% for employer in userEmployers %}
                 <div class="row-list">
-                    <div class="row">
-                        <div class="col-md-4 visible-md visible-lg">
-                            <img class="img-responsive"
+                    <div class="row employer-list-block">
+                        <div class="col-md-4 visible-md visible-lg employer-logo-box">
+                            <img class="img-responsive img-center employer-logo"
                                  src="{{ asset('img/profiles/'~employer.photo ?? 'no-logo.jpg') }}"
                                  alt="Logotipas">
                         </div>
@@ -36,10 +35,10 @@
                             </ul>
                         </div>
                         <div class="col-md-4 col-sm-6 employers-list-border">
-                            {#TODO add link to companies jobad list#}
                             <a class="text-uppercase"
-                               href="{{ path('jobad_by_employer_index', {'id' : employer.id }) }}">Peržiūrėti įmonės
-                                skelbimus</a>
+                               href="{{ path('jobad_by_employer_index', {'id' : employer.id }) }}">
+                                Peržiūrėti įmonės skelbimus
+                            </a>
                         </div>
                     </div>
                 </div>

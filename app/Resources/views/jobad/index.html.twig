@@ -3,13 +3,21 @@
 {% block body %}
     <div class="container">
         <div class="content-container">
-            <p class="page-heading">{% block heading %}Darbo{% endblock %} skelbimai{% include 'search-ads-seekers.html.twig' with {'form': searchForm} %}</p>
-
-            {% block noResults %}
-                {% if  jobAds == null %}
-                    <p>Nieko nerasta...</p>
+            <div class="row">
+                <div class="col-sm-5 col-md-6">
+                    <p class="page-heading">{% block heading %}Darbo{% endblock %} skelbimai</p>
+                </div>
+                {% if app.request.get('_route') != 'jobad_my_index' %}
+                    <div class="col-sm-7 col-md-6">
+                        {% include 'jobad/search-ads-seekers.html.twig' with {'form': searchForm} %}
+                    </div>
                 {% endif %}
-            {% endblock %}
+            </div>
+
+            {% if  jobAds == null %}
+                <p>Nieko nerasta...</p>
+                <a href="{{ path('jobad_index') }}">Peržiūrėti visus skelbimus</a>
+            {% endif %}
 
             {% for jobAd in jobAds %}
 
@@ -26,6 +34,9 @@
                                 {{ jobAd.title }}
                             </div>
                         </div>
+                        {% block employer %} {# employer title block is empty in my_index.html #}
+                            <p class="text-center"><b>{{ jobAd.owner.title }}</b></p>
+                        {% endblock %}
 
                         <div class="job-ad-requirements">
                             <p class="section-heading">Reikalavimai:</p>
@@ -38,12 +49,9 @@
 
                         <div class="job-ad-info">
                             <p class="section-heading">Trumpai apie siūlomą poziciją:</p>
-                            <p class="ad-description">{{ jobAd.description|length > 200 ? jobAd.description|slice(0, 200) ~ '...'|raw : jobAd.description|raw }}</p>
-
-                            {% block employer %} {# employer title block is empty in my_index.html #}
-                                <p class="text-center"><b>{{ jobAd.owner.title }}</b></p>
-                            {% endblock %}
-
+                            <p class="ad-description">
+                                {{ jobAd.description|length > 200 ? jobAd.description|slice(0, 200) ~ '...' : jobAd.description }}
+                            </p>
                         </div>
 
                         <div class="job-ad-button">
@@ -56,7 +64,7 @@
                 </div>
 
                 {% if loop.index is divisible by(3) or loop.last %}
-                    </div><!-- /row -->
+                    </div> {# /row #}
                 {% endif %}
 
             {% endfor %}

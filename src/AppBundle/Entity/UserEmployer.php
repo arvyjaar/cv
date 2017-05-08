@@ -54,10 +54,12 @@ class UserEmployer extends User
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
      * @Vich\UploadableField(mapping="employer_logo", fileNameProperty="photo")
-     *
      * @var File
+     *
+     * @Assert\File(
+     *     maxSize = "2048Ki"
+     * )
      */
     private $imageFile;
 

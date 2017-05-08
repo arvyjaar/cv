@@ -3,12 +3,20 @@
 {% block body %}
     <div class="container">
         <div class="content-container">
+            <div class="row">
+                <div class="col-sm-5 col-md-6">
+                    <p class="page-heading user-heading">Šiuo metu darbo ieško:</p>
+                </div>
+                <div class="col-sm-7 col-md-6">
+                    {% include 'jobad/search-ads-seekers.html.twig' with {'form': searchForm} %}
+                </div>
+            </div>
 
-            <p class="page-heading">Šiuo metu darbo ieško:{% include 'search-ads-seekers.html.twig' with {'form': searchForm} %}</p>
             {% if userSeekers|length == 0 %}
-                <br>
-                Nieko nerasta...
+                <p>Nieko nerasta...</p>
+                <a href="{{ path('user_seeker_index') }}">Grįžti į darbuotojų sąrašą</a>
             {% endif %}
+
             {% for userSeeker in userSeekers %}
                 {# Lists 3 divs in one row #}
                 {% if loop.index0 is divisible by(3) %}
