@@ -9,7 +9,7 @@ before_script:
 #  - composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH
 
   - composer install --no-interaction --prefer-dist
-  - phantomjs --webdriver=4444
+#  - phantomjs --webdriver=4444
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3 # give xvfb some time to start
@@ -23,6 +23,7 @@ script:
   - bin/console doctrine:database:create --env=test
   - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src --ignore=*/DataFixtures/*
   - vendor/bin/phpunit
+  - phantomjs testrunner.js
   - vendor/bin/codecept run
 
 notifications:
