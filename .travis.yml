@@ -17,8 +17,8 @@ script:
 #  - bin/console doctrine:fixtures:load -q
   - bin/console doctrine:database:create --env=test
   - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src --ignore=*/DataFixtures/*
-  - php codecept run
   - vendor/bin/phpunit
+  - vendor/bin/codecept run
 
 notifications:
   slack: nfqakademija:D39BmJYjiYZsrNylRdNfIBzm
