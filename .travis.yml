@@ -8,17 +8,18 @@ before_script:
 # Get the token from github and put it in travis repo under GITHUB_COMPOSER_AUTH ENV variable, then uncomment line below.
 #  - composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH
 
-# Below are necessary(?) commands for database creating. But they do not work.
   - composer install --no-interaction --prefer-dist
 
-  - "export DISPLAY=:99.0"
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - export DISPLAY=:99.0
+  - sudo apt-get install -y libappindicator1 fonts-liberation
+  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - sudo dpkg -i google-chrome*.deb
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
   - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
   - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
   - nohup bash -c "php -S localhost:8000 2>&1 -t app &" && sleep 1; cat nohup.out
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  - sudo dpkg -i google-chrome*.deb
 
 script:
   - bin/console doctrine:database:create
