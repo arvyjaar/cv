@@ -10,11 +10,14 @@ before_script:
 
   - composer install --no-interaction --prefer-dist
 
-  - export CHROME_BIN=/usr/bin/google-chrome
+  - wget http://chromedriver.storage.googleapis.com/2.2/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
+  - sudo apt-get install libnss3
+  - sudo apt-get --only-upgrade install google-chrome-stable
+  - sudo cp chromedriver /usr/local/bin/.
+  - sudo chmod +x /usr/local/bin/chromedriver
   - export DISPLAY=:99.0
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  - sudo dpkg -i google-chrome*.deb
-  - "sh -e /etc/init.d/xvfb start"
+  - sh -e /etc/init.d/xvfb start
   - sleep 3 # give xvfb some time to start
   - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
   - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
