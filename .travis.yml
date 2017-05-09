@@ -10,18 +10,13 @@ before_script:
 
   - composer install --no-interaction --prefer-dist
 
-#  - wget http://chromedriver.storage.googleapis.com/2.2/chromedriver_linux64.zip
-#  - unzip chromedriver_linux64.zip
-#  - sudo apt-get install libnss3
-#  - sudo apt-get --only-upgrade install google-chrome-stable
-#  - sudo cp chromedriver /usr/local/bin/.
-#  - sudo chmod +x /usr/local/bin/chromedriver
-#  - export DISPLAY=:99.0
-#  - sh -e /etc/init.d/xvfb start
-#  - sleep 3 # give xvfb some time to start
-#  - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
-#  - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
-#  - nohup bash -c "php -S localhost:8000 2>&1 -t app &" && sleep 1; cat nohup.out
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3 # give xvfb some time to start
+  - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
+  - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
+  - nohup bash -c "php -S localhost:8000 2>&1 -t app &" && sleep 1; cat nohup.out
 
 script:
   - bin/console doctrine:database:create
@@ -30,7 +25,7 @@ script:
   - bin/console doctrine:database:create --env=test
   - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src --ignore=*/DataFixtures/*
   - vendor/bin/phpunit
-#  - vendor/bin/codecept run
+  - vendor/bin/codecept run
 
 notifications:
   slack: nfqakademija:D39BmJYjiYZsrNylRdNfIBzm
