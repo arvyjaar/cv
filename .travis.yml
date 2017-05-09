@@ -11,7 +11,7 @@ before_script:
 
   - composer install --no-interaction --prefer-dist
   - wget http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip
-  - sudo unzip chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
   - sudo mv chromedriver /usr/bin/google-chrome
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
