@@ -4,14 +4,13 @@ php:
   - 7.1
 services:
   - mysql
-before_install:
- - sudo apt-get update
- - sudo apt-get install chromium-chromedriver
 before_script:
 # Get the token from github and put it in travis repo under GITHUB_COMPOSER_AUTH ENV variable, then uncomment line below.
 #  - composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH
 
   - composer install --no-interaction --prefer-dist
+  - wget http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.9/
   - "export PATH=$PATH:/usr/lib/chromium-browser/"
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
