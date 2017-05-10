@@ -3,7 +3,7 @@ modules:
     enabled:
         - WebDriver:
             url: 'http://localhost:8000/'
-            browser: chrome
+            browser: firefox
             wait: 1
             window_size: maximize
         - \Helper\Acceptance
