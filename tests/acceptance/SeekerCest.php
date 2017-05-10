@@ -1,28 +1,28 @@
 <?php
 
-
 class SeekerCest
 {
     public function signIn(AcceptanceTester $I)
     {
         $I->amOnPage('/prisijungti');
+        $I->waitForElement('#username', 3);
         $I->fillField('_username', 'jonas@email.com');
         $I->fillField('_password', '123456');
         $I->click('Prisijunk');
+        $I->waitForText('Veiksmai', 3);
         $I->see('Darbo skelbimai');
     }
 
     public function register(AcceptanceTester $I)
     {
-        $I->amOnPage('/');
-        $I->click('Registracija');
-        $I->click('Ieškantiems darbo');
+        $I->amOnPage('/registruotis/ieskau-darbo');
         $I->fillField('fos_user_registration_form[name]', 'Vardas');
         $I->fillField('fos_user_registration_form[surname]', 'Pavardenis');
         $I->fillField('fos_user_registration_form[email]', $this->generateRandomEmail());
         $I->fillField('fos_user_registration_form[plainPassword][first]', '123456');
         $I->fillField('fos_user_registration_form[plainPassword][second]', '123456');
         $I->click('Registruokis');
+        $I->waitForText('Veiksmai', 3);
         $I->see('Darbo skelbimai');
     }
 
@@ -33,18 +33,8 @@ class SeekerCest
         $I->click('Kandidatuoti');
         $I->fillField('job_apply[assignmentSolution]', 'https://drive.google.com/drive/');
         $I->click('Kandidatuoti');
+        $I->waitForText('Darbo skelbimai', 3);
         $I->see('Darbo skelbimai');
-    }
-
-    public function editProfile(AcceptanceTester $I)
-    {
-        $this->signIn($I);
-        $I->click('Veiksmai');
-        $I->click('Mano profilis');
-        $I->click('Redaguoti');
-        $I->fillField('fos_user_profile_form[profession]', 'Data analist');
-        $I->click('Redaguoti');
-        $I->see('Jonas Jonauskas');
     }
 
     public function generateRandomEmail()

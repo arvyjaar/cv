@@ -6,11 +6,6 @@ body {
     background-image: url("../img/project_photos/natural_paper.png");
 }
 
-.container {
-    margin-right: 25px;
-    margin-left: 25px;
-}
-
 .btn {
     -webkit-border-radius:10px;
     -moz-border-radius:10px;
@@ -47,6 +42,11 @@ p. {
     position: relative;
 }
 
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .form-container {
     margin-top: 180px;
     margin-bottom: 40px;
@@ -54,7 +54,11 @@ p. {
     border-radius: 45px;
     background-color: white;
     position: relative;
-    padding: 30px 20px;
+    padding: 30px;
+}
+
+.form-container button {
+    margin-top: 10px;
 }
 
 .form-upper-btn {
@@ -317,7 +321,7 @@ p. {
     top: 50%;
     background:rgba(255,255,255,0.7);
     padding-top: 50px;
-    margin-top: -60px;
+    margin-top: -90px;
     height: 250px;
     width: 100%;
     border-radius: 0;
@@ -677,6 +681,11 @@ p. {
 }
 
 @media only screen and (min-width : 768px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .img-profile {
         margin-left: 0;
     }
@@ -730,17 +739,12 @@ p. {
         background: transparent;
     }
 
-    .container {
-        margin-right: auto;
-        margin-left: auto;
-    }
-
     .slogan-background {
         min-height: 800px;
     }
 
     .affix-top {
-        /* navbar style at top */
+        /*navbar style at top */
         background: transparent;
         border-color: transparent;
         padding: 15px;
