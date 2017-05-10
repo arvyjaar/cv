@@ -5,11 +5,12 @@ class EmployerCest
 {
     public function signIn(AcceptanceTester $I)
     {
-        $I->amOnPage('/prisijungti');
+        $I->amOnPage('/login');
+        $I->waitForElement('#username', 20);
         $I->fillField('_username', 'microsoft@email.com');
         $I->fillField('_password', '123456');
         $I->click('Prisijunk');
-        $I->waitForText('Veiksmai', 3);
+        $I->waitForText('Veiksmai', 20);
         $I->see('Šiuo metu darbo ieško');
     }
 
@@ -27,7 +28,7 @@ class EmployerCest
         $I->fillField('job_ad[assignment]', 'https://drive.google.com/drive/');
         $I->fillField('job_ad[description]', 'Perspektyvus darbas su puikiom perspektyvom.');
         $I->click('Sukurti');
-        $I->waitForText('FRONTEND DEVELOPER', 3);
+        $I->waitForText('FRONTEND DEVELOPER', 20);
         $I->see('FRONTEND DEVELOPER');
     }
 }

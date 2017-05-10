@@ -4,12 +4,12 @@ class SeekerCest
 {
     public function signIn(AcceptanceTester $I)
     {
-        $I->amOnPage('/prisijungti');
-        $I->waitForElement('#username', 3);
+        $I->amOnPage('/login');
+        $I->waitForElement('#username', 20);
         $I->fillField('_username', 'jonas@email.com');
         $I->fillField('_password', '123456');
         $I->click('Prisijunk');
-        $I->waitForText('Veiksmai', 3);
+        $I->waitForText('Veiksmai', 20);
         $I->see('Darbo skelbimai');
     }
 
@@ -22,7 +22,7 @@ class SeekerCest
         $I->fillField('fos_user_registration_form[plainPassword][first]', '123456');
         $I->fillField('fos_user_registration_form[plainPassword][second]', '123456');
         $I->click('Registruokis');
-        $I->waitForText('Veiksmai', 3);
+        $I->waitForText('Veiksmai', 20);
         $I->see('Darbo skelbimai');
     }
 
@@ -34,7 +34,7 @@ class SeekerCest
         $I->click('#submit-apply');
         $I->fillField('job_apply[assignmentSolution]', 'https://drive.google.com/drive/');
         $I->click('Kandidatuoti');
-        $I->waitForText('Darbo skelbimai', 3);
+        $I->waitForText('Darbo skelbimai', 20);
         $I->see('Darbo skelbimai');
     }
 }
