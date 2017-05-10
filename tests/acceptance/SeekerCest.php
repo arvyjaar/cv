@@ -29,6 +29,7 @@ class SeekerCest
     public function applyForAJob(AcceptanceTester $I)
     {
         $this->register($I);
+        $I->waitForText('Rodyti daugiau', 3);
         $I->click('Rodyti daugiau');
         $I->click('Kandidatuoti');
         $I->fillField('job_apply[assignmentSolution]', 'https://drive.google.com/drive/');
