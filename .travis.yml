@@ -22,9 +22,9 @@ before_script:
   - bin/console doctrine:schema:create -e test
   - bin/console doctrine:fixtures:load -n -e test
 
-  - nohup bash -c "bin/console run localhost:8000 -e test &" && sleep 1; cat nohup.out
+  - nohup bash -c "bin/console server:start localhost:8000 -e test" && sleep 1; cat nohup.out
 
-  - curl -i localhost:8000
+#  - curl -i localhost:8000
 
 script:
   - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src --ignore=*/DataFixtures/*
