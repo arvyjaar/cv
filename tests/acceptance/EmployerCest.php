@@ -36,6 +36,7 @@ class EmployerCest
         $this->signIn($I);
         $I->click('Veiksmai');
         $I->click('Mano skelbimai');
+        $I->waitForText('Kandidatų į šią poziciją', 3);
         $I->click('Kandidatų į šią poziciją');
         $I->click('Redaguoti įvertinimą');
         $I->fillField('evaluation[mark]', '6');

@@ -18,7 +18,7 @@ class SeekerCest
         $I->amOnPage('/registruotis/ieskau-darbo');
         $I->fillField('fos_user_registration_form[name]', 'Vardas');
         $I->fillField('fos_user_registration_form[surname]', 'Pavardenis');
-        $I->fillField('fos_user_registration_form[email]', $this->generateRandomEmail());
+        $I->fillField('fos_user_registration_form[email]', 'random@random.com');
         $I->fillField('fos_user_registration_form[plainPassword][first]', '123456');
         $I->fillField('fos_user_registration_form[plainPassword][second]', '123456');
         $I->click('Registruokis');
@@ -28,24 +28,13 @@ class SeekerCest
 
     public function applyForAJob(AcceptanceTester $I)
     {
-        $this->register($I);
-        $I->waitForText('Rodyti daugiau', 3);
-        $I->click('Rodyti daugiau');
+        $this->signIn($I);
+        $I->amOnPage('/skelbimai/1');
+        $I->waitForElement('Kandidatuoti', 10);
         $I->click('Kandidatuoti');
         $I->fillField('job_apply[assignmentSolution]', 'https://drive.google.com/drive/');
         $I->click('Kandidatuoti');
         $I->waitForText('Darbo skelbimai', 3);
         $I->see('Darbo skelbimai');
-    }
-
-    public function generateRandomEmail()
-    {
-        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < 6; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString . '@email.com';
     }
 }
