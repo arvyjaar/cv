@@ -6,23 +6,27 @@ services:
   - mysql
 
 before_script:
+  - phpenv config-rm xdebug.ini # Disable x-debug to speed up things
 # Get the token from github and put it in travis repo under GITHUB_COMPOSER_AUTH ENV variable, then uncomment line below.
 #  - composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH
-
-  - composer install --no-interaction --prefer-dist
+  - SYMFONY_ENV=test composer install --no-interaction --prefer-dist
 
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3 # give xvfb some time to start
   - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
   - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
-  - nohup bash -c "php -S localhost:8000 2>&1 -t app &" && sleep 1; cat nohup.out
+
+  # Prepare database
+  - bin/console doctrine:database:create -e test
+  - bin/console doctrine:schema:create -e test
+  - bin/console doctrine:fixtures:load -n -e test
+
+  - bin/console server:start localhost:8000 -e test && sleep 1
+
+  - curl -i localhost:8000
 
 script:
-  - bin/console doctrine:database:create
-  - bin/console doctrine:schema:update --force
-#  - bin/console doctrine:fixtures:load -q
-  - bin/console doctrine:database:create --env=test
   - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src --ignore=*/DataFixtures/*
   - vendor/bin/phpunit
   - vendor/bin/codecept run
