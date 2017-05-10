@@ -24,8 +24,6 @@ before_script:
 
   - nohup bash -c "bin/console server:start localhost:8000 -e test" && sleep 1; cat nohup.out
 
-#  - curl -i localhost:8000
-
 script:
   - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src --ignore=*/DataFixtures/*
   - vendor/bin/phpunit
