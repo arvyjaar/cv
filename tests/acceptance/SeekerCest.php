@@ -30,8 +30,8 @@ class SeekerCest
     {
         $this->signIn($I);
         $I->amOnPage('/skelbimai/1');
-        $I->waitForElement('Kandidatuoti', 10);
-        $I->click('Kandidatuoti');
+        $I->waitForElement('#submit-apply', 20);
+        $I->click('#submit-apply');
         $I->fillField('job_apply[assignmentSolution]', 'https://drive.google.com/drive/');
         $I->click('Kandidatuoti');
         $I->waitForText('Darbo skelbimai', 3);

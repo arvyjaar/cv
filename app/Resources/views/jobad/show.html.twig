@@ -46,7 +46,7 @@
 
                        {#Show button only if candidate didn't applied for this position#}
                        {% if not hide %}
-                           <a class="btn btn-primary" href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
+                           <a id="submit-apply" class="btn btn-primary" href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
                        {% else %}
                            <srong>Jūs jau kandidatovote į šią poziciją</srong>
                        {% endif %}
