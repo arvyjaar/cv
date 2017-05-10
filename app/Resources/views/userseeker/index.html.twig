@@ -14,7 +14,6 @@
 
             {% if userSeekers|length == 0 %}
                 <p>Nieko nerasta...</p>
-                <a href="{{ path('user_seeker_index') }}">Grįžti į darbuotojų sąrašą</a>
             {% endif %}
 
             {% for userSeeker in userSeekers %}
