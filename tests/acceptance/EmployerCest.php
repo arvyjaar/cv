@@ -30,19 +30,4 @@ class EmployerCest
         $I->waitForText('FRONTEND DEVELOPER', 3);
         $I->see('FRONTEND DEVELOPER');
     }
-
-    public function editEvaluation(AcceptanceTester $I)
-    {
-        $this->signIn($I);
-        $I->click('Veiksmai');
-        $I->click('Mano skelbimai');
-        $I->waitForElement('#candidates', 10);
-        $I->click('#candidates');
-        $I->click('Redaguoti įvertinimą');
-        $I->fillField('evaluation[mark]', '6');
-        $I->fillField('evaluation[comment]', 'Yra kur pasitempti.');
-        $I->click('Siųsti įvertinimą');
-        $I->waitForText('MANO ĮVERTINIMAS', 3);
-        $I->see('MANO ĮVERTINIMAS');
-    }
 }
