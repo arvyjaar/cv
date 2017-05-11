@@ -15,6 +15,16 @@
     {% block header %}
         {{ include('header.html.twig') }}
     {% endblock %}
+    {% block flashMessages %}
+        <section class="flash-messages text-center">
+            {% for flash_message in app.session.flashBag.get('notice') %}
+                <div class="alert alert-info alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>{{ flash_message }}</strong>
+                </div>
+            {% endfor %}
+        </section>
+    {% endblock %}
     {% block body %}{% endblock %}
     {% block footer %}
         {{ include('footer.html.twig') }}

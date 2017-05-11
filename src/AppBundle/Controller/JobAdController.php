@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Jobad controller.
@@ -40,6 +41,8 @@ class JobAdController extends Controller
         } else {
             $jobAds = $this->getDoctrine()->getRepository(JobAd::class)->findAll();
         }
+
+        $jobAds = $this->checkJobAdIsValid($jobAds);
 
         return $this->render('jobad/index.html.twig', [
             'jobAds' => $jobAds,
@@ -69,6 +72,8 @@ class JobAdController extends Controller
             );
         }
 
+        $jobAds = $this->checkJobAdIsValid($jobAds);
+
         return $this->render('jobad/my_index.html.twig', array(
             'jobAds' => $jobAds,
             'searchForm' => $form->createView(),
@@ -97,6 +102,8 @@ class JobAdController extends Controller
                 ['employer' => $employer]
             );
         }
+
+        $jobAds = $this->checkJobAdIsValid($jobAds);
 
         return $this->render('jobad/index.html.twig', array(
             'jobAds' => $jobAds,
@@ -144,7 +151,14 @@ class JobAdController extends Controller
                 $this->saveJobAdRequirements($requirements, $jobAd);
             }
 
-            return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
+            $this->addFlash(
+                'notice',
+                'Jūsų skelbimą sėkmingai išsaugojome!'
+            );
+
+            return $this->redirectToRoute('jobad_show', [
+                'id' => $jobAd->getId()
+            ]);
         }
         return $this->render('jobad/new.html.twig', array(
             'jobAd' => $jobAd,
@@ -159,7 +173,6 @@ class JobAdController extends Controller
      */
     public function showAction(JobAd $jobAd)
     {
-        $deleteForm = $this->createDeleteForm($jobAd);
         $user = $this->getUser();
         $hideButton = false;
 
@@ -176,8 +189,7 @@ class JobAdController extends Controller
 
         return $this->render('jobad/show.html.twig', array(
             'jobAd' => $jobAd,
-            'hide' => $hideButton,
-            'deleteForm' => $deleteForm->createView()
+            'hide' => $hideButton
         ));
     }
 
@@ -195,7 +207,6 @@ class JobAdController extends Controller
     {
         $this->denyAccessUnlessGranted('edit', $jobAd);
 
-        $deleteForm = $this->createDeleteForm($jobAd);
         $form = $this->createForm(JobAdType::class, $jobAd);
         $form->handleRequest($request);
 
@@ -210,50 +221,17 @@ class JobAdController extends Controller
                 $this->saveJobAdRequirements($requirements, $jobAd);
             }
 
+            $this->addFlash(
+                'notice',
+                'Jūsų skelbimas buvo sėkmingai redaguotas!'
+            );
+
             return $this->redirectToRoute('jobad_show', array('id' => $jobAd->getId()));
         }
         return $this->render('jobad/new.html.twig', array(
             'jobAd' => $jobAd,
-            'form' => $form->createView(),
-            'deleteForm' => $deleteForm->createView(),
+            'form' => $form->createView()
         ));
-    }
-
-    /**
-     * Deletes a jobAd entity.
-     * @param Request $request
-     * @param JobAd $jobAd
-     *
-     * @return Response
-     *
-     * @Route("/{id}", name="jobad_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, JobAd $jobAd)
-    {
-        $this->denyAccessUnlessGranted('edit', $jobAd);
-        $form = $this->createDeleteForm($jobAd);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($jobAd);
-            $em->flush();
-        }
-        return $this->redirectToRoute('jobad_index');
-    }
-
-    /**
-     * Creates a form to delete a jobAd entity.
-     * @param JobAd $jobAd The jobAd entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(JobAd $jobAd)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('jobad_delete', array('id' => $jobAd->getId())))
-            ->setMethod('DELETE')
-            ->getForm();
     }
 
     /**
@@ -274,5 +252,40 @@ class JobAdController extends Controller
             $em->persist($requirement);
             $em->flush();
         }
+    }
+
+    //TODO refactor this method
+    /**
+     * Removes jobAd from jobAd list.
+     * @param JobAd $jobAd
+     *
+     * @return Response
+     *
+     * @Route("/{id}/remove", name="jobad_remove")
+     * @Method({"GET", "POST"})
+     */
+    public function removeJobAdFromLists(JobAd $jobAd)
+    {
+        $jobAd->setIsNotValid(true);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($jobAd);
+        $em->flush();
+
+        return $this->redirectToRoute('jobad_my_index');
+    }
+
+    /**
+     * @param @var ArrayCollection|JobAd[]
+     * @return ArrayCollection|JobAd[]
+     */
+    public function checkJobAdIsValid($jobAds)
+    {
+        $ads = [];
+        foreach ($jobAds as $jobAd) {
+            if (! $jobAd->getIsNotValid()) {
+                array_push($ads, $jobAd);
+            }
+        }
+        return $ads;
     }
 }

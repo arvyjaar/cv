@@ -12,7 +12,7 @@
 
             {{ form_row(form.email) }}
 
-            {{ form_row(form.phone) }}
+            {{ form_row(form.phone, {'attr': {'placeholder': "Pvz.: +3706XXXXXXX"}}) }}
 
             <img class="img-responsive profile-img" src="{{ asset('img/profiles/'~app.user.photo ?? 'no-logo.jpg')}}" alt="Logotipas">
             {{ form_row(form.imageFile) }}

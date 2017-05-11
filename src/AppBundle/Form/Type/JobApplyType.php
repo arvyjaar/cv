@@ -19,7 +19,7 @@ class JobApplyType extends AbstractType
         $builder
             ->add('assignmentSolution', UrlType::class, [
                 'default_protocol' => '',
-                'label' => 'Nuoroda į užduoties sprendimą'
+                'label' => 'Nuoroda į užduoties sprendimą*'
             ])
             ->add('imageFile', VichFileType::class, [
                 'label' => false

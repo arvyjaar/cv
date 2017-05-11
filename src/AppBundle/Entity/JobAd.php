@@ -75,6 +75,12 @@ class JobAd
      */
     private $employer;
 
+    /**
+     * @var bool
+     * @ORM\column(name="is_valid", type="boolean", nullable=true)
+     */
+    private $isNotValid;
+
     public function __construct()
     {
         $this->requirements = new ArrayCollection();
@@ -107,6 +113,26 @@ class JobAd
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @param bool $isNotValid
+     *
+     * @return JobAd
+     */
+    public function setIsNotValid($isNotValid)
+    {
+        $this->isNotValid = $isNotValid;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsNotValid()
+    {
+        return $this->isNotValid;
     }
 
     /**

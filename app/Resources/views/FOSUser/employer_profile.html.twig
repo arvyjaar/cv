@@ -41,9 +41,15 @@
             <ul class="profile-list">
                 {% for jobad in app.user.jobAd %}
                     <li>
-                        <a href="{{ path('jobad_show', {'id': jobad.id }) }}">{{ jobad.title }}</a>
+                        <a href="{{ path('jobad_show', {'id': jobad.id }) }}">{{ jobad.title }} | </a>
                         <small>
-                            <a href="{{ path('jobapply_index', {'id': jobad.id }) }}"> | Peržiūrėti kandidatų sąrašą ({{ jobad.jobApply.count }})</a>
+                            {% if jobad.jobApply.count > 0 %}
+                            <a href="{{ path('jobapply_index', {'id': jobad.id }) }}">
+                                Peržiūrėti kandidatų sąrašą ({{ jobad.jobApply.count }})
+                            </a>
+                            {% else %}
+                                Kandidatavusių į šią poziciją kol kas neturite.
+                            {% endif %}
                         </small>
                     </li>
                 {% endfor %}

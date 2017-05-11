@@ -61,6 +61,11 @@ class JobApplyController extends Controller
             $em->persist($jobApply);
             $em->flush();
 
+            $this->addFlash(
+                'notice',
+                'Sveikiname sėkmingai kandidatavus!'
+            );
+
             return $this->redirectToRoute('jobad_index');
         }
 

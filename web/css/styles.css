@@ -21,7 +21,7 @@ p. {
 }
 
 .page-heading {
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 500;
     color: dimgrey;
 }
@@ -33,7 +33,7 @@ p. {
 }
 
 .content-container {
-    margin-top: 140px;
+    margin-top: 180px;
     margin-bottom: 40px;
     padding: 40px;
     border: 1px solid lightgray;
@@ -94,6 +94,22 @@ p. {
 
 .hired{
     color: #c32aff;
+}
+
+.flash-messages {
+    position: absolute;
+    z-index: 100;
+    top: 95px;
+    width: 320px;
+    margin-right: -160px;
+    right: 50%;
+}
+
+.alert {
+    margin-bottom: 0;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
 }
 
 /*NAVIGATION*/
@@ -356,7 +372,7 @@ p. {
 }
 
 .profile-jobapply-list-item {
-    min-height: 52px;
+    min-height: 70px;
     position: relative;
 }
 
@@ -681,6 +697,16 @@ p. {
 }
 
 @media only screen and (min-width : 768px) {
+    .page-heading {
+        font-size: 26px;
+    }
+
+    .flash-messages {
+        top: 100px;
+        width: 600px;
+        margin-right: -300px;
+    }
+
     .container {
         padding-left: 15px;
         padding-right: 15px;
@@ -851,6 +877,11 @@ p. {
 }
 
 @media only screen and (min-width: 992px) {
+    .flash-messages {
+        width: 600px;
+        margin-right: -300px;
+    }
+
     .user-heading {
         font-size: 26px;
     }
