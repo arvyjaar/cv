@@ -254,7 +254,7 @@ class JobAdController extends Controller
         }
     }
 
-    //TODO refactor this method
+    //TODO this method
     /**
      * Removes jobAd from jobAd list.
      * @param JobAd $jobAd
@@ -274,6 +274,7 @@ class JobAdController extends Controller
         return $this->redirectToRoute('jobad_my_index');
     }
 
+    //TODO update db queries and remove this method
     /**
      * @param @var ArrayCollection|JobAd[]
      * @return ArrayCollection|JobAd[]
