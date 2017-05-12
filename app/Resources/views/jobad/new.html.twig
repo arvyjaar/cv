@@ -31,13 +31,11 @@
                     </div>
             {{ form_end(form) }}
 
-            {# Delete form. Visable only in edit route#}
+            {# Remove btn visable only in edit route#}
             {% if( form.vars.value.id != null) %}
-                {{ form_start(deleteForm) }}
                 <div class="btn-block">
-                    <input class="btn btn-default" type="submit" value="Ištrinti">
+                    <a class="btn btn-default" href="{{ path('jobad_remove', {'id': jobAd.id}) }}">Ištrinti</a>
                 </div>
-                {{ form_end(deleteForm) }}
             {% endif %}
         </div>
         {# Pop-up renders on add-requirements button click #}

@@ -56,6 +56,11 @@ class EvaluationController extends Controller
 
             $em->flush();
 
+            $this->addFlash(
+                'notice',
+                'Jūsų įvertinimas pateiktas kandidatui!'
+            );
+
             return $this->redirectToRoute('jobapply_index', ['id' => $jobAd->getId()]);
         }
 
@@ -87,6 +92,11 @@ class EvaluationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash(
+                'notice',
+                'Jūsų įvertinimas atnaujintas sėkmingai!'
+            );
 
             return $this->redirectToRoute('jobapply_index', ['id' => $jobAd->getId()]);
         }
@@ -121,6 +131,11 @@ class EvaluationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($evaluation);
             $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Įvertinimas buvo sėkmingai ištrintas!'
+            );
         }
 
         return $this->redirectToRoute('jobapply_index', ['id' => $jobAd->getId()]);

@@ -17,7 +17,7 @@
                     <div class="row employer-list-block">
                         <div class="col-md-4 visible-md visible-lg employer-logo-box">
                             <img class="img-responsive img-center employer-logo"
-                                 src="{{ asset('img/profiles/'~employer.photo ?? 'no-logo.jpg') }}"
+                                 src="{{ asset(employer.photo ? ('img/profiles/' ~ employer.photo) : 'img/no-logo.jpg') }}"
                                  alt="Logotipas">
                         </div>
                         <div class="col-md-4 col-sm-6">

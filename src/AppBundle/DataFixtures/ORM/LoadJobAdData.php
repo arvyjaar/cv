@@ -47,19 +47,14 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
         $jobAd1->setDescription('Joberate is expanding operations in Lithuania and are looking for creative and highly
             intelligent developers with technical and scientific educational backgrounds. We are also looking for 
             motivated or self taught programmers. The successful candidate must have a passion for programming, and 
-            show demonstrable expertise in more than one modern programming languages. Responsibilities include but are 
-            not limited to: ⚬design, code, and support a new data analytics platform; 
-            ⚬Create and support various applications, APIs, and 3rd party tools;
-            ⚬Create system architecture and design, and tune and optimize code;
-            ⚬Provide ongoing data quality monitoring and support.');
+            show demonstrable expertise in more than one modern programming languages.');
         $jobAd1->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');
         $jobAd1->setOwner($this->getOwner(14));
 
         $jobAd2 = new JobAd();
         $jobAd2->setTitle('Frontend/JavaScript Developer');
-        $jobAd2->setDescription('- Programavimas tarptautinių turizmo el. verslo sistemų (B2B/B2C) kūrimo komandoje;
-        - Funkcinių komponentų programavimas AngularJS karkaso pagrindu;
-        - Frontend dalies programavimas.
+        $jobAd2->setDescription('Programavimas tarptautinių turizmo el. verslo sistemų (B2B/B2C) kūrimo komandoje.
+        Funkcinių komponentų programavimas AngularJS karkaso pagrindu. Frontend dalies programavimas.
         ');
         $jobAd2->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');
         $jobAd2->setOwner($this->getOwner(15));
@@ -73,10 +68,10 @@ class LoadJobAdData implements FixtureInterface, OrderedFixtureInterface, Contai
 
         $jobAd4 = new JobAd();
         $jobAd4->setTitle('Full Stack PHP programuotojas');
-        $jobAd4->setDescription('- Spartus elektroninės komercijos WEB/MOBILE tobulinimas ir naujausių programavimo 
-            technologijų diegimas (darbas su Frontend ir Backend dalimis);
-        - Naujų elektroninės komercijos sistemų funkcijų programavimas;
-        - Esamų sistemų priežiūra ir tobulinimas.');
+        $jobAd4->setDescription('Spartus elektroninės komercijos WEB/MOBILE tobulinimas ir naujausių programavimo 
+            technologijų diegimas (darbas su Frontend ir Backend dalimis).
+        Naujų elektroninės komercijos sistemų funkcijų programavimas.
+        Esamų sistemų priežiūra ir tobulinimas.');
         $jobAd4->setAssignment('https://drive.google.com/open?id=1Qu5RM-ZuZhFdmEdKKwKQM5d-BMPDpnyuuK0yXPmK3qk');
         $jobAd4->setOwner($this->getOwner(17));
 

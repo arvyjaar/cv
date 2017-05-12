@@ -26,7 +26,9 @@
 
                             <div class="row">
                                 <div class="col-md-12 col-sm-6">
-                                    <img class="img-responsive seekers-list-img" src="{{ asset('img/profiles/'~userSeeker.photo ?? 'no-photo.jpg')}}" alt="Nuotrauka">
+                                    <img class="img-responsive seekers-list-img"
+                                         src="{{ asset(employer.photo ? ('img/profiles/' ~ employer.photo) : 'img/no-photo.jpg') }}"
+                                         alt="Nuotrauka">
                                 </div>
                                 <div class="col-md-12 col-sm-6 col-xs-12">
                                     <ul class="profile-list">

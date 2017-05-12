@@ -75,7 +75,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
             ir pristatydama įvairias įmonės veiklos analizes įvairiais pjūviais įmonės vadovybei bei akcininkams. 
             Dirbau su skirtingomis finansų valdymo bei MS Office programomis, dalyvavau diegiant programas bei 
             prisidėjau prie įmonės valdymo gerinimo (kaštų/pelno centrų nustatymas,duomenų pagal šiuos centrus 
-            rinkimas, analizė  bei ataskaitų ruošimas).Esu imli naujovėms, atsakinga.');
+            rinkimas, analizė  bei ataskaitų ruošimas).');
         $seeker3->setPhone('+37061266777');
         $seeker3->setProfession('Finansų analitikė');
         $seeker3->setEmail('sandra@email.com');
@@ -146,8 +146,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker7->setIntroduction('Esu informacinių sistemų inžinierius, įgyjęs profesinio bakalauro laipsnį 2014m. 
             Turiu patirties atliekant darbus su kompiuteriu ir jų komponentais, naudotis ir administruoti programines 
             įrangas (MS Office paketas, grafinių elementų redaktoriai, internetinių svetainių turinio valdymo sistemos, 
-            vartotojų indentifikavimo sistema, antivirusinė įranga). Esu atsakingas ir kruopštus, sugebu dirbti 
-            kolektyve bei atlikti paskirtas užduotis asmeniškai....');
+            vartotojų indentifikavimo sistema, antivirusinė įranga).');
         $seeker7->setPhone('+37066147896');
         $seeker7->setProfession('Informacinių sistemų inžinierius');
         $seeker7->setEmail('antanas@email.com');
@@ -220,8 +219,7 @@ class LoadUserSeekerData implements FixtureInterface, OrderedFixtureInterface, C
         $seeker11->setIntroduction('Baigiau KTU skaičiavimo technikos fakultetą taikomosios matematikos specialybę 
             ir įgijau informatikos magistro laipsnį. Turiu sukaupęs nemažą patirtį kaip IT specialistas 
             (programuotojas, sistemų bei tinklų inžinierius) ir kaip serviso bei pardavimo padalinių vadovas. 
-            Pasižymiu gerais organizaciniais sugebėjimais, atsakingumu bei motyvuotumu, visuomet siekiu užsibrėžto 
-            tikslo, esu lojalus ir noriu tobulėti. Domintų IT specialisto, IS, OS, DB adm...');
+            Domintų IT specialisto, IS, OS, DB adm...');
         $seeker11->setPhone('+37066141111');
         $seeker11->setProfession('Projektų vadovas');
         $seeker11->setEmail('ovidijus@email.com');

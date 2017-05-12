@@ -2,6 +2,7 @@
 
 {% block body %}
     <div class="container">
+
         <div class="content-container">
             <div class="row">
                 <div class="col-sm-5 col-md-6">
@@ -19,55 +20,52 @@
             {% endif %}
 
             {% for jobAd in jobAds %}
-
                 <!-- This is to list 3 divs in one row -->
                 {% if loop.index0 is divisible by(3) %}
                     <div class="row">
                 {% endif %}
+                    {#{% if not jobAd.isNotValid %}#}
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="job-ad-box">
 
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <div class="job-ad-box">
-
-                        <div class="job-title-block">
-                            <div class="job-title job-list-job-title">
-                                {{ jobAd.title }}
+                            <div class="job-title-block">
+                                <div class="job-title job-list-job-title">
+                                    {{ jobAd.title }}
+                                </div>
                             </div>
-                        </div>
-                        {% block employer %} {# employer title block is empty in my_index.html #}
-                            <p class="text-center"><b>{{ jobAd.owner.title }}</b></p>
-                        {% endblock %}
+                            {% block employer %} {# employer title block is empty in my_index.html #}
+                                <p class="text-center"><b>{{ jobAd.owner.title }}</b></p>
+                            {% endblock %}
 
-                        <div class="job-ad-requirements">
-                            <p class="section-heading">Reikalavimai:</p>
-                            <div class="text-center">
-                                {% for requirement in jobAd.requirements %}
-                                    <span class="skill">{{ requirement.title }}</span>
-                                {% endfor %}
+                            <div class="job-ad-requirements">
+                                <p class="section-heading">Reikalavimai:</p>
+                                <div class="text-center">
+                                    {% for requirement in jobAd.requirements %}
+                                        <span class="skill">{{ requirement.title }}</span>
+                                    {% endfor %}
+                                </div>
                             </div>
+
+                            <div class="job-ad-info">
+                                <p class="section-heading">Trumpai apie siūlomą poziciją:</p>
+                                <p class="ad-description">
+                                    {{ jobAd.description|length > 200 ? jobAd.description|slice(0, 200) ~ '...' : jobAd.description }}
+                                </p>
+                            </div>
+
+                            <div class="job-ad-button">
+                                <a href="{{ path('jobad_show', { 'id': jobAd.id }) }}" class="btn btn-primary">Rodyti daugiau</a>
+                            </div>
+
+                            {% block linkAds %}{% endblock %}
+
                         </div>
-
-                        <div class="job-ad-info">
-                            <p class="section-heading">Trumpai apie siūlomą poziciją:</p>
-                            <p class="ad-description">
-                                {{ jobAd.description|length > 200 ? jobAd.description|slice(0, 200) ~ '...' : jobAd.description }}
-                            </p>
-                        </div>
-
-                        <div class="job-ad-button">
-                            <a href="{{ path('jobad_show', { 'id': jobAd.id }) }}" class="btn btn-primary">Rodyti daugiau</a>
-                        </div>
-
-                        {% block linkAds %}{% endblock %}
-
                     </div>
-                </div>
 
                 {% if loop.index is divisible by(3) or loop.last %}
                     </div> {# /row #}
                 {% endif %}
-
             {% endfor %}
-
         </div>
     </div>
 

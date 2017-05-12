@@ -7,8 +7,8 @@
             <div class="show-candidates-count">
                 {% if jobAd.jobApply.count > 0 %}
                     <p>Į šią poziciją kandidatavo: {{ jobAd.jobApply.count }}</p>
-                {% elseif jobAd.jobApply.count == 0 and is_granted('ROLE_USER_SEEKER') %}
-                    <a href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Tapk pirmu kandidatu į šią poziciją!</a>
+                {% elseif jobAd.jobApply.count == 0 and is_granted('ROLE_USER_SEEKER') and not jobAd.isNotValid %}
+                    <p>Tapk pirmu kandidatu į šią poziciją!</p>
                 {% else %}
                     <p>Kandidatų į šią poziciją kol kas nėra</p>
                 {% endif %}
@@ -39,23 +39,17 @@
             </div>
 
             <div class="btn-block">
-                {# Don't show for ROLE_EMPLOYER #}
-                {% if not is_granted('ROLE_USER_EMPLOYER') %}
-                    {# Only registered ROLE_SEEKER can apply #}
-                    {% if is_granted('ROLE_USER_SEEKER') %}
-
-                       {#Show button only if candidate didn't applied for this position#}
-                       {% if not hide %}
-                           <a id="submit-apply" class="btn btn-primary" href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
-                       {% else %}
-                           <srong>Jūs jau kandidatovote į šią poziciją</srong>
-                       {% endif %}
-
-                    {% endif %}
+                {% if is_granted('ROLE_USER_SEEKER') %}
+                   {#Show button only if candidate didn't applied for this position#}
+                   {% if not hide and not jobAd.isNotValid %}
+                       <a id="submit-apply" class="btn btn-primary" href="{{ path('jobapply_new', { 'ad_id': jobAd.id }) }}">Kandidatuoti</a>
+                   {% else %}
+                       <srong>Jūs jau kandidatovote į šią poziciją</srong>
+                   {% endif %}
                 {% endif %}
             </div>
 
-            {# Show EDIT button only for owner #}
+            {# Show edit button only for owner #}
             {% if app.user == jobAd.getOwner %}
                 <div class="text-center">
                     <a class="btn btn-primary" href="{{ path('jobad_edit', { 'id': jobAd.id }) }}">Redaguoti</a>
