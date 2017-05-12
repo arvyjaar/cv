@@ -5,14 +5,12 @@
         <div class="content-container">
             <p class="page-heading">Kandidatai į poziciją: {{ jobAd.title }}</p>
 
-            <a class="form-upper-btn" href="{{ app.request.headers.get('referer') }}">Grįžti atgal</a>
-
             {% for jobApply in jobApplies %}
                 <div class="row-list">
                     <div class="row">
-                        <div class="col-md-4">
-                            <img class="img-responsive profile-img img-center"
-                                 src="{{ asset('img/profiles/'~jobApply.owner.photo ?? 'no-photo.jpg') }}"
+                        <div class="col-md-4 candidates-list">
+                            <img class="img-responsive candidates-img img-center"
+                                 src="{{ asset(jobApply.owner.photo ? 'img/profiles/'~ jobApply.owner.photo : 'img/no-photo.jpg') }}"
                                  alt="Nuotrauka">
                         </div>
                         <div class="col-md-4">

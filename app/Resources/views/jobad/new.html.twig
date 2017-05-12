@@ -18,7 +18,8 @@
                     {# Add requirements form #}
                     {{ include('jobad/add_requirements_form.html.twig') }}
 
-                    {{ form_row(form.assignment) }}
+                    {{ form_row(
+                        form.assignment, {'attr': {'placeholder': "Pvz.: https://drive.google.com/drive/uzduotis"}}) }}
 
                     {{ form_row(form.description) }}
 
@@ -27,7 +28,7 @@
                     </div>
 
                     <div class="btn-block">
-                        <input class="btn btn-primary" type="submit" value="Sukurti"/>
+                        <input class="btn btn-primary" type="submit" value="{{ form.vars.value.id ? "Redaguoti" : "Sukurti" }}"/>
                     </div>
             {{ form_end(form) }}
 
