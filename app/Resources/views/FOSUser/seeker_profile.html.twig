@@ -5,7 +5,7 @@
 
         <div class="row">
             <div class="col-md-4 col-sm-6">
-                <img class="img-responsive profile-img"
+                <img class="img-responsive user-profile-img"
                      src="{{ asset(app.user.photo ? ('img/profiles/' ~ app.user.photo) : 'img/no-photo.jpg') }}"
                      alt="Nuotrauka">
             </div>
@@ -38,31 +38,39 @@
         </div>
         {% if app.user.jobApply|length > 0 %}
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-xs-12">
                     <p class="section-heading profile-heading">Pozicijos į kurias kandidatavau</p>
                     <ul class="profile-list">
+
                         {% for jobApply in app.user.jobApply %}
-                            <li class="profile-jobapply-list-item">
-                                <a href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}">{{ jobApply.jobAd.title }}</a>
-                                <span>| {{ jobApply.jobAd.owner.title }}</span>
+                            <li class="profile-jobapply-list-item item-bordered">
+                                <ul class="profile-list">
+                                    <li>
+                                        <a class="text-uppercase" href="{{ path('jobad_show', {'id': jobApply.jobAd.id}) }}">
+                                            {{ jobApply.jobAd.title }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <span class="text-uppercase">Įmonė: </span>
+                                        {{ jobApply.jobAd.owner.title }}
+                                    </li>
+                                    <li>
+                                        <span class="text-uppercase">Įvertinimas: </span>
+                                        {% if jobApply.evaluation %}
+                                            <span class="profile-jobapply-list-item">
+                                                <span class="mark">{{ jobApply.evaluation.mark }}</span>
+                                                {#TODO limit length and add button, that renders full evaluation onClick#}
+                                                <span class="comment">{{ jobApply.evaluation.comment }}</span>
+                                            </span>
+                                        {% else %}
+                                            <span class="profile-jobapply-list-item">Būsi įvertintas artimiausiu metu</span>
+                                        {% endif %}
+                                    </li>
+                                </ul>
+
                             </li>
                         {% endfor %}
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    {#TODO limit length and add button, that renders full evaluation onClick#}
-                    <p class="section-heading profile-heading">Įvertinimai</p>
-                    <ul class="profile-list">
-                        {% for jobApply in app.user.jobApply %}
-                            {% if jobApply.evaluation %}
-                            <li class="profile-jobapply-list-item">
-                                <span class="mark">{{ jobApply.evaluation.mark }}</span>
-                                <span class="comment">{{ jobApply.evaluation.comment }}</span>
-                            </li>
-                            {% else %}
-                            <li class="profile-jobapply-list-item">Būsi įvertintas artimiausiu metu</li>
-                            {% endif %}
-                        {% endfor %}
+
                     </ul>
                 </div>
             </div>

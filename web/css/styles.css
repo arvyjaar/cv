@@ -372,8 +372,11 @@ p. {
 }
 
 .profile-jobapply-list-item {
-    min-height: 70px;
     position: relative;
+}
+
+.item-bordered {
+    border-bottom: 0.2px solid #e6e6e6;
 }
 
 .profile-heading {
@@ -506,6 +509,10 @@ p. {
 .candidates-list-heading:hover {
     text-decoration: none;
     color: darkmagenta;
+}
+
+.candidates-img {
+    border-radius: 30px;
 }
 
 .assignment-list {
@@ -696,7 +703,22 @@ p. {
     border-radius: 10px;
 }
 
+.user-profile-img {
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+
+}
+
 @media only screen and (min-width : 768px) {
+    .user-profile-img {
+        max-height: 400px;
+    }
+
+    .candidates-img {
+        max-height: 280px;
+    }
+
     .page-heading {
         font-size: 26px;
     }

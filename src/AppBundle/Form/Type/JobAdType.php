@@ -24,7 +24,7 @@ class JobAdType extends AbstractType
             ])
             ->add('assignment', UrlType::class, [
                 'default_protocol' => '',
-                'label' => 'Užduotis kandidatams*'
+                'label' => 'Užduotis kandidatams (url)*'
             ])
             ->add('requirements', HiddenType::class, array(
                 'data' => '',

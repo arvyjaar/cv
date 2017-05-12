@@ -1,7 +1,3 @@
-/**
- * Created by monika on 17.4.5.
- */
-
 function deleteEntityFromDb(entity, id) {
 
     var delete_url = Routing.generate('delete_' + entity, {
