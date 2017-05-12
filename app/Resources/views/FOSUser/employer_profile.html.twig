@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-6">
                 <img class="img-responsive employer-logo-profile profile-padding"
-                     src="{{ asset(employer.photo ? ('img/profiles/' ~ employer.photo) : 'img/no-logo.jpg') }}" alt="Logotipas">
+                     src="{{ asset(app.user.photo ? ('img/profiles/' ~ app.user.photo) : 'img/no-logo.jpg') }}" alt="Logotipas">
             </div>
             <div class="col-md-8 col-sm-6">
                 <ul class="profile-list">
