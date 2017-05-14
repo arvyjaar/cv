@@ -66,14 +66,13 @@ class LoadJobApplyData implements FixtureInterface, OrderedFixtureInterface, Con
     {
         $jobAplly1 = new JobApply();
         $jobAplly1->setAssignmentSolution('https://goo.gl/bphynd');
-        $jobAplly1->setCv('example-cv.pdf');
         $jobAplly1->setOwner($this->getOwner(1));
         $jobAplly1->setJobAd($this->getJobAd(4));
         $jobAplly1->setEvaluation($this->getEvaluation(4));
 
         $jobAplly2 = new JobApply();
         $jobAplly2->setAssignmentSolution('https://goo.gl/4UZi2T');
-        $jobAplly2->setCv('example-cv.pdf');
+
         $jobAplly2->setOwner($this->getOwner(2));
         $jobAplly2->setJobAd($this->getJobAd(1));
         $jobAplly2->setEvaluation($this->getEvaluation(3));
@@ -81,7 +80,6 @@ class LoadJobApplyData implements FixtureInterface, OrderedFixtureInterface, Con
 
         $jobAplly3 = new JobApply();
         $jobAplly3->setAssignmentSolution('https://goo.gl/LR4NaW');
-        $jobAplly3->setCv('example-cv.pdf');
         $jobAplly3->setOwner($this->getOwner(3));
         $jobAplly3->setJobAd($this->getJobAd(3));
         $jobAplly3->setEvaluation($this->getEvaluation(2));
