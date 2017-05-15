@@ -28,6 +28,11 @@ class SkillController extends Controller
      */
     public function createAction(Request $request)
     {
+        $user = $this->getUser();
+        if (! $user || ! $user->hasRole('ROLE_USER_SEEKER')) {
+            throw new AccessDeniedException();
+        }
+
         $skillTitle = $request->request->get('skill');
 
         $user = $this->getUser();
@@ -54,8 +59,8 @@ class SkillController extends Controller
 
     /**
      * @param Skill $skill
-     *
      * @return JsonResponse
+     *
      * @Route("/{id}",
      *     options = { "expose" = true },
      *     name = "delete_skill",

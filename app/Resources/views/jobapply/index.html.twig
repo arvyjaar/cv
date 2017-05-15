@@ -5,6 +5,8 @@
         <div class="content-container">
             <p class="page-heading">Kandidatai į poziciją: {{ jobAd.title }}</p>
 
+            <a class="form-upper-btn" href="{{ path('jobad_my_index') }}">mano skelbimų sąrašas</a>
+
             {% for jobApply in jobApplies %}
                 <div class="row-list">
                     <div class="row">

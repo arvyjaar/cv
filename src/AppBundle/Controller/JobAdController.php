@@ -22,6 +22,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class JobAdController extends Controller
 {
+    // TODO - pagination
     /**
      * Lists all jobAd entities.
      * @param Request $request
@@ -32,6 +33,10 @@ class JobAdController extends Controller
      */
     public function indexAction(Request $request)
     {
+        if (! $this->getUser()) {
+            throw new AccessDeniedException();
+        }
+
         $form = $this->createForm(AdsSearchType::class, null, ['method' => 'GET']);
         $form->handleRequest($request);
 
@@ -60,6 +65,11 @@ class JobAdController extends Controller
      */
     public function indexMyAdsAction(Request $request)
     {
+        $user = $this->getUser();
+        if (! $user || ! $user->hasRole('ROLE_USER_EMPLOYER')) {
+            throw new AccessDeniedException();
+        }
+
         $form = $this->createForm(AdsSearchType::class, null, ['method' => 'GET']);
         $form->handleRequest($request);
 
@@ -91,6 +101,10 @@ class JobAdController extends Controller
      */
     public function indexEmployerAdsAction(UserEmployer $employer, Request $request)
     {
+        if (! $this->getUser()) {
+            throw new AccessDeniedException();
+        }
+
         $form = $this->createForm(AdsSearchType::class, null, ['method' => 'GET']);
         $form->handleRequest($request);
 
@@ -127,9 +141,11 @@ class JobAdController extends Controller
      */
     public function newAction(Request $request)
     {
-        if (! $this->getUser()->hasRole('ROLE_USER_EMPLOYER')) {
+        $user = $this->getUser();
+        if (! $user || ! $user->hasRole('ROLE_USER_EMPLOYER')) {
             throw new AccessDeniedException();
         }
+
         $jobAd = new Jobad();
         $form = $this->createForm(JobAdType::class, $jobAd);
         $form->handleRequest($request);
@@ -174,6 +190,11 @@ class JobAdController extends Controller
     public function showAction(JobAd $jobAd)
     {
         $user = $this->getUser();
+
+        if (! $user) {
+            throw new AccessDeniedException();
+        }
+
         $hideButton = false;
 
         //Checks if user already applied
@@ -206,6 +227,10 @@ class JobAdController extends Controller
     public function editAction(Request $request, JobAd $jobAd)
     {
         $this->denyAccessUnlessGranted('edit', $jobAd);
+
+        if (! $this->checkJobAdIsValid($jobAd)) {
+            return $this->redirectToRoute('jobad_index');
+        };
 
         $form = $this->createForm(JobAdType::class, $jobAd);
         $form->handleRequest($request);
@@ -254,18 +279,23 @@ class JobAdController extends Controller
         }
     }
 
-    //TODO this method
+    //TODO refactor this method
     /**
      * Removes jobAd from jobAd list.
      * @param JobAd $jobAd
      *
      * @return Response
      *
-     * @Route("/{id}/remove", name="jobad_remove")
+     * @Route("/{id}/panaikinti", name="jobad_remove")
      * @Method({"GET", "POST"})
      */
     public function removeJobAdFromLists(JobAd $jobAd)
     {
+        $user = $this->getUser();
+        if (! $user || ! $user->hasRole('ROLE_USER_EMPLOYER')) {
+            throw new AccessDeniedException();
+        }
+
         $jobAd->setIsNotValid(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($jobAd);

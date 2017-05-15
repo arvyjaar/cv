@@ -7,6 +7,7 @@ use AppBundle\Form\Type\AdsSearchType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
@@ -27,6 +28,12 @@ class UserSeekerController extends Controller
      */
     public function indexAction(Request $request)
     {
+        // TODO - pagination
+        $user = $this->getUser();
+        if (! $user || ! $user->hasRole('ROLE_USER_EMPLOYER')) {
+            throw new AccessDeniedException();
+        }
+
         $form = $this->createForm(AdsSearchType::class, null, ['method' => 'GET']);
         $form->handleRequest($request);
 
@@ -54,6 +61,11 @@ class UserSeekerController extends Controller
      */
     public function showAction(UserSeeker $userSeeker)
     {
+        $user = $this->getUser();
+        if (! $user || ! $user->hasRole('ROLE_USER_EMPLOYER')) {
+            throw new AccessDeniedException();
+        }
+
         return $this->render('userseeker/show.html.twig', [
             'userSeeker' => $userSeeker,
         ]);

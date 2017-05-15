@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Provider\AverageSalaryProvider;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -29,6 +30,12 @@ class UserEmployerController extends Controller
      */
     public function indexAction(Request $request)
     {
+        // TODO - pagination
+        $user = $this->getUser();
+        if (! $user || ! $user->hasRole('ROLE_USER_SEEKER')) {
+            throw new AccessDeniedException();
+        }
+
         $form = $this->createForm(EmployerSearchType::class, null, ['method' => 'GET']);
         $form->handleRequest($request);
 
@@ -55,6 +62,11 @@ class UserEmployerController extends Controller
      */
     public function showAction(UserEmployer $userEmployer)
     {
+        $user = $this->getUser();
+        if (! $user || ! $user->hasRole('ROLE_USER_SEEKER')) {
+            throw new AccessDeniedException();
+        }
+
         $legalEntitysCode = $userEmployer->getlegalEntitysCode();
 
         //TODO refactor this method

@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Form\Form;
@@ -33,7 +34,8 @@ class JobApplyController extends Controller
      */
     public function newAction(JobAd $jobad, Request $request)
     {
-        if (! $this->getUser()->hasRole('ROLE_USER_SEEKER')) {
+        $user = $this->getUser();
+        if (! $user || ! $user->hasRole('ROLE_USER_SEEKER')) {
             throw new AccessDeniedException();
         }
 

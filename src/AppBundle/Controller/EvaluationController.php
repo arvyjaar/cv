@@ -41,7 +41,7 @@ class EvaluationController extends Controller
 
         // Only one evaluation for one jobApply
         if ($jobApply->getEvaluation() !== null) {
-            throw new AccessDeniedException();
+            throw new AccessDeniedException("Kandidatui galite parašyti tik vieną įvertinimą.");
         }
 
         $evaluation = new Evaluation();
@@ -82,6 +82,10 @@ class EvaluationController extends Controller
      */
     public function editAction(Request $request, Evaluation $evaluation)
     {
+        if (! $this->getUser()) {
+            throw new AccessDeniedException();
+        }
+
         // Only this JobAd author can edit evaluation
         $jobAd = $evaluation->getJobApply()->getJobAd();
         $this->denyAccessUnlessGranted('edit', $jobAd);
@@ -120,6 +124,10 @@ class EvaluationController extends Controller
      */
     public function deleteAction(Request $request, Evaluation $evaluation)
     {
+        if (! $this->getUser()) {
+            throw new AccessDeniedException();
+        }
+
         // Only this JobAd author can edit evaluation
         $jobAd = $evaluation->getJobApply()->getJobAd();
         $this->denyAccessUnlessGranted('edit', $jobAd);

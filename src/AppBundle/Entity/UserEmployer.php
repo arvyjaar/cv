@@ -58,7 +58,7 @@ class UserEmployer extends User
      * @var File
      *
      * @Assert\File(
-     *     maxSize = "2048Ki"
+     *     maxSize = "1660Ki"
      * )
      */
     private $imageFile;
