@@ -57,7 +57,7 @@ class UserEmployer extends User
      * @Vich\UploadableField(mapping="employer_logo", fileNameProperty="photo")
      * @var File
      *
-     * @Assert\File(
+     * @Assert\Image(
      *     maxSize = "1660Ki"
      * )
      */

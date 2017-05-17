@@ -53,7 +53,7 @@ class UserSeeker extends User
      *
      * @Vich\UploadableField(mapping="profile_image", fileNameProperty="photo")
      * @var File
-     * @Assert\File(
+     * @Assert\Image(
      *     maxSize = "1660Ki"
      * )
      */
