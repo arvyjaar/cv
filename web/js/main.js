@@ -58,14 +58,14 @@ $(document).ready(function() {
     $("#appbundle_jobapply_imageFile_file").jfilestyle({
         buttonBefore: true,
         buttonText: '<i class="fa fa-upload" aria-hidden="true"></i>',
-        placeholder: 'Įkelk savo CV'
+        placeholder: 'Įkelk savo CV (PDF)'
     });
 
     //Styles profile image upload field
     $("#job_apply_imageFile_file").jfilestyle({
         buttonBefore: true,
         buttonText: '<i class="fa fa-upload" aria-hidden="true"></i>',
-        placeholder: 'Įkelk savo CV'
+        placeholder: 'Įkelk savo CV (PDF)'
     });
 
     //Styles cv upload field

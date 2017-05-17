@@ -42,7 +42,9 @@ class JobApply
      * @var File
      *
      * @Assert\File(
-     *     maxSize = "1660Ki"
+     *      maxSize = "1660Ki",
+     *      mimeTypes = {"application/pdf", "application/x-pdf"},
+     *      mimeTypesMessage = "Įkelkite tik PDF"
      * )
      */
     private $imageFile;
